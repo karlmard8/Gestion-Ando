@@ -27,82 +27,85 @@ Partial Class FrmPrincipal
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.UsuariosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1900, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1920, 28)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(75, 24)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(66, 24)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'InventarioToolStripMenuItem
         '
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(89, 24)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ReportesToolStripMenuItem
         '
         Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem1, Me.InventarioToolStripMenuItem1})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(82, 24)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
-        '
-        'UsuariosToolStripMenuItem
-        '
-        Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
-        Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'VentasToolStripMenuItem1
         '
         Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(158, 26)
         Me.VentasToolStripMenuItem1.Text = "Ventas"
         '
         'InventarioToolStripMenuItem1
         '
         Me.InventarioToolStripMenuItem1.Name = "InventarioToolStripMenuItem1"
-        Me.InventarioToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.InventarioToolStripMenuItem1.Size = New System.Drawing.Size(158, 26)
         Me.InventarioToolStripMenuItem1.Text = "Inventario"
+        '
+        'UsuariosToolStripMenuItem
+        '
+        Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(79, 24)
+        Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'PANELFRAMES
         '
-        Me.PANELFRAMES.Location = New System.Drawing.Point(12, 45)
+        Me.PANELFRAMES.Location = New System.Drawing.Point(16, 55)
+        Me.PANELFRAMES.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PANELFRAMES.Name = "PANELFRAMES"
-        Me.PANELFRAMES.Size = New System.Drawing.Size(1860, 930)
+        Me.PANELFRAMES.Size = New System.Drawing.Size(2480, 1145)
         Me.PANELFRAMES.TabIndex = 1
         '
         'FrmPrincipal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(1900, 997)
+        Me.ClientSize = New System.Drawing.Size(1920, 1051)
         Me.Controls.Add(Me.PANELFRAMES)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "FrmPrincipal"
         Me.ShowIcon = False
