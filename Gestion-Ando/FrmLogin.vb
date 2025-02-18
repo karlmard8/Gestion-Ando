@@ -16,5 +16,7 @@ Public Class FrmLogin
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call inicio()
+
+
     End Sub
 End Class
