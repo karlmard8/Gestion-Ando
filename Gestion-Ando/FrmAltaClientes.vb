@@ -9,7 +9,7 @@
 
             ' Verifica si el control es un ComboBox
             If TypeOf ctrl Is ComboBox Then
-                ' Borra la selección del ComboBox
+                ' Borra la selección del ComboBox noooooooooooooooooooooooo
                 DirectCast(ctrl, ComboBox).SelectedIndex = -1
             End If
             TXTCODIGO.Focus()
