@@ -16,7 +16,7 @@
         Next
     End Sub
 
-
+    'Comentario xd
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.Close()
     End Sub
