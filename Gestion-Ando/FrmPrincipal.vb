@@ -63,4 +63,15 @@ Public Class FrmPrincipal
         FrmUsuarios.Show()
     End Sub
 
+    Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
+        Dim resultado As DialogResult = MessageBox.Show("¿Deseas cerrar sesión?", "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If resultado = DialogResult.Yes Then
+            Application.Restart()
+        End If
+    End Sub
+
+    Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(1920, 1040)
+    End Sub
 End Class
