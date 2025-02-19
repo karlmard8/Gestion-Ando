@@ -1,4 +1,5 @@
-﻿Module Bdatos
+﻿Module MDatos
+
     Public Conexion As SqlClient.SqlConnection
     Public comando As SqlClient.SqlCommand
     Public StrSql As String
@@ -46,4 +47,5 @@
     Public Sub inicio()
         Conexion = New SqlClient.SqlConnection("server=desktop-8q10a8h\sqlexpress; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
     End Sub
+
 End Module

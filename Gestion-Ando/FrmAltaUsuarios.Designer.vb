@@ -24,7 +24,6 @@ Partial Class FrmAltaUsuarios
     Private Sub InitializeComponent()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
-        Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -55,16 +54,6 @@ Partial Class FrmAltaUsuarios
         Me.BTNGUARDAR.TabIndex = 45
         Me.BTNGUARDAR.Text = "Guardar"
         Me.BTNGUARDAR.UseVisualStyleBackColor = True
-        '
-        'BTNLIMPIAR
-        '
-        Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNLIMPIAR.Location = New System.Drawing.Point(186, 208)
-        Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
-        Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
-        Me.BTNLIMPIAR.TabIndex = 46
-        Me.BTNLIMPIAR.Text = "Limpiar"
-        Me.BTNLIMPIAR.UseVisualStyleBackColor = True
         '
         'BTNCANCELAR
         '
@@ -148,7 +137,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTTIPO.Location = New System.Drawing.Point(151, 146)
         Me.TXTTIPO.Name = "TXTTIPO"
         Me.TXTTIPO.Size = New System.Drawing.Size(289, 21)
-        Me.TXTTIPO.TabIndex = 49
+        Me.TXTTIPO.TabIndex = 43
         '
         'FrmAltaUsuarios
         '
@@ -159,7 +148,6 @@ Partial Class FrmAltaUsuarios
         Me.Controls.Add(Me.TXTCLAVE)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.BTNGUARDAR)
-        Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.BTNCANCELAR)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -178,7 +166,6 @@ Partial Class FrmAltaUsuarios
 
     Friend WithEvents Label5 As Label
     Friend WithEvents BTNGUARDAR As Button
-    Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label

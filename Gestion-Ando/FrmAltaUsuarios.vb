@@ -3,7 +3,7 @@
         Me.Close()
     End Sub
 
-    Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
+    Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs)
         For Each ctrl As Control In Me.Controls.OfType(Of TextBox)()
             ctrl.Text = String.Empty
         Next
@@ -25,13 +25,13 @@
             comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text
             comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
             comando.Parameters.Add("@USUTIPO", SqlDbType.VarChar, 80).Value = TXTTIPO.SelectedValue
-            comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output
+            comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
 
             If Conectar() = True Then
                 comando.ExecuteNonQuery() ' Ejecuta el comando SQL
 
                 ' Asegúrate de que el valor del parámetro de salida está disponible después de la ejecución del comando
-                If comando.Parameters("@RETORNO").Value.ToString() = "GUARDADO" Then
+                If comando.Parameters("@RETORNO").Value.ToString = "GUARDADO" Then
                     MsgBox("Proveedor guardado", MsgBoxStyle.Information, "Confirmacion")
                     DialogResult = DialogResult.OK
                     Me.Close()

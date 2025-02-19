@@ -24,15 +24,17 @@ Partial Class FrmAltaProductos
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TXTNOMBRE = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TXTPRECIO = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.SPINNER = New System.Windows.Forms.NumericUpDown()
+        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -48,16 +50,18 @@ Partial Class FrmAltaProductos
         'TXTCLAVE
         '
         Me.TXTCLAVE.Location = New System.Drawing.Point(151, 68)
+        Me.TXTCLAVE.MaxLength = 10
         Me.TXTCLAVE.Name = "TXTCLAVE"
         Me.TXTCLAVE.Size = New System.Drawing.Size(289, 20)
         Me.TXTCLAVE.TabIndex = 1
         '
-        'TextBox2
+        'TXTNOMBRE
         '
-        Me.TextBox2.Location = New System.Drawing.Point(151, 94)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(289, 20)
-        Me.TextBox2.TabIndex = 3
+        Me.TXTNOMBRE.Location = New System.Drawing.Point(151, 94)
+        Me.TXTNOMBRE.MaxLength = 255
+        Me.TXTNOMBRE.Name = "TXTNOMBRE"
+        Me.TXTNOMBRE.Size = New System.Drawing.Size(289, 20)
+        Me.TXTNOMBRE.TabIndex = 3
         '
         'Label2
         '
@@ -79,12 +83,12 @@ Partial Class FrmAltaProductos
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Existencia"
         '
-        'TextBox4
+        'TXTPRECIO
         '
-        Me.TextBox4.Location = New System.Drawing.Point(151, 146)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(289, 20)
-        Me.TextBox4.TabIndex = 7
+        Me.TXTPRECIO.Location = New System.Drawing.Point(151, 146)
+        Me.TXTPRECIO.Name = "TXTPRECIO"
+        Me.TXTPRECIO.Size = New System.Drawing.Size(289, 20)
+        Me.TXTPRECIO.TabIndex = 7
         '
         'Label4
         '
@@ -136,19 +140,27 @@ Partial Class FrmAltaProductos
         Me.Label5.TabIndex = 37
         Me.Label5.Text = "Alta o modificar productos"
         '
+        'SPINNER
+        '
+        Me.SPINNER.Location = New System.Drawing.Point(151, 120)
+        Me.SPINNER.Name = "SPINNER"
+        Me.SPINNER.Size = New System.Drawing.Size(289, 20)
+        Me.SPINNER.TabIndex = 38
+        '
         'FrmAltaProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 283)
+        Me.Controls.Add(Me.SPINNER)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.BTNCANCELAR)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TXTPRECIO)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TXTNOMBRE)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXTCLAVE)
         Me.Controls.Add(Me.Label1)
@@ -158,6 +170,7 @@ Partial Class FrmAltaProductos
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAltaProductos"
+        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -165,13 +178,14 @@ Partial Class FrmAltaProductos
 
     Friend WithEvents Label1 As Label
     Friend WithEvents TXTCLAVE As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TXTNOMBRE As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TXTPRECIO As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents Label5 As Label
+    Friend WithEvents SPINNER As NumericUpDown
 End Class
