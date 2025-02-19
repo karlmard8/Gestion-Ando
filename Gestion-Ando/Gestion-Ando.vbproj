@@ -79,6 +79,18 @@
     <Compile Include="FrmAltaClientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAltaProductos.Designer.vb">
+      <DependentUpon>FrmAltaProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAltaProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAltaUsuarios.Designer.vb">
+      <DependentUpon>FrmAltaUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAltaUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmClientes.Designer.vb">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </Compile>
@@ -102,6 +114,12 @@
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsuarios.Designer.vb">
+      <DependentUpon>FrmUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MBDatos.vb" />
@@ -130,6 +148,12 @@
     <EmbeddedResource Include="FrmAltaClientes.resx">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAltaProductos.resx">
+      <DependentUpon>FrmAltaProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAltaUsuarios.resx">
+      <DependentUpon>FrmAltaUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsuarios.resx">
+      <DependentUpon>FrmUsuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

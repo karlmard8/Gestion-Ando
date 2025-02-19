@@ -31,6 +31,8 @@ Partial Class FrmPrincipal
         Me.InventarioToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
+        Me.GeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CréditoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +55,7 @@ Partial Class FrmPrincipal
         '
         'VentasToolStripMenuItem
         '
+        Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GeneralToolStripMenuItem, Me.CréditoToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
         Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
         Me.VentasToolStripMenuItem.Text = "Ventas"
@@ -73,13 +76,13 @@ Partial Class FrmPrincipal
         'VentasToolStripMenuItem1
         '
         Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(127, 22)
+        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.VentasToolStripMenuItem1.Text = "Ventas"
         '
         'InventarioToolStripMenuItem1
         '
         Me.InventarioToolStripMenuItem1.Name = "InventarioToolStripMenuItem1"
-        Me.InventarioToolStripMenuItem1.Size = New System.Drawing.Size(127, 22)
+        Me.InventarioToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.InventarioToolStripMenuItem1.Text = "Inventario"
         '
         'UsuariosToolStripMenuItem
@@ -94,6 +97,18 @@ Partial Class FrmPrincipal
         Me.PANELFRAMES.Name = "PANELFRAMES"
         Me.PANELFRAMES.Size = New System.Drawing.Size(1860, 930)
         Me.PANELFRAMES.TabIndex = 1
+        '
+        'GeneralToolStripMenuItem
+        '
+        Me.GeneralToolStripMenuItem.Name = "GeneralToolStripMenuItem"
+        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GeneralToolStripMenuItem.Text = "General"
+        '
+        'CréditoToolStripMenuItem
+        '
+        Me.CréditoToolStripMenuItem.Name = "CréditoToolStripMenuItem"
+        Me.CréditoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CréditoToolStripMenuItem.Text = "Crédito"
         '
         'FrmPrincipal
         '
@@ -126,4 +141,6 @@ Partial Class FrmPrincipal
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InventarioToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PANELFRAMES As Panel
+    Friend WithEvents GeneralToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CréditoToolStripMenuItem As ToolStripMenuItem
 End Class

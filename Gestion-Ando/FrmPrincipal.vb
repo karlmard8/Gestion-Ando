@@ -22,6 +22,7 @@ Public Class FrmPrincipal
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         FrmInventario.Close()
+        FrmUsuarios.Close()
 
         Dim CLIENTES As New FrmClientes
         idbusqueda = 0
@@ -39,6 +40,7 @@ Public Class FrmPrincipal
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
         FrmClientes.Close()
+        FrmUsuarios.Close()
         Dim INVENTARIO As New FrmInventario
         idbusqueda = 0
         FrmInventario.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -47,4 +49,18 @@ Public Class FrmPrincipal
         PANELFRAMES.Controls.Add(FrmInventario)
         FrmInventario.Show()
     End Sub
+
+    Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        FrmClientes.Close()
+        FrmInventario.Close()
+        Dim USUARIOS As New FrmUsuarios
+        idbusqueda = 0
+        FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
+        FrmUsuarios.TBLUSUARIOSTableAdapter.Fill(FrmUsuarios.MuebleAlexDataSet.TBLUSUARIOS)
+        FrmUsuarios.TopLevel = False
+        PANELFRAMES.Controls.Add(FrmUsuarios)
+        FrmUsuarios.Location = New Point(520, 0)
+        FrmUsuarios.Show()
+    End Sub
+
 End Class

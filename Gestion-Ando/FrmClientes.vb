@@ -10,4 +10,8 @@
         Dim NUEVO As New FrmAltaClientes
         NUEVO.ShowDialog()
     End Sub
+
+    Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
+        Me.TBLCLIENTESBindingSource.Filter = "CLINOMBRE LIKE '*" & TXTBUSCAR.Text & "*'"
+    End Sub
 End Class
