@@ -11,7 +11,7 @@
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-        If TXTLOGIN.Text = String.Empty Then
+        If String.IsNullOrWhiteSpace(TXTLOGIN.Text) Then
             MsgBox("Login faltante", MsgBoxStyle.Information)
             TXTLOGIN.Focus()
         Else
@@ -28,18 +28,28 @@
             comando.Parameters.Add("@PRUEBA", SqlDbType.Int).Direction = ParameterDirection.Output
 
             If Conectar() = True Then
-
-
                 ' Asegúrate de que el valor del parámetro de salida está disponible después de la ejecución del comando
                 If comando.Parameters("@PRUEBA").Value = 1 Then
-                    MsgBox("Proveedor guardado", MsgBoxStyle.Information, "Confirmacion")
+                    MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
                     DialogResult = DialogResult.OK
                     Me.Close()
                 Else
-                    MsgBox("Proveedor existente", MsgBoxStyle.Critical, "Advertencia")
+                    MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
+                    TXTNOMBRE.Focus()
                 End If
             End If
         End If
     End Sub
 
+    Private Sub BTNLIMPIAR_Click_1(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox Then
+                DirectCast(ctrl, TextBox).Clear()
+            End If
+            If TypeOf ctrl Is ComboBox Then
+                DirectCast(ctrl, ComboBox).SelectedIndex = -1
+            End If
+        Next
+        TXTNOMBRE.Focus()
+    End Sub
 End Class

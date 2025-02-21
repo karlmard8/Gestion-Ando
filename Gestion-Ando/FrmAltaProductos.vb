@@ -1,6 +1,6 @@
 ﻿Public Class FrmAltaProductos
     Private Sub FrmAltaProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        TXTPRECIO.Text = "0"
         SPINNER.Location = New Point(151, 121)
         SPINNER.Minimum = 0
         SPINNER.Maximum = 1000
@@ -54,7 +54,7 @@
                     Me.Close()
 
                 Else
-                    MsgBox("Producto ya existente,verfique la clave", MsgBoxStyle.Critical, "Advertencia")
+                    MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
                 End If
 
             End If

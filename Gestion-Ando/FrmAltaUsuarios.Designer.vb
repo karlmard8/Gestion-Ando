@@ -33,6 +33,7 @@ Partial Class FrmAltaUsuarios
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
         Me.TXTTIPO = New System.Windows.Forms.ComboBox()
+        Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label5
@@ -41,9 +42,9 @@ Partial Class FrmAltaUsuarios
         Me.Label5.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(135, 9)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(225, 32)
+        Me.Label5.Size = New System.Drawing.Size(230, 32)
         Me.Label5.TabIndex = 48
-        Me.Label5.Text = "Alta o modificar productos"
+        Me.Label5.Text = "Mantenimiento de usuarios"
         '
         'BTNGUARDAR
         '
@@ -139,11 +140,22 @@ Partial Class FrmAltaUsuarios
         Me.TXTTIPO.Size = New System.Drawing.Size(289, 21)
         Me.TXTTIPO.TabIndex = 43
         '
+        'BTNLIMPIAR
+        '
+        Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNLIMPIAR.Location = New System.Drawing.Point(188, 208)
+        Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
+        Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
+        Me.BTNLIMPIAR.TabIndex = 49
+        Me.BTNLIMPIAR.Text = "Limpiar"
+        Me.BTNLIMPIAR.UseVisualStyleBackColor = True
+        '
         'FrmAltaUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 283)
+        Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.TXTTIPO)
         Me.Controls.Add(Me.TXTCLAVE)
         Me.Controls.Add(Me.Label5)
@@ -175,4 +187,5 @@ Partial Class FrmAltaUsuarios
     Friend WithEvents Label1 As Label
     Friend WithEvents TXTCLAVE As TextBox
     Friend WithEvents TXTTIPO As ComboBox
+    Friend WithEvents BTNLIMPIAR As Button
 End Class
