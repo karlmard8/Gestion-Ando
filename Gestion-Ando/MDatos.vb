@@ -5,13 +5,14 @@
     Public StrSql As String
     Public dts As New DataSet
     Public idbusqueda As Long
+    Public TIPO As String
 
 
     Public Function Conectar() As Boolean
         Dim ret As Boolean
         Try
-            comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            comando.CommandType = CommandType.Text
+            'comando = New SqlClient.SqlCommand(StrSql, Conexion)
+            'comando.CommandType = CommandType.StoredProcedure
             comando.Connection.Open()
             comando.ExecuteNonQuery()
             ret = True
