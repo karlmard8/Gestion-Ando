@@ -51,7 +51,7 @@ Partial Class FrmAltaClientes
         Me.TXTREGIMEN = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TXTCFDI = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
+        Me.LBLCLIENTES = New System.Windows.Forms.Label()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
@@ -320,15 +320,15 @@ Partial Class FrmAltaClientes
         Me.TXTCFDI.Size = New System.Drawing.Size(288, 20)
         Me.TXTCFDI.TabIndex = 28
         '
-        'Label16
+        'LBLCLIENTES
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(140, 9)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(198, 32)
-        Me.Label16.TabIndex = 30
-        Me.Label16.Text = "Alta o modificar cliente"
+        Me.LBLCLIENTES.AutoSize = True
+        Me.LBLCLIENTES.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCLIENTES.Location = New System.Drawing.Point(140, 9)
+        Me.LBLCLIENTES.Name = "LBLCLIENTES"
+        Me.LBLCLIENTES.Size = New System.Drawing.Size(198, 32)
+        Me.LBLCLIENTES.TabIndex = 30
+        Me.LBLCLIENTES.Text = "Alta o modificar cliente"
         '
         'BTNCANCELAR
         '
@@ -379,7 +379,7 @@ Partial Class FrmAltaClientes
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.BTNCANCELAR)
-        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.LBLCLIENTES)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.TXTCFDI)
         Me.Controls.Add(Me.Label14)
@@ -447,7 +447,7 @@ Partial Class FrmAltaClientes
     Friend WithEvents TXTREGIMEN As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents TXTCFDI As TextBox
-    Friend WithEvents Label16 As Label
+    Friend WithEvents LBLCLIENTES As Label
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNGUARDAR As Button

@@ -25,6 +25,7 @@ Public Class FrmUsuarios
             Me.TBLUSUARIOSTableAdapter.Connection = Conexion
             Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
         End If
+        ALTAUSUARIO.LBLUSUARIOS.Text = "Alta de usuarios"
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
@@ -39,5 +40,9 @@ Public Class FrmUsuarios
             MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
         End If
 
+    End Sub
+
+    Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
+        ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
     End Sub
 End Class

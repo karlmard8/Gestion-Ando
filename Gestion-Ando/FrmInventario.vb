@@ -8,6 +8,8 @@
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
+        ALTAINVENTARIO.LBLPRODUCTOS.Text = "Alta de producto"
+
         For Each control As Control In ALTAINVENTARIO.Controls
             If TypeOf control Is TextBox Then
                 DirectCast(control, TextBox).Clear()
@@ -21,6 +23,8 @@
             Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
         End If
         ALTAINVENTARIO.TXTPRECIO.Text = 0
+
+
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -28,6 +32,8 @@
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
+        ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
+
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value
             ALTAINVENTARIO.TXTCLAVE.Text = DATAINVENTARIO.CurrentRow.Cells("PROCLAVE").Value
@@ -40,6 +46,7 @@
                 Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
             End If
         End If
+
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click

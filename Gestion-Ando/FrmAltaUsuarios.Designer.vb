@@ -22,7 +22,7 @@ Partial Class FrmAltaUsuarios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LBLUSUARIOS = New System.Windows.Forms.Label()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -36,15 +36,15 @@ Partial Class FrmAltaUsuarios
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Label5
+        'LBLUSUARIOS
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(135, 9)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(230, 32)
-        Me.Label5.TabIndex = 48
-        Me.Label5.Text = "Mantenimiento de usuarios"
+        Me.LBLUSUARIOS.AutoSize = True
+        Me.LBLUSUARIOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLUSUARIOS.Location = New System.Drawing.Point(135, 9)
+        Me.LBLUSUARIOS.Name = "LBLUSUARIOS"
+        Me.LBLUSUARIOS.Size = New System.Drawing.Size(230, 32)
+        Me.LBLUSUARIOS.TabIndex = 48
+        Me.LBLUSUARIOS.Text = "Mantenimiento de usuarios"
         '
         'BTNGUARDAR
         '
@@ -158,7 +158,7 @@ Partial Class FrmAltaUsuarios
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.TXTTIPO)
         Me.Controls.Add(Me.TXTCLAVE)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.LBLUSUARIOS)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNCANCELAR)
         Me.Controls.Add(Me.Label4)
@@ -176,7 +176,7 @@ Partial Class FrmAltaUsuarios
 
     End Sub
 
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LBLUSUARIOS As Label
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents Label4 As Label

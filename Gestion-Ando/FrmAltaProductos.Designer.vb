@@ -32,7 +32,7 @@ Partial Class FrmAltaProductos
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LBLPRODUCTOS = New System.Windows.Forms.Label()
         Me.SPINNER = New System.Windows.Forms.NumericUpDown()
         CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -130,15 +130,14 @@ Partial Class FrmAltaProductos
         Me.BTNCANCELAR.Text = "Cancelar"
         Me.BTNCANCELAR.UseVisualStyleBackColor = True
         '
-        'Label5
+        'LBLPRODUCTOS
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(135, 9)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(225, 32)
-        Me.Label5.TabIndex = 37
-        Me.Label5.Text = "Alta o modificar productos"
+        Me.LBLPRODUCTOS.AutoSize = True
+        Me.LBLPRODUCTOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLPRODUCTOS.Location = New System.Drawing.Point(135, 9)
+        Me.LBLPRODUCTOS.Name = "LBLPRODUCTOS"
+        Me.LBLPRODUCTOS.Size = New System.Drawing.Size(0, 32)
+        Me.LBLPRODUCTOS.TabIndex = 37
         '
         'SPINNER
         '
@@ -153,7 +152,7 @@ Partial Class FrmAltaProductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 283)
         Me.Controls.Add(Me.SPINNER)
-        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.LBLPRODUCTOS)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.BTNCANCELAR)
@@ -186,6 +185,6 @@ Partial Class FrmAltaProductos
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNCANCELAR As Button
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LBLPRODUCTOS As Label
     Friend WithEvents SPINNER As NumericUpDown
 End Class

@@ -10,6 +10,7 @@
 
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.Close()
+        LBLPRODUCTOS.Text = " "
     End Sub
 
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
