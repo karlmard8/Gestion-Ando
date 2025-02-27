@@ -8,9 +8,19 @@
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
-
-        NUEVO.ShowDialog()
         NUEVO.LBLCLIENTES.Text = "Alta de clientes"
+        For Each control As Control In NUEVO.Controls
+            If TypeOf control Is TextBox Then
+                DirectCast(control, TextBox).Clear()
+            ElseIf TypeOf control Is NumericUpDown Then
+                DirectCast(control, NumericUpDown).Value = 0
+            End If
+        Next
+        idbusqueda = 0
+        If NUEVO.ShowDialog = DialogResult.OK Then
+            Me.TBLCLIENTESTableAdapter.Connection = Conexion
+            Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+        End If
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -19,5 +29,45 @@
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         NUEVO.LBLCLIENTES.Text = "Editar perfil de cliente"
+
+        If DATACLIENTES.RowCount > 0 Then
+            idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
+            NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value
+            NUEVO.TXTNOMBRE.Text = DATACLIENTES.CurrentRow.Cells("CLINOMBRE").Value
+            NUEVO.TXTAPEMATERNO.Text = DATACLIENTES.CurrentRow.Cells("CLIAPEPATERNO").Value
+            NUEVO.TXTAPEPATERNO.Text = DATACLIENTES.CurrentRow.Cells("CLIAPEMATERNO").Value
+            NUEVO.TXTCALLE.Text = DATACLIENTES.CurrentRow.Cells("CLIDIRECCION").Value
+            NUEVO.TXTCOLONIIA.Text = DATACLIENTES.CurrentRow.Cells("CLICOLONIA").Value
+            NUEVO.TXTCP.Text = DATACLIENTES.CurrentRow.Cells("CLICP").Value
+            NUEVO.TXTCIUDAD.Text = DATACLIENTES.CurrentRow.Cells("CLICIUDAD").Value
+            NUEVO.TXTESTADO.Text = DATACLIENTES.CurrentRow.Cells("CLIESTADO").Value
+            NUEVO.TXTTELEFONO.Text = DATACLIENTES.CurrentRow.Cells("CLITELEFONO").Value
+            NUEVO.TXTNOTAS.Text = DATACLIENTES.CurrentRow.Cells("CLICOMENTARIOS").Value
+            NUEVO.TXTCREDITO.Text = DATACLIENTES.CurrentRow.Cells("CLIHISTORIALCREDITICIO").Value
+            NUEVO.TXTRFC.Text = DATACLIENTES.CurrentRow.Cells("CLIRFC").Value
+            NUEVO.TXTREGIMEN.Text = DATACLIENTES.CurrentRow.Cells("CLIREGIMENFISCAL").Value
+            NUEVO.TXTCFDI.Text = DATACLIENTES.CurrentRow.Cells("CLICFDI").Value
+
+            If NUEVO.ShowDialog = DialogResult.OK Then
+                Me.TBLCLIENTESTableAdapter.Connection = Conexion
+                Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+            End If
+        End If
+    End Sub
+
+    Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
+        Dim CONFIRMAR = MsgBox("¿Eliminar cliente?", MsgBoxStyle.YesNo, "Confirmación")
+        If CONFIRMAR = MsgBoxResult.Yes Then
+            StrSql = "ELIMINARCLIENTES"
+            comando = New SqlClient.SqlCommand(StrSql, Conexion)
+            comando.CommandType = CommandType.StoredProcedure
+            comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.DATACLIENTES.CurrentRow.Cells("CLIID").Value
+
+            If Conectar() = True Then
+                Me.TBLCLIENTESTableAdapter.Connection = Conexion
+                Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+                MsgBox("Cliente eliminado", MsgBoxStyle.Information, "Confirmación")
+            End If
+        End If
     End Sub
 End Class

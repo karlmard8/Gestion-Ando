@@ -127,14 +127,14 @@ Partial Class FrmAltaProductos
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 36
-        Me.BTNCANCELAR.Text = "Cancelar"
+        Me.BTNCANCELAR.Text = "Salir"
         Me.BTNCANCELAR.UseVisualStyleBackColor = True
         '
         'LBLPRODUCTOS
         '
         Me.LBLPRODUCTOS.AutoSize = True
         Me.LBLPRODUCTOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLPRODUCTOS.Location = New System.Drawing.Point(135, 9)
+        Me.LBLPRODUCTOS.Location = New System.Drawing.Point(167, 9)
         Me.LBLPRODUCTOS.Name = "LBLPRODUCTOS"
         Me.LBLPRODUCTOS.Size = New System.Drawing.Size(0, 32)
         Me.LBLPRODUCTOS.TabIndex = 37

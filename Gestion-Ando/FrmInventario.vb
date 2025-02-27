@@ -1,14 +1,17 @@
 ﻿Public Class FrmInventario
     Dim ALTAINVENTARIO As New FrmAltaProductos
     Private Sub FrmInventario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLPRODUCTOS' Puede moverla o quitarla según sea necesario.
         Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
         Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
+        ALTAINVENTARIO.TXTCLAVE.Focus()
 
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
-        ALTAINVENTARIO.LBLPRODUCTOS.Text = "Alta de producto"
+        ALTAINVENTARIO.LBLPRODUCTOS.Text = "Registro de producto"
+        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(160, 9)
 
         For Each control As Control In ALTAINVENTARIO.Controls
             If TypeOf control Is TextBox Then
@@ -33,6 +36,7 @@
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
+        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(128, 9)
 
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value

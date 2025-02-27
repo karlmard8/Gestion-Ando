@@ -337,7 +337,7 @@ Partial Class FrmAltaClientes
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 33
-        Me.BTNCANCELAR.Text = "Cancelar"
+        Me.BTNCANCELAR.Text = "Salir"
         Me.BTNCANCELAR.UseVisualStyleBackColor = True
         '
         'BTNLIMPIAR

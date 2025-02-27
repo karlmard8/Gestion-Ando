@@ -9,6 +9,7 @@
     End Sub
 
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
+        Me.TXTCLAVE.Focus()
         Me.Close()
         LBLPRODUCTOS.Text = " "
     End Sub
