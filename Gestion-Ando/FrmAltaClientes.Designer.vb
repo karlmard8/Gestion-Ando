@@ -22,6 +22,7 @@ Partial Class FrmAltaClientes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAltaClientes))
         Me.TXTCODIGO = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -56,6 +57,7 @@ Partial Class FrmAltaClientes
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.TXTCREDITO = New System.Windows.Forms.ComboBox()
+        Me.BTNLIMPIARCOMBO = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TXTCODIGO
@@ -332,6 +334,7 @@ Partial Class FrmAltaClientes
         '
         'BTNCANCELAR
         '
+        Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNCANCELAR.Location = New System.Drawing.Point(332, 538)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
@@ -342,6 +345,7 @@ Partial Class FrmAltaClientes
         '
         'BTNLIMPIAR
         '
+        Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNLIMPIAR.Location = New System.Drawing.Point(180, 538)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
@@ -352,6 +356,7 @@ Partial Class FrmAltaClientes
         '
         'BTNGUARDAR
         '
+        Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNGUARDAR.Location = New System.Drawing.Point(27, 538)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
@@ -364,17 +369,29 @@ Partial Class FrmAltaClientes
         '
         Me.TXTCREDITO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.TXTCREDITO.FormattingEnabled = True
-        Me.TXTCREDITO.Items.AddRange(New Object() {"Acreditado", "No acreditado"})
+        Me.TXTCREDITO.Items.AddRange(New Object() {"Acreditado", "No acreditado", "N/A"})
         Me.TXTCREDITO.Location = New System.Drawing.Point(146, 366)
         Me.TXTCREDITO.Name = "TXTCREDITO"
-        Me.TXTCREDITO.Size = New System.Drawing.Size(288, 21)
+        Me.TXTCREDITO.Size = New System.Drawing.Size(247, 21)
         Me.TXTCREDITO.TabIndex = 22
+        '
+        'BTNLIMPIARCOMBO
+        '
+        Me.BTNLIMPIARCOMBO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNLIMPIARCOMBO.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BTNLIMPIARCOMBO.Image = CType(resources.GetObject("BTNLIMPIARCOMBO.Image"), System.Drawing.Image)
+        Me.BTNLIMPIARCOMBO.Location = New System.Drawing.Point(399, 366)
+        Me.BTNLIMPIARCOMBO.Name = "BTNLIMPIARCOMBO"
+        Me.BTNLIMPIARCOMBO.Size = New System.Drawing.Size(35, 21)
+        Me.BTNLIMPIARCOMBO.TabIndex = 34
+        Me.BTNLIMPIARCOMBO.UseVisualStyleBackColor = True
         '
         'FrmAltaClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 621)
+        Me.Controls.Add(Me.BTNLIMPIARCOMBO)
         Me.Controls.Add(Me.TXTCREDITO)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
@@ -452,4 +469,5 @@ Partial Class FrmAltaClientes
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents TXTCREDITO As ComboBox
+    Friend WithEvents BTNLIMPIARCOMBO As Button
 End Class

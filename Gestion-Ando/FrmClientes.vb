@@ -1,6 +1,10 @@
 ﻿Public Class FrmClientes
     Dim NUEVO As New FrmAltaClientes
     Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TXTBUSCAR.Focus()
+        If NUEVO.BTNCANCELAR.DialogResult = DialogResult.OK Then
+            TXTBUSCAR.Focus()
+        End If
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLCLIENTES' Puede moverla o quitarla según sea necesario..
         Me.TBLCLIENTESTableAdapter.Connection = Conexion
         Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
@@ -8,6 +12,7 @@
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
+        NUEVO.TXTCREDITO.SelectedItem = -1
         NUEVO.LBLCLIENTES.Text = "Alta de clientes"
         For Each control As Control In NUEVO.Controls
             If TypeOf control Is TextBox Then

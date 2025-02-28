@@ -3,7 +3,7 @@
 Public Class FrmUsuarios
     Dim ALTAUSUARIO As New FrmAltaUsuarios
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLUSUARIOS' Puede moverla o quitarla según sea necesario.
+        TXTBUSCAR.Focus()
         Me.TBLUSUARIOSTableAdapter.Connection = Conexion
         Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
 
@@ -14,6 +14,7 @@ Public Class FrmUsuarios
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
+        ALTAUSUARIO.LBLUSUARIOS.Text = "Alta de usuarios"
         For Each CTRL As Control In ALTAUSUARIO.Controls
             If TypeOf CTRL Is TextBox Then
                 DirectCast(CTRL, TextBox).Clear()
@@ -25,7 +26,7 @@ Public Class FrmUsuarios
             Me.TBLUSUARIOSTableAdapter.Connection = Conexion
             Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
         End If
-        ALTAUSUARIO.LBLUSUARIOS.Text = "Alta de usuarios"
+
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
@@ -44,5 +45,17 @@ Public Class FrmUsuarios
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
+        If DATAUSUARIOS.RowCount > 0 Then
+            idbusqueda = DATAUSUARIOS.CurrentRow.Cells("USUID").Value
+            ALTAUSUARIO.TXTNOMBRE.Text = DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value
+            ALTAUSUARIO.TXTLOGIN.Text = DATAUSUARIOS.CurrentRow.Cells("USULOGIN").Value
+            ALTAUSUARIO.TXTCLAVE.Text = DATAUSUARIOS.CurrentRow.Cells("USUCLAVE").Value
+            ALTAUSUARIO.TXTTIPO.Text = DATAUSUARIOS.CurrentRow.Cells("USUTIPO").Value
+
+            If ALTAUSUARIO.ShowDialog = DialogResult.OK Then
+                Me.TBLUSUARIOSTableAdapter.Connection = Conexion
+                Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+            End If
+        End If
     End Sub
 End Class

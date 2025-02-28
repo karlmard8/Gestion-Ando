@@ -57,6 +57,7 @@
 
                 Else
                     MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
+                    TXTCLAVE.Focus()
                 End If
 
             End If
