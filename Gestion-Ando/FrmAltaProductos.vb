@@ -1,6 +1,5 @@
 ﻿Public Class FrmAltaProductos
     Private Sub FrmAltaProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TXTPRECIO.Text = "0"
         SPINNER.Location = New Point(151, 121)
         SPINNER.Minimum = 0
         SPINNER.Maximum = 1000
@@ -35,18 +34,22 @@
                 StrSql = "ALTAPRODUCTOS"
                 comando = New SqlClient.SqlCommand(StrSql, Conexion)
                 comando.CommandType = CommandType.StoredProcedure
-
+                If TXTPRECIO.Text = String.Empty Then
+                    TXTPRECIO.Text = "0"
+                    comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+                End If
             Else
                 StrSql = "EDITARPRODUCTOS"
                 comando = New SqlClient.SqlCommand(StrSql, Conexion)
                 comando.CommandType = CommandType.StoredProcedure
                 comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
+                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
             End If
 
             comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
             comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
             comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
-            comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+
             comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
 
             If Conectar() = True Then

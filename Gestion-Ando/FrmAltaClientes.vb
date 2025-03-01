@@ -17,6 +17,7 @@ Public Class FrmAltaClientes
 
 
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
+        Me.TXTCREDITO.SelectedIndex = -1
         Me.Close()
     End Sub
 
@@ -25,6 +26,7 @@ Public Class FrmAltaClientes
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
+        Me.TXTCREDITO.SelectedIndex = -1
         DialogResult = DialogResult.OK
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
             MsgBox("Codigo faltante", MsgBoxStyle.Information)
@@ -52,9 +54,9 @@ Public Class FrmAltaClientes
             comando.Parameters.Add("@CLICIUDAD", SqlDbType.VarChar, 80).Value = TXTCIUDAD.Text
             comando.Parameters.Add("@CLIESTADO", SqlDbType.VarChar, 30).Value = TXTESTADO.Text
             comando.Parameters.Add("@CLITELEFONO", SqlDbType.VarChar, 10).Value = TXTTELEFONO.Text
-            comando.Parameters.Add("@CLICOMENTARIOS", SqlDbType.VarChar, 250).Value = TXTNOTAS.Text             'NO GUARDA EL DATO
-            comando.Parameters.Add("@CLIHISTORIALCREDITICIO", SqlDbType.VarChar, 20).Value = TXTCREDITO.Text    'NO GUARDA EL DATO 
-            comando.Parameters.Add("@CLIRFC", SqlDbType.VarChar, 20).Value = TXTRFC.Text                        'NO GUARDA LEL DATO
+            comando.Parameters.Add("@CLICOMENTARIOS", SqlDbType.VarChar, 250).Value = TXTNOTAS.Text
+            comando.Parameters.Add("@CLIHISTORIALCREDITICIO", SqlDbType.VarChar, 20).Value = TXTCREDITO.Text
+            comando.Parameters.Add("@CLIRFC", SqlDbType.VarChar, 20).Value = TXTRFC.Text
             comando.Parameters.Add("@CLIREGIMENFISCAL", SqlDbType.VarChar, 100).Value = TXTREGIMEN.Text
             comando.Parameters.Add("@CLICFDI", SqlDbType.VarChar, 100).Value = TXTCFDI.Text
             comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
@@ -81,5 +83,9 @@ Public Class FrmAltaClientes
 
         ' Restaurar la posición del cursor
         TXTRFC.SelectionStart = cursorPos
+    End Sub
+
+    Private Sub BTNLIMPIARCOMBO_Click(sender As Object, e As EventArgs) Handles BTNLIMPIARCOMBO.Click
+        TXTCREDITO.SelectedIndex = -1
     End Sub
 End Class

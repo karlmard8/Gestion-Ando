@@ -14,6 +14,7 @@ Public Class FrmUsuarios
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
+        ALTAUSUARIO.TXTTIPO.SelectedIndex = -1
         ALTAUSUARIO.LBLUSUARIOS.Text = "Alta de usuarios"
         For Each CTRL As Control In ALTAUSUARIO.Controls
             If TypeOf CTRL Is TextBox Then

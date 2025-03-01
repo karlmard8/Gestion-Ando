@@ -25,9 +25,6 @@
             Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
             Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
         End If
-        ALTAINVENTARIO.TXTPRECIO.Text = 0
-
-
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -35,15 +32,18 @@
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
+
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
         ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(128, 9)
+
 
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value
             ALTAINVENTARIO.TXTCLAVE.Text = DATAINVENTARIO.CurrentRow.Cells("PROCLAVE").Value
             ALTAINVENTARIO.TXTNOMBRE.Text = DATAINVENTARIO.CurrentRow.Cells("PRONOMBRE").Value
             ALTAINVENTARIO.SPINNER.Value = DATAINVENTARIO.CurrentRow.Cells("PROEXISTENCIAS").Value
-            ALTAINVENTARIO.TXTPRECIO.Text = DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value
+            ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt32(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
+
 
             If ALTAINVENTARIO.ShowDialog = DialogResult.OK Then
                 Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -69,4 +69,5 @@
         End If
 
     End Sub
+
 End Class

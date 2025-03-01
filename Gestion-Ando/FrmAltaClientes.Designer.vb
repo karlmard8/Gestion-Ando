@@ -383,7 +383,7 @@ Partial Class FrmAltaClientes
         Me.BTNLIMPIARCOMBO.Location = New System.Drawing.Point(399, 366)
         Me.BTNLIMPIARCOMBO.Name = "BTNLIMPIARCOMBO"
         Me.BTNLIMPIARCOMBO.Size = New System.Drawing.Size(35, 21)
-        Me.BTNLIMPIARCOMBO.TabIndex = 34
+        Me.BTNLIMPIARCOMBO.TabIndex = 23
         Me.BTNLIMPIARCOMBO.UseVisualStyleBackColor = True
         '
         'FrmAltaClientes

@@ -12,7 +12,7 @@
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
-        NUEVO.TXTCREDITO.SelectedItem = -1
+        NUEVO.TXTCREDITO.SelectedIndex = -1
         NUEVO.LBLCLIENTES.Text = "Alta de clientes"
         For Each control As Control In NUEVO.Controls
             If TypeOf control Is TextBox Then

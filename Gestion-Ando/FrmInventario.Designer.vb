@@ -127,7 +127,7 @@ Partial Class FrmInventario
         Me.BTNEDITAR.Location = New System.Drawing.Point(1509, 855)
         Me.BTNEDITAR.Name = "BTNEDITAR"
         Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNEDITAR.TabIndex = 6
+        Me.BTNEDITAR.TabIndex = 5
         Me.BTNEDITAR.Text = "Editar"
         Me.BTNEDITAR.UseVisualStyleBackColor = True
         '
@@ -137,7 +137,7 @@ Partial Class FrmInventario
         Me.BTNNUEVO.Location = New System.Drawing.Point(1310, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
-        Me.BTNNUEVO.TabIndex = 5
+        Me.BTNNUEVO.TabIndex = 4
         Me.BTNNUEVO.Text = "Nuevo"
         Me.BTNNUEVO.UseVisualStyleBackColor = True
         '
@@ -147,7 +147,7 @@ Partial Class FrmInventario
         Me.BTNELIMINAR.Location = New System.Drawing.Point(1710, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNELIMINAR.TabIndex = 4
+        Me.BTNELIMINAR.TabIndex = 5
         Me.BTNELIMINAR.Text = "Eliminar"
         Me.BTNELIMINAR.UseVisualStyleBackColor = True
         '

@@ -1,5 +1,6 @@
 ﻿Public Class FrmAltaUsuarios
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
+        Me.TXTTIPO.SelectedIndex = -1
         Me.Close()
     End Sub
 
@@ -11,6 +12,7 @@
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
+        Me.TXTTIPO.SelectedIndex = -1
         If String.IsNullOrWhiteSpace(TXTLOGIN.Text) Then
             MsgBox("Login faltante", MsgBoxStyle.Information)
             TXTLOGIN.Focus()

@@ -22,6 +22,7 @@ Partial Class FrmAltaUsuarios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAltaUsuarios))
         Me.LBLUSUARIOS = New System.Windows.Forms.Label()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
@@ -34,6 +35,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
         Me.TXTTIPO = New System.Windows.Forms.ComboBox()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
+        Me.BTNLIMPIARCOMBO = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LBLUSUARIOS
@@ -137,7 +139,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTTIPO.Items.AddRange(New Object() {"Administrador", "Operativo"})
         Me.TXTTIPO.Location = New System.Drawing.Point(151, 146)
         Me.TXTTIPO.Name = "TXTTIPO"
-        Me.TXTTIPO.Size = New System.Drawing.Size(289, 21)
+        Me.TXTTIPO.Size = New System.Drawing.Size(248, 21)
         Me.TXTTIPO.TabIndex = 43
         '
         'BTNLIMPIAR
@@ -150,11 +152,23 @@ Partial Class FrmAltaUsuarios
         Me.BTNLIMPIAR.Text = "Limpiar"
         Me.BTNLIMPIAR.UseVisualStyleBackColor = True
         '
+        'BTNLIMPIARCOMBO
+        '
+        Me.BTNLIMPIARCOMBO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNLIMPIARCOMBO.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.BTNLIMPIARCOMBO.Image = CType(resources.GetObject("BTNLIMPIARCOMBO.Image"), System.Drawing.Image)
+        Me.BTNLIMPIARCOMBO.Location = New System.Drawing.Point(405, 146)
+        Me.BTNLIMPIARCOMBO.Name = "BTNLIMPIARCOMBO"
+        Me.BTNLIMPIARCOMBO.Size = New System.Drawing.Size(35, 21)
+        Me.BTNLIMPIARCOMBO.TabIndex = 50
+        Me.BTNLIMPIARCOMBO.UseVisualStyleBackColor = True
+        '
         'FrmAltaUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 283)
+        Me.Controls.Add(Me.BTNLIMPIARCOMBO)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.TXTTIPO)
         Me.Controls.Add(Me.TXTCLAVE)
@@ -188,4 +202,5 @@ Partial Class FrmAltaUsuarios
     Friend WithEvents TXTCLAVE As TextBox
     Friend WithEvents TXTTIPO As ComboBox
     Friend WithEvents BTNLIMPIAR As Button
+    Friend WithEvents BTNLIMPIARCOMBO As Button
 End Class
