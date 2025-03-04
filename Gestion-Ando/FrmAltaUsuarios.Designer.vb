@@ -148,7 +148,7 @@ Partial Class FrmAltaUsuarios
         Me.BTNLIMPIAR.Location = New System.Drawing.Point(188, 208)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
         Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
-        Me.BTNLIMPIAR.TabIndex = 49
+        Me.BTNLIMPIAR.TabIndex = 46
         Me.BTNLIMPIAR.Text = "Limpiar"
         Me.BTNLIMPIAR.UseVisualStyleBackColor = True
         '

@@ -31,15 +31,18 @@ Public Class FrmUsuarios
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        StrSql = "ELIMINARUSUARIOS"
-        comando = New SqlClient.SqlCommand(StrSql, Conexion)
-        comando.CommandType = CommandType.StoredProcedure
-        comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = Me.DATAUSUARIOS.CurrentRow.Cells("USUID").Value
+        Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Advertencia")
+        If ELIMINAR = DialogResult.Yes Then
+            StrSql = "ELIMINARUSUARIOS"
+            comando = New SqlClient.SqlCommand(StrSql, Conexion)
+            comando.CommandType = CommandType.StoredProcedure
+            comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = Me.DATAUSUARIOS.CurrentRow.Cells("USUID").Value
 
-        If Conectar() = True Then
-            Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-            Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
-            MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
+            If Conectar() = True Then
+                Me.TBLUSUARIOSTableAdapter.Connection = Conexion
+                Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+                MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
+            End If
         End If
 
     End Sub
