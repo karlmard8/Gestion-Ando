@@ -2,9 +2,6 @@
     Dim NUEVO As New FrmAltaClientes
     Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TXTBUSCAR.Focus()
-        If NUEVO.BTNCANCELAR.DialogResult = DialogResult.OK Then
-            TXTBUSCAR.Focus()
-        End If
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLCLIENTES' Puede moverla o quitarla según sea necesario..
         Me.TBLCLIENTESTableAdapter.Connection = Conexion
         Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
@@ -26,6 +23,7 @@
             Me.TBLCLIENTESTableAdapter.Connection = Conexion
             Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
         End If
+        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -58,6 +56,7 @@
                 Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
             End If
         End If
+        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
@@ -74,5 +73,6 @@
                 MsgBox("Cliente eliminado", MsgBoxStyle.Information, "Confirmación")
             End If
         End If
+        TXTBUSCAR.Focus()
     End Sub
 End Class

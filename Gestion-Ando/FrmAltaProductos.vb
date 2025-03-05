@@ -5,6 +5,10 @@
         SPINNER.Maximum = 1000
         SPINNER.TabIndex = 4
         Me.Controls.Add(SPINNER)
+        If TIPO = "Operativo" Then
+
+
+        End If
     End Sub
 
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click

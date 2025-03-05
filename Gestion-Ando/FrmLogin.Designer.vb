@@ -60,6 +60,7 @@ Partial Class FrmLogin
         '
         Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(105, 208)
         Me.TXTCONTRASEÑA.Name = "TXTCONTRASEÑA"
+        Me.TXTCONTRASEÑA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(216, 20)
         Me.TXTCONTRASEÑA.TabIndex = 2
         '

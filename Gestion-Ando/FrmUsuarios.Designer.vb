@@ -51,6 +51,7 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.AllowUserToDeleteRows = False
         Me.DATAUSUARIOS.AllowUserToOrderColumns = True
         Me.DATAUSUARIOS.AutoGenerateColumns = False
+        Me.DATAUSUARIOS.BackgroundColor = System.Drawing.SystemColors.ButtonShadow
         Me.DATAUSUARIOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATAUSUARIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USUID, Me.USUNOMBRE, Me.USULOGIN, Me.USUCLAVE, Me.USUTIPO, Me.USUEXISTE})
         Me.DATAUSUARIOS.DataSource = Me.TBLUSUARIOSBindingSource
@@ -69,6 +70,7 @@ Partial Class FrmUsuarios
         Me.USUID.Name = "USUID"
         Me.USUID.ReadOnly = True
         Me.USUID.Visible = False
+        Me.USUID.Width = 66
         '
         'USUNOMBRE
         '
@@ -76,7 +78,7 @@ Partial Class FrmUsuarios
         Me.USUNOMBRE.HeaderText = "Nombre"
         Me.USUNOMBRE.Name = "USUNOMBRE"
         Me.USUNOMBRE.ReadOnly = True
-        Me.USUNOMBRE.Width = 250
+        Me.USUNOMBRE.Width = 175
         '
         'USULOGIN
         '
@@ -84,7 +86,7 @@ Partial Class FrmUsuarios
         Me.USULOGIN.HeaderText = "Usuario"
         Me.USULOGIN.Name = "USULOGIN"
         Me.USULOGIN.ReadOnly = True
-        Me.USULOGIN.Width = 150
+        Me.USULOGIN.Width = 176
         '
         'USUCLAVE
         '
@@ -92,7 +94,7 @@ Partial Class FrmUsuarios
         Me.USUCLAVE.HeaderText = "Contraseña"
         Me.USUCLAVE.Name = "USUCLAVE"
         Me.USUCLAVE.ReadOnly = True
-        Me.USUCLAVE.Width = 150
+        Me.USUCLAVE.Width = 175
         '
         'USUTIPO
         '
@@ -100,7 +102,7 @@ Partial Class FrmUsuarios
         Me.USUTIPO.HeaderText = "Tipo de usuario"
         Me.USUTIPO.Name = "USUTIPO"
         Me.USUTIPO.ReadOnly = True
-        Me.USUTIPO.Width = 151
+        Me.USUTIPO.Width = 175
         '
         'USUEXISTE
         '
@@ -109,6 +111,7 @@ Partial Class FrmUsuarios
         Me.USUEXISTE.Name = "USUEXISTE"
         Me.USUEXISTE.ReadOnly = True
         Me.USUEXISTE.Visible = False
+        Me.USUEXISTE.Width = 74
         '
         'TBLUSUARIOSBindingSource
         '
@@ -153,7 +156,7 @@ Partial Class FrmUsuarios
         'BTNEDITAR
         '
         Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNEDITAR.Location = New System.Drawing.Point(360, 851)
+        Me.BTNEDITAR.Location = New System.Drawing.Point(383, 855)
         Me.BTNEDITAR.Name = "BTNEDITAR"
         Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNEDITAR.TabIndex = 13
@@ -163,7 +166,7 @@ Partial Class FrmUsuarios
         'BTNNUEVO
         '
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(161, 851)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(184, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 12
@@ -173,7 +176,7 @@ Partial Class FrmUsuarios
         'BTNELIMINAR
         '
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(561, 851)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(584, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNELIMINAR.TabIndex = 14

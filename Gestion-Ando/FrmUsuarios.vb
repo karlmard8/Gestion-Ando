@@ -27,7 +27,7 @@ Public Class FrmUsuarios
             Me.TBLUSUARIOSTableAdapter.Connection = Conexion
             Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
         End If
-
+        ME.TXTBUSCAR.Focus()
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
@@ -44,7 +44,7 @@ Public Class FrmUsuarios
                 MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
             End If
         End If
-
+        Me.TXTBUSCAR.Focus()
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
@@ -61,5 +61,7 @@ Public Class FrmUsuarios
                 Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
             End If
         End If
+        Me.TXTBUSCAR.Focus()
+
     End Sub
 End Class

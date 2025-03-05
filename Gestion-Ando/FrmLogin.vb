@@ -13,13 +13,14 @@ Public Class FrmLogin
         End If
 
     End Sub
-    Private Function ValidarContraseña(contraseñaIngresada As String, contraseñas As List(Of String)) As Boolean
-        Return contraseñas.Contains(contraseñaIngresada)
-    End Function
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call inicio()
+    End Sub
 
-
+    Private Sub TXTCONTRASEÑA_KeyDown(sender As Object, e As KeyEventArgs) Handles TXTCONTRASEÑA.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            BTNENTRAR.PerformClick()
+        End If
     End Sub
 End Class

@@ -20,6 +20,27 @@ Public Class FrmPrincipal
         MyBase.WndProc(m)
     End Sub
 
+    Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        StrSql = "INICIARSESION"
+        comando = New SqlClient.SqlCommand(StrSql, Conexion)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = FrmLogin.TXTLOGIN.Text
+        comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = FrmLogin.TXTCONTRASEÑA.Text
+        comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 15).Direction = ParameterDirection.Output
+
+        If Conectar() = True Then
+            If comando.Parameters("@RETORNO").Value = "Administrador" Then
+                TIPO = "Administrador"
+                Me.MenuOpciones.Items(4).Visible = True
+            Else
+                TIPO = "Operativo"
+                Me.MenuOpciones.Items(4).Visible = False
+            End If
+        End If
+
+        Me.Size = New Size(1920, 1040)
+    End Sub
+
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         FrmInventario.Close()
         FrmUsuarios.Close()
@@ -31,11 +52,16 @@ Public Class FrmPrincipal
         FrmClientes.TopLevel = False
         PANELFRAMES.Controls.Add(FrmClientes)
         FrmClientes.Show()
+        LBLOPCIONES.Text = "Clientes"
+        LBLOPCIONES.Location = New Point(50, 40)
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
         FrmClientes.Close()
         FrmInventario.Close()
+
+        LBLOPCIONES.Text = "Ventas"
+        LBLOPCIONES.Location = New Point(50, 40)
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
@@ -48,6 +74,8 @@ Public Class FrmPrincipal
         FrmInventario.TopLevel = False
         PANELFRAMES.Controls.Add(FrmInventario)
         FrmInventario.Show()
+        LBLOPCIONES.Text = "Inventario"
+        LBLOPCIONES.Location = New Point(50, 40)
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
@@ -59,19 +87,17 @@ Public Class FrmPrincipal
         FrmUsuarios.TBLUSUARIOSTableAdapter.Fill(FrmUsuarios.MuebleAlexDataSet.TBLUSUARIOS)
         FrmUsuarios.TopLevel = False
         PANELFRAMES.Controls.Add(FrmUsuarios)
-        FrmUsuarios.Location = New Point(520, 0)
+        FrmUsuarios.Location = New Point(575, 0)
         FrmUsuarios.Show()
+        LBLOPCIONES.Text = "Usuarios"
+        LBLOPCIONES.Location = New Point(625, 40)
     End Sub
 
     Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
 
-    End Sub
-
-    Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'If TIPO = "OPERADOR" Then
-        'Me.MenuStrip1.Items(1).Enabled = False
-        'Me.MenuStrip1.Items(2).Visible = False
-        'End If
-        Me.Size = New Size(1920, 1040)
+        FrmLogin.Show()
+        FrmLogin.TXTLOGIN.Text = String.Empty
+        FrmLogin.TXTCONTRASEÑA.Text = String.Empty
+        FrmLogin.TXTLOGIN.Focus()
     End Sub
 End Class

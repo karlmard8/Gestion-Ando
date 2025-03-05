@@ -25,6 +25,7 @@
             Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
             Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
         End If
+        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -32,10 +33,8 @@
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
-
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
         ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(128, 9)
-
 
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value
@@ -50,7 +49,7 @@
                 Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
             End If
         End If
-
+        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
@@ -67,7 +66,6 @@
                 MsgBox("Producto eliminado", MsgBoxStyle.Information, "Conformación")
             End If
         End If
-
+        TXTBUSCAR.Focus()
     End Sub
-
 End Class

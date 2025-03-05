@@ -95,7 +95,7 @@ Partial Class FrmClientes
         Me.CLINOMBRE.HeaderText = "Nombre"
         Me.CLINOMBRE.Name = "CLINOMBRE"
         Me.CLINOMBRE.ReadOnly = True
-        Me.CLINOMBRE.Width = 150
+        Me.CLINOMBRE.Width = 131
         '
         'CLIAPEPATERNO
         '
@@ -103,7 +103,7 @@ Partial Class FrmClientes
         Me.CLIAPEPATERNO.HeaderText = "Apellido paterno"
         Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
         Me.CLIAPEPATERNO.ReadOnly = True
-        Me.CLIAPEPATERNO.Width = 150
+        Me.CLIAPEPATERNO.Width = 130
         '
         'CLIAPEMATERNO
         '
@@ -111,7 +111,7 @@ Partial Class FrmClientes
         Me.CLIAPEMATERNO.HeaderText = "Apellido materno"
         Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
         Me.CLIAPEMATERNO.ReadOnly = True
-        Me.CLIAPEMATERNO.Width = 150
+        Me.CLIAPEMATERNO.Width = 131
         '
         'CLIDIRECCION
         '
@@ -119,7 +119,7 @@ Partial Class FrmClientes
         Me.CLIDIRECCION.HeaderText = "Calle y número"
         Me.CLIDIRECCION.Name = "CLIDIRECCION"
         Me.CLIDIRECCION.ReadOnly = True
-        Me.CLIDIRECCION.Width = 150
+        Me.CLIDIRECCION.Width = 130
         '
         'CLICOLONIA
         '
@@ -127,6 +127,7 @@ Partial Class FrmClientes
         Me.CLICOLONIA.HeaderText = "Colonia"
         Me.CLICOLONIA.Name = "CLICOLONIA"
         Me.CLICOLONIA.ReadOnly = True
+        Me.CLICOLONIA.Width = 131
         '
         'CLICP
         '
@@ -134,6 +135,7 @@ Partial Class FrmClientes
         Me.CLICP.HeaderText = "Código postal"
         Me.CLICP.Name = "CLICP"
         Me.CLICP.ReadOnly = True
+        Me.CLICP.Width = 130
         '
         'CLICIUDAD
         '
@@ -141,7 +143,7 @@ Partial Class FrmClientes
         Me.CLICIUDAD.HeaderText = "Ciudad"
         Me.CLICIUDAD.Name = "CLICIUDAD"
         Me.CLICIUDAD.ReadOnly = True
-        Me.CLICIUDAD.Width = 120
+        Me.CLICIUDAD.Width = 131
         '
         'CLIESTADO
         '
@@ -149,7 +151,7 @@ Partial Class FrmClientes
         Me.CLIESTADO.HeaderText = "Estado"
         Me.CLIESTADO.Name = "CLIESTADO"
         Me.CLIESTADO.ReadOnly = True
-        Me.CLIESTADO.Width = 120
+        Me.CLIESTADO.Width = 130
         '
         'CLITELEFONO
         '
@@ -157,7 +159,7 @@ Partial Class FrmClientes
         Me.CLITELEFONO.HeaderText = "Teléfono"
         Me.CLITELEFONO.Name = "CLITELEFONO"
         Me.CLITELEFONO.ReadOnly = True
-        Me.CLITELEFONO.Width = 120
+        Me.CLITELEFONO.Width = 131
         '
         'CLICOMENTARIOS
         '
@@ -165,7 +167,7 @@ Partial Class FrmClientes
         Me.CLICOMENTARIOS.HeaderText = "Nota"
         Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
         Me.CLICOMENTARIOS.ReadOnly = True
-        Me.CLICOMENTARIOS.Width = 197
+        Me.CLICOMENTARIOS.Width = 130
         '
         'CLIHISTORIALCREDITICIO
         '
@@ -173,7 +175,7 @@ Partial Class FrmClientes
         Me.CLIHISTORIALCREDITICIO.HeaderText = "Historial crediticio"
         Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
         Me.CLIHISTORIALCREDITICIO.ReadOnly = True
-        Me.CLIHISTORIALCREDITICIO.Width = 120
+        Me.CLIHISTORIALCREDITICIO.Width = 131
         '
         'CLIRFC
         '
@@ -181,6 +183,7 @@ Partial Class FrmClientes
         Me.CLIRFC.HeaderText = "RFC"
         Me.CLIRFC.Name = "CLIRFC"
         Me.CLIRFC.ReadOnly = True
+        Me.CLIRFC.Width = 130
         '
         'CLIREGIMENFISCAL
         '
@@ -188,7 +191,7 @@ Partial Class FrmClientes
         Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
         Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
         Me.CLIREGIMENFISCAL.ReadOnly = True
-        Me.CLIREGIMENFISCAL.Width = 150
+        Me.CLIREGIMENFISCAL.Width = 131
         '
         'CLICFDI
         '
@@ -196,6 +199,7 @@ Partial Class FrmClientes
         Me.CLICFDI.HeaderText = "CFDI"
         Me.CLICFDI.Name = "CLICFDI"
         Me.CLICFDI.ReadOnly = True
+        Me.CLICFDI.Width = 130
         '
         'CLIEXISTE
         '

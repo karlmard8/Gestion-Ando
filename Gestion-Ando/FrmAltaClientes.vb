@@ -19,6 +19,7 @@ Public Class FrmAltaClientes
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.TXTCREDITO.SelectedIndex = -1
         Me.Close()
+        TXTCODIGO.Focus()
     End Sub
 
     Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,7 +27,6 @@ Public Class FrmAltaClientes
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-        Me.TXTCREDITO.SelectedIndex = -1
         DialogResult = DialogResult.OK
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
             MsgBox("Codigo faltante", MsgBoxStyle.Information)
@@ -73,6 +73,7 @@ Public Class FrmAltaClientes
                 End If
             End If
         End If
+        TXTCODIGO.Focus()
     End Sub
 
     Private Sub TXTRFC_TextChanged(sender As Object, e As EventArgs) Handles TXTRFC.TextChanged
