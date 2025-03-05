@@ -6,7 +6,10 @@
         Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
         Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
         ALTAINVENTARIO.TXTCLAVE.Focus()
-
+        If TIPO = "Operativo" Then
+            BTNEDITAR.Enabled = False
+            BTNELIMINAR.Enabled = False
+        End If
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click

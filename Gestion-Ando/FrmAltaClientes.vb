@@ -27,9 +27,9 @@ Public Class FrmAltaClientes
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-        DialogResult = DialogResult.OK
+
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
-            MsgBox("Codigo faltante", MsgBoxStyle.Information)
+            MsgBox("Código faltante", MsgBoxStyle.Critical, "Advertencia")
             TXTCODIGO.Focus()
 
         Else
@@ -69,7 +69,9 @@ Public Class FrmAltaClientes
 
                 Else
                     MsgBox("Cliente existente", MsgBoxStyle.Critical, "Advertencia")
+                    Me.ShowDialog()
                     TXTCODIGO.Focus()
+
                 End If
             End If
         End If

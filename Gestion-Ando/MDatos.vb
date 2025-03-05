@@ -11,8 +11,6 @@
     Public Function Conectar() As Boolean
         Dim ret As Boolean
         Try
-            'comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            'comando.CommandType = CommandType.StoredProcedure
             comando.Connection.Open()
             comando.ExecuteNonQuery()
             ret = True
@@ -46,7 +44,7 @@
 
 
     Public Sub inicio()
-        Conexion = New SqlClient.SqlConnection("server=desktop-8q10a8h\sqlexpress; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
+        Conexion = New SqlClient.SqlConnection("server=LAPTOP-MI2EEO5C\SQLEXPRESS; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
         'Primer servidor: LAPTOP-MI2EEO5C\SQLEXPRESS
         'Segundo servidor: desktop-8q10a8h\sqlexpress
     End Sub

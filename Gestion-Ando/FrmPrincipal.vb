@@ -37,7 +37,6 @@ Public Class FrmPrincipal
                 Me.MenuOpciones.Items(4).Visible = False
             End If
         End If
-
         Me.Size = New Size(1920, 1040)
     End Sub
 
@@ -94,7 +93,7 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
-
+        Me.Close()
         FrmLogin.Show()
         FrmLogin.TXTLOGIN.Text = String.Empty
         FrmLogin.TXTCONTRASEÑA.Text = String.Empty

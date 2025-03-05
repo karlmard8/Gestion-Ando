@@ -60,4 +60,8 @@
         Next
         TXTNOMBRE.Focus()
     End Sub
+
+    Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
