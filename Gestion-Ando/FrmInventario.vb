@@ -45,7 +45,7 @@
             ALTAINVENTARIO.TXTNOMBRE.Text = DATAINVENTARIO.CurrentRow.Cells("PRONOMBRE").Value
             ALTAINVENTARIO.SPINNER.Value = DATAINVENTARIO.CurrentRow.Cells("PROEXISTENCIAS").Value
             ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt32(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
-
+            ALTAINVENTARIO.PRODIMAGEN = DATAINVENTARIO.CurrentRow.Cells("PROIMAGEN").Value
 
             If ALTAINVENTARIO.ShowDialog = DialogResult.OK Then
                 Me.TBLPRODUCTOSTableAdapter.Connection = Conexion

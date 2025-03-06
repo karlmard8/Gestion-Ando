@@ -53,7 +53,7 @@
             comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
             comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
             comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
-            ' comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
+            comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
 
             comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
 
@@ -96,7 +96,6 @@
 
             ' Cargar la imagen en el PictureBox
             PRODIMAGEN.Image = Image.FromFile(imagenRuta)
-            MsgBox(imagenRuta)
         End If
     End Sub
 

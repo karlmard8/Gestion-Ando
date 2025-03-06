@@ -25,6 +25,8 @@ Partial Class FrmInventario
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATAINVENTARIO = New System.Windows.Forms.DataGridView()
+        Me.TBLPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.BTNEDITAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
@@ -32,20 +34,18 @@ Partial Class FrmInventario
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.TBLPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TBLPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLPRODUCTOSTableAdapter()
         Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PRONOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROEXISTENCIAS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROIMAGEN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROIMAGEN = New System.Windows.Forms.DataGridViewImageColumn()
         Me.PROEXISTED = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAINVENTARIO, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DATAINVENTARIO
@@ -64,6 +64,16 @@ Partial Class FrmInventario
         Me.DATAINVENTARIO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAINVENTARIO.Size = New System.Drawing.Size(1830, 720)
         Me.DATAINVENTARIO.TabIndex = 0
+        '
+        'TBLPRODUCTOSBindingSource
+        '
+        Me.TBLPRODUCTOSBindingSource.DataMember = "TBLPRODUCTOS"
+        Me.TBLPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BTNEDITAR
         '
@@ -133,16 +143,6 @@ Partial Class FrmInventario
         Me.Button1.Text = "Generar reporte"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'TBLPRODUCTOSBindingSource
-        '
-        Me.TBLPRODUCTOSBindingSource.DataMember = "TBLPRODUCTOS"
-        Me.TBLPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'TBLPRODUCTOSTableAdapter
         '
         Me.TBLPRODUCTOSTableAdapter.ClearBeforeFill = True
@@ -193,6 +193,8 @@ Partial Class FrmInventario
         Me.PROIMAGEN.HeaderText = "Foto"
         Me.PROIMAGEN.Name = "PROIMAGEN"
         Me.PROIMAGEN.ReadOnly = True
+        Me.PROIMAGEN.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.PROIMAGEN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
         'PROEXISTED
         '
@@ -219,9 +221,9 @@ Partial Class FrmInventario
         Me.Name = "FrmInventario"
         Me.Text = "FrmInventario"
         CType(Me.DATAINVENTARIO, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -243,6 +245,6 @@ Partial Class FrmInventario
     Friend WithEvents PRONOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents PROEXISTENCIAS As DataGridViewTextBoxColumn
     Friend WithEvents PROPRECIO As DataGridViewTextBoxColumn
-    Friend WithEvents PROIMAGEN As DataGridViewTextBoxColumn
+    Friend WithEvents PROIMAGEN As DataGridViewImageColumn
     Friend WithEvents PROEXISTED As DataGridViewCheckBoxColumn
 End Class
