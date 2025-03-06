@@ -53,6 +53,7 @@
             comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
             comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
             comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
+            ' comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
 
             comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
 
@@ -77,5 +78,32 @@
             ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
+    End Sub
+    Dim imagenRuta As String
+    Private Sub BTNCARGARIMG_Click(sender As Object, e As EventArgs) Handles BTNCARGARIMG.Click
+        Dim CARGARIMG As New OpenFileDialog
+
+
+        CARGARIMG.InitialDirectory = "C:\"
+        CARGARIMG.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+        CARGARIMG.FilterIndex = 1
+        CARGARIMG.RestoreDirectory = True
+
+        ' Mostrar el OpenFileDialog y verificar si el usuario seleccionó un archivo
+        If CARGARIMG.ShowDialog() = DialogResult.OK Then
+            ' Obtener la ruta del archivo seleccionado
+            imagenRuta = CARGARIMG.FileName
+
+            ' Cargar la imagen en el PictureBox
+            PRODIMAGEN.Image = Image.FromFile(imagenRuta)
+            MsgBox(imagenRuta)
+        End If
+    End Sub
+
+    Private Sub BTNLIMPIARIMG_Click(sender As Object, e As EventArgs) Handles BTNLIMPIARIMG.Click
+        PRODIMAGEN.Image = Nothing
+
+        imagenRuta = String.Empty
+        MsgBox(imagenRuta)
     End Sub
 End Class

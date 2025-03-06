@@ -34,7 +34,12 @@ Partial Class FrmAltaProductos
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.LBLPRODUCTOS = New System.Windows.Forms.Label()
         Me.SPINNER = New System.Windows.Forms.NumericUpDown()
+        Me.PRODIMAGEN = New System.Windows.Forms.PictureBox()
+        Me.BTNCARGARIMG = New System.Windows.Forms.Button()
+        Me.BTNLIMPIARIMG = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PRODIMAGEN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -146,11 +151,59 @@ Partial Class FrmAltaProductos
         Me.SPINNER.Size = New System.Drawing.Size(289, 20)
         Me.SPINNER.TabIndex = 38
         '
+        'PRODIMAGEN
+        '
+        Me.PRODIMAGEN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PRODIMAGEN.Location = New System.Drawing.Point(471, 68)
+        Me.PRODIMAGEN.Name = "PRODIMAGEN"
+        Me.PRODIMAGEN.Size = New System.Drawing.Size(116, 98)
+        Me.PRODIMAGEN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PRODIMAGEN.TabIndex = 39
+        Me.PRODIMAGEN.TabStop = False
+        '
+        'BTNCARGARIMG
+        '
+        Me.BTNCARGARIMG.AutoSize = True
+        Me.BTNCARGARIMG.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNCARGARIMG.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNCARGARIMG.Location = New System.Drawing.Point(468, 172)
+        Me.BTNCARGARIMG.Name = "BTNCARGARIMG"
+        Me.BTNCARGARIMG.Size = New System.Drawing.Size(48, 28)
+        Me.BTNCARGARIMG.TabIndex = 40
+        Me.BTNCARGARIMG.Text = "Cargar"
+        Me.BTNCARGARIMG.UseVisualStyleBackColor = True
+        '
+        'BTNLIMPIARIMG
+        '
+        Me.BTNLIMPIARIMG.AutoSize = True
+        Me.BTNLIMPIARIMG.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNLIMPIARIMG.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNLIMPIARIMG.Location = New System.Drawing.Point(533, 172)
+        Me.BTNLIMPIARIMG.Name = "BTNLIMPIARIMG"
+        Me.BTNLIMPIARIMG.Size = New System.Drawing.Size(54, 28)
+        Me.BTNLIMPIARIMG.TabIndex = 41
+        Me.BTNLIMPIARIMG.Text = "Limpiar"
+        Me.BTNLIMPIARIMG.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(500, 47)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 18)
+        Me.Label5.TabIndex = 42
+        Me.Label5.Text = "Fotografía"
+        '
         'FrmAltaProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(479, 283)
+        Me.ClientSize = New System.Drawing.Size(608, 283)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.BTNLIMPIARIMG)
+        Me.Controls.Add(Me.BTNCARGARIMG)
+        Me.Controls.Add(Me.PRODIMAGEN)
         Me.Controls.Add(Me.SPINNER)
         Me.Controls.Add(Me.LBLPRODUCTOS)
         Me.Controls.Add(Me.BTNGUARDAR)
@@ -170,6 +223,7 @@ Partial Class FrmAltaProductos
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAltaProductos"
         CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PRODIMAGEN, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -187,4 +241,8 @@ Partial Class FrmAltaProductos
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents LBLPRODUCTOS As Label
     Friend WithEvents SPINNER As NumericUpDown
+    Friend WithEvents PRODIMAGEN As PictureBox
+    Friend WithEvents BTNCARGARIMG As Button
+    Friend WithEvents BTNLIMPIARIMG As Button
+    Friend WithEvents Label5 As Label
 End Class
