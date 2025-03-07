@@ -40,7 +40,7 @@ Partial Class FrmInventario
         Me.PRONOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROEXISTENCIAS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROIMAGEN = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.PROIMAGEN = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROEXISTED = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAINVENTARIO, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,6 +54,8 @@ Partial Class FrmInventario
         Me.DATAINVENTARIO.AllowUserToDeleteRows = False
         Me.DATAINVENTARIO.AllowUserToOrderColumns = True
         Me.DATAINVENTARIO.AutoGenerateColumns = False
+        Me.DATAINVENTARIO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DATAINVENTARIO.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DATAINVENTARIO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATAINVENTARIO.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PROID, Me.PROCLAVE, Me.PRONOMBRE, Me.PROEXISTENCIAS, Me.PROPRECIO, Me.PROIMAGEN, Me.PROEXISTED})
         Me.DATAINVENTARIO.DataSource = Me.TBLPRODUCTOSBindingSource
@@ -157,10 +159,12 @@ Partial Class FrmInventario
         '
         'PROCLAVE
         '
+        Me.PROCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.PROCLAVE.DataPropertyName = "PROCLAVE"
         Me.PROCLAVE.HeaderText = "Clave"
         Me.PROCLAVE.Name = "PROCLAVE"
         Me.PROCLAVE.ReadOnly = True
+        Me.PROCLAVE.Width = 59
         '
         'PRONOMBRE
         '
@@ -168,17 +172,19 @@ Partial Class FrmInventario
         Me.PRONOMBRE.HeaderText = "Nombre"
         Me.PRONOMBRE.Name = "PRONOMBRE"
         Me.PRONOMBRE.ReadOnly = True
-        Me.PRONOMBRE.Width = 1427
         '
         'PROEXISTENCIAS
         '
+        Me.PROEXISTENCIAS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.PROEXISTENCIAS.DataPropertyName = "PROEXISTENCIAS"
         Me.PROEXISTENCIAS.HeaderText = "Existencias"
         Me.PROEXISTENCIAS.Name = "PROEXISTENCIAS"
         Me.PROEXISTENCIAS.ReadOnly = True
+        Me.PROEXISTENCIAS.Width = 85
         '
         'PROPRECIO
         '
+        Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
         DataGridViewCellStyle1.Format = "C2"
         DataGridViewCellStyle1.NullValue = Nothing
@@ -186,6 +192,7 @@ Partial Class FrmInventario
         Me.PROPRECIO.HeaderText = "Precio"
         Me.PROPRECIO.Name = "PROPRECIO"
         Me.PROPRECIO.ReadOnly = True
+        Me.PROPRECIO.Width = 62
         '
         'PROIMAGEN
         '
@@ -194,7 +201,7 @@ Partial Class FrmInventario
         Me.PROIMAGEN.Name = "PROIMAGEN"
         Me.PROIMAGEN.ReadOnly = True
         Me.PROIMAGEN.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.PROIMAGEN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PROIMAGEN.Visible = False
         '
         'PROEXISTED
         '
@@ -245,6 +252,6 @@ Partial Class FrmInventario
     Friend WithEvents PRONOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents PROEXISTENCIAS As DataGridViewTextBoxColumn
     Friend WithEvents PROPRECIO As DataGridViewTextBoxColumn
-    Friend WithEvents PROIMAGEN As DataGridViewImageColumn
+    Friend WithEvents PROIMAGEN As DataGridViewTextBoxColumn
     Friend WithEvents PROEXISTED As DataGridViewCheckBoxColumn
 End Class

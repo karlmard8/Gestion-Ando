@@ -154,6 +154,7 @@ Partial Class FrmAltaProductos
         'PRODIMAGEN
         '
         Me.PRODIMAGEN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PRODIMAGEN.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PRODIMAGEN.Location = New System.Drawing.Point(471, 68)
         Me.PRODIMAGEN.Name = "PRODIMAGEN"
         Me.PRODIMAGEN.Size = New System.Drawing.Size(116, 98)

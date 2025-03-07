@@ -1,5 +1,6 @@
 ﻿Public Class FrmAltaProductos
     Private Sub FrmAltaProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         SPINNER.Location = New Point(151, 121)
         SPINNER.Minimum = 0
         SPINNER.Maximum = 1000
@@ -9,12 +10,17 @@
 
 
         End If
+        If FrmInventario.BANDERA = "NUEVO" Then
+            PRODIMAGEN.Image = Nothing
+            imagenRuta = String.Empty
+        End If
     End Sub
 
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.TXTCLAVE.Focus()
         Me.Close()
         LBLPRODUCTOS.Text = " "
+
     End Sub
 
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
@@ -79,7 +85,7 @@
             e.Handled = True
         End If
     End Sub
-    Dim imagenRuta As String
+    Public Property imagenRuta As String
     Private Sub BTNCARGARIMG_Click(sender As Object, e As EventArgs) Handles BTNCARGARIMG.Click
         Dim CARGARIMG As New OpenFileDialog
 
@@ -101,8 +107,32 @@
 
     Private Sub BTNLIMPIARIMG_Click(sender As Object, e As EventArgs) Handles BTNLIMPIARIMG.Click
         PRODIMAGEN.Image = Nothing
-
         imagenRuta = String.Empty
-        MsgBox(imagenRuta)
+
+    End Sub
+    Dim MOSTRARIMAGEN As New FrmImagenProducto
+    Private Sub PRODIMAGEN_Click(sender As Object, e As EventArgs) Handles PRODIMAGEN.Click
+        If PRODIMAGEN.Image Is Nothing Or imagenRuta Is String.Empty Then
+            MsgBox("No hay imagen disponible", MsgBoxStyle.Information, "Advertencia")
+
+        Else
+            If FrmInventario.BANDERA = "EDITAR" Then
+                MOSTRARIMAGEN.IMAGENGND.Image = Image.FromFile(FrmInventario.rutaImagen)
+                MOSTRARIMAGEN.ShowDialog()
+
+            Else
+                MOSTRARIMAGEN.IMAGENGND.Image = Image.FromFile(imagenRuta)
+                MOSTRARIMAGEN.ShowDialog()
+            End If
+        End If
+    End Sub
+
+    Private Sub TXTNOMBRE_TextChanged(sender As Object, e As EventArgs) Handles TXTNOMBRE.TextChanged
+        If TXTNOMBRE.Text = String.Empty Then
+            FrmImagenProducto.Text = ". . ."
+
+        Else
+            FrmImagenProducto.Text = "Poducto: " + TXTNOMBRE.Text
+        End If
     End Sub
 End Class
