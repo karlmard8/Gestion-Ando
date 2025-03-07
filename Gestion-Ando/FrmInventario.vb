@@ -96,4 +96,34 @@ Public Class FrmInventario
         End If
         TXTBUSCAR.Focus()
     End Sub
+
+    Private Sub DATAINVENTARIO_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DATAINVENTARIO.CellClick
+
+    End Sub
+
+    Private Sub DATAINVENTARIO_SelectionChanged(sender As Object, e As EventArgs) Handles DATAINVENTARIO.SelectionChanged
+        Try
+            ' Verificar que el DataGridView tenga filas y una fila seleccionada
+            If DATAINVENTARIO.SelectedRows.Count > 0 AndAlso DATAINVENTARIO.SelectedRows(0) IsNot Nothing Then
+                ' Obtener la ruta de la imagen desde la celda del DataGridView
+                Dim rutaImagen As String = CStr(DATAINVENTARIO.SelectedRows(0).Cells("PROIMAGEN").Value)
+
+                ' Verificar que la ruta de la imagen no esté vacía o nula
+                If Not String.IsNullOrEmpty(rutaImagen) AndAlso File.Exists(rutaImagen) Then
+                    ' Cargar la imagen desde la ruta
+                    Dim imagen As Image = Image.FromFile(rutaImagen)
+
+                    ' Asignar la imagen al PictureBox
+                    VISTAPRODUCTO.Image = imagen
+                Else
+                    ' Manejar el caso donde la ruta de la imagen es inválida
+                    VISTAPRODUCTO.Image = Nothing
+                    MessageBox.Show("La ruta de la imagen es inválida o el archivo no existe.")
+                End If
+            End If
+        Catch ex As Exception
+            ' Manejar cualquier otro error
+            MessageBox.Show("Error al cargar la imagen: " & ex.Message)
+        End Try
+    End Sub
 End Class
