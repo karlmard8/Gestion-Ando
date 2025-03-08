@@ -97,12 +97,6 @@
     <Compile Include="FrmClientes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmImagenProducto.Designer.vb">
-      <DependentUpon>FrmImagenProducto.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmImagenProducto.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FrmInventario.Designer.vb">
       <DependentUpon>FrmInventario.vb</DependentUpon>
     </Compile>
@@ -169,9 +163,6 @@
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmImagenProducto.resx">
-      <DependentUpon>FrmImagenProducto.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmInventario.resx">
       <DependentUpon>FrmInventario.vb</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +204,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imagen de WhatsApp 2025-03-05 a las 12.26.40_68235b6c.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

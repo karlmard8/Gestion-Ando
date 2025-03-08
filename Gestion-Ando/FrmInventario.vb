@@ -3,6 +3,7 @@
 Public Class FrmInventario
     Dim ALTAINVENTARIO As New FrmAltaProductos
     Private Sub FrmInventario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLPRODUCTOS' Puede moverla o quitarla según sea necesario.
         Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -51,7 +52,7 @@ Public Class FrmInventario
             ALTAINVENTARIO.TXTNOMBRE.Text = DATAINVENTARIO.CurrentRow.Cells("PRONOMBRE").Value
             ALTAINVENTARIO.SPINNER.Value = DATAINVENTARIO.CurrentRow.Cells("PROEXISTENCIAS").Value
             ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt32(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
-            'ALTAINVENTARIO.PRODIMAGEN = CStr(DATAINVENTARIO.CurrentRow.Cells("PROIMAGEN").Value)
+            ALTAINVENTARIO.imagenRuta = DATAINVENTARIO.CurrentRow.Cells("PROIMAGEN").Value
 
             'CODIGO PARA CARGAR LA IMAGEN DE UN REGISTRO EXISTENTE
             Try
@@ -108,6 +109,12 @@ Public Class FrmInventario
                 ' Obtener la ruta de la imagen desde la celda del DataGridView
                 Dim rutaImagen As String = CStr(DATAINVENTARIO.SelectedRows(0).Cells("PROIMAGEN").Value)
 
+                Dim NombreProducto As String = DATAINVENTARIO.SelectedRows(0).Cells("PRONOMBRE").Value
+                Dim EXISTENCIAS As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROEXISTENCIAS").Value
+                Dim PRECIO As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROPRECIO").Value
+                LBLPRODUCTO.Text = "Producto: " + NombreProducto
+                LBLEXISTENCIAS.Text = "Existencias: " + EXISTENCIAS.ToString("N0")
+                LBLPRECIO.Text = "Precio: " + PRECIO.ToString("C2")
                 ' Verificar que la ruta de la imagen no esté vacía o nula
                 If Not String.IsNullOrEmpty(rutaImagen) AndAlso File.Exists(rutaImagen) Then
                     ' Cargar la imagen desde la ruta

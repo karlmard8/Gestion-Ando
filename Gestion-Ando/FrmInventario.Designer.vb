@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmInventario
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,10 +20,10 @@ Partial Class FrmInventario
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATAINVENTARIO = New System.Windows.Forms.DataGridView()
         Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,7 +44,9 @@ Partial Class FrmInventario
         Me.TBLPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLPRODUCTOSTableAdapter()
         Me.VISTAPRODUCTO = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.LBLPRODUCTO = New System.Windows.Forms.Label()
+        Me.LBLEXISTENCIAS = New System.Windows.Forms.Label()
+        Me.LBLPRECIO = New System.Windows.Forms.Label()
         CType(Me.DATAINVENTARIO, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,9 +110,9 @@ Partial Class FrmInventario
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
         Me.PROPRECIO.HeaderText = "Precio"
         Me.PROPRECIO.Name = "PROPRECIO"
         Me.PROPRECIO.ReadOnly = True
@@ -235,22 +237,44 @@ Partial Class FrmInventario
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Selecciona un producto para mostrar su imagen"
         '
-        'Label3
+        'LBLPRODUCTO
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(1418, 581)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 27)
-        Me.Label3.TabIndex = 17
-        Me.Label3.Text = ". . . "
+        Me.LBLPRODUCTO.AutoSize = True
+        Me.LBLPRODUCTO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLPRODUCTO.Location = New System.Drawing.Point(1418, 581)
+        Me.LBLPRODUCTO.Name = "LBLPRODUCTO"
+        Me.LBLPRODUCTO.Size = New System.Drawing.Size(33, 27)
+        Me.LBLPRODUCTO.TabIndex = 17
+        Me.LBLPRODUCTO.Text = ". . . "
+        '
+        'LBLEXISTENCIAS
+        '
+        Me.LBLEXISTENCIAS.AutoSize = True
+        Me.LBLEXISTENCIAS.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLEXISTENCIAS.Location = New System.Drawing.Point(1418, 608)
+        Me.LBLEXISTENCIAS.Name = "LBLEXISTENCIAS"
+        Me.LBLEXISTENCIAS.Size = New System.Drawing.Size(33, 27)
+        Me.LBLEXISTENCIAS.TabIndex = 18
+        Me.LBLEXISTENCIAS.Text = ". . . "
+        '
+        'LBLPRECIO
+        '
+        Me.LBLPRECIO.AutoSize = True
+        Me.LBLPRECIO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLPRECIO.Location = New System.Drawing.Point(1418, 635)
+        Me.LBLPRECIO.Name = "LBLPRECIO"
+        Me.LBLPRECIO.Size = New System.Drawing.Size(33, 27)
+        Me.LBLPRECIO.TabIndex = 19
+        Me.LBLPRECIO.Text = ". . . "
         '
         'FrmInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1860, 930)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.LBLPRECIO)
+        Me.Controls.Add(Me.LBLEXISTENCIAS)
+        Me.Controls.Add(Me.LBLPRODUCTO)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.VISTAPRODUCTO)
         Me.Controls.Add(Me.Button1)
@@ -294,5 +318,7 @@ Partial Class FrmInventario
     Friend WithEvents PROEXISTED As DataGridViewCheckBoxColumn
     Friend WithEvents VISTAPRODUCTO As PictureBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents LBLPRODUCTO As Label
+    Friend WithEvents LBLEXISTENCIAS As Label
+    Friend WithEvents LBLPRECIO As Label
 End Class

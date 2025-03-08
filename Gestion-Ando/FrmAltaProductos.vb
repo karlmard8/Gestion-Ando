@@ -1,9 +1,9 @@
 ﻿Public Class FrmAltaProductos
     Private Sub FrmAltaProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'Revisar cuando guarda 1000
         SPINNER.Location = New Point(151, 121)
         SPINNER.Minimum = 0
-        SPINNER.Maximum = 1000
+        SPINNER.Maximum = 1001
         SPINNER.TabIndex = 4
         Me.Controls.Add(SPINNER)
         If TIPO = "Operativo" Then
@@ -102,37 +102,6 @@
 
             ' Cargar la imagen en el PictureBox
             PRODIMAGEN.Image = Image.FromFile(imagenRuta)
-        End If
-    End Sub
-
-    Private Sub BTNLIMPIARIMG_Click(sender As Object, e As EventArgs) Handles BTNLIMPIARIMG.Click
-        PRODIMAGEN.Image = Nothing
-        imagenRuta = String.Empty
-
-    End Sub
-    Dim MOSTRARIMAGEN As New FrmImagenProducto
-    Private Sub PRODIMAGEN_Click(sender As Object, e As EventArgs) Handles PRODIMAGEN.Click
-        If PRODIMAGEN.Image Is Nothing Or imagenRuta Is String.Empty Then
-            MsgBox("No hay imagen disponible", MsgBoxStyle.Information, "Advertencia")
-
-        Else
-            If FrmInventario.BANDERA = "EDITAR" Then
-                MOSTRARIMAGEN.IMAGENGND.Image = Image.FromFile(FrmInventario.rutaImagen)
-                MOSTRARIMAGEN.ShowDialog()
-
-            Else
-                MOSTRARIMAGEN.IMAGENGND.Image = Image.FromFile(imagenRuta)
-                MOSTRARIMAGEN.ShowDialog()
-            End If
-        End If
-    End Sub
-
-    Private Sub TXTNOMBRE_TextChanged(sender As Object, e As EventArgs) Handles TXTNOMBRE.TextChanged
-        If TXTNOMBRE.Text = String.Empty Then
-            FrmImagenProducto.Text = ". . ."
-
-        Else
-            FrmImagenProducto.Text = "Poducto: " + TXTNOMBRE.Text
         End If
     End Sub
 End Class

@@ -20,7 +20,16 @@ Public Class FrmPrincipal
         MyBase.WndProc(m)
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim horaActual As DateTime = DateTime.Now
+        LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
+    End Sub
+
     Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LBLFECHA.Text = Today.Date
+        Timer1.Interval = 1000 ' 1000 milisegundos = 1 segundo
+        Timer1.Start()
+        LBLLOGIN.Text = "Bienvenido " + FrmLogin.TXTLOGIN.Text.ToUpper()
         StrSql = "INICIARSESION"
         comando = New SqlClient.SqlCommand(StrSql, Conexion)
         comando.CommandType = CommandType.StoredProcedure
@@ -33,12 +42,14 @@ Public Class FrmPrincipal
                 TIPO = "Administrador"
                 Me.MenuOpciones.Items(4).Visible = True
             Else
+
                 TIPO = "Operativo"
                 Me.MenuOpciones.Items(4).Visible = False
             End If
         End If
-        Me.Size = New Size(1920, 1040)
+        Me.Size = New Size(1930, 1040)
     End Sub
+
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         FrmInventario.Close()
@@ -99,4 +110,6 @@ Public Class FrmPrincipal
         FrmLogin.TXTCONTRASEÑA.Text = String.Empty
         FrmLogin.TXTLOGIN.Focus()
     End Sub
+
+
 End Class

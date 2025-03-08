@@ -22,6 +22,8 @@ Partial Class FrmPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
         Me.MenuOpciones = New System.Windows.Forms.MenuStrip()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,6 +37,10 @@ Partial Class FrmPrincipal
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
         Me.LBLOPCIONES = New System.Windows.Forms.Label()
+        Me.LBLLOGIN = New System.Windows.Forms.Label()
+        Me.LBLHORA = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LBLFECHA = New System.Windows.Forms.Label()
         Me.MenuOpciones.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -128,20 +134,56 @@ Partial Class FrmPrincipal
         Me.LBLOPCIONES.TabIndex = 2
         Me.LBLOPCIONES.Text = ". . ."
         '
+        'LBLLOGIN
+        '
+        Me.LBLLOGIN.AutoSize = True
+        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLLOGIN.Location = New System.Drawing.Point(888, 0)
+        Me.LBLLOGIN.Name = "LBLLOGIN"
+        Me.LBLLOGIN.Size = New System.Drawing.Size(29, 27)
+        Me.LBLLOGIN.TabIndex = 21
+        Me.LBLLOGIN.Text = ". . ."
+        '
+        'LBLHORA
+        '
+        Me.LBLHORA.AutoSize = True
+        Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLHORA.Location = New System.Drawing.Point(1700, 0)
+        Me.LBLHORA.Name = "LBLHORA"
+        Me.LBLHORA.Size = New System.Drawing.Size(29, 27)
+        Me.LBLHORA.TabIndex = 22
+        Me.LBLHORA.Text = ". . ."
+        '
+        'Timer1
+        '
+        '
+        'LBLFECHA
+        '
+        Me.LBLFECHA.AutoSize = True
+        Me.LBLFECHA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLFECHA.Location = New System.Drawing.Point(1600, 0)
+        Me.LBLFECHA.Name = "LBLFECHA"
+        Me.LBLFECHA.Size = New System.Drawing.Size(29, 27)
+        Me.LBLFECHA.TabIndex = 23
+        Me.LBLFECHA.Text = ". . ."
+        '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(1440, 859)
+        Me.Controls.Add(Me.LBLFECHA)
+        Me.Controls.Add(Me.LBLHORA)
+        Me.Controls.Add(Me.LBLLOGIN)
         Me.Controls.Add(Me.LBLOPCIONES)
         Me.Controls.Add(Me.PANELFRAMES)
         Me.Controls.Add(Me.MenuOpciones)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuOpciones
         Me.MaximizeBox = False
         Me.Name = "FrmPrincipal"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Gestion-Ando"
         Me.MenuOpciones.ResumeLayout(False)
@@ -164,4 +206,8 @@ Partial Class FrmPrincipal
     Friend WithEvents CréditoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LBLOPCIONES As Label
+    Friend WithEvents LBLLOGIN As Label
+    Friend WithEvents LBLHORA As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents LBLFECHA As Label
 End Class

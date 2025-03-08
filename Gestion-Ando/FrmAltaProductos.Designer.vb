@@ -36,7 +36,6 @@ Partial Class FrmAltaProductos
         Me.SPINNER = New System.Windows.Forms.NumericUpDown()
         Me.PRODIMAGEN = New System.Windows.Forms.PictureBox()
         Me.BTNCARGARIMG = New System.Windows.Forms.Button()
-        Me.BTNLIMPIARIMG = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PRODIMAGEN, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,7 +153,7 @@ Partial Class FrmAltaProductos
         'PRODIMAGEN
         '
         Me.PRODIMAGEN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PRODIMAGEN.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.PRODIMAGEN.Cursor = System.Windows.Forms.Cursors.Default
         Me.PRODIMAGEN.Location = New System.Drawing.Point(471, 68)
         Me.PRODIMAGEN.Name = "PRODIMAGEN"
         Me.PRODIMAGEN.Size = New System.Drawing.Size(116, 98)
@@ -167,24 +166,12 @@ Partial Class FrmAltaProductos
         Me.BTNCARGARIMG.AutoSize = True
         Me.BTNCARGARIMG.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCARGARIMG.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCARGARIMG.Location = New System.Drawing.Point(468, 172)
+        Me.BTNCARGARIMG.Location = New System.Drawing.Point(503, 172)
         Me.BTNCARGARIMG.Name = "BTNCARGARIMG"
         Me.BTNCARGARIMG.Size = New System.Drawing.Size(48, 28)
         Me.BTNCARGARIMG.TabIndex = 40
         Me.BTNCARGARIMG.Text = "Cargar"
         Me.BTNCARGARIMG.UseVisualStyleBackColor = True
-        '
-        'BTNLIMPIARIMG
-        '
-        Me.BTNLIMPIARIMG.AutoSize = True
-        Me.BTNLIMPIARIMG.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNLIMPIARIMG.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNLIMPIARIMG.Location = New System.Drawing.Point(533, 172)
-        Me.BTNLIMPIARIMG.Name = "BTNLIMPIARIMG"
-        Me.BTNLIMPIARIMG.Size = New System.Drawing.Size(54, 28)
-        Me.BTNLIMPIARIMG.TabIndex = 41
-        Me.BTNLIMPIARIMG.Text = "Limpiar"
-        Me.BTNLIMPIARIMG.UseVisualStyleBackColor = True
         '
         'Label5
         '
@@ -202,7 +189,6 @@ Partial Class FrmAltaProductos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(608, 283)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.BTNLIMPIARIMG)
         Me.Controls.Add(Me.BTNCARGARIMG)
         Me.Controls.Add(Me.PRODIMAGEN)
         Me.Controls.Add(Me.SPINNER)
@@ -244,6 +230,5 @@ Partial Class FrmAltaProductos
     Friend WithEvents SPINNER As NumericUpDown
     Friend WithEvents PRODIMAGEN As PictureBox
     Friend WithEvents BTNCARGARIMG As Button
-    Friend WithEvents BTNLIMPIARIMG As Button
     Friend WithEvents Label5 As Label
 End Class
