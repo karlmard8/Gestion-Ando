@@ -106,6 +106,7 @@ Partial Class FrmAltaProductos
         '
         'BTNGUARDAR
         '
+        Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNGUARDAR.Location = New System.Drawing.Point(33, 208)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
@@ -116,6 +117,7 @@ Partial Class FrmAltaProductos
         '
         'BTNLIMPIAR
         '
+        Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNLIMPIAR.Location = New System.Drawing.Point(186, 208)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
@@ -126,6 +128,7 @@ Partial Class FrmAltaProductos
         '
         'BTNCANCELAR
         '
+        Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNCANCELAR.Location = New System.Drawing.Point(338, 208)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"

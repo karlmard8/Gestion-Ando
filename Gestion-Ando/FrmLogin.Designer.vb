@@ -71,6 +71,7 @@ Partial Class FrmLogin
         '
         Me.BTNENTRAR.AutoSize = True
         Me.BTNENTRAR.BackColor = System.Drawing.Color.Snow
+        Me.BTNENTRAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNENTRAR.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BTNENTRAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNENTRAR.Location = New System.Drawing.Point(0, 264)

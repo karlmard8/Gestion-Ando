@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿
 
 Public Class FrmAltaClientes
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
@@ -24,8 +24,21 @@ Public Class FrmAltaClientes
 
     Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TXTCODIGO.Focus()
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox Then
+                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
+            End If
+        Next
     End Sub
 
+    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
+
+            Dim currentControl As Control = CType(sender, Control)
+            Me.SelectNextControl(currentControl, True, True, True, True)
+        End If
+    End Sub
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
 
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
@@ -88,7 +101,4 @@ Public Class FrmAltaClientes
         TXTRFC.SelectionStart = cursorPos
     End Sub
 
-    Private Sub BTNLIMPIARCOMBO_Click(sender As Object, e As EventArgs) Handles BTNLIMPIARCOMBO.Click
-        TXTCREDITO.SelectedIndex = -1
-    End Sub
 End Class
