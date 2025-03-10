@@ -23,7 +23,7 @@ Partial Class FrmInventario
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATAINVENTARIO = New System.Windows.Forms.DataGridView()
         Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -62,6 +62,7 @@ Partial Class FrmInventario
         Me.DATAINVENTARIO.AutoGenerateColumns = False
         Me.DATAINVENTARIO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DATAINVENTARIO.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DATAINVENTARIO.BackgroundColor = System.Drawing.Color.White
         Me.DATAINVENTARIO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATAINVENTARIO.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PROID, Me.PROCLAVE, Me.PRONOMBRE, Me.PROEXISTENCIAS, Me.PROPRECIO, Me.PROIMAGEN, Me.PROEXISTED})
         Me.DATAINVENTARIO.DataSource = Me.TBLPRODUCTOSBindingSource
@@ -110,9 +111,9 @@ Partial Class FrmInventario
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle1
         Me.PROPRECIO.HeaderText = "Precio"
         Me.PROPRECIO.Name = "PROPRECIO"
         Me.PROPRECIO.ReadOnly = True
@@ -271,6 +272,7 @@ Partial Class FrmInventario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1860, 930)
         Me.Controls.Add(Me.LBLPRECIO)
         Me.Controls.Add(Me.LBLEXISTENCIAS)

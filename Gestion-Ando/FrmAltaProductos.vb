@@ -20,7 +20,6 @@
         Me.TXTCLAVE.Focus()
         Me.Close()
         LBLPRODUCTOS.Text = " "
-
     End Sub
 
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
@@ -104,4 +103,6 @@
             PRODIMAGEN.Image = Image.FromFile(imagenRuta)
         End If
     End Sub
+
+
 End Class

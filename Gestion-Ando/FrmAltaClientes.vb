@@ -1,6 +1,17 @@
 ﻿
 
 Public Class FrmAltaClientes
+    Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = ColorFormulario
+        TXTCODIGO.Focus()
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button Then
+                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf Textbox_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf Button_KeyDown
+            End If
+        Next
+    End Sub
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is System.Windows.Forms.TextBox Then
@@ -22,21 +33,26 @@ Public Class FrmAltaClientes
         TXTCODIGO.Focus()
     End Sub
 
-    Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        TXTCODIGO.Focus()
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox Then
-                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
-            End If
-        Next
-    End Sub
 
+
+    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+            BTNCANCELAR.PerformClick()
+        End If
+    End Sub
     Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
 
             Dim currentControl As Control = CType(sender, Control)
             Me.SelectNextControl(currentControl, True, True, True, True)
+        End If
+    End Sub
+
+    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+
+            BTNCANCELAR.PerformClick()
         End If
     End Sub
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
@@ -100,5 +116,6 @@ Public Class FrmAltaClientes
         ' Restaurar la posición del cursor
         TXTRFC.SelectionStart = cursorPos
     End Sub
+
 
 End Class

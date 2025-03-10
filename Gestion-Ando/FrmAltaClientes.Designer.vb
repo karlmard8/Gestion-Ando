@@ -56,6 +56,8 @@ Partial Class FrmAltaClientes
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.TXTCREDITO = New System.Windows.Forms.ComboBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TXTCODIGO
@@ -373,6 +375,15 @@ Partial Class FrmAltaClientes
         Me.TXTCREDITO.Size = New System.Drawing.Size(288, 21)
         Me.TXTCREDITO.TabIndex = 22
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(479, 621)
+        Me.PictureBox1.TabIndex = 34
+        Me.PictureBox1.TabStop = False
+        '
         'FrmAltaClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -412,10 +423,15 @@ Partial Class FrmAltaClientes
         Me.Controls.Add(Me.TXTNOMBRE)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXTCODIGO)
+        Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Location = New System.Drawing.Point(750, 150)
+        Me.MinimizeBox = False
         Me.Name = "FrmAltaClientes"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FrmAltaClientes"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -455,4 +471,5 @@ Partial Class FrmAltaClientes
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents TXTCREDITO As ComboBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -6,8 +6,12 @@
     Public dts As New DataSet
     Public idbusqueda As Long
     Public TIPO As String
-    Public Property colorDurazno As Color = Color.FromArgb(255, 218, 185)
-    Public Property colorGrisClaro As Color = Color.FromArgb(211, 211, 211)
+
+    Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
+
+    Public Property ColorFormulario As Color = Color.FromArgb(255, 251, 248) 'Color principal
+
+    Public Property ColorMenuStrip As Color = Color.FromArgb(147, 116, 88) 'Color para menustrip
 
     Public Function Conectar() As Boolean
         Dim ret As Boolean
@@ -45,7 +49,7 @@
 
 
     Public Sub inicio()
-        Conexion = New SqlClient.SqlConnection("server=desktop-8q10a8h\sqlexpress; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
+        Conexion = New SqlClient.SqlConnection("server=LAPTOP-MI2EEO5C\SQLEXPRESS; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
         'Primer servidor: LAPTOP-MI2EEO5C\SQLEXPRESS
         'Segundo servidor: desktop-8q10a8h\sqlexpress
     End Sub

@@ -26,9 +26,11 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Me.BackColor = colorDurazno
-        Me.MenuOpciones.BackColor = colorGrisClaro
+        Me.BackColor = ColorFormulario
+        Me.MenuOpciones.BackColor = ColorMenuStrip
+        LBLFECHA.BackColor = ColorMenuStrip
+        LBLHORA.BackColor = ColorMenuStrip
+        LBLLOGIN.BackColor = ColorMenuStrip
         LBLFECHA.Text = Today.Date
         Timer1.Interval = 1000 ' 1000 milisegundos = 1 segundo
         Timer1.Start()

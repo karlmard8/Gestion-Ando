@@ -63,7 +63,7 @@ Partial Class FrmClientes
         Me.DATACLIENTES.AllowUserToDeleteRows = False
         Me.DATACLIENTES.AllowUserToOrderColumns = True
         Me.DATACLIENTES.AutoGenerateColumns = False
-        Me.DATACLIENTES.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
         Me.DATACLIENTES.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -317,7 +317,7 @@ Partial Class FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1886, 930)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TXTBUSCAR)
