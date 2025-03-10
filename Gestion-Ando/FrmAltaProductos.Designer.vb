@@ -45,7 +45,7 @@ Partial Class FrmAltaProductos
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(73, 64)
+        Me.Label1.Location = New System.Drawing.Point(73, 66)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 27)
         Me.Label1.TabIndex = 0
@@ -53,25 +53,27 @@ Partial Class FrmAltaProductos
         '
         'TXTCLAVE
         '
+        Me.TXTCLAVE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTCLAVE.Location = New System.Drawing.Point(151, 68)
         Me.TXTCLAVE.MaxLength = 10
         Me.TXTCLAVE.Name = "TXTCLAVE"
-        Me.TXTCLAVE.Size = New System.Drawing.Size(289, 20)
+        Me.TXTCLAVE.Size = New System.Drawing.Size(289, 22)
         Me.TXTCLAVE.TabIndex = 1
         '
         'TXTNOMBRE
         '
+        Me.TXTNOMBRE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTNOMBRE.Location = New System.Drawing.Point(151, 94)
         Me.TXTNOMBRE.MaxLength = 255
         Me.TXTNOMBRE.Name = "TXTNOMBRE"
-        Me.TXTNOMBRE.Size = New System.Drawing.Size(289, 20)
+        Me.TXTNOMBRE.Size = New System.Drawing.Size(289, 22)
         Me.TXTNOMBRE.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(54, 90)
+        Me.Label2.Location = New System.Drawing.Point(54, 92)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 27)
         Me.Label2.TabIndex = 2
@@ -81,7 +83,7 @@ Partial Class FrmAltaProductos
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(40, 115)
+        Me.Label3.Location = New System.Drawing.Point(40, 117)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 27)
         Me.Label3.TabIndex = 4
@@ -89,16 +91,17 @@ Partial Class FrmAltaProductos
         '
         'TXTPRECIO
         '
+        Me.TXTPRECIO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTPRECIO.Location = New System.Drawing.Point(151, 146)
         Me.TXTPRECIO.Name = "TXTPRECIO"
-        Me.TXTPRECIO.Size = New System.Drawing.Size(289, 20)
+        Me.TXTPRECIO.Size = New System.Drawing.Size(289, 22)
         Me.TXTPRECIO.TabIndex = 7
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(67, 142)
+        Me.Label4.Location = New System.Drawing.Point(67, 144)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(55, 27)
         Me.Label4.TabIndex = 6
@@ -148,9 +151,10 @@ Partial Class FrmAltaProductos
         '
         'SPINNER
         '
+        Me.SPINNER.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SPINNER.Location = New System.Drawing.Point(151, 120)
         Me.SPINNER.Name = "SPINNER"
-        Me.SPINNER.Size = New System.Drawing.Size(289, 20)
+        Me.SPINNER.Size = New System.Drawing.Size(289, 22)
         Me.SPINNER.TabIndex = 38
         '
         'PRODIMAGEN

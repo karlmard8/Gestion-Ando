@@ -34,9 +34,10 @@ Partial Class FrmLogin
         '
         'TXTLOGIN
         '
-        Me.TXTLOGIN.Location = New System.Drawing.Point(105, 158)
+        Me.TXTLOGIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTLOGIN.Location = New System.Drawing.Point(105, 154)
         Me.TXTLOGIN.Name = "TXTLOGIN"
-        Me.TXTLOGIN.Size = New System.Drawing.Size(216, 20)
+        Me.TXTLOGIN.Size = New System.Drawing.Size(216, 22)
         Me.TXTLOGIN.TabIndex = 0
         '
         'Label1
@@ -61,10 +62,11 @@ Partial Class FrmLogin
         '
         'TXTCONTRASEÑA
         '
-        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(105, 208)
+        Me.TXTCONTRASEÑA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(105, 204)
         Me.TXTCONTRASEÑA.Name = "TXTCONTRASEÑA"
         Me.TXTCONTRASEÑA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(216, 20)
+        Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(216, 22)
         Me.TXTCONTRASEÑA.TabIndex = 2
         '
         'BTNENTRAR
@@ -72,11 +74,10 @@ Partial Class FrmLogin
         Me.BTNENTRAR.AutoSize = True
         Me.BTNENTRAR.BackColor = System.Drawing.Color.Snow
         Me.BTNENTRAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNENTRAR.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BTNENTRAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNENTRAR.Location = New System.Drawing.Point(0, 264)
+        Me.BTNENTRAR.Location = New System.Drawing.Point(120, 252)
         Me.BTNENTRAR.Name = "BTNENTRAR"
-        Me.BTNENTRAR.Size = New System.Drawing.Size(354, 37)
+        Me.BTNENTRAR.Size = New System.Drawing.Size(127, 37)
         Me.BTNENTRAR.TabIndex = 4
         Me.BTNENTRAR.Text = "Entrar"
         Me.BTNENTRAR.UseVisualStyleBackColor = False
@@ -95,7 +96,7 @@ Partial Class FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.NavajoWhite
         Me.ClientSize = New System.Drawing.Size(354, 301)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)

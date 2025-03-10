@@ -1,6 +1,10 @@
 ﻿Public Class FrmClientes
     Dim NUEVO As New FrmAltaClientes
     Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = colorDurazno
+        Me.DATACLIENTES.BackgroundColor = colorDurazno
+        Me.DATACLIENTES.GridColor = colorGrisClaro
+
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLCLIENTES' Puede moverla o quitarla según sea necesario..
         Me.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -77,5 +81,15 @@
             End If
         End If
         TXTBUSCAR.Focus()
+    End Sub
+
+    Private Sub DATACLIENTES_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DATACLIENTES.CellFormatting
+        e.CellStyle.BackColor = colorGrisClaro
+
+        ' Ejemplo de condición para cambiar el color de una celda específica
+        If e.ColumnIndex = 1 AndAlso e.Value IsNot Nothing AndAlso e.Value.ToString() = "ValorEspecífico" Then
+            e.CellStyle.BackColor = Color.Yellow
+            e.CellStyle.ForeColor = Color.Red
+        End If
     End Sub
 End Class

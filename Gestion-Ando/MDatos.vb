@@ -6,7 +6,8 @@
     Public dts As New DataSet
     Public idbusqueda As Long
     Public TIPO As String
-
+    Public Property colorDurazno As Color = Color.FromArgb(255, 218, 185)
+    Public Property colorGrisClaro As Color = Color.FromArgb(211, 211, 211)
 
     Public Function Conectar() As Boolean
         Dim ret As Boolean

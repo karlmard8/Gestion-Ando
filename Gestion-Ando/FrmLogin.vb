@@ -12,6 +12,12 @@ Public Class FrmLogin
             End If
         Next
     End Sub
+    Private Sub TXTCONTRASEÑA_KeyDown(sender As Object, e As KeyEventArgs) Handles TXTCONTRASEÑA.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            BTNENTRAR.PerformClick()
+        End If
+
+    End Sub
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
@@ -34,4 +40,6 @@ Public Class FrmLogin
         End If
 
     End Sub
+
+
 End Class

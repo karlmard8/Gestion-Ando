@@ -63,15 +63,19 @@ Partial Class FrmClientes
         Me.DATACLIENTES.AllowUserToDeleteRows = False
         Me.DATACLIENTES.AllowUserToOrderColumns = True
         Me.DATACLIENTES.AutoGenerateColumns = False
+        Me.DATACLIENTES.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.DATACLIENTES.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.CLINOMBRE, Me.CLIAPEPATERNO, Me.CLIAPEMATERNO, Me.CLIDIRECCION, Me.CLICOLONIA, Me.CLICP, Me.CLICIUDAD, Me.CLIESTADO, Me.CLITELEFONO, Me.CLICOMENTARIOS, Me.CLIHISTORIALCREDITICIO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLIEXISTE})
         Me.DATACLIENTES.DataSource = Me.TBLCLIENTESBindingSource
+        Me.DATACLIENTES.GridColor = System.Drawing.SystemColors.Control
         Me.DATACLIENTES.Location = New System.Drawing.Point(12, 92)
         Me.DATACLIENTES.Name = "DATACLIENTES"
         Me.DATACLIENTES.ReadOnly = True
         Me.DATACLIENTES.RowHeadersVisible = False
         Me.DATACLIENTES.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATACLIENTES.Size = New System.Drawing.Size(1830, 720)
+        Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
         '
         'CLIID
@@ -93,114 +97,123 @@ Partial Class FrmClientes
         'CLINOMBRE
         '
         Me.CLINOMBRE.DataPropertyName = "CLINOMBRE"
+        Me.CLINOMBRE.FillWeight = 53.02616!
         Me.CLINOMBRE.HeaderText = "Nombre"
         Me.CLINOMBRE.Name = "CLINOMBRE"
         Me.CLINOMBRE.ReadOnly = True
-        Me.CLINOMBRE.Width = 131
         '
         'CLIAPEPATERNO
         '
         Me.CLIAPEPATERNO.DataPropertyName = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.FillWeight = 53.02616!
         Me.CLIAPEPATERNO.HeaderText = "Apellido paterno"
         Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
         Me.CLIAPEPATERNO.ReadOnly = True
-        Me.CLIAPEPATERNO.Width = 130
+        Me.CLIAPEPATERNO.Width = 115
         '
         'CLIAPEMATERNO
         '
         Me.CLIAPEMATERNO.DataPropertyName = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.FillWeight = 53.02616!
         Me.CLIAPEMATERNO.HeaderText = "Apellido materno"
         Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
         Me.CLIAPEMATERNO.ReadOnly = True
-        Me.CLIAPEMATERNO.Width = 131
+        Me.CLIAPEMATERNO.Width = 115
         '
         'CLIDIRECCION
         '
         Me.CLIDIRECCION.DataPropertyName = "CLIDIRECCION"
+        Me.CLIDIRECCION.FillWeight = 53.02616!
         Me.CLIDIRECCION.HeaderText = "Calle y número"
         Me.CLIDIRECCION.Name = "CLIDIRECCION"
         Me.CLIDIRECCION.ReadOnly = True
-        Me.CLIDIRECCION.Width = 130
+        Me.CLIDIRECCION.Width = 132
         '
         'CLICOLONIA
         '
         Me.CLICOLONIA.DataPropertyName = "CLICOLONIA"
+        Me.CLICOLONIA.FillWeight = 53.02616!
         Me.CLICOLONIA.HeaderText = "Colonia"
         Me.CLICOLONIA.Name = "CLICOLONIA"
         Me.CLICOLONIA.ReadOnly = True
-        Me.CLICOLONIA.Width = 131
         '
         'CLICP
         '
         Me.CLICP.DataPropertyName = "CLICP"
+        Me.CLICP.FillWeight = 710.6599!
         Me.CLICP.HeaderText = "Código postal"
         Me.CLICP.Name = "CLICP"
         Me.CLICP.ReadOnly = True
-        Me.CLICP.Width = 130
         '
         'CLICIUDAD
         '
         Me.CLICIUDAD.DataPropertyName = "CLICIUDAD"
+        Me.CLICIUDAD.FillWeight = 53.02616!
         Me.CLICIUDAD.HeaderText = "Ciudad"
         Me.CLICIUDAD.Name = "CLICIUDAD"
         Me.CLICIUDAD.ReadOnly = True
-        Me.CLICIUDAD.Width = 131
+        Me.CLICIUDAD.Width = 120
         '
         'CLIESTADO
         '
         Me.CLIESTADO.DataPropertyName = "CLIESTADO"
+        Me.CLIESTADO.FillWeight = 53.02616!
         Me.CLIESTADO.HeaderText = "Estado"
         Me.CLIESTADO.Name = "CLIESTADO"
         Me.CLIESTADO.ReadOnly = True
-        Me.CLIESTADO.Width = 130
         '
         'CLITELEFONO
         '
         Me.CLITELEFONO.DataPropertyName = "CLITELEFONO"
+        Me.CLITELEFONO.FillWeight = 53.02616!
         Me.CLITELEFONO.HeaderText = "Teléfono"
         Me.CLITELEFONO.Name = "CLITELEFONO"
         Me.CLITELEFONO.ReadOnly = True
-        Me.CLITELEFONO.Width = 131
         '
         'CLICOMENTARIOS
         '
+        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.CLICOMENTARIOS.DataPropertyName = "CLICOMENTARIOS"
+        Me.CLICOMENTARIOS.FillWeight = 53.02616!
         Me.CLICOMENTARIOS.HeaderText = "Nota"
         Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
         Me.CLICOMENTARIOS.ReadOnly = True
-        Me.CLICOMENTARIOS.Width = 130
         '
         'CLIHISTORIALCREDITICIO
         '
         Me.CLIHISTORIALCREDITICIO.DataPropertyName = "CLIHISTORIALCREDITO"
+        Me.CLIHISTORIALCREDITICIO.FillWeight = 53.02616!
         Me.CLIHISTORIALCREDITICIO.HeaderText = "Historial crediticio"
         Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
         Me.CLIHISTORIALCREDITICIO.ReadOnly = True
-        Me.CLIHISTORIALCREDITICIO.Width = 131
+        Me.CLIHISTORIALCREDITICIO.Width = 115
         '
         'CLIRFC
         '
         Me.CLIRFC.DataPropertyName = "CLIRFC"
+        Me.CLIRFC.FillWeight = 53.02616!
         Me.CLIRFC.HeaderText = "RFC"
         Me.CLIRFC.Name = "CLIRFC"
         Me.CLIRFC.ReadOnly = True
-        Me.CLIRFC.Width = 130
+        Me.CLIRFC.Width = 90
         '
         'CLIREGIMENFISCAL
         '
         Me.CLIREGIMENFISCAL.DataPropertyName = "CLIREGIMENFISCAL"
+        Me.CLIREGIMENFISCAL.FillWeight = 53.02616!
         Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
         Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
         Me.CLIREGIMENFISCAL.ReadOnly = True
-        Me.CLIREGIMENFISCAL.Width = 131
+        Me.CLIREGIMENFISCAL.Width = 133
         '
         'CLICFDI
         '
         Me.CLICFDI.DataPropertyName = "CLICFDI"
+        Me.CLICFDI.FillWeight = 53.02616!
         Me.CLICFDI.HeaderText = "CFDI"
         Me.CLICFDI.Name = "CLICFDI"
         Me.CLICFDI.ReadOnly = True
-        Me.CLICFDI.Width = 130
+        Me.CLICFDI.Width = 132
         '
         'CLIEXISTE
         '
@@ -226,42 +239,46 @@ Partial Class FrmClientes
         '
         'BTNELIMINAR
         '
+        Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(1710, 856)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(1741, 852)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNELIMINAR.TabIndex = 3
         Me.BTNELIMINAR.Text = "Eliminar"
-        Me.BTNELIMINAR.UseVisualStyleBackColor = True
+        Me.BTNELIMINAR.UseVisualStyleBackColor = False
         '
         'BTNNUEVO
         '
+        Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(1310, 856)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(1341, 852)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 1
         Me.BTNNUEVO.Text = "Nuevo"
-        Me.BTNNUEVO.UseVisualStyleBackColor = True
+        Me.BTNNUEVO.UseVisualStyleBackColor = False
         '
         'BTNEDITAR
         '
+        Me.BTNEDITAR.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNEDITAR.Location = New System.Drawing.Point(1509, 856)
+        Me.BTNEDITAR.Location = New System.Drawing.Point(1540, 852)
         Me.BTNEDITAR.Name = "BTNEDITAR"
         Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNEDITAR.TabIndex = 2
         Me.BTNEDITAR.Text = "Editar"
-        Me.BTNEDITAR.UseVisualStyleBackColor = True
+        Me.BTNEDITAR.UseVisualStyleBackColor = False
         '
         'TXTBUSCAR
         '
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 30)
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(115, 28)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 20)
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 22)
         Me.TXTBUSCAR.TabIndex = 11
         '
         'Label1
@@ -286,20 +303,22 @@ Partial Class FrmClientes
         'Button1
         '
         Me.Button1.AutoSize = True
+        Me.Button1.BackColor = System.Drawing.Color.White
         Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1709, 41)
+        Me.Button1.Location = New System.Drawing.Point(1741, 41)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(133, 45)
         Me.Button1.TabIndex = 13
         Me.Button1.Text = "Generar reporte"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1860, 930)
+        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.ClientSize = New System.Drawing.Size(1886, 930)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TXTBUSCAR)
         Me.Controls.Add(Me.Label1)
@@ -330,6 +349,7 @@ Partial Class FrmClientes
     Friend WithEvents TXTBUSCAR As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Button1 As Button
     Friend WithEvents CLIID As DataGridViewTextBoxColumn
     Friend WithEvents CLICODIGO As DataGridViewTextBoxColumn
     Friend WithEvents CLINOMBRE As DataGridViewTextBoxColumn
@@ -347,5 +367,4 @@ Partial Class FrmClientes
     Friend WithEvents CLIREGIMENFISCAL As DataGridViewTextBoxColumn
     Friend WithEvents CLICFDI As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
-    Friend WithEvents Button1 As Button
 End Class
