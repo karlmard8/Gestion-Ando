@@ -145,7 +145,7 @@
 
 
         CARGARIMG.InitialDirectory = "C:\"
-        CARGARIMG.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+        CARGARIMG.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif"
         CARGARIMG.FilterIndex = 1
         CARGARIMG.RestoreDirectory = True
 

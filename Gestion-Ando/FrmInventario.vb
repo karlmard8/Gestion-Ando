@@ -141,7 +141,7 @@ Public Class FrmInventario
                 Else
                     ' Manejar el caso donde la ruta de la imagen es inválida
                     VISTAPRODUCTO.Image = Nothing
-                    MessageBox.Show("No hay imagen disponible para mostrar")
+                    MessageBox.Show("Error al cargar la imagen")
                 End If
             End If
         Catch ex As Exception

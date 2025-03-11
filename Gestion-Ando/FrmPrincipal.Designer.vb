@@ -121,7 +121,7 @@ Partial Class FrmPrincipal
         Me.LBLHORA.AutoSize = True
         Me.LBLHORA.BackColor = System.Drawing.Color.Transparent
         Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLHORA.Location = New System.Drawing.Point(1699, 1)
+        Me.LBLHORA.Location = New System.Drawing.Point(1699, 2)
         Me.LBLHORA.Name = "LBLHORA"
         Me.LBLHORA.Size = New System.Drawing.Size(33, 29)
         Me.LBLHORA.TabIndex = 22
