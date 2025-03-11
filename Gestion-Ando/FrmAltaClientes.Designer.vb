@@ -56,8 +56,6 @@ Partial Class FrmAltaClientes
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.TXTCREDITO = New System.Windows.Forms.ComboBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TXTCODIGO
@@ -72,7 +70,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(60, 66)
+        Me.Label1.Location = New System.Drawing.Point(80, 66)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 27)
         Me.Label1.TabIndex = 1
@@ -82,7 +80,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(52, 93)
+        Me.Label2.Location = New System.Drawing.Point(72, 93)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(68, 27)
         Me.Label2.TabIndex = 3
@@ -100,11 +98,11 @@ Partial Class FrmAltaClientes
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(22, 120)
+        Me.Label3.Location = New System.Drawing.Point(11, 120)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(98, 27)
+        Me.Label3.Size = New System.Drawing.Size(129, 27)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Ape.Paterno"
+        Me.Label3.Text = "Apellido paterno"
         '
         'TXTAPEPATERNO
         '
@@ -118,11 +116,11 @@ Partial Class FrmAltaClientes
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(18, 147)
+        Me.Label4.Location = New System.Drawing.Point(7, 147)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(102, 27)
+        Me.Label4.Size = New System.Drawing.Size(133, 27)
         Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Ape.Materno"
+        Me.Label4.Text = "Apellido materno"
         '
         'TXTAPEMATERNO
         '
@@ -136,7 +134,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(5, 174)
+        Me.Label5.Location = New System.Drawing.Point(25, 174)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(115, 27)
         Me.Label5.TabIndex = 9
@@ -154,7 +152,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(56, 201)
+        Me.Label6.Location = New System.Drawing.Point(76, 201)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(64, 27)
         Me.Label6.TabIndex = 11
@@ -172,7 +170,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(13, 228)
+        Me.Label7.Location = New System.Drawing.Point(33, 228)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(107, 27)
         Me.Label7.TabIndex = 13
@@ -190,7 +188,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(60, 255)
+        Me.Label8.Location = New System.Drawing.Point(80, 255)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(60, 27)
         Me.Label8.TabIndex = 15
@@ -208,7 +206,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(60, 282)
+        Me.Label9.Location = New System.Drawing.Point(80, 282)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(60, 27)
         Me.Label9.TabIndex = 17
@@ -226,7 +224,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(47, 309)
+        Me.Label10.Location = New System.Drawing.Point(67, 309)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(73, 27)
         Me.Label10.TabIndex = 19
@@ -244,7 +242,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(60, 336)
+        Me.Label11.Location = New System.Drawing.Point(86, 336)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(53, 27)
         Me.Label11.TabIndex = 21
@@ -262,7 +260,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(56, 363)
+        Me.Label12.Location = New System.Drawing.Point(76, 363)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(63, 27)
         Me.Label12.TabIndex = 23
@@ -272,7 +270,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(74, 390)
+        Me.Label13.Location = New System.Drawing.Point(100, 390)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(39, 27)
         Me.Label13.TabIndex = 25
@@ -290,7 +288,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(8, 417)
+        Me.Label14.Location = New System.Drawing.Point(28, 417)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(111, 27)
         Me.Label14.TabIndex = 27
@@ -308,7 +306,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(68, 444)
+        Me.Label15.Location = New System.Drawing.Point(94, 444)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(45, 27)
         Me.Label15.TabIndex = 29
@@ -326,17 +324,17 @@ Partial Class FrmAltaClientes
         '
         Me.LBLCLIENTES.AutoSize = True
         Me.LBLCLIENTES.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLCLIENTES.Location = New System.Drawing.Point(140, 9)
+        Me.LBLCLIENTES.Location = New System.Drawing.Point(155, 15)
         Me.LBLCLIENTES.Name = "LBLCLIENTES"
-        Me.LBLCLIENTES.Size = New System.Drawing.Size(198, 32)
+        Me.LBLCLIENTES.Size = New System.Drawing.Size(34, 32)
         Me.LBLCLIENTES.TabIndex = 30
-        Me.LBLCLIENTES.Text = "Alta o modificar cliente"
+        Me.LBLCLIENTES.Text = ". . ."
         '
         'BTNCANCELAR
         '
         Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCANCELAR.Location = New System.Drawing.Point(332, 538)
+        Me.BTNCANCELAR.Location = New System.Drawing.Point(332, 504)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 33
@@ -347,7 +345,7 @@ Partial Class FrmAltaClientes
         '
         Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNLIMPIAR.Location = New System.Drawing.Point(180, 538)
+        Me.BTNLIMPIAR.Location = New System.Drawing.Point(180, 504)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
         Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNLIMPIAR.TabIndex = 32
@@ -358,7 +356,7 @@ Partial Class FrmAltaClientes
         '
         Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNGUARDAR.Location = New System.Drawing.Point(27, 538)
+        Me.BTNGUARDAR.Location = New System.Drawing.Point(27, 504)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
         Me.BTNGUARDAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNGUARDAR.TabIndex = 31
@@ -375,20 +373,11 @@ Partial Class FrmAltaClientes
         Me.TXTCREDITO.Size = New System.Drawing.Size(288, 21)
         Me.TXTCREDITO.TabIndex = 22
         '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(479, 621)
-        Me.PictureBox1.TabIndex = 34
-        Me.PictureBox1.TabStop = False
-        '
         'FrmAltaClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(479, 621)
+        Me.ClientSize = New System.Drawing.Size(479, 563)
         Me.Controls.Add(Me.TXTCREDITO)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
@@ -423,7 +412,6 @@ Partial Class FrmAltaClientes
         Me.Controls.Add(Me.TXTNOMBRE)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXTCODIGO)
-        Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Location = New System.Drawing.Point(750, 150)
         Me.MinimizeBox = False
@@ -431,7 +419,6 @@ Partial Class FrmAltaClientes
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -471,5 +458,4 @@ Partial Class FrmAltaClientes
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents TXTCREDITO As ComboBox
-    Friend WithEvents PictureBox1 As PictureBox
 End Class

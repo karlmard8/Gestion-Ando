@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAltaProductos
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmAltaProductos
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
@@ -33,12 +33,12 @@ Partial Class FrmAltaProductos
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
         Me.LBLPRODUCTOS = New System.Windows.Forms.Label()
-        Me.SPINNER = New System.Windows.Forms.NumericUpDown()
         Me.PRODIMAGEN = New System.Windows.Forms.PictureBox()
         Me.BTNCARGARIMG = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
-        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SPINNER = New System.Windows.Forms.NumericUpDown()
         CType(Me.PRODIMAGEN, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -146,16 +146,9 @@ Partial Class FrmAltaProductos
         Me.LBLPRODUCTOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLPRODUCTOS.Location = New System.Drawing.Point(167, 9)
         Me.LBLPRODUCTOS.Name = "LBLPRODUCTOS"
-        Me.LBLPRODUCTOS.Size = New System.Drawing.Size(0, 32)
+        Me.LBLPRODUCTOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLPRODUCTOS.TabIndex = 37
-        '
-        'SPINNER
-        '
-        Me.SPINNER.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SPINNER.Location = New System.Drawing.Point(151, 120)
-        Me.SPINNER.Name = "SPINNER"
-        Me.SPINNER.Size = New System.Drawing.Size(289, 22)
-        Me.SPINNER.TabIndex = 38
+        Me.LBLPRODUCTOS.Text = ". . ."
         '
         'PRODIMAGEN
         '
@@ -190,16 +183,23 @@ Partial Class FrmAltaProductos
         Me.Label5.TabIndex = 42
         Me.Label5.Text = "Fotografía"
         '
+        'SPINNER
+        '
+        Me.SPINNER.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SPINNER.Location = New System.Drawing.Point(151, 120)
+        Me.SPINNER.Name = "SPINNER"
+        Me.SPINNER.Size = New System.Drawing.Size(289, 22)
+        Me.SPINNER.TabIndex = 38
+        '
         'FrmAltaProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(608, 283)
+        Me.Controls.Add(Me.SPINNER)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.BTNCARGARIMG)
         Me.Controls.Add(Me.PRODIMAGEN)
-        Me.Controls.Add(Me.SPINNER)
-        Me.Controls.Add(Me.LBLPRODUCTOS)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.BTNCANCELAR)
@@ -210,14 +210,15 @@ Partial Class FrmAltaProductos
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXTCLAVE)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.LBLPRODUCTOS)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FrmAltaProductos"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAltaProductos"
-        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PRODIMAGEN, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SPINNER, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,8 +235,8 @@ Partial Class FrmAltaProductos
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNCANCELAR As Button
     Friend WithEvents LBLPRODUCTOS As Label
-    Friend WithEvents SPINNER As NumericUpDown
     Friend WithEvents PRODIMAGEN As PictureBox
     Friend WithEvents BTNCARGARIMG As Button
     Friend WithEvents Label5 As Label
+    Friend WithEvents SPINNER As NumericUpDown
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAltaUsuarios
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,9 +20,8 @@ Partial Class FrmAltaUsuarios
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAltaUsuarios))
         Me.LBLUSUARIOS = New System.Windows.Forms.Label()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.BTNCANCELAR = New System.Windows.Forms.Button()
@@ -35,7 +34,6 @@ Partial Class FrmAltaUsuarios
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
         Me.TXTTIPO = New System.Windows.Forms.ComboBox()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
-        Me.BTNLIMPIARCOMBO = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'LBLUSUARIOS
@@ -44,12 +42,13 @@ Partial Class FrmAltaUsuarios
         Me.LBLUSUARIOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLUSUARIOS.Location = New System.Drawing.Point(135, 9)
         Me.LBLUSUARIOS.Name = "LBLUSUARIOS"
-        Me.LBLUSUARIOS.Size = New System.Drawing.Size(230, 32)
+        Me.LBLUSUARIOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLUSUARIOS.TabIndex = 48
-        Me.LBLUSUARIOS.Text = "Mantenimiento de usuarios"
+        Me.LBLUSUARIOS.Text = ". . ."
         '
         'BTNGUARDAR
         '
+        Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNGUARDAR.Location = New System.Drawing.Point(33, 208)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
@@ -60,12 +59,13 @@ Partial Class FrmAltaUsuarios
         '
         'BTNCANCELAR
         '
+        Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNCANCELAR.Location = New System.Drawing.Point(338, 208)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 47
-        Me.BTNCANCELAR.Text = "Cancelar"
+        Me.BTNCANCELAR.Text = "Salir"
         Me.BTNCANCELAR.UseVisualStyleBackColor = True
         '
         'Label4
@@ -139,11 +139,12 @@ Partial Class FrmAltaUsuarios
         Me.TXTTIPO.Items.AddRange(New Object() {"Administrador", "Operativo"})
         Me.TXTTIPO.Location = New System.Drawing.Point(151, 146)
         Me.TXTTIPO.Name = "TXTTIPO"
-        Me.TXTTIPO.Size = New System.Drawing.Size(248, 21)
+        Me.TXTTIPO.Size = New System.Drawing.Size(289, 21)
         Me.TXTTIPO.TabIndex = 43
         '
         'BTNLIMPIAR
         '
+        Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNLIMPIAR.Location = New System.Drawing.Point(188, 208)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
@@ -152,23 +153,11 @@ Partial Class FrmAltaUsuarios
         Me.BTNLIMPIAR.Text = "Limpiar"
         Me.BTNLIMPIAR.UseVisualStyleBackColor = True
         '
-        'BTNLIMPIARCOMBO
-        '
-        Me.BTNLIMPIARCOMBO.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNLIMPIARCOMBO.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.BTNLIMPIARCOMBO.Image = CType(resources.GetObject("BTNLIMPIARCOMBO.Image"), System.Drawing.Image)
-        Me.BTNLIMPIARCOMBO.Location = New System.Drawing.Point(405, 146)
-        Me.BTNLIMPIARCOMBO.Name = "BTNLIMPIARCOMBO"
-        Me.BTNLIMPIARCOMBO.Size = New System.Drawing.Size(35, 21)
-        Me.BTNLIMPIARCOMBO.TabIndex = 50
-        Me.BTNLIMPIARCOMBO.UseVisualStyleBackColor = True
-        '
         'FrmAltaUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(479, 283)
-        Me.Controls.Add(Me.BTNLIMPIARCOMBO)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.TXTTIPO)
         Me.Controls.Add(Me.TXTCLAVE)
@@ -183,6 +172,7 @@ Partial Class FrmAltaUsuarios
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FrmAltaUsuarios"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAltaUsuarios"
         Me.ResumeLayout(False)
@@ -202,5 +192,4 @@ Partial Class FrmAltaUsuarios
     Friend WithEvents TXTCLAVE As TextBox
     Friend WithEvents TXTTIPO As ComboBox
     Friend WithEvents BTNLIMPIAR As Button
-    Friend WithEvents BTNLIMPIARCOMBO As Button
 End Class

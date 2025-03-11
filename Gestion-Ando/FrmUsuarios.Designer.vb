@@ -155,6 +155,7 @@ Partial Class FrmUsuarios
         '
         'BTNEDITAR
         '
+        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNEDITAR.Location = New System.Drawing.Point(383, 855)
         Me.BTNEDITAR.Name = "BTNEDITAR"
@@ -165,6 +166,7 @@ Partial Class FrmUsuarios
         '
         'BTNNUEVO
         '
+        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNNUEVO.Location = New System.Drawing.Point(184, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
@@ -175,6 +177,7 @@ Partial Class FrmUsuarios
         '
         'BTNELIMINAR
         '
+        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNELIMINAR.Location = New System.Drawing.Point(584, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"

@@ -3,10 +3,28 @@
 Public Class FrmUsuarios
     Dim ALTAUSUARIO As New FrmAltaUsuarios
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.BackColor = ColorFormulario
+        BTNNUEVO.BackColor = ColorBotones
+        BTNEDITAR.BackColor = ColorBotones
+        BTNELIMINAR.BackColor = ColorBotones
+        Me.DATAUSUARIOS.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
         Me.TBLUSUARIOSTableAdapter.Connection = Conexion
         Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
 
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf Button1_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf Button1_MouseLeave
+    End Sub
+
+    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
+    End Sub
+
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -16,6 +34,7 @@ Public Class FrmUsuarios
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
         ALTAUSUARIO.TXTTIPO.SelectedIndex = -1
         ALTAUSUARIO.LBLUSUARIOS.Text = "Alta de usuarios"
+        ALTAUSUARIO.LBLUSUARIOS.Location = New Point(175, 9)
         For Each CTRL As Control In ALTAUSUARIO.Controls
             If TypeOf CTRL Is TextBox Then
                 DirectCast(CTRL, TextBox).Clear()
@@ -49,6 +68,7 @@ Public Class FrmUsuarios
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
+        ALTAUSUARIO.LBLUSUARIOS.Location = New Point(155, 9)
         If DATAUSUARIOS.RowCount > 0 Then
             idbusqueda = DATAUSUARIOS.CurrentRow.Cells("USUID").Value
             ALTAUSUARIO.TXTNOMBRE.Text = DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value

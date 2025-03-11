@@ -1,4 +1,18 @@
 ﻿Public Class FrmAltaUsuarios
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        ' Definir el ancho del borde
+        Dim bordeAncho As Integer = 1
+
+        ' Crear un pincel para el borde (color y grosor)
+        Dim bordeColor As Color = Color.Black ' Color negro para simular FixedSingle
+        Dim bordePen As New Pen(bordeColor, bordeAncho)
+
+        ' Dibujar el borde alrededor del formulario
+        e.Graphics.DrawRectangle(bordePen, 0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
+
+        ' Liberar el recurso del pincel
+        bordePen.Dispose()
+    End Sub
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.TXTTIPO.SelectedIndex = -1
         Me.Close()
@@ -62,6 +76,37 @@
     End Sub
 
     Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = ColorFormulario
+        BTNGUARDAR.BackColor = ColorBotones
+        BTNLIMPIAR.BackColor = ColorBotones
+        BTNCANCELAR.BackColor = ColorBotones
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button OrElse TypeOf ctrl Is NumericUpDown Then
+                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf Textbox_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf Button_KeyDown
+            End If
+        Next
+    End Sub
 
+    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
+
+            Dim currentControl As Control = CType(sender, Control)
+            Me.SelectNextControl(currentControl, True, True, True, True)
+        End If
+    End Sub
+
+    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+            BTNCANCELAR.PerformClick()
+        End If
+    End Sub
+
+    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+            BTNCANCELAR.PerformClick()
+        End If
     End Sub
 End Class

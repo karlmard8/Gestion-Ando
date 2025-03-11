@@ -50,7 +50,7 @@ Partial Class FrmClientes
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BTNREPORTE = New System.Windows.Forms.Button()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +64,6 @@ Partial Class FrmClientes
         Me.DATACLIENTES.AllowUserToOrderColumns = True
         Me.DATACLIENTES.AutoGenerateColumns = False
         Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
-        Me.DATACLIENTES.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.CLINOMBRE, Me.CLIAPEPATERNO, Me.CLIAPEMATERNO, Me.CLIDIRECCION, Me.CLICOLONIA, Me.CLICP, Me.CLICIUDAD, Me.CLIESTADO, Me.CLITELEFONO, Me.CLICOMENTARIOS, Me.CLIHISTORIALCREDITICIO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLIEXISTE})
@@ -300,18 +299,18 @@ Partial Class FrmClientes
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
-        'Button1
+        'BTNREPORTE
         '
-        Me.Button1.AutoSize = True
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1741, 41)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(133, 45)
-        Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Generar reporte"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.BTNREPORTE.AutoSize = True
+        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
+        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNREPORTE.Location = New System.Drawing.Point(1741, 41)
+        Me.BTNREPORTE.Name = "BTNREPORTE"
+        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
+        Me.BTNREPORTE.TabIndex = 13
+        Me.BTNREPORTE.Text = "Generar reporte"
+        Me.BTNREPORTE.UseVisualStyleBackColor = False
         '
         'FrmClientes
         '
@@ -319,7 +318,7 @@ Partial Class FrmClientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1886, 930)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
@@ -349,7 +348,7 @@ Partial Class FrmClientes
     Friend WithEvents TXTBUSCAR As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BTNREPORTE As Button
     Friend WithEvents CLIID As DataGridViewTextBoxColumn
     Friend WithEvents CLICODIGO As DataGridViewTextBoxColumn
     Friend WithEvents CLINOMBRE As DataGridViewTextBoxColumn

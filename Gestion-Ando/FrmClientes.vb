@@ -4,6 +4,9 @@
         Me.BackColor = ColorFormulario
         Me.DATACLIENTES.BackgroundColor = ColorFormulario
         BTNNUEVO.BackColor = ColorBotones
+        BTNEDITAR.BackColor = ColorBotones
+        BTNELIMINAR.BackColor = ColorBotones
+        BTNREPORTE.BackColor = ColorBotones
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLCLIENTES' Puede moverla o quitarla según sea necesario..
         Me.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -12,11 +15,24 @@
             BTNEDITAR.Enabled = False
             BTNELIMINAR.Enabled = False
         End If
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf Button1_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf Button1_MouseLeave
+    End Sub
+
+    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
+    End Sub
+
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
         NUEVO.TXTCREDITO.SelectedIndex = -1
-        NUEVO.LBLCLIENTES.Text = "Alta de clientes"
+        NUEVO.LBLCLIENTES.Text = "Registro de clientes"
+        NUEVO.LBLCLIENTES.Location = New Point(160, 15)
         For Each control As Control In NUEVO.Controls
             If TypeOf control Is TextBox Then
                 DirectCast(control, TextBox).Clear()
@@ -37,8 +53,8 @@
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
-        NUEVO.LBLCLIENTES.Text = "Editar perfil de cliente"
-
+        NUEVO.LBLCLIENTES.Text = "Editar registro de cliente"
+        NUEVO.LBLCLIENTES.Location = New Point(155, 15)
         If DATACLIENTES.RowCount > 0 Then
             idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
             NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value

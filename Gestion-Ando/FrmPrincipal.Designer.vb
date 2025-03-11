@@ -27,12 +27,8 @@ Partial Class FrmPrincipal
         Me.MenuOpciones = New System.Windows.Forms.MenuStrip()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GeneralToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CréditoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.VentasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InventarioToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
@@ -47,83 +43,57 @@ Partial Class FrmPrincipal
         'MenuOpciones
         '
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
-        Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
-        Me.MenuOpciones.Size = New System.Drawing.Size(1910, 29)
+        Me.MenuOpciones.Size = New System.Drawing.Size(1920, 31)
         Me.MenuOpciones.TabIndex = 0
         Me.MenuOpciones.Text = "MenuStrip1"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(77, 25)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(82, 27)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'VentasToolStripMenuItem
         '
-        Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GeneralToolStripMenuItem, Me.CréditoToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(68, 25)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(73, 27)
         Me.VentasToolStripMenuItem.Text = "Ventas"
-        '
-        'GeneralToolStripMenuItem
-        '
-        Me.GeneralToolStripMenuItem.Name = "GeneralToolStripMenuItem"
-        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(134, 26)
-        Me.GeneralToolStripMenuItem.Text = "General"
-        '
-        'CréditoToolStripMenuItem
-        '
-        Me.CréditoToolStripMenuItem.Name = "CréditoToolStripMenuItem"
-        Me.CréditoToolStripMenuItem.Size = New System.Drawing.Size(134, 26)
-        Me.CréditoToolStripMenuItem.Text = "Crédito"
         '
         'InventarioToolStripMenuItem
         '
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(92, 25)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(99, 27)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ReportesToolStripMenuItem
         '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.VentasToolStripMenuItem1, Me.InventarioToolStripMenuItem1})
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(84, 25)
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(89, 27)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
-        '
-        'VentasToolStripMenuItem1
-        '
-        Me.VentasToolStripMenuItem1.Name = "VentasToolStripMenuItem1"
-        Me.VentasToolStripMenuItem1.Size = New System.Drawing.Size(150, 26)
-        Me.VentasToolStripMenuItem1.Text = "Ventas"
-        '
-        'InventarioToolStripMenuItem1
-        '
-        Me.InventarioToolStripMenuItem1.Name = "InventarioToolStripMenuItem1"
-        Me.InventarioToolStripMenuItem1.Size = New System.Drawing.Size(150, 26)
-        Me.InventarioToolStripMenuItem1.Text = "Inventario"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(83, 25)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(87, 27)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'CerrarSesiónToolStripMenuItem
         '
         Me.CerrarSesiónToolStripMenuItem.Name = "CerrarSesiónToolStripMenuItem"
-        Me.CerrarSesiónToolStripMenuItem.Size = New System.Drawing.Size(114, 25)
+        Me.CerrarSesiónToolStripMenuItem.Size = New System.Drawing.Size(121, 27)
         Me.CerrarSesiónToolStripMenuItem.Text = "Cerrar sesión"
         '
         'PANELFRAMES
         '
         Me.PANELFRAMES.Location = New System.Drawing.Point(12, 45)
         Me.PANELFRAMES.Name = "PANELFRAMES"
-        Me.PANELFRAMES.Size = New System.Drawing.Size(1886, 930)
+        Me.PANELFRAMES.Size = New System.Drawing.Size(1896, 940)
         Me.PANELFRAMES.TabIndex = 1
         '
         'LBLOPCIONES
@@ -139,10 +109,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLLOGIN.AutoSize = True
         Me.LBLLOGIN.BackColor = System.Drawing.Color.Transparent
-        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLLOGIN.Location = New System.Drawing.Point(895, 1)
+        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLLOGIN.Location = New System.Drawing.Point(895, 2)
         Me.LBLLOGIN.Name = "LBLLOGIN"
-        Me.LBLLOGIN.Size = New System.Drawing.Size(29, 27)
+        Me.LBLLOGIN.Size = New System.Drawing.Size(33, 29)
         Me.LBLLOGIN.TabIndex = 21
         Me.LBLLOGIN.Text = ". . ."
         '
@@ -150,10 +120,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLHORA.AutoSize = True
         Me.LBLHORA.BackColor = System.Drawing.Color.Transparent
-        Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLHORA.Location = New System.Drawing.Point(1700, 0)
+        Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLHORA.Location = New System.Drawing.Point(1699, 1)
         Me.LBLHORA.Name = "LBLHORA"
-        Me.LBLHORA.Size = New System.Drawing.Size(29, 27)
+        Me.LBLHORA.Size = New System.Drawing.Size(33, 29)
         Me.LBLHORA.TabIndex = 22
         Me.LBLHORA.Text = ". . ."
         '
@@ -164,10 +134,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLFECHA.AutoSize = True
         Me.LBLFECHA.BackColor = System.Drawing.Color.Transparent
-        Me.LBLFECHA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLFECHA.Location = New System.Drawing.Point(1600, 0)
+        Me.LBLFECHA.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLFECHA.Location = New System.Drawing.Point(1602, 2)
         Me.LBLFECHA.Name = "LBLFECHA"
-        Me.LBLFECHA.Size = New System.Drawing.Size(29, 27)
+        Me.LBLFECHA.Size = New System.Drawing.Size(33, 29)
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
         '
@@ -176,7 +146,7 @@ Partial Class FrmPrincipal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1910, 625)
+        Me.ClientSize = New System.Drawing.Size(1920, 997)
         Me.Controls.Add(Me.LBLFECHA)
         Me.Controls.Add(Me.LBLHORA)
         Me.Controls.Add(Me.LBLLOGIN)
@@ -185,6 +155,7 @@ Partial Class FrmPrincipal
         Me.Controls.Add(Me.MenuOpciones)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Location = New System.Drawing.Point(-10, 0)
         Me.MainMenuStrip = Me.MenuOpciones
         Me.MaximizeBox = False
         Me.Name = "FrmPrincipal"
@@ -202,12 +173,8 @@ Partial Class FrmPrincipal
     Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InventarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReportesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents VentasToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents InventarioToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents PANELFRAMES As Panel
-    Friend WithEvents GeneralToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CréditoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LBLOPCIONES As Label
     Friend WithEvents LBLLOGIN As Label

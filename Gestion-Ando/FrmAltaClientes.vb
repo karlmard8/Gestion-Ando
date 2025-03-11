@@ -1,8 +1,28 @@
 ﻿
 
 Public Class FrmAltaClientes
+
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        ' Definir el ancho del borde
+        Dim bordeAncho As Integer = 1
+
+        ' Crear un pincel para el borde (color y grosor)
+        Dim bordeColor As Color = Color.Black ' Color negro para simular FixedSingle
+        Dim bordePen As New Pen(bordeColor, bordeAncho)
+
+        ' Dibujar el borde alrededor del formulario
+        e.Graphics.DrawRectangle(bordePen, 0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
+
+        ' Liberar el recurso del pincel
+        bordePen.Dispose()
+    End Sub
+
     Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
+        BTNCANCELAR.BackColor = ColorBotones
+        BTNLIMPIAR.BackColor = ColorBotones
+        BTNGUARDAR.BackColor = ColorBotones
+
         TXTCODIGO.Focus()
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button Then
@@ -12,6 +32,29 @@ Public Class FrmAltaClientes
             End If
         Next
     End Sub
+
+    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
+
+            Dim currentControl As Control = CType(sender, Control)
+            Me.SelectNextControl(currentControl, True, True, True, True)
+        End If
+    End Sub
+
+    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+
+            BTNCANCELAR.PerformClick()
+        End If
+    End Sub
+
+    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Escape Then
+            BTNCANCELAR.PerformClick()
+        End If
+    End Sub
+
     Private Sub BTNLIMPIAR_Click(sender As Object, e As EventArgs) Handles BTNLIMPIAR.Click
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is System.Windows.Forms.TextBox Then
@@ -33,28 +76,6 @@ Public Class FrmAltaClientes
         TXTCODIGO.Focus()
     End Sub
 
-
-
-    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
-
-            Dim currentControl As Control = CType(sender, Control)
-            Me.SelectNextControl(currentControl, True, True, True, True)
-        End If
-    End Sub
-
-    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
 
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
@@ -116,6 +137,5 @@ Public Class FrmAltaClientes
         ' Restaurar la posición del cursor
         TXTRFC.SelectionStart = cursorPos
     End Sub
-
 
 End Class

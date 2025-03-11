@@ -3,7 +3,12 @@
 Public Class FrmInventario
     Dim ALTAINVENTARIO As New FrmAltaProductos
     Private Sub FrmInventario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.BackColor = ColorFormulario
+        BTNNUEVO.BackColor = ColorBotones
+        BTNEDITAR.BackColor = ColorBotones
+        BTNELIMINAR.BackColor = ColorBotones
+        BTNREPORTE.BackColor = ColorBotones
+        Me.DATAINVENTARIO.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLPRODUCTOS' Puede moverla o quitarla según sea necesario.
         Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -13,12 +18,23 @@ Public Class FrmInventario
             BTNEDITAR.Enabled = False
             BTNELIMINAR.Enabled = False
         End If
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf Button1_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf Button1_MouseLeave
     End Sub
 
+    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
+    End Sub
+
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
+    End Sub
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
         BANDERA = "NUEVO"
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Registro de producto"
-        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(160, 9)
+        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(190, 9)
 
         For Each control As Control In ALTAINVENTARIO.Controls
             If TypeOf control Is TextBox Then
@@ -44,7 +60,7 @@ Public Class FrmInventario
     Public Property BANDERA As String
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
-        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(128, 9)
+        ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(165, 9)
 
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value
@@ -125,7 +141,7 @@ Public Class FrmInventario
                 Else
                     ' Manejar el caso donde la ruta de la imagen es inválida
                     VISTAPRODUCTO.Image = Nothing
-                    MessageBox.Show("La ruta de la imagen es inválida o el archivo no existe.")
+                    MessageBox.Show("No hay imagen disponible para mostrar")
                 End If
             End If
         Catch ex As Exception

@@ -4,6 +4,8 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Public Class FrmLogin
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = ColorFormulario
+        Me.BTNENTRAR.BackColor = ColorBotones
         Call inicio()
 
         For Each ctrl As Control In Me.Controls
