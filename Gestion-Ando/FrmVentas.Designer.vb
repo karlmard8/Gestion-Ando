@@ -22,53 +22,27 @@ Partial Class FrmVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.BTNEDITAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
-        Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
-        Me.BTNREPORTE = New System.Windows.Forms.Button()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BTNREPORTE = New System.Windows.Forms.Button()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'BTNEDITAR
-        '
-        Me.BTNEDITAR.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNEDITAR.Location = New System.Drawing.Point(1540, 852)
-        Me.BTNEDITAR.Name = "BTNEDITAR"
-        Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNEDITAR.TabIndex = 6
-        Me.BTNEDITAR.Text = "Editar"
-        Me.BTNEDITAR.UseVisualStyleBackColor = False
         '
         'BTNNUEVO
         '
         Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(1341, 852)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(583, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 5
         Me.BTNNUEVO.Text = "Nuevo"
         Me.BTNNUEVO.UseVisualStyleBackColor = False
-        '
-        'BTNELIMINAR
-        '
-        Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(1741, 852)
-        Me.BTNELIMINAR.Name = "BTNELIMINAR"
-        Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNELIMINAR.TabIndex = 7
-        Me.BTNELIMINAR.Text = "Eliminar"
-        Me.BTNELIMINAR.UseVisualStyleBackColor = False
         '
         'DATAVENTAS
         '
@@ -84,28 +58,15 @@ Partial Class FrmVentas
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(1862, 720)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(704, 720)
         Me.DATAVENTAS.TabIndex = 4
-        '
-        'BTNREPORTE
-        '
-        Me.BTNREPORTE.AutoSize = True
-        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
-        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTE.Location = New System.Drawing.Point(1741, 41)
-        Me.BTNREPORTE.Name = "BTNREPORTE"
-        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
-        Me.BTNREPORTE.TabIndex = 17
-        Me.BTNREPORTE.Text = "Generar reporte"
-        Me.BTNREPORTE.UseVisualStyleBackColor = False
         '
         'TXTBUSCAR
         '
         Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTBUSCAR.Location = New System.Drawing.Point(115, 28)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 22)
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(385, 22)
         Me.TXTBUSCAR.TabIndex = 15
         '
         'Label1
@@ -123,22 +84,33 @@ Partial Class FrmVentas
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1052, 53)
+        Me.PictureBox1.Size = New System.Drawing.Size(503, 53)
         Me.PictureBox1.TabIndex = 16
         Me.PictureBox1.TabStop = False
+        '
+        'BTNREPORTE
+        '
+        Me.BTNREPORTE.AutoSize = True
+        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
+        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNREPORTE.Location = New System.Drawing.Point(583, 41)
+        Me.BTNREPORTE.Name = "BTNREPORTE"
+        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
+        Me.BTNREPORTE.TabIndex = 18
+        Me.BTNREPORTE.Text = "Generar reporte"
+        Me.BTNREPORTE.UseVisualStyleBackColor = False
         '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1886, 930)
+        Me.ClientSize = New System.Drawing.Size(731, 930)
         Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.BTNEDITAR)
         Me.Controls.Add(Me.BTNNUEVO)
-        Me.Controls.Add(Me.BTNELIMINAR)
         Me.Controls.Add(Me.DATAVENTAS)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FrmVentas"
@@ -149,13 +121,10 @@ Partial Class FrmVentas
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents BTNEDITAR As Button
     Friend WithEvents BTNNUEVO As Button
-    Friend WithEvents BTNELIMINAR As Button
     Friend WithEvents DATAVENTAS As DataGridView
-    Friend WithEvents BTNREPORTE As Button
     Friend WithEvents TXTBUSCAR As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BTNREPORTE As Button
 End Class

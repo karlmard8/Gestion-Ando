@@ -109,9 +109,14 @@ Public Class FrmPrincipal
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
         FrmClientes.Close()
         FrmInventario.Close()
+        idbusqueda = 0
 
+        FrmVentas.TopLevel = False
+        PANELFRAMES.Controls.Add(FrmVentas)
+        FrmVentas.Show()
+        FrmVentas.Location = New Point(575, 0)
         LBLOPCIONES.Text = "Ventas"
-        LBLOPCIONES.Location = New Point(50, 40)
+        LBLOPCIONES.Location = New Point(625, 40)
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
