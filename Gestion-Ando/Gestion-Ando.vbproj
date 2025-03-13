@@ -91,6 +91,12 @@
     <Compile Include="FrmAltaUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAltaVentas.Designer.vb">
+      <DependentUpon>FrmAltaVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAltaVentas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmClientes.Designer.vb">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaUsuarios.resx">
       <DependentUpon>FrmAltaUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAltaVentas.resx">
+      <DependentUpon>FrmAltaVentas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
+Imports System.Security.Cryptography.X509Certificates
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 
 Public Class FrmPrincipal
@@ -54,7 +55,7 @@ Public Class FrmPrincipal
         LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
     End Sub
 
-    Private Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
         Me.MenuOpciones.BackColor = ColorMenuStrip
 
@@ -74,19 +75,19 @@ Public Class FrmPrincipal
         comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = FrmLogin.TXTLOGIN.Text
         comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = FrmLogin.TXTCONTRASEÑA.Text
         comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 15).Direction = ParameterDirection.Output
+        comando.Parameters.Add("@RETORNO2", SqlDbType.VarChar, 60).Direction = ParameterDirection.Output
 
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
                 TIPO = "Administrador"
                 Me.MenuOpciones.Items(4).Visible = True
             Else
-
                 TIPO = "Operativo"
                 Me.MenuOpciones.Items(4).Visible = False
             End If
         End If
         Dim renderer As New CustomMenuRenderer()
-
+        USUARIOACTUAL = comando.Parameters("@RETORNO2").Value
         ' Asignar el renderizador personalizado al MenuStrip
         MenuOpciones.Renderer = renderer
     End Sub
@@ -94,7 +95,7 @@ Public Class FrmPrincipal
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
         FrmInventario.Close()
         FrmUsuarios.Close()
-
+        FrmVentas.Close()
         Dim CLIENTES As New FrmClientes
         idbusqueda = 0
         FrmClientes.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -109,8 +110,10 @@ Public Class FrmPrincipal
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
         FrmClientes.Close()
         FrmInventario.Close()
+        FrmUsuarios.Close()
         idbusqueda = 0
-
+        FrmVentas.VISTAVENTASTableAdapter.Connection = Conexion
+        FrmVentas.VISTAVENTASTableAdapter.Fill(FrmVentas.MuebleAlexDataSet.VISTAVENTAS)
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
         FrmVentas.Show()
@@ -122,6 +125,7 @@ Public Class FrmPrincipal
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
         FrmClientes.Close()
         FrmUsuarios.Close()
+        FrmVentas.Close()
         Dim INVENTARIO As New FrmInventario
         idbusqueda = 0
         FrmInventario.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -136,6 +140,7 @@ Public Class FrmPrincipal
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
         FrmClientes.Close()
         FrmInventario.Close()
+        FrmVentas.Close()
         Dim USUARIOS As New FrmUsuarios
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion

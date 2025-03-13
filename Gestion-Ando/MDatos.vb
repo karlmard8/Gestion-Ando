@@ -6,6 +6,7 @@
     Public dts As New DataSet
     Public idbusqueda As Long
     Public TIPO As String
+    Public USUARIOACTUAL As String
 
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
 
