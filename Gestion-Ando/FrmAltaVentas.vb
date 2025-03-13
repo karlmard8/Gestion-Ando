@@ -1,4 +1,6 @@
-﻿Public Class FrmAltaVentas
+﻿Imports System.ComponentModel
+
+Public Class FrmAltaVentas
     Private Sub FrmAltaVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'CONEXION PARA VISTAPRODUCTOS
         Me.VISTAPRODUCTOSTableAdapter.Connection = Conexion
@@ -16,10 +18,24 @@
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
         CmbClave.SelectedValue = 0
+        CmbClave.Enabled = False
         CMBPRODUCTO.SelectedValue = 0
         CMBPRECIO.SelectedValue = 0
         TXTMESES.Enabled = False
         TXTPAGO.Enabled = False
+        RBCONTADO.Checked = False
+        RBCREDITO.Checked = False
+        CMBPRECIO.FormatString = "C2"
+    End Sub
+    Private Sub FrmAltaVentas_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        For Each control As Control In Me.Controls
+            If TypeOf control Is TextBox Then
+                DirectCast(control, TextBox).Text = "Procesando..."
+            End If
+        Next
+        CmbClientes.Focus()
+        TXTPAGO.Text = String.Empty
+        DtgProductos.Rows.Clear()
 
     End Sub
 
@@ -29,7 +45,9 @@
 
     End Sub
     Private Sub TxtCantidad_TextChanged(sender As Object, e As EventArgs) Handles TxtCantidad.TextChanged
-        Me.LblSubTotal.Text = Val(TxtCantidad.Text) * Val(CMBPRECIO.Text)
+        CMBPRECIO.FormatString = ""
+        Dim SUBTOTAL = Val(TxtCantidad.Text) * Val(CMBPRECIO.Text)
+        Me.LblSubTotal.Text = SUBTOTAL.ToString("C2")
     End Sub
 
     Private Sub CMBPRODUCTO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBPRODUCTO.SelectedIndexChanged
@@ -72,8 +90,7 @@
                         comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
                         comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
                         If Conectar() = True Then
-                            Dim VENID As Long
-                            VENID = comando.Parameters("@RETORNO").Value
+                            Dim VENID As Long = comando.Parameters("@RETORNO").Value
                             For REC = 0 To Me.DtgProductos.RowCount - 1
                                 StrSql = "ALTADETVENTA"
                                 comando = New SqlClient.SqlCommand(StrSql, Conexion)
@@ -85,6 +102,7 @@
                                 comando.Parameters.Add("DETSUBTOTAL", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROSUBTOTAL").Value
                                 Conectar()
                             Next
+                            MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
                             DialogResult = DialogResult.OK
                             Me.Close()
                         End If
@@ -118,6 +136,7 @@
                                 Conectar()
                             Next
                             DialogResult = DialogResult.OK
+                            MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
                             Me.Close()
                         End If
                     Else
@@ -145,36 +164,32 @@
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
-        Dim SUBT As Double = Val(Me.LblSubTotal.Text)
-        Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.CMBPRECIO.Text, Me.TxtCantidad.Text, SUBT)
+        Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
+        Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
         Me.LBLSUB.Text = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
         Me.CmbClave.SelectedValue = 0
         Me.CMBPRECIO.SelectedValue = 0
         Me.CMBPRODUCTO.SelectedValue = 0
-
         Dim IVA = 0.16
         Dim IVAAPLI = IVA * Val(LBLSUB.Text)
         LBLIVA.Text = IVAAPLI
-
-        LBLTOTAL.Text = IVAAPLI + Val(LBLSUB.Text)
-
-
-
-
+        LBLTOTAL.Text = Val(LBLSUB.Text)
+        CMBPRODUCTO.Focus()
+        LblSubTotal.Text = "Procesando..."
     End Sub
 
     Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
         LBLSUB.Text = Val(LBLSUB.Text) - Val(DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value)
         LBLTOTAL.Text = Val(LBLTOTAL.Text) + Val(LBLIVA.Text)
         LBLIVA.Text = Val(LBLIVA.Text)
-
         Dim SUBTOTAL As Double = Val(LBLSUB.Text)
         LBLIVA.Text = IVA(SUBTOTAL).ToString("F2")
         Me.LBLTOTAL.Text = Val(Me.LBLSUB.Text) + Val(Me.LBLIVA.Text)
-
-
         DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
     End Sub
+
+
+
     Private Function IVA(SUBTOTAL As Double) As Double
         Dim RESULTADO As Double
         RESULTADO = SUBTOTAL * 0.16
