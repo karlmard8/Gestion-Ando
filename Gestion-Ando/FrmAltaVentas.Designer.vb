@@ -49,6 +49,8 @@ Partial Class FrmAltaVentas
         Me.PROSUBTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CmbProductos = New System.Windows.Forms.Panel()
         Me.CMBPRECIO = New System.Windows.Forms.ComboBox()
+        Me.VISTAPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.BtnQuitar = New System.Windows.Forms.Button()
         Me.BtnAgregar = New System.Windows.Forms.Button()
         Me.LblSubTotal = New System.Windows.Forms.Label()
@@ -65,19 +67,23 @@ Partial Class FrmAltaVentas
         Me.Label4 = New System.Windows.Forms.Label()
         Me.LBLUSUARIOACTUAL = New System.Windows.Forms.Label()
         Me.CmbClientes = New System.Windows.Forms.ComboBox()
+        Me.VISTACLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
-        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
+        Me.VISTACLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter()
+        Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.CmbProductos.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
+        CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -393,7 +399,9 @@ Partial Class FrmAltaVentas
         'CMBPRECIO
         '
         Me.CMBPRECIO.BackColor = System.Drawing.SystemColors.Control
+        Me.CMBPRECIO.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CMBPRECIO.DisplayMember = "PROPRECIO"
+        Me.CMBPRECIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
         Me.CMBPRECIO.Enabled = False
         Me.CMBPRECIO.FormattingEnabled = True
         Me.CMBPRECIO.Location = New System.Drawing.Point(471, 18)
@@ -402,7 +410,17 @@ Partial Class FrmAltaVentas
         Me.CMBPRECIO.Size = New System.Drawing.Size(92, 21)
         Me.CMBPRECIO.TabIndex = 17
         Me.CMBPRECIO.Tag = ""
-        Me.CMBPRECIO.ValueMember = "PROEXISTENCIAS"
+        Me.CMBPRECIO.ValueMember = "PROID"
+        '
+        'VISTAPRODUCTOSBindingSource
+        '
+        Me.VISTAPRODUCTOSBindingSource.DataMember = "VISTAPRODUCTOS"
+        Me.VISTAPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BtnQuitar
         '
@@ -480,6 +498,7 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.CMBPRODUCTO.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CMBPRODUCTO.BackColor = System.Drawing.SystemColors.Control
+        Me.CMBPRODUCTO.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CMBPRODUCTO.DisplayMember = "PRONOMBRE"
         Me.CMBPRODUCTO.FormattingEnabled = True
         Me.CMBPRODUCTO.Location = New System.Drawing.Point(271, 20)
@@ -494,6 +513,7 @@ Partial Class FrmAltaVentas
         Me.CmbClave.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.CmbClave.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CmbClave.BackColor = System.Drawing.SystemColors.Control
+        Me.CmbClave.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CmbClave.DisplayMember = "PROCLAVE"
         Me.CmbClave.FormattingEnabled = True
         Me.CmbClave.Location = New System.Drawing.Point(65, 18)
@@ -593,7 +613,8 @@ Partial Class FrmAltaVentas
         Me.CmbClientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.CmbClientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.CmbClientes.BackColor = System.Drawing.SystemColors.Control
-        Me.CmbClientes.DataSource = Me.TBLCLIENTESBindingSource
+        Me.CmbClientes.DataSource = Me.VISTACLIENTESBindingSource
+        Me.CmbClientes.DisplayMember = "Expr1"
         Me.CmbClientes.Font = New System.Drawing.Font("Dubai", 9.749999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmbClientes.FormattingEnabled = True
         Me.CmbClientes.Location = New System.Drawing.Point(84, 90)
@@ -602,6 +623,16 @@ Partial Class FrmAltaVentas
         Me.CmbClientes.Size = New System.Drawing.Size(554, 30)
         Me.CmbClientes.TabIndex = 7
         Me.CmbClientes.ValueMember = "CLIID"
+        '
+        'VISTACLIENTESBindingSource
+        '
+        Me.VISTACLIENTESBindingSource.DataMember = "VISTACLIENTES"
+        Me.VISTACLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'TBLCLIENTESBindingSource
+        '
+        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
+        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
         '
         'GroupBox1
         '
@@ -622,11 +653,6 @@ Partial Class FrmAltaVentas
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de la venta"
         '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'VISTAVENTASBindingSource
         '
         Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
@@ -636,14 +662,17 @@ Partial Class FrmAltaVentas
         '
         Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
         '
-        'TBLCLIENTESBindingSource
-        '
-        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
-        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
         'TBLCLIENTESTableAdapter
         '
         Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTACLIENTESTableAdapter
+        '
+        Me.VISTACLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTAPRODUCTOSTableAdapter
+        '
+        Me.VISTAPRODUCTOSTableAdapter.ClearBeforeFill = True
         '
         'FrmAltaVentas
         '
@@ -673,11 +702,13 @@ Partial Class FrmAltaVentas
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.CmbProductos.ResumeLayout(False)
         Me.CmbProductos.PerformLayout()
+        CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -731,4 +762,8 @@ Partial Class FrmAltaVentas
     Friend WithEvents VISTAVENTASTableAdapter As MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter
     Friend WithEvents TBLCLIENTESBindingSource As BindingSource
     Friend WithEvents TBLCLIENTESTableAdapter As MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter
+    Friend WithEvents VISTACLIENTESBindingSource As BindingSource
+    Friend WithEvents VISTACLIENTESTableAdapter As MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter
+    Friend WithEvents VISTAPRODUCTOSBindingSource As BindingSource
+    Friend WithEvents VISTAPRODUCTOSTableAdapter As MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter
 End Class

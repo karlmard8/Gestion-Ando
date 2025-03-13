@@ -31,6 +31,9 @@
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
-        FrmAltaVentas.ShowDialog()
+        If FrmAltaVentas.ShowDialog = DialogResult.OK Then
+            Me.VISTAVENTASTableAdapter.Connection = Conexion
+            Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
+        End If
     End Sub
 End Class
