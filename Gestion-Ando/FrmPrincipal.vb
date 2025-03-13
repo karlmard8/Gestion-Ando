@@ -65,7 +65,8 @@ Public Class FrmPrincipal
         LBLHORA.ForeColor = Color.White
         LBLLOGIN.BackColor = ColorMenuStrip
         LBLLOGIN.ForeColor = Color.White
-        LBLFECHA.Text = Today.Date
+        FECHA = Today.Date.ToString("dd/MM/yyyy")
+        LBLFECHA.Text = FECHA
         Timer1.Interval = 1000 ' 1000 milisegundos = 1 segundo
         Timer1.Start()
         LBLLOGIN.Text = "Bienvenido " + FrmLogin.TXTLOGIN.Text.ToUpper()
@@ -76,6 +77,7 @@ Public Class FrmPrincipal
         comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = FrmLogin.TXTCONTRASEÑA.Text
         comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 15).Direction = ParameterDirection.Output
         comando.Parameters.Add("@RETORNO2", SqlDbType.VarChar, 60).Direction = ParameterDirection.Output
+        comando.Parameters.Add("@RETORNO3", SqlDbType.BigInt).Direction = ParameterDirection.Output
 
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
@@ -88,6 +90,7 @@ Public Class FrmPrincipal
         End If
         Dim renderer As New CustomMenuRenderer()
         USUARIOACTUAL = comando.Parameters("@RETORNO2").Value
+        IDUSUARIOACTUAL = comando.Parameters("@RETORNO3").Value
         ' Asignar el renderizador personalizado al MenuStrip
         MenuOpciones.Renderer = renderer
     End Sub

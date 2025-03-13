@@ -47,7 +47,7 @@ Partial Class FrmAltaVentas
         Me.PROCANTIDAD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROSUBTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CmbProductos = New System.Windows.Forms.Panel()
+        Me.GRUPO2 = New System.Windows.Forms.Panel()
         Me.CMBPRECIO = New System.Windows.Forms.ComboBox()
         Me.VISTAPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
@@ -69,7 +69,7 @@ Partial Class FrmAltaVentas
         Me.CmbClientes = New System.Windows.Forms.ComboBox()
         Me.VISTACLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GRUPO1 = New System.Windows.Forms.GroupBox()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
         Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
@@ -77,12 +77,12 @@ Partial Class FrmAltaVentas
         Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CmbProductos.SuspendLayout()
+        Me.GRUPO2.SuspendLayout()
         CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.GRUPO1.SuspendLayout()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -374,27 +374,27 @@ Partial Class FrmAltaVentas
         Me.PROSUBTOTAL.ReadOnly = True
         Me.PROSUBTOTAL.Width = 80
         '
-        'CmbProductos
+        'GRUPO2
         '
-        Me.CmbProductos.BackColor = System.Drawing.SystemColors.Control
-        Me.CmbProductos.Controls.Add(Me.CMBPRECIO)
-        Me.CmbProductos.Controls.Add(Me.BtnQuitar)
-        Me.CmbProductos.Controls.Add(Me.BtnAgregar)
-        Me.CmbProductos.Controls.Add(Me.LblSubTotal)
-        Me.CmbProductos.Controls.Add(Me.Label12)
-        Me.CmbProductos.Controls.Add(Me.Label6)
-        Me.CmbProductos.Controls.Add(Me.TxtCantidad)
-        Me.CmbProductos.Controls.Add(Me.CMBPRODUCTO)
-        Me.CmbProductos.Controls.Add(Me.CmbClave)
-        Me.CmbProductos.Controls.Add(Me.Label10)
-        Me.CmbProductos.Controls.Add(Me.Label9)
-        Me.CmbProductos.Controls.Add(Me.Label8)
-        Me.CmbProductos.Dock = System.Windows.Forms.DockStyle.Top
-        Me.CmbProductos.Location = New System.Drawing.Point(0, 158)
-        Me.CmbProductos.Margin = New System.Windows.Forms.Padding(2)
-        Me.CmbProductos.Name = "CmbProductos"
-        Me.CmbProductos.Size = New System.Drawing.Size(650, 102)
-        Me.CmbProductos.TabIndex = 25
+        Me.GRUPO2.BackColor = System.Drawing.SystemColors.Control
+        Me.GRUPO2.Controls.Add(Me.CMBPRECIO)
+        Me.GRUPO2.Controls.Add(Me.BtnQuitar)
+        Me.GRUPO2.Controls.Add(Me.BtnAgregar)
+        Me.GRUPO2.Controls.Add(Me.LblSubTotal)
+        Me.GRUPO2.Controls.Add(Me.Label12)
+        Me.GRUPO2.Controls.Add(Me.Label6)
+        Me.GRUPO2.Controls.Add(Me.TxtCantidad)
+        Me.GRUPO2.Controls.Add(Me.CMBPRODUCTO)
+        Me.GRUPO2.Controls.Add(Me.CmbClave)
+        Me.GRUPO2.Controls.Add(Me.Label10)
+        Me.GRUPO2.Controls.Add(Me.Label9)
+        Me.GRUPO2.Controls.Add(Me.Label8)
+        Me.GRUPO2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GRUPO2.Location = New System.Drawing.Point(0, 158)
+        Me.GRUPO2.Margin = New System.Windows.Forms.Padding(2)
+        Me.GRUPO2.Name = "GRUPO2"
+        Me.GRUPO2.Size = New System.Drawing.Size(650, 102)
+        Me.GRUPO2.TabIndex = 25
         '
         'CMBPRECIO
         '
@@ -634,24 +634,24 @@ Partial Class FrmAltaVentas
         Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
         Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
         '
-        'GroupBox1
+        'GRUPO1
         '
-        Me.GroupBox1.BackColor = System.Drawing.SystemColors.Control
-        Me.GroupBox1.Controls.Add(Me.CmbClientes)
-        Me.GroupBox1.Controls.Add(Me.LBLUSUARIOACTUAL)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Size = New System.Drawing.Size(650, 130)
-        Me.GroupBox1.TabIndex = 23
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Datos de la venta"
+        Me.GRUPO1.BackColor = System.Drawing.SystemColors.Control
+        Me.GRUPO1.Controls.Add(Me.CmbClientes)
+        Me.GRUPO1.Controls.Add(Me.LBLUSUARIOACTUAL)
+        Me.GRUPO1.Controls.Add(Me.Label4)
+        Me.GRUPO1.Controls.Add(Me.Label3)
+        Me.GRUPO1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GRUPO1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GRUPO1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.GRUPO1.Location = New System.Drawing.Point(0, 0)
+        Me.GRUPO1.Margin = New System.Windows.Forms.Padding(2)
+        Me.GRUPO1.Name = "GRUPO1"
+        Me.GRUPO1.Padding = New System.Windows.Forms.Padding(2)
+        Me.GRUPO1.Size = New System.Drawing.Size(650, 130)
+        Me.GRUPO1.TabIndex = 23
+        Me.GRUPO1.TabStop = False
+        Me.GRUPO1.Text = "Datos de la venta"
         '
         'VISTAVENTASBindingSource
         '
@@ -687,9 +687,9 @@ Partial Class FrmAltaVentas
         Me.Controls.Add(Me.LBLSUB)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.DtgProductos)
-        Me.Controls.Add(Me.CmbProductos)
+        Me.Controls.Add(Me.GRUPO2)
         Me.Controls.Add(Me.LBLDETALLESPRODUCTO)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.GRUPO1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FrmAltaVentas"
@@ -700,14 +700,14 @@ Partial Class FrmAltaVentas
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.CmbProductos.ResumeLayout(False)
-        Me.CmbProductos.PerformLayout()
+        Me.GRUPO2.ResumeLayout(False)
+        Me.GRUPO2.PerformLayout()
         CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.GRUPO1.ResumeLayout(False)
+        Me.GRUPO1.PerformLayout()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -732,7 +732,7 @@ Partial Class FrmAltaVentas
     Friend WithEvents LBLSUB As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents DtgProductos As DataGridView
-    Friend WithEvents CmbProductos As Panel
+    Friend WithEvents GRUPO2 As Panel
     Friend WithEvents CMBPRECIO As ComboBox
     Friend WithEvents BtnQuitar As Button
     Friend WithEvents BtnAgregar As Button
@@ -750,7 +750,7 @@ Partial Class FrmAltaVentas
     Friend WithEvents Label4 As Label
     Friend WithEvents LBLUSUARIOACTUAL As Label
     Friend WithEvents CmbClientes As ComboBox
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GRUPO1 As GroupBox
     Friend WithEvents PROID As DataGridViewTextBoxColumn
     Friend WithEvents PROCLAVE As DataGridViewTextBoxColumn
     Friend WithEvents PRONOMBRE As DataGridViewTextBoxColumn

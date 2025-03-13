@@ -7,6 +7,8 @@
     Public idbusqueda As Long
     Public TIPO As String
     Public USUARIOACTUAL As String
+    Public IDUSUARIOACTUAL As Integer
+    Public FECHA
 
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
 
