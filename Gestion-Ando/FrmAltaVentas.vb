@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Security.Cryptography
 
 Public Class FrmAltaVentas
     Private Sub FrmAltaVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -17,9 +18,9 @@ Public Class FrmAltaVentas
         BTNPAGAR.BackColor = ColorBotones
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
-        CmbClave.SelectedValue = 0
+        CmbClave.SelectedValue = -1
         CmbClave.Enabled = False
-        CMBPRODUCTO.SelectedValue = 0
+        CMBPRODUCTO.SelectedValue = -1
         CMBPRECIO.SelectedValue = 0
         TXTMESES.Enabled = False
         TXTPAGO.Enabled = False
@@ -33,6 +34,9 @@ Public Class FrmAltaVentas
                 DirectCast(control, TextBox).Text = "Procesando..."
             End If
         Next
+        LBLSUB.Text = "Procesando..."
+        LBLIVA.Text = "Procesando..."
+        LBLTOTAL.Text = "Procesando..."
         CmbClientes.Focus()
         TXTPAGO.Text = String.Empty
         DtgProductos.Rows.Clear()
@@ -44,8 +48,12 @@ Public Class FrmAltaVentas
         TxtCantidad.Text = String.Empty
 
     End Sub
-    Private Sub TxtCantidad_TextChanged(sender As Object, e As EventArgs) Handles TxtCantidad.TextChanged
+
+    Private Sub TxtCantidad_GotFocus(sender As Object, e As EventArgs) Handles TxtCantidad.GotFocus
         CMBPRECIO.FormatString = ""
+    End Sub
+
+    Private Sub TxtCantidad_TextChanged(sender As Object, e As EventArgs) Handles TxtCantidad.TextChanged
         Dim SUBTOTAL = Val(TxtCantidad.Text) * Val(CMBPRECIO.Text)
         Me.LblSubTotal.Text = SUBTOTAL.ToString("C2")
     End Sub
@@ -107,7 +115,7 @@ Public Class FrmAltaVentas
                             Me.Close()
                         End If
                     Else
-                        MsgBox("Ingrese la cantidad a pagar", MsgBoxStyle.Critical, "error")
+                        MsgBox("Dinero faltante", MsgBoxStyle.Critical, "error")
                     End If
                 Else
                     If Val(Me.TXTMESES.Text) > 0 Then
@@ -154,7 +162,6 @@ Public Class FrmAltaVentas
 
     End Sub
 
-
     Private Sub TxtPago_TextChanged(sender As Object, e As EventArgs) Handles TXTPAGO.TextChanged
         If Val(Me.TXTPAGO.Text) < Val(Me.LBLTOTAL.Text) Then
             Me.TXTCAMBIO.Text = 0.ToString("C2")
@@ -164,18 +171,26 @@ Public Class FrmAltaVentas
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
-        Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
-        Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
-        Me.LBLSUB.Text = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
-        Me.CmbClave.SelectedValue = 0
-        Me.CMBPRECIO.SelectedValue = 0
-        Me.CMBPRODUCTO.SelectedValue = 0
-        Dim IVA = 0.16
-        Dim IVAAPLI = IVA * Val(LBLSUB.Text)
-        LBLIVA.Text = IVAAPLI
-        LBLTOTAL.Text = Val(LBLSUB.Text)
-        CMBPRODUCTO.Focus()
-        LblSubTotal.Text = "Procesando..."
+        If CMBPRODUCTO.Text = String.Empty Then
+            CMBPRODUCTO.Focus()
+        ElseIf TxtCantidad.Text = String.Empty Then
+            TxtCantidad.Focus()
+        Else
+            Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
+            Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
+            Me.LBLSUB.Text = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
+            Me.CmbClave.SelectedValue = 0
+            Me.CMBPRECIO.SelectedValue = 0
+            Me.CMBPRODUCTO.SelectedValue = 0
+            Dim IVA = 0.16
+            Dim IVAAPLI = IVA * Val(LBLSUB.Text)
+            LBLIVA.Text = IVAAPLI
+            LBLTOTAL.Text = Val(LBLSUB.Text)
+            CMBPRODUCTO.Focus()
+            LblSubTotal.Text = "Procesando..."
+            CMBPRECIO.FormatString = "C2"
+            CMBPRECIO.Text = String.Empty
+        End If
     End Sub
 
     Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
@@ -187,8 +202,6 @@ Public Class FrmAltaVentas
         Me.LBLTOTAL.Text = Val(Me.LBLSUB.Text) + Val(Me.LBLIVA.Text)
         DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
     End Sub
-
-
 
     Private Function IVA(SUBTOTAL As Double) As Double
         Dim RESULTADO As Double
