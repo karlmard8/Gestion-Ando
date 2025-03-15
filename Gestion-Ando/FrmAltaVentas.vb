@@ -178,13 +178,14 @@ Public Class FrmAltaVentas
         Else
             Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
             Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
-            Me.LBLSUB.Text = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
+            Dim SUBTOT As Integer = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
+            Me.LBLSUB.Text = SUBTOT
             Me.CmbClave.SelectedValue = 0
             Me.CMBPRECIO.SelectedValue = 0
             Me.CMBPRODUCTO.SelectedValue = 0
             Dim IVA = 0.16
-            Dim IVAAPLI = IVA * Val(LBLSUB.Text)
-            LBLIVA.Text = IVAAPLI
+            Dim IVAAPLI = IVA * SUBTOT
+            LBLIVA.Text = IVAAPLI.ToString("C2")
             LBLTOTAL.Text = Val(LBLSUB.Text)
             CMBPRODUCTO.Focus()
             LblSubTotal.Text = "Procesando..."
