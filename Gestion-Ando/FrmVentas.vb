@@ -9,6 +9,8 @@
         BTNREPORTE.BackColor = ColorBotones
         DATAVENTAS.BackgroundColor = ColorFormulario
         DETALLEVENTAS.Location = New Point(540, 187)
+        DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
+        DATAVENTAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged

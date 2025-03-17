@@ -23,7 +23,7 @@ Partial Class FrmInventario
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATAINVENTARIO = New System.Windows.Forms.DataGridView()
         Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -111,9 +111,9 @@ Partial Class FrmInventario
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
         Me.PROPRECIO.HeaderText = "Precio"
         Me.PROPRECIO.Name = "PROPRECIO"
         Me.PROPRECIO.ReadOnly = True
@@ -226,7 +226,7 @@ Partial Class FrmInventario
         Me.VISTAPRODUCTO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.VISTAPRODUCTO.Location = New System.Drawing.Point(1418, 122)
         Me.VISTAPRODUCTO.Name = "VISTAPRODUCTO"
-        Me.VISTAPRODUCTO.Size = New System.Drawing.Size(440, 440)
+        Me.VISTAPRODUCTO.Size = New System.Drawing.Size(466, 440)
         Me.VISTAPRODUCTO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.VISTAPRODUCTO.TabIndex = 15
         Me.VISTAPRODUCTO.TabStop = False
@@ -235,7 +235,7 @@ Partial Class FrmInventario
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(1472, 92)
+        Me.Label2.Location = New System.Drawing.Point(1483, 92)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(343, 27)
         Me.Label2.TabIndex = 16
@@ -276,7 +276,7 @@ Partial Class FrmInventario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1860, 930)
+        Me.ClientSize = New System.Drawing.Size(1896, 940)
         Me.Controls.Add(Me.LBLPRECIO)
         Me.Controls.Add(Me.LBLEXISTENCIAS)
         Me.Controls.Add(Me.LBLPRODUCTO)

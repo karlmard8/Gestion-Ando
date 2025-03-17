@@ -26,13 +26,6 @@ Partial Class FrmVentas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
-        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.VENEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
@@ -41,6 +34,13 @@ Partial Class FrmVentas
         Me.BTNREPORTE = New System.Windows.Forms.Button()
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
+        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VENEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,62 +78,6 @@ Partial Class FrmVentas
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAVENTAS.Size = New System.Drawing.Size(704, 720)
         Me.DATAVENTAS.TabIndex = 4
-        '
-        'VENFECHA
-        '
-        Me.VENFECHA.DataPropertyName = "VENFECHA"
-        Me.VENFECHA.HeaderText = "Fecha"
-        Me.VENFECHA.Name = "VENFECHA"
-        Me.VENFECHA.ReadOnly = True
-        '
-        'CLIENTE
-        '
-        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLIENTE.DataPropertyName = "CLIENTE"
-        Me.CLIENTE.HeaderText = "Cliente"
-        Me.CLIENTE.Name = "CLIENTE"
-        Me.CLIENTE.ReadOnly = True
-        '
-        'VENFORMA
-        '
-        Me.VENFORMA.DataPropertyName = "VENFORMA"
-        Me.VENFORMA.HeaderText = "Venta"
-        Me.VENFORMA.Name = "VENFORMA"
-        Me.VENFORMA.ReadOnly = True
-        '
-        'VENTOTAL
-        '
-        Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle1
-        Me.VENTOTAL.HeaderText = "Total"
-        Me.VENTOTAL.Name = "VENTOTAL"
-        Me.VENTOTAL.ReadOnly = True
-        '
-        'VENID
-        '
-        Me.VENID.DataPropertyName = "VENID"
-        Me.VENID.HeaderText = "VENID"
-        Me.VENID.Name = "VENID"
-        Me.VENID.ReadOnly = True
-        Me.VENID.Visible = False
-        '
-        'CLIEXISTE
-        '
-        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
-        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
-        Me.CLIEXISTE.Name = "CLIEXISTE"
-        Me.CLIEXISTE.ReadOnly = True
-        Me.CLIEXISTE.Visible = False
-        '
-        'VENEXISTE
-        '
-        Me.VENEXISTE.DataPropertyName = "VENEXISTE"
-        Me.VENEXISTE.HeaderText = "VENEXISTE"
-        Me.VENEXISTE.Name = "VENEXISTE"
-        Me.VENEXISTE.ReadOnly = True
-        Me.VENEXISTE.Visible = False
         '
         'VISTAVENTASBindingSource
         '
@@ -201,6 +145,63 @@ Partial Class FrmVentas
         Me.BTNNUEVO.Text = "Nuevo"
         Me.BTNNUEVO.UseVisualStyleBackColor = False
         '
+        'VENFECHA
+        '
+        Me.VENFECHA.DataPropertyName = "VENFECHA"
+        Me.VENFECHA.HeaderText = "Fecha"
+        Me.VENFECHA.Name = "VENFECHA"
+        Me.VENFECHA.ReadOnly = True
+        Me.VENFECHA.Width = 110
+        '
+        'CLIENTE
+        '
+        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIENTE.DataPropertyName = "CLIENTE"
+        Me.CLIENTE.HeaderText = "Cliente"
+        Me.CLIENTE.Name = "CLIENTE"
+        Me.CLIENTE.ReadOnly = True
+        '
+        'VENFORMA
+        '
+        Me.VENFORMA.DataPropertyName = "VENFORMA"
+        Me.VENFORMA.HeaderText = "Venta"
+        Me.VENFORMA.Name = "VENFORMA"
+        Me.VENFORMA.ReadOnly = True
+        '
+        'VENTOTAL
+        '
+        Me.VENTOTAL.DataPropertyName = "VENTOTAL"
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle1
+        Me.VENTOTAL.HeaderText = "Total"
+        Me.VENTOTAL.Name = "VENTOTAL"
+        Me.VENTOTAL.ReadOnly = True
+        '
+        'VENID
+        '
+        Me.VENID.DataPropertyName = "VENID"
+        Me.VENID.HeaderText = "VENID"
+        Me.VENID.Name = "VENID"
+        Me.VENID.ReadOnly = True
+        Me.VENID.Visible = False
+        '
+        'CLIEXISTE
+        '
+        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
+        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
+        Me.CLIEXISTE.Name = "CLIEXISTE"
+        Me.CLIEXISTE.ReadOnly = True
+        Me.CLIEXISTE.Visible = False
+        '
+        'VENEXISTE
+        '
+        Me.VENEXISTE.DataPropertyName = "VENEXISTE"
+        Me.VENEXISTE.HeaderText = "VENEXISTE"
+        Me.VENEXISTE.Name = "VENEXISTE"
+        Me.VENEXISTE.ReadOnly = True
+        Me.VENEXISTE.Visible = False
+        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -233,6 +234,7 @@ Partial Class FrmVentas
     Friend WithEvents MuebleAlexDataSet As MuebleAlexDataSet
     Friend WithEvents VISTAVENTASBindingSource As BindingSource
     Friend WithEvents VISTAVENTASTableAdapter As MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter
+    Friend WithEvents BTNNUEVO As Button
     Friend WithEvents VENFECHA As DataGridViewTextBoxColumn
     Friend WithEvents CLIENTE As DataGridViewTextBoxColumn
     Friend WithEvents VENFORMA As DataGridViewTextBoxColumn
@@ -240,5 +242,4 @@ Partial Class FrmVentas
     Friend WithEvents VENID As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
     Friend WithEvents VENEXISTE As DataGridViewCheckBoxColumn
-    Friend WithEvents BTNNUEVO As Button
 End Class
