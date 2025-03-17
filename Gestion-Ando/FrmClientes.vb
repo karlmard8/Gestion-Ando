@@ -1,6 +1,9 @@
 ﻿Public Class FrmClientes
     Dim NUEVO As New FrmAltaClientes
     Private Sub FrmClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTACLIENTESPRINCIPAL' Puede moverla o quitarla según sea necesario.
+        Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+        Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
         Me.BackColor = ColorFormulario
         Me.DATACLIENTES.BackgroundColor = ColorFormulario
         BTNNUEVO.BackColor = ColorBotones
@@ -44,8 +47,8 @@
         Next
         idbusqueda = 0
         If NUEVO.ShowDialog = DialogResult.OK Then
-            Me.TBLCLIENTESTableAdapter.Connection = Conexion
-            Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+            Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+            Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
         End If
         TXTBUSCAR.Focus()
     End Sub
@@ -60,9 +63,36 @@
         If DATACLIENTES.RowCount > 0 Then
             idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
             NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value
-            NUEVO.TXTNOMBRE.Text = DATACLIENTES.CurrentRow.Cells("CLINOMBRE").Value
-            NUEVO.TXTAPEMATERNO.Text = DATACLIENTES.CurrentRow.Cells("CLIAPEPATERNO").Value
-            NUEVO.TXTAPEPATERNO.Text = DATACLIENTES.CurrentRow.Cells("CLIAPEMATERNO").Value
+            Dim nombreCompleto As String = DATACLIENTES.CurrentRow.Cells("CLIENTES").Value.ToString().Trim()
+            Dim partes() As String = nombreCompleto.Split(" "c) ' Dividir por espacios
+
+            ' Inicializar variables
+            Dim nombre As String = ""
+            Dim apellidoPaterno As String = ""
+            Dim apellidoMaterno As String = ""
+
+            Select Case partes.Length
+                Case 1 ' Solo un nombre
+                    nombre = partes(0)
+                Case 2 ' Nombre y apellido paterno
+                    nombre = partes(0)
+                    apellidoPaterno = partes(1)
+                Case 3 ' Nombre, apellido paterno y apellido materno
+                    nombre = partes(0)
+                    apellidoPaterno = partes(1)
+                    apellidoMaterno = partes(2)
+                Case Else ' Más de 3 palabras (ej. nombres compuestos)
+                    nombre = partes(0) & " " & partes(1) ' Se asume que el nombre es compuesto
+                    apellidoPaterno = partes(2)
+                    apellidoMaterno = String.Join(" ", partes, 3, partes.Length - 3) ' Lo que reste es el apellido materno
+            End Select
+
+            ' Asignar valores a las cajas de texto
+            NUEVO.TXTNOMBRE.Text = nombre
+            NUEVO.TXTAPEPATERNO.Text = apellidoPaterno
+            NUEVO.TXTAPEMATERNO.Text = apellidoMaterno
+
+
             NUEVO.TXTCALLE.Text = DATACLIENTES.CurrentRow.Cells("CLIDIRECCION").Value
             NUEVO.TXTCOLONIIA.Text = DATACLIENTES.CurrentRow.Cells("CLICOLONIA").Value
             NUEVO.TXTCP.Text = DATACLIENTES.CurrentRow.Cells("CLICP").Value
@@ -76,8 +106,8 @@
             NUEVO.TXTCFDI.Text = DATACLIENTES.CurrentRow.Cells("CLICFDI").Value
 
             If NUEVO.ShowDialog = DialogResult.OK Then
-                Me.TBLCLIENTESTableAdapter.Connection = Conexion
-                Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+                Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+                Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
             End If
         End If
         TXTBUSCAR.Focus()
@@ -92,8 +122,8 @@
             comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.DATACLIENTES.CurrentRow.Cells("CLIID").Value
 
             If Conectar() = True Then
-                Me.TBLCLIENTESTableAdapter.Connection = Conexion
-                Me.TBLCLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.TBLCLIENTES)
+                Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+                Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
                 MsgBox("Cliente eliminado", MsgBoxStyle.Information, "Confirmación")
             End If
         End If

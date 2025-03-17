@@ -24,9 +24,8 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATACLIENTES = New System.Windows.Forms.DataGridView()
-        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
-        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNEDITAR = New System.Windows.Forms.Button()
@@ -34,27 +33,32 @@ Partial Class FrmClientes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BTNREPORTE = New System.Windows.Forms.Button()
+        Me.CLIIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
+        Me.VISTACLIENTESPRINCIPALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VISTACLIENTESPRINCIPALTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter()
         Me.CLIID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICODIGO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLINOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIAPEPATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIAPEMATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Clientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIDIRECCION = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICOLONIA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIColonia = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICP = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICIUDAD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIESTADO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLITELEFONO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICiudad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLITelEfono = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIHISTORIALCREDITICIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIRFC = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIREGIMENFISCAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DATACLIENTES
@@ -65,8 +69,8 @@ Partial Class FrmClientes
         Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.CLINOMBRE, Me.CLIAPEPATERNO, Me.CLIAPEMATERNO, Me.CLIDIRECCION, Me.CLICOLONIA, Me.CLICP, Me.CLICIUDAD, Me.CLIESTADO, Me.CLITELEFONO, Me.CLICOMENTARIOS, Me.CLIHISTORIALCREDITICIO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLIEXISTE})
-        Me.DATACLIENTES.DataSource = Me.TBLCLIENTESBindingSource
+        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.Clientes, Me.CLIDIRECCION, Me.CLIColonia, Me.CLICP, Me.CLICiudad, Me.CLIEstado, Me.CLITelEfono, Me.CLIHISTORIALCREDITICIO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLICOMENTARIOS})
+        Me.DATACLIENTES.DataSource = Me.VISTACLIENTESPRINCIPALBindingSource1
         Me.DATACLIENTES.GridColor = System.Drawing.SystemColors.Control
         Me.DATACLIENTES.Location = New System.Drawing.Point(12, 92)
         Me.DATACLIENTES.Name = "DATACLIENTES"
@@ -76,19 +80,15 @@ Partial Class FrmClientes
         Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
         '
-        'TBLCLIENTESBindingSource
+        'VISTACLIENTESPRINCIPALBindingSource1
         '
-        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
-        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataSource = Me.MuebleAlexDataSet
         '
         'MuebleAlexDataSet
         '
         Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
         Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TBLCLIENTESTableAdapter
-        '
-        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
         '
         'BTNELIMINAR
         '
@@ -166,6 +166,38 @@ Partial Class FrmClientes
         Me.BTNREPORTE.Text = "Generar reporte"
         Me.BTNREPORTE.UseVisualStyleBackColor = False
         '
+        'CLIIDDataGridViewTextBoxColumn
+        '
+        Me.CLIIDDataGridViewTextBoxColumn.DataPropertyName = "CLIID"
+        Me.CLIIDDataGridViewTextBoxColumn.HeaderText = "CLIID"
+        Me.CLIIDDataGridViewTextBoxColumn.Name = "CLIIDDataGridViewTextBoxColumn"
+        Me.CLIIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIIDDataGridViewTextBoxColumn.Visible = False
+        '
+        'Cliente
+        '
+        Me.Cliente.DataPropertyName = "Cliente"
+        Me.Cliente.HeaderText = "Cliente"
+        Me.Cliente.Name = "Cliente"
+        '
+        'TBLCLIENTESBindingSource
+        '
+        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
+        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'TBLCLIENTESTableAdapter
+        '
+        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTACLIENTESPRINCIPALBindingSource
+        '
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'VISTACLIENTESPRINCIPALTableAdapter
+        '
+        Me.VISTACLIENTESPRINCIPALTableAdapter.ClearBeforeFill = True
+        '
         'CLIID
         '
         Me.CLIID.DataPropertyName = "CLIID"
@@ -177,120 +209,86 @@ Partial Class FrmClientes
         'CLICODIGO
         '
         Me.CLICODIGO.DataPropertyName = "CLICODIGO"
-        Me.CLICODIGO.HeaderText = "Código de cliente"
+        Me.CLICODIGO.HeaderText = "CLICODIGO"
         Me.CLICODIGO.Name = "CLICODIGO"
         Me.CLICODIGO.ReadOnly = True
         Me.CLICODIGO.Visible = False
         '
-        'CLINOMBRE
+        'Clientes
         '
-        Me.CLINOMBRE.DataPropertyName = "CLINOMBRE"
-        Me.CLINOMBRE.FillWeight = 53.02616!
-        Me.CLINOMBRE.HeaderText = "Nombre"
-        Me.CLINOMBRE.Name = "CLINOMBRE"
-        Me.CLINOMBRE.ReadOnly = True
-        Me.CLINOMBRE.Width = 80
-        '
-        'CLIAPEPATERNO
-        '
-        Me.CLIAPEPATERNO.DataPropertyName = "CLIAPEPATERNO"
-        Me.CLIAPEPATERNO.FillWeight = 53.02616!
-        Me.CLIAPEPATERNO.HeaderText = "Apellido paterno"
-        Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
-        Me.CLIAPEPATERNO.ReadOnly = True
-        Me.CLIAPEPATERNO.Width = 148
-        '
-        'CLIAPEMATERNO
-        '
-        Me.CLIAPEMATERNO.DataPropertyName = "CLIAPEMATERNO"
-        Me.CLIAPEMATERNO.FillWeight = 53.02616!
-        Me.CLIAPEMATERNO.HeaderText = "Apellido materno"
-        Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
-        Me.CLIAPEMATERNO.ReadOnly = True
-        Me.CLIAPEMATERNO.Width = 148
+        Me.Clientes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Clientes.DataPropertyName = "Cliente"
+        Me.Clientes.HeaderText = "Cliente"
+        Me.Clientes.Name = "Clientes"
+        Me.Clientes.ReadOnly = True
+        Me.Clientes.Width = 64
         '
         'CLIDIRECCION
         '
-        Me.CLIDIRECCION.DataPropertyName = "CLIDIRECCION"
-        Me.CLIDIRECCION.FillWeight = 53.02616!
+        Me.CLIDIRECCION.DataPropertyName = "Calle y número"
         Me.CLIDIRECCION.HeaderText = "Calle y número"
         Me.CLIDIRECCION.Name = "CLIDIRECCION"
         Me.CLIDIRECCION.ReadOnly = True
-        Me.CLIDIRECCION.Width = 140
+        Me.CLIDIRECCION.Width = 160
         '
-        'CLICOLONIA
+        'CLIColonia
         '
-        Me.CLICOLONIA.DataPropertyName = "CLICOLONIA"
-        Me.CLICOLONIA.FillWeight = 53.02616!
-        Me.CLICOLONIA.HeaderText = "Colonia"
-        Me.CLICOLONIA.Name = "CLICOLONIA"
-        Me.CLICOLONIA.ReadOnly = True
+        Me.CLIColonia.DataPropertyName = "Colonia"
+        Me.CLIColonia.HeaderText = "Colonia"
+        Me.CLIColonia.Name = "CLIColonia"
+        Me.CLIColonia.ReadOnly = True
+        Me.CLIColonia.Width = 90
         '
         'CLICP
         '
-        Me.CLICP.DataPropertyName = "CLICP"
-        Me.CLICP.FillWeight = 710.6599!
+        Me.CLICP.DataPropertyName = "Código postal"
         Me.CLICP.HeaderText = "Código postal"
         Me.CLICP.Name = "CLICP"
         Me.CLICP.ReadOnly = True
-        Me.CLICP.Width = 130
+        Me.CLICP.Width = 128
         '
-        'CLICIUDAD
+        'CLICiudad
         '
-        Me.CLICIUDAD.DataPropertyName = "CLICIUDAD"
-        Me.CLICIUDAD.FillWeight = 53.02616!
-        Me.CLICIUDAD.HeaderText = "Ciudad"
-        Me.CLICIUDAD.Name = "CLICIUDAD"
-        Me.CLICIUDAD.ReadOnly = True
-        Me.CLICIUDAD.Width = 120
+        Me.CLICiudad.DataPropertyName = "Ciudad"
+        Me.CLICiudad.HeaderText = "Ciudad"
+        Me.CLICiudad.Name = "CLICiudad"
+        Me.CLICiudad.ReadOnly = True
+        Me.CLICiudad.Width = 115
         '
-        'CLIESTADO
+        'CLIEstado
         '
-        Me.CLIESTADO.DataPropertyName = "CLIESTADO"
-        Me.CLIESTADO.FillWeight = 53.02616!
-        Me.CLIESTADO.HeaderText = "Estado"
-        Me.CLIESTADO.Name = "CLIESTADO"
-        Me.CLIESTADO.ReadOnly = True
+        Me.CLIEstado.DataPropertyName = "Estado"
+        Me.CLIEstado.HeaderText = "Estado"
+        Me.CLIEstado.Name = "CLIEstado"
+        Me.CLIEstado.ReadOnly = True
+        Me.CLIEstado.Width = 85
         '
-        'CLITELEFONO
+        'CLITelEfono
         '
-        Me.CLITELEFONO.DataPropertyName = "CLITELEFONO"
-        Me.CLITELEFONO.FillWeight = 53.02616!
-        Me.CLITELEFONO.HeaderText = "Teléfono"
-        Me.CLITELEFONO.Name = "CLITELEFONO"
-        Me.CLITELEFONO.ReadOnly = True
-        '
-        'CLICOMENTARIOS
-        '
-        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLICOMENTARIOS.DataPropertyName = "CLICOMENTARIOS"
-        Me.CLICOMENTARIOS.FillWeight = 53.02616!
-        Me.CLICOMENTARIOS.HeaderText = "Nota"
-        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
-        Me.CLICOMENTARIOS.ReadOnly = True
+        Me.CLITelEfono.DataPropertyName = "Teléfono"
+        Me.CLITelEfono.HeaderText = "Teléfono"
+        Me.CLITelEfono.Name = "CLITelEfono"
+        Me.CLITelEfono.ReadOnly = True
+        Me.CLITelEfono.Width = 110
         '
         'CLIHISTORIALCREDITICIO
         '
-        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "CLIHISTORIALCREDITO"
-        Me.CLIHISTORIALCREDITICIO.FillWeight = 53.02616!
-        Me.CLIHISTORIALCREDITICIO.HeaderText = "Historial crediticio"
+        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "Crédito"
+        Me.CLIHISTORIALCREDITICIO.HeaderText = "Crédito"
         Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
         Me.CLIHISTORIALCREDITICIO.ReadOnly = True
-        Me.CLIHISTORIALCREDITICIO.Width = 158
         '
         'CLIRFC
         '
-        Me.CLIRFC.DataPropertyName = "CLIRFC"
-        Me.CLIRFC.FillWeight = 53.02616!
+        Me.CLIRFC.DataPropertyName = "RFC"
         Me.CLIRFC.HeaderText = "RFC"
         Me.CLIRFC.Name = "CLIRFC"
         Me.CLIRFC.ReadOnly = True
-        Me.CLIRFC.Width = 90
+        Me.CLIRFC.Width = 135
         '
         'CLIREGIMENFISCAL
         '
-        Me.CLIREGIMENFISCAL.DataPropertyName = "CLIREGIMENFISCAL"
-        Me.CLIREGIMENFISCAL.FillWeight = 53.02616!
+        Me.CLIREGIMENFISCAL.DataPropertyName = "Régimen fiscal"
         Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
         Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
         Me.CLIREGIMENFISCAL.ReadOnly = True
@@ -298,20 +296,19 @@ Partial Class FrmClientes
         '
         'CLICFDI
         '
-        Me.CLICFDI.DataPropertyName = "CLICFDI"
-        Me.CLICFDI.FillWeight = 53.02616!
-        Me.CLICFDI.HeaderText = "CFDI"
+        Me.CLICFDI.DataPropertyName = "Uso de CFDI"
+        Me.CLICFDI.HeaderText = "Uso de CFDI"
         Me.CLICFDI.Name = "CLICFDI"
         Me.CLICFDI.ReadOnly = True
-        Me.CLICFDI.Width = 132
+        Me.CLICFDI.Width = 125
         '
-        'CLIEXISTE
+        'CLICOMENTARIOS
         '
-        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
-        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
-        Me.CLIEXISTE.Name = "CLIEXISTE"
-        Me.CLIEXISTE.ReadOnly = True
-        Me.CLIEXISTE.Visible = False
+        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLICOMENTARIOS.DataPropertyName = "Notas"
+        Me.CLICOMENTARIOS.HeaderText = "Notas"
+        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
+        Me.CLICOMENTARIOS.ReadOnly = True
         '
         'FrmClientes
         '
@@ -331,9 +328,11 @@ Partial Class FrmClientes
         Me.Name = "FrmClientes"
         Me.Text = "FrmClientes"
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -350,21 +349,23 @@ Partial Class FrmClientes
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BTNREPORTE As Button
+    Friend WithEvents VISTACLIENTESPRINCIPALBindingSource As BindingSource
+    Friend WithEvents VISTACLIENTESPRINCIPALTableAdapter As MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter
+    Friend WithEvents VISTACLIENTESPRINCIPALBindingSource1 As BindingSource
+    Friend WithEvents CLIIDDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Cliente As DataGridViewTextBoxColumn
     Friend WithEvents CLIID As DataGridViewTextBoxColumn
     Friend WithEvents CLICODIGO As DataGridViewTextBoxColumn
-    Friend WithEvents CLINOMBRE As DataGridViewTextBoxColumn
-    Friend WithEvents CLIAPEPATERNO As DataGridViewTextBoxColumn
-    Friend WithEvents CLIAPEMATERNO As DataGridViewTextBoxColumn
+    Friend WithEvents Clientes As DataGridViewTextBoxColumn
     Friend WithEvents CLIDIRECCION As DataGridViewTextBoxColumn
-    Friend WithEvents CLICOLONIA As DataGridViewTextBoxColumn
+    Friend WithEvents CLIColonia As DataGridViewTextBoxColumn
     Friend WithEvents CLICP As DataGridViewTextBoxColumn
-    Friend WithEvents CLICIUDAD As DataGridViewTextBoxColumn
-    Friend WithEvents CLIESTADO As DataGridViewTextBoxColumn
-    Friend WithEvents CLITELEFONO As DataGridViewTextBoxColumn
-    Friend WithEvents CLICOMENTARIOS As DataGridViewTextBoxColumn
+    Friend WithEvents CLICiudad As DataGridViewTextBoxColumn
+    Friend WithEvents CLIEstado As DataGridViewTextBoxColumn
+    Friend WithEvents CLITelEfono As DataGridViewTextBoxColumn
     Friend WithEvents CLIHISTORIALCREDITICIO As DataGridViewTextBoxColumn
     Friend WithEvents CLIRFC As DataGridViewTextBoxColumn
     Friend WithEvents CLIREGIMENFISCAL As DataGridViewTextBoxColumn
     Friend WithEvents CLICFDI As DataGridViewTextBoxColumn
-    Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
+    Friend WithEvents CLICOMENTARIOS As DataGridViewTextBoxColumn
 End Class
