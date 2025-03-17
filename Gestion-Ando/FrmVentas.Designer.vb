@@ -26,25 +26,26 @@ Partial Class FrmVentas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
-        Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BTNREPORTE = New System.Windows.Forms.Button()
-        Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
+        Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
         Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.VENEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNELIMINAR
@@ -52,7 +53,7 @@ Partial Class FrmVentas
         Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(583, 855)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(656, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNELIMINAR.TabIndex = 5
@@ -63,12 +64,11 @@ Partial Class FrmVentas
         '
         Me.DATAVENTAS.AllowUserToAddRows = False
         Me.DATAVENTAS.AllowUserToDeleteRows = False
-        Me.DATAVENTAS.AllowUserToOrderColumns = True
         Me.DATAVENTAS.AutoGenerateColumns = False
         Me.DATAVENTAS.BackgroundColor = System.Drawing.Color.White
         Me.DATAVENTAS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATAVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENFECHA, Me.CLIENTE, Me.VENFORMA, Me.VENTOTAL, Me.VENID, Me.CLIEXISTE, Me.VENEXISTE})
+        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.VENID, Me.CLIEXISTE, Me.VENEXISTE})
         Me.DATAVENTAS.DataSource = Me.VISTAVENTASBindingSource
         Me.DATAVENTAS.GridColor = System.Drawing.SystemColors.Control
         Me.DATAVENTAS.Location = New System.Drawing.Point(12, 92)
@@ -76,18 +76,8 @@ Partial Class FrmVentas
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(704, 720)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(776, 720)
         Me.DATAVENTAS.TabIndex = 4
-        '
-        'VISTAVENTASBindingSource
-        '
-        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
-        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TXTBUSCAR
         '
@@ -122,36 +112,47 @@ Partial Class FrmVentas
         Me.BTNREPORTE.BackColor = System.Drawing.Color.White
         Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTE.Location = New System.Drawing.Point(583, 41)
+        Me.BTNREPORTE.Location = New System.Drawing.Point(655, 41)
         Me.BTNREPORTE.Name = "BTNREPORTE"
         Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
         Me.BTNREPORTE.TabIndex = 18
         Me.BTNREPORTE.Text = "Generar reporte"
         Me.BTNREPORTE.UseVisualStyleBackColor = False
         '
-        'VISTAVENTASTableAdapter
-        '
-        Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
-        '
         'BTNNUEVO
         '
         Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(383, 855)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(456, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 19
         Me.BTNNUEVO.Text = "Nuevo"
         Me.BTNNUEVO.UseVisualStyleBackColor = False
         '
+        'VISTAVENTASBindingSource
+        '
+        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
+        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VISTAVENTASTableAdapter
+        '
+        Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
+        '
         'VENFECHA
         '
+        Me.VENFECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENFECHA.DataPropertyName = "VENFECHA"
         Me.VENFECHA.HeaderText = "Fecha"
         Me.VENFECHA.Name = "VENFECHA"
         Me.VENFECHA.ReadOnly = True
-        Me.VENFECHA.Width = 110
+        Me.VENFECHA.Width = 62
         '
         'CLIENTE
         '
@@ -161,15 +162,27 @@ Partial Class FrmVentas
         Me.CLIENTE.Name = "CLIENTE"
         Me.CLIENTE.ReadOnly = True
         '
+        'USUNOMBRE
+        '
+        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
+        Me.USUNOMBRE.HeaderText = "Vendedor"
+        Me.USUNOMBRE.Name = "USUNOMBRE"
+        Me.USUNOMBRE.ReadOnly = True
+        Me.USUNOMBRE.Width = 78
+        '
         'VENFORMA
         '
+        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENFORMA.DataPropertyName = "VENFORMA"
         Me.VENFORMA.HeaderText = "Venta"
         Me.VENFORMA.Name = "VENFORMA"
         Me.VENFORMA.ReadOnly = True
+        Me.VENFORMA.Width = 60
         '
         'VENTOTAL
         '
+        Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
         DataGridViewCellStyle1.Format = "C2"
         DataGridViewCellStyle1.NullValue = Nothing
@@ -177,6 +190,7 @@ Partial Class FrmVentas
         Me.VENTOTAL.HeaderText = "Total"
         Me.VENTOTAL.Name = "VENTOTAL"
         Me.VENTOTAL.ReadOnly = True
+        Me.VENTOTAL.Width = 56
         '
         'VENID
         '
@@ -206,7 +220,7 @@ Partial Class FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 930)
+        Me.ClientSize = New System.Drawing.Size(800, 930)
         Me.Controls.Add(Me.BTNNUEVO)
         Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
@@ -218,9 +232,9 @@ Partial Class FrmVentas
         Me.Name = "FrmVentas"
         Me.Text = "FrmVentas"
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -237,6 +251,7 @@ Partial Class FrmVentas
     Friend WithEvents BTNNUEVO As Button
     Friend WithEvents VENFECHA As DataGridViewTextBoxColumn
     Friend WithEvents CLIENTE As DataGridViewTextBoxColumn
+    Friend WithEvents USUNOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents VENFORMA As DataGridViewTextBoxColumn
     Friend WithEvents VENTOTAL As DataGridViewTextBoxColumn
     Friend WithEvents VENID As DataGridViewTextBoxColumn

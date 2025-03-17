@@ -54,7 +54,7 @@
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.TBLCLIENTESBindingSource.Filter = "CLINOMBRE LIKE '*" & TXTBUSCAR.Text & "*'"
+        Me.VISTACLIENTESPRINCIPALBindingSource1.Filter = "Cliente LIKE '*" & TXTBUSCAR.Text & "*'"
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click

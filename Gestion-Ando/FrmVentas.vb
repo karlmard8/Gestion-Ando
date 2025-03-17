@@ -14,7 +14,7 @@
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.VISTAVENTASBindingSource.Filter = "USUNOMBRE LIKE '*" & Me.TXTBUSCAR.Text & "*'"
+        Me.VISTAVENTASBindingSource.Filter = "CLIENTE LIKE '*" & Me.TXTBUSCAR.Text & "*'"
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click

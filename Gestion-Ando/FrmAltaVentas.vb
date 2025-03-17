@@ -223,4 +223,18 @@ Public Class FrmAltaVentas
             e.Handled = True
         End If
     End Sub
+
+    Private Sub TxtCantidad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtCantidad.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TXTPAGO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTPAGO.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
+            e.Handled = True
+        End If
+    End Sub
 End Class

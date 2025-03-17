@@ -187,12 +187,12 @@ Partial Class FrmAltaVentas
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label14.Location = New System.Drawing.Point(329, 85)
+        Me.Label14.Location = New System.Drawing.Point(310, 85)
         Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(55, 27)
+        Me.Label14.Size = New System.Drawing.Size(74, 27)
         Me.Label14.TabIndex = 26
-        Me.Label14.Text = "Meses"
+        Me.Label14.Text = "Semanas"
         '
         'TXTMESES
         '
@@ -478,7 +478,7 @@ Partial Class FrmAltaVentas
         Me.BtnAgregar.Location = New System.Drawing.Point(471, 63)
         Me.BtnAgregar.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnAgregar.Name = "BtnAgregar"
-        Me.BtnAgregar.Size = New System.Drawing.Size(73, 33)
+        Me.BtnAgregar.Size = New System.Drawing.Size(74, 33)
         Me.BtnAgregar.TabIndex = 15
         Me.BtnAgregar.Text = "Agregar"
         Me.BtnAgregar.UseVisualStyleBackColor = True
@@ -614,7 +614,7 @@ Partial Class FrmAltaVentas
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(324, 40)
+        Me.Label3.Location = New System.Drawing.Point(305, 40)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 27)
@@ -635,14 +635,15 @@ Partial Class FrmAltaVentas
         '
         'LBLUSUARIOACTUAL
         '
+        Me.LBLUSUARIOACTUAL.AutoSize = True
         Me.LBLUSUARIOACTUAL.BackColor = System.Drawing.Color.Transparent
         Me.LBLUSUARIOACTUAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLUSUARIOACTUAL.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLUSUARIOACTUAL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LBLUSUARIOACTUAL.Location = New System.Drawing.Point(398, 41)
+        Me.LBLUSUARIOACTUAL.Location = New System.Drawing.Point(379, 41)
         Me.LBLUSUARIOACTUAL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLUSUARIOACTUAL.Name = "LBLUSUARIOACTUAL"
-        Me.LBLUSUARIOACTUAL.Size = New System.Drawing.Size(247, 24)
+        Me.LBLUSUARIOACTUAL.Size = New System.Drawing.Size(2, 26)
         Me.LBLUSUARIOACTUAL.TabIndex = 6
         '
         'CmbClientes
