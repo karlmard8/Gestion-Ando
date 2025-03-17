@@ -100,14 +100,27 @@
                     .Columns.Add("Unidades", "Unidades")
                     .Columns("Unidades").DataPropertyName = "Unidades"
                     .Columns("Unidades").Width = 70
+                    .Columns("Unidades").DefaultCellStyle.Format = "N0"
 
                     .Columns.Add("PrecioUnitario", "Precio unitario")
                     .Columns("PrecioUnitario").DataPropertyName = "Precio unitario"
                     .Columns("PrecioUnitario").Width = 100
+                    .Columns("PrecioUnitario").DefaultCellStyle.Format = "C2"
+
+                    .Columns.Add("Semanas", "Semanas")
+                    .Columns("Semanas").DataPropertyName = "Semanas"
+                    .Columns("Semanas").Width = 65
+                    .Columns("Semanas").DefaultCellStyle.Format = "N0"
+
+                    .Columns.Add("Enganche", "Enganche")
+                    .Columns("Enganche").DataPropertyName = "Enganche"
+                    .Columns("Enganche").Width = 80
+                    .Columns("Enganche").DefaultCellStyle.Format = "C2"
 
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
                     .Columns("Total").Width = 80
+                    .Columns("Total").DefaultCellStyle.Format = "C2"
                 End With
 
                 ' Mostrar el formulario de detalles de ventas

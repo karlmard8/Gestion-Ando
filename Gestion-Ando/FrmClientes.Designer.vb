@@ -24,6 +24,16 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATACLIENTES = New System.Windows.Forms.DataGridView()
+        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
+        Me.BTNELIMINAR = New System.Windows.Forms.Button()
+        Me.BTNNUEVO = New System.Windows.Forms.Button()
+        Me.BTNEDITAR = New System.Windows.Forms.Button()
+        Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BTNREPORTE = New System.Windows.Forms.Button()
         Me.CLIID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICODIGO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLINOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,16 +51,6 @@ Partial Class FrmClientes
         Me.CLIREGIMENFISCAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
-        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
-        Me.BTNELIMINAR = New System.Windows.Forms.Button()
-        Me.BTNNUEVO = New System.Windows.Forms.Button()
-        Me.BTNEDITAR = New System.Windows.Forms.Button()
-        Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.BTNREPORTE = New System.Windows.Forms.Button()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,7 +61,6 @@ Partial Class FrmClientes
         '
         Me.DATACLIENTES.AllowUserToAddRows = False
         Me.DATACLIENTES.AllowUserToDeleteRows = False
-        Me.DATACLIENTES.AllowUserToOrderColumns = True
         Me.DATACLIENTES.AutoGenerateColumns = False
         Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
@@ -76,151 +75,6 @@ Partial Class FrmClientes
         Me.DATACLIENTES.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
-        '
-        'CLIID
-        '
-        Me.CLIID.DataPropertyName = "CLIID"
-        Me.CLIID.HeaderText = "CLIID"
-        Me.CLIID.Name = "CLIID"
-        Me.CLIID.ReadOnly = True
-        Me.CLIID.Visible = False
-        '
-        'CLICODIGO
-        '
-        Me.CLICODIGO.DataPropertyName = "CLICODIGO"
-        Me.CLICODIGO.HeaderText = "Código de cliente"
-        Me.CLICODIGO.Name = "CLICODIGO"
-        Me.CLICODIGO.ReadOnly = True
-        Me.CLICODIGO.Visible = False
-        '
-        'CLINOMBRE
-        '
-        Me.CLINOMBRE.DataPropertyName = "CLINOMBRE"
-        Me.CLINOMBRE.FillWeight = 53.02616!
-        Me.CLINOMBRE.HeaderText = "Nombre"
-        Me.CLINOMBRE.Name = "CLINOMBRE"
-        Me.CLINOMBRE.ReadOnly = True
-        '
-        'CLIAPEPATERNO
-        '
-        Me.CLIAPEPATERNO.DataPropertyName = "CLIAPEPATERNO"
-        Me.CLIAPEPATERNO.FillWeight = 53.02616!
-        Me.CLIAPEPATERNO.HeaderText = "Apellido paterno"
-        Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
-        Me.CLIAPEPATERNO.ReadOnly = True
-        Me.CLIAPEPATERNO.Width = 115
-        '
-        'CLIAPEMATERNO
-        '
-        Me.CLIAPEMATERNO.DataPropertyName = "CLIAPEMATERNO"
-        Me.CLIAPEMATERNO.FillWeight = 53.02616!
-        Me.CLIAPEMATERNO.HeaderText = "Apellido materno"
-        Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
-        Me.CLIAPEMATERNO.ReadOnly = True
-        Me.CLIAPEMATERNO.Width = 115
-        '
-        'CLIDIRECCION
-        '
-        Me.CLIDIRECCION.DataPropertyName = "CLIDIRECCION"
-        Me.CLIDIRECCION.FillWeight = 53.02616!
-        Me.CLIDIRECCION.HeaderText = "Calle y número"
-        Me.CLIDIRECCION.Name = "CLIDIRECCION"
-        Me.CLIDIRECCION.ReadOnly = True
-        Me.CLIDIRECCION.Width = 132
-        '
-        'CLICOLONIA
-        '
-        Me.CLICOLONIA.DataPropertyName = "CLICOLONIA"
-        Me.CLICOLONIA.FillWeight = 53.02616!
-        Me.CLICOLONIA.HeaderText = "Colonia"
-        Me.CLICOLONIA.Name = "CLICOLONIA"
-        Me.CLICOLONIA.ReadOnly = True
-        '
-        'CLICP
-        '
-        Me.CLICP.DataPropertyName = "CLICP"
-        Me.CLICP.FillWeight = 710.6599!
-        Me.CLICP.HeaderText = "Código postal"
-        Me.CLICP.Name = "CLICP"
-        Me.CLICP.ReadOnly = True
-        '
-        'CLICIUDAD
-        '
-        Me.CLICIUDAD.DataPropertyName = "CLICIUDAD"
-        Me.CLICIUDAD.FillWeight = 53.02616!
-        Me.CLICIUDAD.HeaderText = "Ciudad"
-        Me.CLICIUDAD.Name = "CLICIUDAD"
-        Me.CLICIUDAD.ReadOnly = True
-        Me.CLICIUDAD.Width = 120
-        '
-        'CLIESTADO
-        '
-        Me.CLIESTADO.DataPropertyName = "CLIESTADO"
-        Me.CLIESTADO.FillWeight = 53.02616!
-        Me.CLIESTADO.HeaderText = "Estado"
-        Me.CLIESTADO.Name = "CLIESTADO"
-        Me.CLIESTADO.ReadOnly = True
-        '
-        'CLITELEFONO
-        '
-        Me.CLITELEFONO.DataPropertyName = "CLITELEFONO"
-        Me.CLITELEFONO.FillWeight = 53.02616!
-        Me.CLITELEFONO.HeaderText = "Teléfono"
-        Me.CLITELEFONO.Name = "CLITELEFONO"
-        Me.CLITELEFONO.ReadOnly = True
-        '
-        'CLICOMENTARIOS
-        '
-        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLICOMENTARIOS.DataPropertyName = "CLICOMENTARIOS"
-        Me.CLICOMENTARIOS.FillWeight = 53.02616!
-        Me.CLICOMENTARIOS.HeaderText = "Nota"
-        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
-        Me.CLICOMENTARIOS.ReadOnly = True
-        '
-        'CLIHISTORIALCREDITICIO
-        '
-        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "CLIHISTORIALCREDITO"
-        Me.CLIHISTORIALCREDITICIO.FillWeight = 53.02616!
-        Me.CLIHISTORIALCREDITICIO.HeaderText = "Historial crediticio"
-        Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
-        Me.CLIHISTORIALCREDITICIO.ReadOnly = True
-        Me.CLIHISTORIALCREDITICIO.Width = 115
-        '
-        'CLIRFC
-        '
-        Me.CLIRFC.DataPropertyName = "CLIRFC"
-        Me.CLIRFC.FillWeight = 53.02616!
-        Me.CLIRFC.HeaderText = "RFC"
-        Me.CLIRFC.Name = "CLIRFC"
-        Me.CLIRFC.ReadOnly = True
-        Me.CLIRFC.Width = 90
-        '
-        'CLIREGIMENFISCAL
-        '
-        Me.CLIREGIMENFISCAL.DataPropertyName = "CLIREGIMENFISCAL"
-        Me.CLIREGIMENFISCAL.FillWeight = 53.02616!
-        Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
-        Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
-        Me.CLIREGIMENFISCAL.ReadOnly = True
-        Me.CLIREGIMENFISCAL.Width = 133
-        '
-        'CLICFDI
-        '
-        Me.CLICFDI.DataPropertyName = "CLICFDI"
-        Me.CLICFDI.FillWeight = 53.02616!
-        Me.CLICFDI.HeaderText = "CFDI"
-        Me.CLICFDI.Name = "CLICFDI"
-        Me.CLICFDI.ReadOnly = True
-        Me.CLICFDI.Width = 132
-        '
-        'CLIEXISTE
-        '
-        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
-        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
-        Me.CLIEXISTE.Name = "CLIEXISTE"
-        Me.CLIEXISTE.ReadOnly = True
-        Me.CLIEXISTE.Visible = False
         '
         'TBLCLIENTESBindingSource
         '
@@ -311,6 +165,153 @@ Partial Class FrmClientes
         Me.BTNREPORTE.TabIndex = 13
         Me.BTNREPORTE.Text = "Generar reporte"
         Me.BTNREPORTE.UseVisualStyleBackColor = False
+        '
+        'CLIID
+        '
+        Me.CLIID.DataPropertyName = "CLIID"
+        Me.CLIID.HeaderText = "CLIID"
+        Me.CLIID.Name = "CLIID"
+        Me.CLIID.ReadOnly = True
+        Me.CLIID.Visible = False
+        '
+        'CLICODIGO
+        '
+        Me.CLICODIGO.DataPropertyName = "CLICODIGO"
+        Me.CLICODIGO.HeaderText = "Código de cliente"
+        Me.CLICODIGO.Name = "CLICODIGO"
+        Me.CLICODIGO.ReadOnly = True
+        Me.CLICODIGO.Visible = False
+        '
+        'CLINOMBRE
+        '
+        Me.CLINOMBRE.DataPropertyName = "CLINOMBRE"
+        Me.CLINOMBRE.FillWeight = 53.02616!
+        Me.CLINOMBRE.HeaderText = "Nombre"
+        Me.CLINOMBRE.Name = "CLINOMBRE"
+        Me.CLINOMBRE.ReadOnly = True
+        Me.CLINOMBRE.Width = 80
+        '
+        'CLIAPEPATERNO
+        '
+        Me.CLIAPEPATERNO.DataPropertyName = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.FillWeight = 53.02616!
+        Me.CLIAPEPATERNO.HeaderText = "Apellido paterno"
+        Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.ReadOnly = True
+        Me.CLIAPEPATERNO.Width = 148
+        '
+        'CLIAPEMATERNO
+        '
+        Me.CLIAPEMATERNO.DataPropertyName = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.FillWeight = 53.02616!
+        Me.CLIAPEMATERNO.HeaderText = "Apellido materno"
+        Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.ReadOnly = True
+        Me.CLIAPEMATERNO.Width = 148
+        '
+        'CLIDIRECCION
+        '
+        Me.CLIDIRECCION.DataPropertyName = "CLIDIRECCION"
+        Me.CLIDIRECCION.FillWeight = 53.02616!
+        Me.CLIDIRECCION.HeaderText = "Calle y número"
+        Me.CLIDIRECCION.Name = "CLIDIRECCION"
+        Me.CLIDIRECCION.ReadOnly = True
+        Me.CLIDIRECCION.Width = 140
+        '
+        'CLICOLONIA
+        '
+        Me.CLICOLONIA.DataPropertyName = "CLICOLONIA"
+        Me.CLICOLONIA.FillWeight = 53.02616!
+        Me.CLICOLONIA.HeaderText = "Colonia"
+        Me.CLICOLONIA.Name = "CLICOLONIA"
+        Me.CLICOLONIA.ReadOnly = True
+        '
+        'CLICP
+        '
+        Me.CLICP.DataPropertyName = "CLICP"
+        Me.CLICP.FillWeight = 710.6599!
+        Me.CLICP.HeaderText = "Código postal"
+        Me.CLICP.Name = "CLICP"
+        Me.CLICP.ReadOnly = True
+        Me.CLICP.Width = 130
+        '
+        'CLICIUDAD
+        '
+        Me.CLICIUDAD.DataPropertyName = "CLICIUDAD"
+        Me.CLICIUDAD.FillWeight = 53.02616!
+        Me.CLICIUDAD.HeaderText = "Ciudad"
+        Me.CLICIUDAD.Name = "CLICIUDAD"
+        Me.CLICIUDAD.ReadOnly = True
+        Me.CLICIUDAD.Width = 120
+        '
+        'CLIESTADO
+        '
+        Me.CLIESTADO.DataPropertyName = "CLIESTADO"
+        Me.CLIESTADO.FillWeight = 53.02616!
+        Me.CLIESTADO.HeaderText = "Estado"
+        Me.CLIESTADO.Name = "CLIESTADO"
+        Me.CLIESTADO.ReadOnly = True
+        '
+        'CLITELEFONO
+        '
+        Me.CLITELEFONO.DataPropertyName = "CLITELEFONO"
+        Me.CLITELEFONO.FillWeight = 53.02616!
+        Me.CLITELEFONO.HeaderText = "Teléfono"
+        Me.CLITELEFONO.Name = "CLITELEFONO"
+        Me.CLITELEFONO.ReadOnly = True
+        '
+        'CLICOMENTARIOS
+        '
+        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLICOMENTARIOS.DataPropertyName = "CLICOMENTARIOS"
+        Me.CLICOMENTARIOS.FillWeight = 53.02616!
+        Me.CLICOMENTARIOS.HeaderText = "Nota"
+        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
+        Me.CLICOMENTARIOS.ReadOnly = True
+        '
+        'CLIHISTORIALCREDITICIO
+        '
+        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "CLIHISTORIALCREDITO"
+        Me.CLIHISTORIALCREDITICIO.FillWeight = 53.02616!
+        Me.CLIHISTORIALCREDITICIO.HeaderText = "Historial crediticio"
+        Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
+        Me.CLIHISTORIALCREDITICIO.ReadOnly = True
+        Me.CLIHISTORIALCREDITICIO.Width = 158
+        '
+        'CLIRFC
+        '
+        Me.CLIRFC.DataPropertyName = "CLIRFC"
+        Me.CLIRFC.FillWeight = 53.02616!
+        Me.CLIRFC.HeaderText = "RFC"
+        Me.CLIRFC.Name = "CLIRFC"
+        Me.CLIRFC.ReadOnly = True
+        Me.CLIRFC.Width = 90
+        '
+        'CLIREGIMENFISCAL
+        '
+        Me.CLIREGIMENFISCAL.DataPropertyName = "CLIREGIMENFISCAL"
+        Me.CLIREGIMENFISCAL.FillWeight = 53.02616!
+        Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
+        Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
+        Me.CLIREGIMENFISCAL.ReadOnly = True
+        Me.CLIREGIMENFISCAL.Width = 140
+        '
+        'CLICFDI
+        '
+        Me.CLICFDI.DataPropertyName = "CLICFDI"
+        Me.CLICFDI.FillWeight = 53.02616!
+        Me.CLICFDI.HeaderText = "CFDI"
+        Me.CLICFDI.Name = "CLICFDI"
+        Me.CLICFDI.ReadOnly = True
+        Me.CLICFDI.Width = 132
+        '
+        'CLIEXISTE
+        '
+        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
+        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
+        Me.CLIEXISTE.Name = "CLIEXISTE"
+        Me.CLIEXISTE.ReadOnly = True
+        Me.CLIEXISTE.Visible = False
         '
         'FrmClientes
         '

@@ -2626,6 +2626,10 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnTotal As Global.System.Data.DataColumn
         
+        Private columnEnganche As Global.System.Data.DataColumn
+        
+        Private columnSemanas As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -2694,6 +2698,22 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property EngancheColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEnganche
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property SemanasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSemanas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2730,9 +2750,9 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVISTADETALLEVENTASRow(ByVal Producto As String, ByVal Unidades As Integer, ByVal Precio_unitario As Decimal, ByVal Total As Decimal) As VISTADETALLEVENTASRow
+        Public Overloads Function AddVISTADETALLEVENTASRow(ByVal Producto As String, ByVal Unidades As Integer, ByVal Precio_unitario As Decimal, ByVal Total As Decimal, ByVal Enganche As Decimal, ByVal Semanas As Integer) As VISTADETALLEVENTASRow
             Dim rowVISTADETALLEVENTASRow As VISTADETALLEVENTASRow = CType(Me.NewRow,VISTADETALLEVENTASRow)
-            Dim columnValuesArray() As Object = New Object() {Producto, Unidades, Precio_unitario, Total}
+            Dim columnValuesArray() As Object = New Object() {Producto, Unidades, Precio_unitario, Total, Enganche, Semanas}
             rowVISTADETALLEVENTASRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVISTADETALLEVENTASRow)
             Return rowVISTADETALLEVENTASRow
@@ -2759,6 +2779,8 @@ Partial Public Class MuebleAlexDataSet
             Me.columnUnidades = MyBase.Columns("Unidades")
             Me.columnPrecio_unitario = MyBase.Columns("Precio unitario")
             Me.columnTotal = MyBase.Columns("Total")
+            Me.columnEnganche = MyBase.Columns("Enganche")
+            Me.columnSemanas = MyBase.Columns("Semanas")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2772,6 +2794,10 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnPrecio_unitario)
             Me.columnTotal = New Global.System.Data.DataColumn("Total", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnTotal)
+            Me.columnEnganche = New Global.System.Data.DataColumn("Enganche", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEnganche)
+            Me.columnSemanas = New Global.System.Data.DataColumn("Semanas", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSemanas)
             Me.columnProducto.MaxLength = 255
         End Sub
         
@@ -4169,6 +4195,36 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Enganche() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTADETALLEVENTAS.EngancheColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Enganche' de la tabla 'VISTADETALLEVENTAS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTADETALLEVENTAS.EngancheColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Semanas() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTADETALLEVENTAS.SemanasColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Semanas' de la tabla 'VISTADETALLEVENTAS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTADETALLEVENTAS.SemanasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsProductoNull() As Boolean
             Return Me.IsNull(Me.tableVISTADETALLEVENTAS.ProductoColumn)
         End Function
@@ -4213,6 +4269,30 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetTotalNull()
             Me(Me.tableVISTADETALLEVENTAS.TotalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsEngancheNull() As Boolean
+            Return Me.IsNull(Me.tableVISTADETALLEVENTAS.EngancheColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetEngancheNull()
+            Me(Me.tableVISTADETALLEVENTAS.EngancheColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsSemanasNull() As Boolean
+            Return Me.IsNull(Me.tableVISTADETALLEVENTAS.SemanasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetSemanasNull()
+            Me(Me.tableVISTADETALLEVENTAS.SemanasColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7040,6 +7120,8 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Unidades", "Unidades")
             tableMapping.ColumnMappings.Add("Precio unitario", "Precio unitario")
             tableMapping.ColumnMappings.Add("Total", "Total")
+            tableMapping.ColumnMappings.Add("Enganche", "Enganche")
+            tableMapping.ColumnMappings.Add("Semanas", "Semanas")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

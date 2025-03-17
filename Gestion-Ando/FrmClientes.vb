@@ -17,6 +17,8 @@
         End If
         AddHandler BTNELIMINAR.MouseEnter, AddressOf Button1_MouseEnter
         AddHandler BTNELIMINAR.MouseLeave, AddressOf Button1_MouseLeave
+        DATACLIENTES.DefaultCellStyle.Font = New Font("Dubai", 12)
+        DATACLIENTES.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
     End Sub
 
     Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)

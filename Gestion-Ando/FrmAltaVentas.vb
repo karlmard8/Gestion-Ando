@@ -24,6 +24,7 @@ Public Class FrmAltaVentas
         CMBPRECIO.SelectedValue = 0
         TXTMESES.Enabled = False
         TXTPAGO.Enabled = False
+        TXTENGANCHE.Enabled = False
         RBCONTADO.Checked = False
         RBCREDITO.Checked = False
         CMBPRECIO.FormatString = "C2"
@@ -69,6 +70,7 @@ Public Class FrmAltaVentas
 
     Private Sub RBCREDITO_CheckedChanged(sender As Object, e As EventArgs) Handles RBCREDITO.CheckedChanged
         TXTMESES.Enabled = True
+        TXTENGANCHE.Enabled = True
         TXTMESES.Focus()
         TXTPAGO.Enabled = False
         TXTPAGO.Text = String.Empty
@@ -80,6 +82,7 @@ Public Class FrmAltaVentas
         TXTPAGO.Enabled = True
         TXTPAGO.Focus()
         TXTMESES.Enabled = False
+        TXTENGANCHE.Enabled = False
     End Sub
 
     Private Sub BTNPAGAR_Click(sender As Object, e As EventArgs) Handles BTNPAGAR.Click
@@ -94,6 +97,9 @@ Public Class FrmAltaVentas
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
                         comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Contado"
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = 0
+                        If TXTENGANCHE.Text = String.Empty Then
+                            comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = 0
+                        End If
                         comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = IDUSUARIOACTUAL
                         comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
                         comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
@@ -126,6 +132,7 @@ Public Class FrmAltaVentas
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
                         comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Crédito"
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = Me.TXTMESES.Text
+                        comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = Me.TXTENGANCHE.Text
                         comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = IDUSUARIOACTUAL
                         comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
                         comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
@@ -210,4 +217,10 @@ Public Class FrmAltaVentas
         Return RESULTADO
     End Function
 
+    Private Sub TXTENGANCHE_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTENGANCHE.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
+            e.Handled = True
+        End If
+    End Sub
 End Class
