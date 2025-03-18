@@ -1,5 +1,8 @@
 ﻿Public Class FrmVentas
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
+        Me.VISTAVENTASTableAdapter.Connection = Conexion
+        Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
         Me.VISTAVENTASTableAdapter.Connection = Conexion
         Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
@@ -28,6 +31,7 @@
             If Conectar() = True Then
                 Me.VISTAVENTASTableAdapter.Connection = Conexion
                 Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
+                Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
                 MsgBox("Venta eliminada", MsgBoxStyle.Information, "Confirmación")
             End If
         End If
@@ -37,6 +41,7 @@
         If FrmAltaVentas.ShowDialog = DialogResult.OK Then
             Me.VISTAVENTASTableAdapter.Connection = Conexion
             Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
+            Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
         End If
     End Sub
     Dim DETALLEVENTAS As New FrmDetallesVentas

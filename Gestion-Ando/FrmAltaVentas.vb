@@ -19,7 +19,10 @@ Public Class FrmAltaVentas
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
         CmbClave.SelectedValue = -1
-        CmbClave.Enabled = False
+        CmbClave.Visible = False
+        CMBEXISTENCIAS.BackColor = Color.White
+        LBLCLAVE.Visible = False
+        CMBEXISTENCIAS.SelectedValue = 0
         CMBPRODUCTO.SelectedValue = -1
         CMBPRECIO.SelectedValue = 0
         TXTMESES.Enabled = False
@@ -28,6 +31,13 @@ Public Class FrmAltaVentas
         RBCONTADO.Checked = False
         RBCREDITO.Checked = False
         CMBPRECIO.FormatString = "C2"
+        If RBCONTADO.Checked = False Then
+            TXTPAGO.Enabled = False
+        End If
+        If RBCREDITO.Checked = False Then
+            TXTMESES.Enabled = False
+            TXTENGANCHE.Enabled = False
+        End If
     End Sub
     Private Sub FrmAltaVentas_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         For Each control As Control In Me.Controls
@@ -40,6 +50,7 @@ Public Class FrmAltaVentas
         LBLTOTAL.Text = "Procesando..."
         CmbClientes.Focus()
         TXTPAGO.Text = String.Empty
+
         DtgProductos.Rows.Clear()
 
     End Sub
@@ -232,6 +243,13 @@ Public Class FrmAltaVentas
     End Sub
 
     Private Sub TXTPAGO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTPAGO.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub TXTMESES_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTMESES.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
             ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True

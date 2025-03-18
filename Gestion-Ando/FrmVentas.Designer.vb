@@ -31,21 +31,24 @@ Partial Class FrmVentas
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BTNREPORTE = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
-        Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
+        Me.MuebleAlexDataSet1 = New Gestion_Ando.MuebleAlexDataSet()
+        Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAGOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.VENEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VENEXISTEDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTNELIMINAR
@@ -53,7 +56,7 @@ Partial Class FrmVentas
         Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(656, 855)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(716, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNELIMINAR.TabIndex = 5
@@ -68,7 +71,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.BackgroundColor = System.Drawing.Color.White
         Me.DATAVENTAS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATAVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.VENID, Me.CLIEXISTE, Me.VENEXISTE})
+        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.PAGOS, Me.VENID, Me.CLIEXISTE, Me.VENEXISTEDataGridViewCheckBoxColumn})
         Me.DATAVENTAS.DataSource = Me.VISTAVENTASBindingSource
         Me.DATAVENTAS.GridColor = System.Drawing.SystemColors.Control
         Me.DATAVENTAS.Location = New System.Drawing.Point(12, 92)
@@ -76,7 +79,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(776, 720)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(836, 720)
         Me.DATAVENTAS.TabIndex = 4
         '
         'TXTBUSCAR
@@ -112,7 +115,7 @@ Partial Class FrmVentas
         Me.BTNREPORTE.BackColor = System.Drawing.Color.White
         Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTE.Location = New System.Drawing.Point(655, 41)
+        Me.BTNREPORTE.Location = New System.Drawing.Point(715, 41)
         Me.BTNREPORTE.Name = "BTNREPORTE"
         Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
         Me.BTNREPORTE.TabIndex = 18
@@ -124,17 +127,12 @@ Partial Class FrmVentas
         Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(456, 855)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(516, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 19
         Me.BTNNUEVO.Text = "Nuevo"
         Me.BTNNUEVO.UseVisualStyleBackColor = False
-        '
-        'VISTAVENTASBindingSource
-        '
-        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
-        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet
         '
         'MuebleAlexDataSet
         '
@@ -144,6 +142,16 @@ Partial Class FrmVentas
         'VISTAVENTASTableAdapter
         '
         Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
+        '
+        'MuebleAlexDataSet1
+        '
+        Me.MuebleAlexDataSet1.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VISTAVENTASBindingSource
+        '
+        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
+        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet1
         '
         'VENFECHA
         '
@@ -156,24 +164,24 @@ Partial Class FrmVentas
         '
         'CLIENTE
         '
-        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.CLIENTE.DataPropertyName = "CLIENTE"
         Me.CLIENTE.HeaderText = "Cliente"
         Me.CLIENTE.Name = "CLIENTE"
         Me.CLIENTE.ReadOnly = True
+        Me.CLIENTE.Width = 64
         '
         'USUNOMBRE
         '
-        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
         Me.USUNOMBRE.HeaderText = "Vendedor"
         Me.USUNOMBRE.Name = "USUNOMBRE"
         Me.USUNOMBRE.ReadOnly = True
-        Me.USUNOMBRE.Width = 78
         '
         'VENFORMA
         '
-        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.VENFORMA.DataPropertyName = "VENFORMA"
         Me.VENFORMA.HeaderText = "Venta"
         Me.VENFORMA.Name = "VENFORMA"
@@ -192,6 +200,15 @@ Partial Class FrmVentas
         Me.VENTOTAL.ReadOnly = True
         Me.VENTOTAL.Width = 56
         '
+        'PAGOS
+        '
+        Me.PAGOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.PAGOS.DataPropertyName = "PAGOS"
+        Me.PAGOS.HeaderText = "Pagos"
+        Me.PAGOS.Name = "PAGOS"
+        Me.PAGOS.ReadOnly = True
+        Me.PAGOS.Width = 62
+        '
         'VENID
         '
         Me.VENID.DataPropertyName = "VENID"
@@ -208,19 +225,19 @@ Partial Class FrmVentas
         Me.CLIEXISTE.ReadOnly = True
         Me.CLIEXISTE.Visible = False
         '
-        'VENEXISTE
+        'VENEXISTEDataGridViewCheckBoxColumn
         '
-        Me.VENEXISTE.DataPropertyName = "VENEXISTE"
-        Me.VENEXISTE.HeaderText = "VENEXISTE"
-        Me.VENEXISTE.Name = "VENEXISTE"
-        Me.VENEXISTE.ReadOnly = True
-        Me.VENEXISTE.Visible = False
+        Me.VENEXISTEDataGridViewCheckBoxColumn.DataPropertyName = "VENEXISTE"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.HeaderText = "VENEXISTE"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.Name = "VENEXISTEDataGridViewCheckBoxColumn"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.VENEXISTEDataGridViewCheckBoxColumn.Visible = False
         '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 930)
+        Me.ClientSize = New System.Drawing.Size(860, 930)
         Me.Controls.Add(Me.BTNNUEVO)
         Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
@@ -233,8 +250,9 @@ Partial Class FrmVentas
         Me.Text = "FrmVentas"
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -246,15 +264,17 @@ Partial Class FrmVentas
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BTNREPORTE As Button
     Friend WithEvents MuebleAlexDataSet As MuebleAlexDataSet
-    Friend WithEvents VISTAVENTASBindingSource As BindingSource
     Friend WithEvents VISTAVENTASTableAdapter As MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter
     Friend WithEvents BTNNUEVO As Button
+    Friend WithEvents MuebleAlexDataSet1 As MuebleAlexDataSet
+    Friend WithEvents VISTAVENTASBindingSource As BindingSource
     Friend WithEvents VENFECHA As DataGridViewTextBoxColumn
     Friend WithEvents CLIENTE As DataGridViewTextBoxColumn
     Friend WithEvents USUNOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents VENFORMA As DataGridViewTextBoxColumn
     Friend WithEvents VENTOTAL As DataGridViewTextBoxColumn
+    Friend WithEvents PAGOS As DataGridViewTextBoxColumn
     Friend WithEvents VENID As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
-    Friend WithEvents VENEXISTE As DataGridViewCheckBoxColumn
+    Friend WithEvents VENEXISTEDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
 End Class

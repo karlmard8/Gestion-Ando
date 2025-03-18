@@ -7,8 +7,8 @@
 
         'Revisar cuando guarda 1000
         SPINNER.Location = New Point(151, 121)
-        SPINNER.Minimum = 0
-        SPINNER.Maximum = 1001
+        SPINNER.Minimum = -1000
+        SPINNER.Maximum = 1000
         SPINNER.TabIndex = 4
         Me.Controls.Add(SPINNER)
         If TIPO = "Operativo" Then
@@ -90,7 +90,15 @@
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
         If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
-            MsgBox("Clave faltante", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            TXTCLAVE.Focus()
+
+        ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            TXTCLAVE.Focus()
+
+        ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
             TXTCLAVE.Focus()
 
         Else
@@ -98,10 +106,7 @@
                 StrSql = "ALTAPRODUCTOS"
                 comando = New SqlClient.SqlCommand(StrSql, Conexion)
                 comando.CommandType = CommandType.StoredProcedure
-                If TXTPRECIO.Text = String.Empty Then
-                    TXTPRECIO.Text = "0"
-                    comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
-                End If
+                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
             Else
                 StrSql = "EDITARPRODUCTOS"
                 comando = New SqlClient.SqlCommand(StrSql, Conexion)

@@ -1728,6 +1728,8 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnUSUNOMBRE As Global.System.Data.DataColumn
         
+        Private columnPAGOS As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1828,6 +1830,14 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PAGOSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPAGOS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1864,9 +1874,9 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVISTAVENTASRow(ByVal VENTOTAL As Decimal, ByVal VENFECHA As Date, ByVal VENID As Long, ByVal VENFORMA As String, ByVal CLIENTE As String, ByVal CLIEXISTE As Boolean, ByVal VENEXISTE As Boolean, ByVal USUNOMBRE As String) As VISTAVENTASRow
+        Public Overloads Function AddVISTAVENTASRow(ByVal VENTOTAL As Decimal, ByVal VENFECHA As Date, ByVal VENID As Long, ByVal VENFORMA As String, ByVal CLIENTE As String, ByVal CLIEXISTE As Boolean, ByVal VENEXISTE As Boolean, ByVal USUNOMBRE As String, ByVal PAGOS As String) As VISTAVENTASRow
             Dim rowVISTAVENTASRow As VISTAVENTASRow = CType(Me.NewRow,VISTAVENTASRow)
-            Dim columnValuesArray() As Object = New Object() {VENTOTAL, VENFECHA, VENID, VENFORMA, CLIENTE, CLIEXISTE, VENEXISTE, USUNOMBRE}
+            Dim columnValuesArray() As Object = New Object() {VENTOTAL, VENFECHA, VENID, VENFORMA, CLIENTE, CLIEXISTE, VENEXISTE, USUNOMBRE, PAGOS}
             rowVISTAVENTASRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVISTAVENTASRow)
             Return rowVISTAVENTASRow
@@ -1903,6 +1913,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnCLIEXISTE = MyBase.Columns("CLIEXISTE")
             Me.columnVENEXISTE = MyBase.Columns("VENEXISTE")
             Me.columnUSUNOMBRE = MyBase.Columns("USUNOMBRE")
+            Me.columnPAGOS = MyBase.Columns("PAGOS")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1924,6 +1935,8 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnVENEXISTE)
             Me.columnUSUNOMBRE = New Global.System.Data.DataColumn("USUNOMBRE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUSUNOMBRE)
+            Me.columnPAGOS = New Global.System.Data.DataColumn("PAGOS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPAGOS)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnVENID}, true))
             Me.columnVENID.AllowDBNull = false
             Me.columnVENID.Unique = true
@@ -1931,6 +1944,8 @@ Partial Public Class MuebleAlexDataSet
             Me.columnCLIENTE.ReadOnly = true
             Me.columnCLIENTE.MaxLength = 202
             Me.columnUSUNOMBRE.MaxLength = 80
+            Me.columnPAGOS.ReadOnly = true
+            Me.columnPAGOS.MaxLength = 61
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4369,6 +4384,21 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property PAGOS() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTAVENTAS.PAGOSColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PAGOS' de la tabla 'VISTAVENTAS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTAVENTAS.PAGOSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsVENTOTALNull() As Boolean
             Return Me.IsNull(Me.tableVISTAVENTAS.VENTOTALColumn)
         End Function
@@ -4449,6 +4479,18 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetUSUNOMBRENull()
             Me(Me.tableVISTAVENTAS.USUNOMBREColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsPAGOSNull() As Boolean
+            Return Me.IsNull(Me.tableVISTAVENTAS.PAGOSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetPAGOSNull()
+            Me(Me.tableVISTAVENTAS.PAGOSColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7533,6 +7575,7 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("CLIEXISTE", "CLIEXISTE")
             tableMapping.ColumnMappings.Add("VENEXISTE", "VENEXISTE")
             tableMapping.ColumnMappings.Add("USUNOMBRE", "USUNOMBRE")
+            tableMapping.ColumnMappings.Add("PAGOS", "PAGOS")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -7551,7 +7594,7 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT VENTOTAL, VENFECHA, VENID, VENFORMA, Cliente, CLIEXISTE, VENEXISTE, USUNOM"& _ 
-                "BRE FROM VISTAVENTAS"
+                "BRE, PAGOS FROM VISTAVENTAS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
