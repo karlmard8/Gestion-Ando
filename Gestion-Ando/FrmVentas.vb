@@ -106,17 +106,17 @@
 
                     .Columns.Add("Unidades", "Unidades")
                     .Columns("Unidades").DataPropertyName = "Unidades"
-                    .Columns("Unidades").Width = 70
+                    .Columns("Unidades").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
                     .Columns("Unidades").DefaultCellStyle.Format = "N0"
 
                     .Columns.Add("PrecioUnitario", "Precio unitario")
                     .Columns("PrecioUnitario").DataPropertyName = "Precio unitario"
-                    .Columns("PrecioUnitario").Width = 100
+                    .Columns("PrecioUnitario").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
                     .Columns("PrecioUnitario").DefaultCellStyle.Format = "C2"
 
                     .Columns.Add("Semanas", "Semanas")
                     .Columns("Semanas").DataPropertyName = "Semanas"
-                    .Columns("Semanas").Width = 65
+                    .Columns("Semanas").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
                     .Columns("Semanas").DefaultCellStyle.Format = "N0"
 
                     .Columns.Add("Enganche", "Enganche")
@@ -126,7 +126,7 @@
 
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
-                    .Columns("Total").Width = 80
+                    .Columns("Total").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                     .Columns("Total").DefaultCellStyle.Format = "C2"
                 End With
 
