@@ -53,8 +53,6 @@
 
     Public Sub inicio()
         Conexion = New SqlClient.SqlConnection("server=desktop-8q10a8h\sqlexpress; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
-        'Primer servidor: LAPTOP-MI2EEO5C\SQLEXPRESS
-        'Segundo servidor: desktop-8q10a8h\sqlexpress
     End Sub
 
 End Module

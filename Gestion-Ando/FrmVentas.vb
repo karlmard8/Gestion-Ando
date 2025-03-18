@@ -62,43 +62,36 @@
                     Exit Sub
                 End If
 
-                ' Limpiar el DataGridView antes de cargar los nuevos datos
+                ' ===================== LIMPIAR DATA GRID VIEWS =====================
                 With DETALLEVENTAS.DATADETALLEVENTA
                     .DataSource = Nothing
                     .Rows.Clear()
-                    .Columns.Clear() ' Asegura que las columnas se restablezcan correctamente
+                    .Columns.Clear()
                 End With
 
-                ' Abrir conexión
+                With DETALLEVENTAS.DATAPAGOS
+                    .DataSource = Nothing
+                    .Rows.Clear()
+                    .Columns.Clear()
+                End With
+
+                ' ===================== CARGAR DETALLE DE VENTAS =====================
                 Conexion.Open()
-
-                ' Configurar comando para ejecutar el procedimiento almacenado
                 StrSql = "VISTADETALLEVENTAS"
-                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Convert.ToInt64(venId)
+                Dim comandoVentas As New SqlClient.SqlCommand(StrSql, Conexion)
+                comandoVentas.CommandType = CommandType.StoredProcedure
+                comandoVentas.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Convert.ToInt64(venId)
 
-                ' Usar adaptador para obtener datos
-                Dim adaptador As New SqlClient.SqlDataAdapter(comando)
-                Dim tabla As New DataTable()
-
-                ' Llenar la tabla con los datos obtenidos
-                adaptador.Fill(tabla)
-
-                ' Verificar si la consulta devolvió datos
-                If tabla.Rows.Count = 0 Then
-                    MessageBox.Show("No se encontraron detalles de venta para VENID: " & venId, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
-
-                ' Cerrar conexión
+                Dim adaptadorVentas As New SqlClient.SqlDataAdapter(comandoVentas)
+                Dim tablaVentas As New DataTable()
+                adaptadorVentas.Fill(tablaVentas)
                 Conexion.Close()
 
-                ' Asignar los nuevos datos al DataGridView
+                ' Configurar y asignar datos al DataGridView de ventas
                 With DETALLEVENTAS.DATADETALLEVENTA
                     .AutoGenerateColumns = False
-                    .DataSource = tabla
+                    .DataSource = tablaVentas
 
-                    ' Restaurar configuraciones de tamaño de las columnas
                     .Columns.Add("Producto", "Producto")
                     .Columns("Producto").DataPropertyName = "Producto"
                     .Columns("Producto").Width = 546
@@ -106,36 +99,65 @@
 
                     .Columns.Add("Unidades", "Unidades")
                     .Columns("Unidades").DataPropertyName = "Unidades"
-                    .Columns("Unidades").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
                     .Columns("Unidades").DefaultCellStyle.Format = "N0"
 
                     .Columns.Add("PrecioUnitario", "Precio unitario")
                     .Columns("PrecioUnitario").DataPropertyName = "Precio unitario"
-                    .Columns("PrecioUnitario").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
                     .Columns("PrecioUnitario").DefaultCellStyle.Format = "C2"
-
-                    .Columns.Add("Semanas", "Semanas")
-                    .Columns("Semanas").DataPropertyName = "Semanas"
-                    .Columns("Semanas").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-                    .Columns("Semanas").DefaultCellStyle.Format = "N0"
-
-                    .Columns.Add("Enganche", "Enganche")
-                    .Columns("Enganche").DataPropertyName = "Enganche"
-                    .Columns("Enganche").Width = 80
-                    .Columns("Enganche").DefaultCellStyle.Format = "C2"
+                    .Columns("PrecioUnitario").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
 
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
-                    .Columns("Total").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                     .Columns("Total").DefaultCellStyle.Format = "C2"
+                End With
+
+                ' ===================== CARGAR DETALLE DE PAGOS =====================
+                Conexion.Open()
+                StrSql = "DETALLESDEPAGOS"
+                Dim comandoPagos As New SqlClient.SqlCommand(StrSql, Conexion)
+                comandoPagos.CommandType = CommandType.StoredProcedure
+                comandoPagos.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Convert.ToInt64(venId)
+
+                Dim adaptadorPagos As New SqlClient.SqlDataAdapter(comandoPagos)
+                Dim tablaPagos As New DataTable()
+                adaptadorPagos.Fill(tablaPagos)
+                Conexion.Close()
+
+                ' Configurar y asignar datos al DataGridView de pagos
+                With DETALLEVENTAS.DATAPAGOS
+                    .AutoGenerateColumns = False
+                    .DataSource = tablaPagos
+
+                    .Columns.Add("Fecha", "Fecha de Pago")
+                    .Columns("Fecha").DataPropertyName = "Fecha"
+                    .Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+
+                    .Columns.Add("Cliente", "Cliente")
+                    .Columns("Cliente").DataPropertyName = "Cliente"
+                    .Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
+                    .Columns.Add("APagar", "A pagar")
+                    .Columns("APagar").DataPropertyName = "APagar"
+                    .Columns("APagar").DefaultCellStyle.Format = "C2"
+                    .Columns("APagar").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+
+                    .Columns.Add("Pagado", "Pagado")
+                    .Columns("Pagado").DataPropertyName = "Pagado"
+                    .Columns("Pagado").DefaultCellStyle.Format = "C2"
+                    .Columns("Pagado").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
                 End With
 
                 ' Mostrar el formulario de detalles de ventas
                 DETALLEVENTAS.ShowDialog()
 
-
-                ' Limpiar el DataGridView al cerrar la ventana
+                ' ===================== LIMPIAR DATA GRID VIEWS AL CERRAR =====================
                 With DETALLEVENTAS.DATADETALLEVENTA
+                    .DataSource = Nothing
+                    .Rows.Clear()
+                    .Columns.Clear()
+                End With
+
+                With DETALLEVENTAS.DATAPAGOS
                     .DataSource = Nothing
                     .Rows.Clear()
                     .Columns.Clear()
@@ -144,10 +166,8 @@
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Finally
-                ' Asegurar que la conexión se cierra
                 If Conexion.State = ConnectionState.Open Then Conexion.Close()
             End Try
         End If
     End Sub
-
 End Class
