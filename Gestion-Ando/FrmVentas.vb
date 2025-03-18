@@ -136,10 +136,10 @@
                     .Columns("Cliente").DataPropertyName = "Cliente"
                     .Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
-                    .Columns.Add("APagar", "A pagar")
-                    .Columns("APagar").DataPropertyName = "APagar"
-                    .Columns("APagar").DefaultCellStyle.Format = "C2"
-                    .Columns("APagar").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                    .Columns.Add("A PAGAR", "A pagar")
+                    .Columns("A PAGAR").DataPropertyName = "A PAGAR"
+                    .Columns("A PAGAR").DefaultCellStyle.Format = "C2"
+                    .Columns("A PAGAR").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
 
                     .Columns.Add("Pagado", "Pagado")
                     .Columns("Pagado").DataPropertyName = "Pagado"
