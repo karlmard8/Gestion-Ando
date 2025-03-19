@@ -4,8 +4,6 @@
         Me.VISTAVENTASTableAdapter.Connection = Conexion
         Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
-        Me.VISTAVENTASTableAdapter.Connection = Conexion
-        Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
         Me.BackColor = ColorFormulario
         BTNNUEVO.BackColor = ColorBotones
         BTNELIMINAR.BackColor = ColorBotones
@@ -14,6 +12,7 @@
         DETALLEVENTAS.Location = New Point(540, 187)
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATAVENTAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
+
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -109,6 +108,7 @@
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
                     .Columns("Total").DefaultCellStyle.Format = "C2"
+
                 End With
 
                 ' ===================== CARGAR DETALLE DE PAGOS =====================
@@ -145,6 +145,17 @@
                     .Columns("Pagado").DataPropertyName = "Pagado"
                     .Columns("Pagado").DefaultCellStyle.Format = "C2"
                     .Columns("Pagado").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
+                    .Columns.Add("PAGID", "PAGID")
+                    .Columns("PAGID").DataPropertyName = "PAGID"
+                    .Columns("PAGID").Width = 546
+                    .Columns("PAGID").Visible = False
+
+                    .Columns.Add("VENID", "VENID")
+                    .Columns("VENID").DataPropertyName = "VENID"
+                    .Columns("VENID").Width = 546
+                    .Columns("VENID").Visible = False
+
                 End With
 
                 ' Mostrar el formulario de detalles de ventas
@@ -170,4 +181,5 @@
             End Try
         End If
     End Sub
+
 End Class
