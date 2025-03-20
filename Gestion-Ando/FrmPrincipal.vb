@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.ComponentModel
+Imports System.Runtime.InteropServices
 Imports System.Security.Cryptography.X509Certificates
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 
@@ -120,7 +121,7 @@ Public Class FrmPrincipal
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
         FrmVentas.Show()
-        FrmVentas.Location = New Point(575, 0)
+        FrmVentas.Location = New Point(540, 0)
         LBLOPCIONES.Text = "Ventas"
         LBLOPCIONES.Location = New Point(625, 40)
     End Sub
@@ -164,7 +165,7 @@ Public Class FrmPrincipal
         FrmLogin.TXTLOGIN.Focus()
     End Sub
 
-    Private Sub MenuOpciones_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuOpciones.ItemClicked
-
+    Private Sub FrmPrincipal_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        ' End
     End Sub
 End Class
