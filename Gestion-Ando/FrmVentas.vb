@@ -43,9 +43,22 @@
             Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
         End If
     End Sub
+
+    Public contado As Boolean
+
     Dim DETALLEVENTAS As New FrmDetallesVentas
 
     Private Sub DATAVENTAS_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DATAVENTAS.CellDoubleClick
+        If DATAVENTAS.CurrentRow IsNot Nothing Then
+            ' Obtener el valor de una celda usando el índice de columna
+            Dim valorCelda As Object = DATAVENTAS.CurrentRow.Cells("VENFORMA").Value ' Índice 0 para la primera columna
+            If valorCelda = "Contado" Then
+                contado = 1
+            Else
+                contado = 0
+            End If
+        End If
+
         If idbusqueda >= 0 Then
             Try
                 ' Verificar que haya una fila seleccionada
@@ -57,7 +70,7 @@
                 ' Obtener el VENID y verificar que es válido
                 Dim venId As Object = DATAVENTAS.CurrentRow.Cells("VENID").Value
                 If venId Is Nothing OrElse Not IsNumeric(venId) Then
-                    MessageBox.Show("Error: No se pudo obtener el VENID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Error: No se pudo obtener el ID de la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
                 End If
 
@@ -111,53 +124,56 @@
 
                 End With
 
-                ' ===================== CARGAR DETALLE DE PAGOS =====================
-                Conexion.Open()
-                StrSql = "DETALLESDEPAGOS"
-                Dim comandoPagos As New SqlClient.SqlCommand(StrSql, Conexion)
-                comandoPagos.CommandType = CommandType.StoredProcedure
-                comandoPagos.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Convert.ToInt64(venId)
+                If contado = 0 Then
+                    ' ===================== CARGAR DETALLE DE PAGOS =====================
+                    Conexion.Open()
+                    StrSql = "DETALLESDEPAGOS"
+                    Dim comandoPagos As New SqlClient.SqlCommand(StrSql, Conexion)
+                    comandoPagos.CommandType = CommandType.StoredProcedure
+                    comandoPagos.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Convert.ToInt64(venId)
 
-                Dim adaptadorPagos As New SqlClient.SqlDataAdapter(comandoPagos)
-                Dim tablaPagos As New DataTable()
-                adaptadorPagos.Fill(tablaPagos)
-                Conexion.Close()
+                    Dim adaptadorPagos As New SqlClient.SqlDataAdapter(comandoPagos)
+                    Dim tablaPagos As New DataTable()
+                    adaptadorPagos.Fill(tablaPagos)
+                    Conexion.Close()
 
-                ' Configurar y asignar datos al DataGridView de pagos
-                With DETALLEVENTAS.DATAPAGOS
-                    .AutoGenerateColumns = False
-                    .DataSource = tablaPagos
+                    ' Configurar y asignar datos al DataGridView de pagos
+                    With DETALLEVENTAS.DATAPAGOS
+                        .AutoGenerateColumns = False
+                        .DataSource = tablaPagos
 
-                    .Columns.Add("Fecha", "Fecha de Pago")
-                    .Columns("Fecha").DataPropertyName = "Fecha"
-                    .Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                        .Columns.Add("Fecha", "Fecha de Pago")
+                        .Columns("Fecha").DataPropertyName = "Fecha"
+                        .Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
 
-                    .Columns.Add("Cliente", "Cliente")
-                    .Columns("Cliente").DataPropertyName = "Cliente"
-                    .Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                        .Columns.Add("Cliente", "Cliente")
+                        .Columns("Cliente").DataPropertyName = "Cliente"
+                        .Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
-                    .Columns.Add("A PAGAR", "A pagar")
-                    .Columns("A PAGAR").DataPropertyName = "A PAGAR"
-                    .Columns("A PAGAR").DefaultCellStyle.Format = "C2"
-                    .Columns("A PAGAR").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                        .Columns.Add("A PAGAR", "A pagar")
+                        .Columns("A PAGAR").DataPropertyName = "A PAGAR"
+                        .Columns("A PAGAR").DefaultCellStyle.Format = "C2"
+                        .Columns("A PAGAR").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
 
-                    .Columns.Add("Pagado", "Pagado")
-                    .Columns("Pagado").DataPropertyName = "Pagado"
-                    .Columns("Pagado").DefaultCellStyle.Format = "C2"
-                    .Columns("Pagado").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+                        .Columns.Add("Pagado", "Pagado")
+                        .Columns("Pagado").DataPropertyName = "Pagado"
+                        .Columns("Pagado").DefaultCellStyle.Format = "C2"
+                        .Columns("Pagado").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
-                    .Columns.Add("PAGID", "PAGID")
-                    .Columns("PAGID").DataPropertyName = "PAGID"
-                    .Columns("PAGID").Width = 546
-                    .Columns("PAGID").Visible = False
+                        .Columns.Add("PAGID", "PAGID")
+                        .Columns("PAGID").DataPropertyName = "PAGID"
+                        .Columns("PAGID").Width = 546
+                        .Columns("PAGID").Visible = False
 
-                    .Columns.Add("VENID", "VENID")
-                    .Columns("VENID").DataPropertyName = "VENID"
-                    .Columns("VENID").Width = 546
-                    .Columns("VENID").Visible = False
+                        .Columns.Add("VENID", "VENID")
+                        .Columns("VENID").DataPropertyName = "VENID"
+                        .Columns("VENID").Width = 546
+                        .Columns("VENID").Visible = False
 
-                End With
 
+
+                    End With
+                End If
                 ' Mostrar el formulario de detalles de ventas
                 DETALLEVENTAS.ShowDialog()
 
@@ -180,6 +196,8 @@
                 If Conexion.State = ConnectionState.Open Then Conexion.Close()
             End Try
         End If
+
+
     End Sub
 
 End Class

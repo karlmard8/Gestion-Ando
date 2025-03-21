@@ -23,7 +23,7 @@ Partial Class FrmInventario
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATAINVENTARIO = New System.Windows.Forms.DataGridView()
         Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,7 +58,6 @@ Partial Class FrmInventario
         '
         Me.DATAINVENTARIO.AllowUserToAddRows = False
         Me.DATAINVENTARIO.AllowUserToDeleteRows = False
-        Me.DATAINVENTARIO.AllowUserToOrderColumns = True
         Me.DATAINVENTARIO.AutoGenerateColumns = False
         Me.DATAINVENTARIO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DATAINVENTARIO.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
@@ -111,9 +110,9 @@ Partial Class FrmInventario
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Format = "C2"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle1
         Me.PROPRECIO.HeaderText = "Precio"
         Me.PROPRECIO.Name = "PROPRECIO"
         Me.PROPRECIO.ReadOnly = True
@@ -191,9 +190,10 @@ Partial Class FrmInventario
         '
         'TXTBUSCAR
         '
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 30)
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(110, 23)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 20)
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 29)
         Me.TXTBUSCAR.TabIndex = 8
         '
         'PictureBox1

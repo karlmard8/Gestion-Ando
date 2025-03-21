@@ -34,39 +34,39 @@ Partial Class FrmLogin
         '
         'TXTLOGIN
         '
-        Me.TXTLOGIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTLOGIN.Location = New System.Drawing.Point(105, 154)
+        Me.TXTLOGIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTLOGIN.Location = New System.Drawing.Point(146, 191)
         Me.TXTLOGIN.Name = "TXTLOGIN"
-        Me.TXTLOGIN.Size = New System.Drawing.Size(216, 22)
+        Me.TXTLOGIN.Size = New System.Drawing.Size(242, 29)
         Me.TXTLOGIN.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(33, 154)
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(52, 189)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 27)
+        Me.Label1.Size = New System.Drawing.Size(83, 36)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Usuario"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(13, 204)
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(20, 239)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(91, 27)
+        Me.Label2.Size = New System.Drawing.Size(115, 36)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Contraseña"
         '
         'TXTCONTRASEÑA
         '
-        Me.TXTCONTRASEÑA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(105, 204)
+        Me.TXTCONTRASEÑA.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(146, 241)
         Me.TXTCONTRASEÑA.Name = "TXTCONTRASEÑA"
         Me.TXTCONTRASEÑA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(216, 22)
+        Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(242, 29)
         Me.TXTCONTRASEÑA.TabIndex = 2
         '
         'BTNENTRAR
@@ -74,10 +74,10 @@ Partial Class FrmLogin
         Me.BTNENTRAR.AutoSize = True
         Me.BTNENTRAR.BackColor = System.Drawing.Color.Snow
         Me.BTNENTRAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNENTRAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNENTRAR.Location = New System.Drawing.Point(120, 252)
+        Me.BTNENTRAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNENTRAR.Location = New System.Drawing.Point(155, 302)
         Me.BTNENTRAR.Name = "BTNENTRAR"
-        Me.BTNENTRAR.Size = New System.Drawing.Size(127, 37)
+        Me.BTNENTRAR.Size = New System.Drawing.Size(160, 47)
         Me.BTNENTRAR.TabIndex = 4
         Me.BTNENTRAR.Text = "Entrar"
         Me.BTNENTRAR.UseVisualStyleBackColor = False
@@ -85,9 +85,9 @@ Partial Class FrmLogin
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.Gestion_Ando.My.Resources.Resources.Imagen_de_WhatsApp_2025_03_05_a_las_12_26_40_68235b6c
-        Me.PictureBox1.Location = New System.Drawing.Point(27, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(38, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(303, 116)
+        Me.PictureBox1.Size = New System.Drawing.Size(366, 136)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
@@ -97,7 +97,7 @@ Partial Class FrmLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(354, 301)
+        Me.ClientSize = New System.Drawing.Size(444, 361)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)
         Me.Controls.Add(Me.Label2)

@@ -12,6 +12,13 @@ Public Class FrmDetallesVentas
         DATAPAGOS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
 
         Me.BTNABONO.BackColor = ColorBotones
+        If FrmVentas.contado = "True" Then
+            BTNABONO.Visible = False
+            Me.Size = New Size(816, 280)
+        Else
+            BTNABONO.Visible = True
+            Me.Size = New Size(816, 633)
+        End If
     End Sub
 
     Private Sub BTNABONO_Click(sender As Object, e As EventArgs) Handles BTNABONO.Click

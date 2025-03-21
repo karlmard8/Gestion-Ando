@@ -23,9 +23,9 @@ Partial Class FrmAltaVentas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTENGANCHE = New System.Windows.Forms.TextBox()
@@ -53,9 +53,11 @@ Partial Class FrmAltaVentas
         Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PROSUBTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GRUPO2 = New System.Windows.Forms.Panel()
-        Me.CMBPRECIO = New System.Windows.Forms.ComboBox()
+        Me.CMBEXISTENCIAS = New System.Windows.Forms.ComboBox()
         Me.VISTAPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CMBPRECIO = New System.Windows.Forms.ComboBox()
         Me.BtnQuitar = New System.Windows.Forms.Button()
         Me.BtnAgregar = New System.Windows.Forms.Button()
         Me.LblSubTotal = New System.Windows.Forms.Label()
@@ -65,6 +67,8 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.CmbClave = New System.Windows.Forms.ComboBox()
+        Me.LBLCLAVE = New System.Windows.Forms.Label()
         Me.LBLDETALLESPRODUCTO = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -78,10 +82,6 @@ Partial Class FrmAltaVentas
         Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
         Me.VISTACLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter()
         Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
-        Me.LBLCLAVE = New System.Windows.Forms.Label()
-        Me.CmbClave = New System.Windows.Forms.ComboBox()
-        Me.CMBEXISTENCIAS = New System.Windows.Forms.ComboBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GRUPO2.SuspendLayout()
@@ -380,9 +380,9 @@ Partial Class FrmAltaVentas
         '
         'PROCANTIDAD
         '
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle1
         Me.PROCANTIDAD.HeaderText = "CANTIDAD"
         Me.PROCANTIDAD.MinimumWidth = 6
         Me.PROCANTIDAD.Name = "PROCANTIDAD"
@@ -392,9 +392,9 @@ Partial Class FrmAltaVentas
         'PROPRECIO
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle5.Format = "C2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
         Me.PROPRECIO.HeaderText = "PRECIO"
         Me.PROPRECIO.MinimumWidth = 6
         Me.PROPRECIO.Name = "PROPRECIO"
@@ -403,9 +403,9 @@ Partial Class FrmAltaVentas
         '
         'PROSUBTOTAL
         '
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle3
         Me.PROSUBTOTAL.HeaderText = "TOTAL"
         Me.PROSUBTOTAL.MinimumWidth = 6
         Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
@@ -436,6 +436,45 @@ Partial Class FrmAltaVentas
         Me.GRUPO2.Size = New System.Drawing.Size(650, 102)
         Me.GRUPO2.TabIndex = 25
         '
+        'CMBEXISTENCIAS
+        '
+        Me.CMBEXISTENCIAS.BackColor = System.Drawing.SystemColors.Window
+        Me.CMBEXISTENCIAS.DataSource = Me.VISTAPRODUCTOSBindingSource
+        Me.CMBEXISTENCIAS.DisplayMember = "PROEXISTENCIAS"
+        Me.CMBEXISTENCIAS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
+        Me.CMBEXISTENCIAS.Enabled = False
+        Me.CMBEXISTENCIAS.FormatString = "N0"
+        Me.CMBEXISTENCIAS.FormattingEnabled = True
+        Me.CMBEXISTENCIAS.Location = New System.Drawing.Point(422, 18)
+        Me.CMBEXISTENCIAS.Margin = New System.Windows.Forms.Padding(2)
+        Me.CMBEXISTENCIAS.Name = "CMBEXISTENCIAS"
+        Me.CMBEXISTENCIAS.Size = New System.Drawing.Size(52, 21)
+        Me.CMBEXISTENCIAS.TabIndex = 21
+        Me.CMBEXISTENCIAS.Tag = ""
+        Me.CMBEXISTENCIAS.ValueMember = "PROID"
+        '
+        'VISTAPRODUCTOSBindingSource
+        '
+        Me.VISTAPRODUCTOSBindingSource.DataMember = "VISTAPRODUCTOS"
+        Me.VISTAPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label2.Location = New System.Drawing.Point(329, 14)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(89, 27)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Existencias"
+        '
         'CMBPRECIO
         '
         Me.CMBPRECIO.BackColor = System.Drawing.SystemColors.Window
@@ -451,16 +490,6 @@ Partial Class FrmAltaVentas
         Me.CMBPRECIO.TabIndex = 17
         Me.CMBPRECIO.Tag = ""
         Me.CMBPRECIO.ValueMember = "PROID"
-        '
-        'VISTAPRODUCTOSBindingSource
-        '
-        Me.VISTAPRODUCTOSBindingSource.DataMember = "VISTAPRODUCTOS"
-        Me.VISTAPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BtnQuitar
         '
@@ -571,6 +600,34 @@ Partial Class FrmAltaVentas
         Me.Label9.Size = New System.Drawing.Size(76, 27)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Producto"
+        '
+        'CmbClave
+        '
+        Me.CmbClave.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.CmbClave.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.CmbClave.BackColor = System.Drawing.SystemColors.Window
+        Me.CmbClave.DataSource = Me.VISTAPRODUCTOSBindingSource
+        Me.CmbClave.DisplayMember = "PROCLAVE"
+        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
+        Me.CmbClave.FormattingEnabled = True
+        Me.CmbClave.Location = New System.Drawing.Point(65, 18)
+        Me.CmbClave.Margin = New System.Windows.Forms.Padding(2)
+        Me.CmbClave.Name = "CmbClave"
+        Me.CmbClave.Size = New System.Drawing.Size(87, 21)
+        Me.CmbClave.TabIndex = 8
+        Me.CmbClave.ValueMember = "PROID"
+        '
+        'LBLCLAVE
+        '
+        Me.LBLCLAVE.AutoSize = True
+        Me.LBLCLAVE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCLAVE.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LBLCLAVE.Location = New System.Drawing.Point(9, 14)
+        Me.LBLCLAVE.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.LBLCLAVE.Name = "LBLCLAVE"
+        Me.LBLCLAVE.Size = New System.Drawing.Size(49, 27)
+        Me.LBLCLAVE.TabIndex = 4
+        Me.LBLCLAVE.Text = "Clave"
         '
         'LBLDETALLESPRODUCTO
         '
@@ -687,63 +744,6 @@ Partial Class FrmAltaVentas
         'VISTAPRODUCTOSTableAdapter
         '
         Me.VISTAPRODUCTOSTableAdapter.ClearBeforeFill = True
-        '
-        'LBLCLAVE
-        '
-        Me.LBLCLAVE.AutoSize = True
-        Me.LBLCLAVE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLCLAVE.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LBLCLAVE.Location = New System.Drawing.Point(9, 14)
-        Me.LBLCLAVE.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.LBLCLAVE.Name = "LBLCLAVE"
-        Me.LBLCLAVE.Size = New System.Drawing.Size(49, 27)
-        Me.LBLCLAVE.TabIndex = 4
-        Me.LBLCLAVE.Text = "Clave"
-        '
-        'CmbClave
-        '
-        Me.CmbClave.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.CmbClave.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.CmbClave.BackColor = System.Drawing.SystemColors.Window
-        Me.CmbClave.DataSource = Me.VISTAPRODUCTOSBindingSource
-        Me.CmbClave.DisplayMember = "PROCLAVE"
-        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
-        Me.CmbClave.FormattingEnabled = True
-        Me.CmbClave.Location = New System.Drawing.Point(65, 18)
-        Me.CmbClave.Margin = New System.Windows.Forms.Padding(2)
-        Me.CmbClave.Name = "CmbClave"
-        Me.CmbClave.Size = New System.Drawing.Size(87, 21)
-        Me.CmbClave.TabIndex = 8
-        Me.CmbClave.ValueMember = "PROID"
-        '
-        'CMBEXISTENCIAS
-        '
-        Me.CMBEXISTENCIAS.BackColor = System.Drawing.SystemColors.Window
-        Me.CMBEXISTENCIAS.DataSource = Me.VISTAPRODUCTOSBindingSource
-        Me.CMBEXISTENCIAS.DisplayMember = "PROEXISTENCIAS"
-        Me.CMBEXISTENCIAS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
-        Me.CMBEXISTENCIAS.Enabled = False
-        Me.CMBEXISTENCIAS.FormatString = "N0"
-        Me.CMBEXISTENCIAS.FormattingEnabled = True
-        Me.CMBEXISTENCIAS.Location = New System.Drawing.Point(422, 18)
-        Me.CMBEXISTENCIAS.Margin = New System.Windows.Forms.Padding(2)
-        Me.CMBEXISTENCIAS.Name = "CMBEXISTENCIAS"
-        Me.CMBEXISTENCIAS.Size = New System.Drawing.Size(52, 21)
-        Me.CMBEXISTENCIAS.TabIndex = 21
-        Me.CMBEXISTENCIAS.Tag = ""
-        Me.CMBEXISTENCIAS.ValueMember = "PROID"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label2.Location = New System.Drawing.Point(329, 14)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 27)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Existencias"
         '
         'FrmAltaVentas
         '

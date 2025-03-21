@@ -151,4 +151,5 @@ Public Class FrmInventario
             MessageBox.Show("Error al cargar la imagen: " & ex.Message)
         End Try
     End Sub
+
 End Class

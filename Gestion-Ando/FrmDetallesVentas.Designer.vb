@@ -50,15 +50,15 @@ Partial Class FrmDetallesVentas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.DATAPAGOS = New System.Windows.Forms.DataGridView()
-        Me.DETALLESDEPAGOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BTNABONO = New System.Windows.Forms.Button()
-        Me.DETALLESDEPAGOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.DETALLESDEPAGOSTableAdapter()
         Me.PAGID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PAGAR = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Pagado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DETALLESDEPAGOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BTNABONO = New System.Windows.Forms.Button()
+        Me.DETALLESDEPAGOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.DETALLESDEPAGOSTableAdapter()
         CType(Me.DATADETALLEVENTA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTADETALLEVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +72,7 @@ Partial Class FrmDetallesVentas
         Me.DATADETALLEVENTA.AllowUserToAddRows = False
         Me.DATADETALLEVENTA.AllowUserToDeleteRows = False
         Me.DATADETALLEVENTA.AutoGenerateColumns = False
+        Me.DATADETALLEVENTA.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -229,6 +230,7 @@ Partial Class FrmDetallesVentas
         Me.DATAPAGOS.AllowUserToAddRows = False
         Me.DATAPAGOS.AllowUserToDeleteRows = False
         Me.DATAPAGOS.AutoGenerateColumns = False
+        Me.DATAPAGOS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -263,26 +265,6 @@ Partial Class FrmDetallesVentas
         Me.DATAPAGOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAPAGOS.Size = New System.Drawing.Size(799, 198)
         Me.DATAPAGOS.TabIndex = 5
-        '
-        'DETALLESDEPAGOSBindingSource
-        '
-        Me.DETALLESDEPAGOSBindingSource.DataMember = "DETALLESDEPAGOS"
-        Me.DETALLESDEPAGOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'BTNABONO
-        '
-        Me.BTNABONO.AutoSize = True
-        Me.BTNABONO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNABONO.Location = New System.Drawing.Point(667, 528)
-        Me.BTNABONO.Name = "BTNABONO"
-        Me.BTNABONO.Size = New System.Drawing.Size(132, 54)
-        Me.BTNABONO.TabIndex = 6
-        Me.BTNABONO.Text = "Abonar"
-        Me.BTNABONO.UseVisualStyleBackColor = True
-        '
-        'DETALLESDEPAGOSTableAdapter
-        '
-        Me.DETALLESDEPAGOSTableAdapter.ClearBeforeFill = True
         '
         'PAGID
         '
@@ -337,6 +319,27 @@ Partial Class FrmDetallesVentas
         Me.Pagado.Name = "Pagado"
         Me.Pagado.ReadOnly = True
         Me.Pagado.Width = 69
+        '
+        'DETALLESDEPAGOSBindingSource
+        '
+        Me.DETALLESDEPAGOSBindingSource.DataMember = "DETALLESDEPAGOS"
+        Me.DETALLESDEPAGOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'BTNABONO
+        '
+        Me.BTNABONO.AutoSize = True
+        Me.BTNABONO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNABONO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNABONO.Location = New System.Drawing.Point(667, 528)
+        Me.BTNABONO.Name = "BTNABONO"
+        Me.BTNABONO.Size = New System.Drawing.Size(132, 54)
+        Me.BTNABONO.TabIndex = 6
+        Me.BTNABONO.Text = "Abonar"
+        Me.BTNABONO.UseVisualStyleBackColor = True
+        '
+        'DETALLESDEPAGOSTableAdapter
+        '
+        Me.DETALLESDEPAGOSTableAdapter.ClearBeforeFill = True
         '
         'FrmDetallesVentas
         '

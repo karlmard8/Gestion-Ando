@@ -10,6 +10,8 @@
         BTNEDITAR.BackColor = ColorBotones
         BTNELIMINAR.BackColor = ColorBotones
         BTNREPORTE.BackColor = ColorBotones
+        CMBFILTRO.SelectedIndex = 0
+        CMBFILTRO.BackColor = ColorFormulario
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLCLIENTES' Puede moverla o quitarla según sea necesario..
         Me.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -54,7 +56,8 @@
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.VISTACLIENTESPRINCIPALBindingSource1.Filter = "Cliente LIKE '*" & TXTBUSCAR.Text & "*'"
+        ' Aplicar el filtro dinámico al BindingSource
+        Me.VISTACLIENTESPRINCIPALBindingSource1.Filter = CMBFILTRO.SelectedItem.ToString() & " LIKE '*" & TXTBUSCAR.Text & "*'"
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click

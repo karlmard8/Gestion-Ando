@@ -24,6 +24,12 @@ Partial Class FrmUsuarios
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATAUSUARIOS = New System.Windows.Forms.DataGridView()
+        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TBLUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
@@ -33,12 +39,6 @@ Partial Class FrmUsuarios
         Me.BTNEDITAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
-        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -50,6 +50,7 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.AllowUserToAddRows = False
         Me.DATAUSUARIOS.AllowUserToDeleteRows = False
         Me.DATAUSUARIOS.AutoGenerateColumns = False
+        Me.DATAUSUARIOS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DATAUSUARIOS.BackgroundColor = System.Drawing.SystemColors.ButtonShadow
         Me.DATAUSUARIOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATAUSUARIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USUID, Me.USUNOMBRE, Me.USULOGIN, Me.USUCLAVE, Me.USUTIPO, Me.USUEXISTE})
@@ -61,6 +62,59 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAUSUARIOS.Size = New System.Drawing.Size(704, 720)
         Me.DATAUSUARIOS.TabIndex = 0
+        '
+        'USUID
+        '
+        Me.USUID.DataPropertyName = "USUID"
+        Me.USUID.HeaderText = "USUID"
+        Me.USUID.Name = "USUID"
+        Me.USUID.ReadOnly = True
+        Me.USUID.Visible = False
+        Me.USUID.Width = 66
+        '
+        'USUNOMBRE
+        '
+        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
+        Me.USUNOMBRE.HeaderText = "Nombre"
+        Me.USUNOMBRE.Name = "USUNOMBRE"
+        Me.USUNOMBRE.ReadOnly = True
+        '
+        'USULOGIN
+        '
+        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.USULOGIN.DataPropertyName = "USULOGIN"
+        Me.USULOGIN.HeaderText = "Usuario"
+        Me.USULOGIN.Name = "USULOGIN"
+        Me.USULOGIN.ReadOnly = True
+        Me.USULOGIN.Width = 68
+        '
+        'USUCLAVE
+        '
+        Me.USUCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.USUCLAVE.DataPropertyName = "USUCLAVE"
+        Me.USUCLAVE.HeaderText = "Contraseña"
+        Me.USUCLAVE.Name = "USUCLAVE"
+        Me.USUCLAVE.ReadOnly = True
+        Me.USUCLAVE.Width = 86
+        '
+        'USUTIPO
+        '
+        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.USUTIPO.DataPropertyName = "USUTIPO"
+        Me.USUTIPO.HeaderText = "Tipo de usuario"
+        Me.USUTIPO.Name = "USUTIPO"
+        Me.USUTIPO.ReadOnly = True
+        Me.USUTIPO.Width = 97
+        '
+        'USUEXISTE
+        '
+        Me.USUEXISTE.DataPropertyName = "USUEXISTE"
+        Me.USUEXISTE.HeaderText = "USUEXISTE"
+        Me.USUEXISTE.Name = "USUEXISTE"
+        Me.USUEXISTE.ReadOnly = True
+        Me.USUEXISTE.Visible = False
+        Me.USUEXISTE.Width = 74
         '
         'TBLUSUARIOSBindingSource
         '
@@ -74,9 +128,10 @@ Partial Class FrmUsuarios
         '
         'TXTBUSCAR
         '
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 30)
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 23)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(575, 20)
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(575, 29)
         Me.TXTBUSCAR.TabIndex = 11
         '
         'Label1
@@ -134,59 +189,6 @@ Partial Class FrmUsuarios
         Me.BTNELIMINAR.TabIndex = 14
         Me.BTNELIMINAR.Text = "Eliminar"
         Me.BTNELIMINAR.UseVisualStyleBackColor = True
-        '
-        'USUID
-        '
-        Me.USUID.DataPropertyName = "USUID"
-        Me.USUID.HeaderText = "USUID"
-        Me.USUID.Name = "USUID"
-        Me.USUID.ReadOnly = True
-        Me.USUID.Visible = False
-        Me.USUID.Width = 66
-        '
-        'USUNOMBRE
-        '
-        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
-        Me.USUNOMBRE.HeaderText = "Nombre"
-        Me.USUNOMBRE.Name = "USUNOMBRE"
-        Me.USUNOMBRE.ReadOnly = True
-        '
-        'USULOGIN
-        '
-        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.USULOGIN.DataPropertyName = "USULOGIN"
-        Me.USULOGIN.HeaderText = "Usuario"
-        Me.USULOGIN.Name = "USULOGIN"
-        Me.USULOGIN.ReadOnly = True
-        Me.USULOGIN.Width = 68
-        '
-        'USUCLAVE
-        '
-        Me.USUCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.USUCLAVE.DataPropertyName = "USUCLAVE"
-        Me.USUCLAVE.HeaderText = "Contraseña"
-        Me.USUCLAVE.Name = "USUCLAVE"
-        Me.USUCLAVE.ReadOnly = True
-        Me.USUCLAVE.Width = 86
-        '
-        'USUTIPO
-        '
-        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.USUTIPO.DataPropertyName = "USUTIPO"
-        Me.USUTIPO.HeaderText = "Tipo de usuario"
-        Me.USUTIPO.Name = "USUTIPO"
-        Me.USUTIPO.ReadOnly = True
-        Me.USUTIPO.Width = 105
-        '
-        'USUEXISTE
-        '
-        Me.USUEXISTE.DataPropertyName = "USUEXISTE"
-        Me.USUEXISTE.HeaderText = "USUEXISTE"
-        Me.USUEXISTE.Name = "USUEXISTE"
-        Me.USUEXISTE.ReadOnly = True
-        Me.USUEXISTE.Visible = False
-        Me.USUEXISTE.Width = 74
         '
         'FrmUsuarios
         '

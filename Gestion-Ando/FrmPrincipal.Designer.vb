@@ -43,50 +43,50 @@ Partial Class FrmPrincipal
         'MenuOpciones
         '
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
-        Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
-        Me.MenuOpciones.Size = New System.Drawing.Size(1920, 31)
+        Me.MenuOpciones.Size = New System.Drawing.Size(1920, 38)
         Me.MenuOpciones.TabIndex = 0
         Me.MenuOpciones.Text = "MenuStrip1"
         '
         'ClientesToolStripMenuItem
         '
         Me.ClientesToolStripMenuItem.Name = "ClientesToolStripMenuItem"
-        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(82, 27)
+        Me.ClientesToolStripMenuItem.Size = New System.Drawing.Size(98, 34)
         Me.ClientesToolStripMenuItem.Text = "Clientes"
         '
         'VentasToolStripMenuItem
         '
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(73, 27)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(87, 34)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'InventarioToolStripMenuItem
         '
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
-        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(99, 27)
+        Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(118, 34)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
         'ReportesToolStripMenuItem
         '
         Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(89, 27)
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(106, 34)
         Me.ReportesToolStripMenuItem.Text = "Reportes"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(87, 27)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(104, 34)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'CerrarSesiónToolStripMenuItem
         '
         Me.CerrarSesiónToolStripMenuItem.Name = "CerrarSesiónToolStripMenuItem"
-        Me.CerrarSesiónToolStripMenuItem.Size = New System.Drawing.Size(121, 27)
+        Me.CerrarSesiónToolStripMenuItem.Size = New System.Drawing.Size(145, 34)
         Me.CerrarSesiónToolStripMenuItem.Text = "Cerrar sesión"
         '
         'PANELFRAMES
@@ -109,10 +109,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLLOGIN.AutoSize = True
         Me.LBLLOGIN.BackColor = System.Drawing.Color.Transparent
-        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLLOGIN.Location = New System.Drawing.Point(895, 2)
         Me.LBLLOGIN.Name = "LBLLOGIN"
-        Me.LBLLOGIN.Size = New System.Drawing.Size(33, 29)
+        Me.LBLLOGIN.Size = New System.Drawing.Size(37, 36)
         Me.LBLLOGIN.TabIndex = 21
         Me.LBLLOGIN.Text = ". . ."
         '
@@ -120,10 +120,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLHORA.AutoSize = True
         Me.LBLHORA.BackColor = System.Drawing.Color.Transparent
-        Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLHORA.Location = New System.Drawing.Point(1699, 2)
         Me.LBLHORA.Name = "LBLHORA"
-        Me.LBLHORA.Size = New System.Drawing.Size(33, 29)
+        Me.LBLHORA.Size = New System.Drawing.Size(37, 36)
         Me.LBLHORA.TabIndex = 22
         Me.LBLHORA.Text = ". . ."
         '
@@ -134,10 +134,10 @@ Partial Class FrmPrincipal
         '
         Me.LBLFECHA.AutoSize = True
         Me.LBLFECHA.BackColor = System.Drawing.Color.Transparent
-        Me.LBLFECHA.Font = New System.Drawing.Font("Dubai", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLFECHA.Location = New System.Drawing.Point(1602, 2)
+        Me.LBLFECHA.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLFECHA.Location = New System.Drawing.Point(1550, 2)
         Me.LBLFECHA.Name = "LBLFECHA"
-        Me.LBLFECHA.Size = New System.Drawing.Size(33, 29)
+        Me.LBLFECHA.Size = New System.Drawing.Size(37, 36)
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
         '
