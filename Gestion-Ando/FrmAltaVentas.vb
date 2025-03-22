@@ -17,14 +17,14 @@ Public Class FrmAltaVentas
         BtnQuitar.BackColor = ColorBotones
         BTNPAGAR.BackColor = ColorBotones
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
-        CmbClientes.SelectedValue = 0
+        CmbClientes.SelectedValue = -1
         CmbClave.SelectedValue = -1
         CmbClave.Visible = False
         CMBEXISTENCIAS.BackColor = Color.White
         LBLCLAVE.Visible = False
-        CMBEXISTENCIAS.SelectedValue = 0
+        CMBEXISTENCIAS.SelectedValue = -1
         CMBPRODUCTO.SelectedValue = -1
-        CMBPRECIO.SelectedValue = 0
+        CMBPRECIO.SelectedIndex = -1
         TXTMESES.Enabled = False
         TXTPAGO.Enabled = False
         TXTENGANCHE.Enabled = False
@@ -194,17 +194,40 @@ Public Class FrmAltaVentas
         ElseIf TxtCantidad.Text = String.Empty Then
             TxtCantidad.Focus()
         Else
-            Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
-            Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
-            Dim SUBTOT As Integer = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
-            Me.LBLSUB.Text = SUBTOT
+            ' Obtener valores actuales
+            Dim cantidad As Integer = Val(Me.TxtCantidad.Text)
+            Dim precio As Double = Val(Me.CMBPRECIO.Text)
+            Dim subtotal As Double = cantidad * precio  ' Calcular el subtotal del producto
+
+            ' Agregar la fila al DataGridView con el subtotal correcto
+            Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, cantidad, Me.CMBPRECIO.Text, subtotal)
+
+            ' Acumular el subtotal correctamente
+            Dim subtotalAcumulado As Double = 0
+            For Each fila As DataGridViewRow In Me.DtgProductos.Rows
+                If Not fila.IsNewRow Then  ' Evitar filas en blanco
+                    subtotalAcumulado += Convert.ToDouble(fila.Cells("PROSUBTOTAL").Value)
+                End If
+            Next
+
+            ' Actualizar las etiquetas con los valores correctos
+            Me.LBLSUB.Text = subtotalAcumulado.ToString("C2")
+
+            ' Calcular IVA (solo informativo, pero no se suma al total)
+            Dim IVA As Double = Math.Round(0.16 * subtotalAcumulado, 2)
+            LBLIVA.Text = IVA.ToString("C2")
+
+            ' El total ahora es igual al subtotal
+            LBLTOTAL.Text = subtotalAcumulado.ToString("C2")
+
+            ' Restablecer valores de los ComboBox y campos
             Me.CmbClave.SelectedValue = 0
             Me.CMBPRECIO.SelectedValue = 0
             Me.CMBPRODUCTO.SelectedValue = 0
-            Dim IVA = 0.16
-            Dim IVAAPLI = IVA * SUBTOT
-            LBLIVA.Text = IVAAPLI.ToString("C2")
-            LBLTOTAL.Text = Val(LBLSUB.Text)
+            Me.CMBEXISTENCIAS.SelectedValue = 0
+            Me.TxtCantidad.Text = String.Empty
+
+            ' Configuración final
             CMBPRODUCTO.Focus()
             LblSubTotal.Text = "Procesando..."
             CMBPRECIO.FormatString = "C2"
@@ -212,15 +235,41 @@ Public Class FrmAltaVentas
         End If
     End Sub
 
+
+
+
+
     Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
-        LBLSUB.Text = Val(LBLSUB.Text) - Val(DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value)
-        LBLTOTAL.Text = Val(LBLTOTAL.Text) + Val(LBLIVA.Text)
-        LBLIVA.Text = Val(LBLIVA.Text)
-        Dim SUBTOTAL As Double = Val(LBLSUB.Text)
-        LBLIVA.Text = IVA(SUBTOTAL).ToString("F2")
-        Me.LBLTOTAL.Text = Val(Me.LBLSUB.Text) + Val(Me.LBLIVA.Text)
-        DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
+        ' Verificar que haya una fila seleccionada
+        If DtgProductos.CurrentRow IsNot Nothing Then
+            ' Obtener el subtotal del producto que se va a quitar
+            Dim subtotalProducto As Double = Convert.ToDouble(DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value)
+
+            ' Eliminar la fila seleccionada
+            DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
+
+            ' Recalcular el subtotal acumulado después de quitar el producto
+            Dim subtotalAcumulado As Double = 0
+            For Each fila As DataGridViewRow In Me.DtgProductos.Rows
+                If Not fila.IsNewRow Then
+                    subtotalAcumulado += Convert.ToDouble(fila.Cells("PROSUBTOTAL").Value)
+                End If
+            Next
+
+            ' Actualizar etiquetas con formato de moneda
+            LBLSUB.Text = subtotalAcumulado.ToString("C2")
+
+            ' Recalcular IVA (solo informativo)
+            Dim IVA As Double = Math.Round(0.16 * subtotalAcumulado, 2)
+            LBLIVA.Text = IVA.ToString("C2")
+
+            ' El total sigue siendo igual al subtotal
+            LBLTOTAL.Text = subtotalAcumulado.ToString("C2")
+        Else
+            MsgBox("Selecciona un producto para quitar", MsgBoxStyle.Exclamation, "Aviso")
+        End If
     End Sub
+
 
     Private Function IVA(SUBTOTAL As Double) As Double
         Dim RESULTADO As Double
