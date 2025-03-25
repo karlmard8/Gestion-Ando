@@ -4,9 +4,8 @@
         BTNGUARDAR.BackColor = ColorBotones
         BTNLIMPIAR.BackColor = ColorBotones
         BTNCANCELAR.BackColor = ColorBotones
-
+        BTNCARGARIMG.BackColor = ColorBotones
         'Revisar cuando guarda 1000
-        SPINNER.Location = New Point(151, 121)
         SPINNER.Minimum = -1000
         SPINNER.Maximum = 1000
         SPINNER.TabIndex = 4

@@ -50,7 +50,8 @@ Public Class FrmAltaVentas
         LBLTOTAL.Text = "Procesando..."
         CmbClientes.Focus()
         TXTPAGO.Text = String.Empty
-
+        TXTENGANCHE.Text = String.Empty
+        TXTMESES.Text = String.Empty
         DtgProductos.Rows.Clear()
 
     End Sub
@@ -93,7 +94,9 @@ Public Class FrmAltaVentas
         TXTPAGO.Enabled = True
         TXTPAGO.Focus()
         TXTMESES.Enabled = False
+        TXTMESES.Text = String.Empty
         TXTENGANCHE.Enabled = False
+        TXTENGANCHE.Text = String.Empty
     End Sub
 
     Private Sub BTNPAGAR_Click(sender As Object, e As EventArgs) Handles BTNPAGAR.Click
@@ -143,30 +146,35 @@ Public Class FrmAltaVentas
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
                         comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Crédito"
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = Me.TXTMESES.Text
-                        comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = Me.TXTENGANCHE.Text
-                        comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = IDUSUARIOACTUAL
-                        comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
-                        comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
-                        If Conectar() = True Then
-                            Dim VENID As Long
-                            VENID = comando.Parameters("@RETORNO").Value
-                            For REC = 0 To Me.DtgProductos.RowCount - 1
-                                StrSql = "ALTADETVENTA"
-                                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                                comando.CommandType = CommandType.StoredProcedure
-                                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = VENID
-                                comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DtgProductos.Rows(REC).Cells("PROID").Value
-                                comando.Parameters.Add("@DETCANTIDAD", SqlDbType.Int).Value = Me.DtgProductos.Rows(REC).Cells("PROCANTIDAD").Value
-                                comando.Parameters.Add("DETPRECIO", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROPRECIO").Value
-                                comando.Parameters.Add("DETSUBTOTAL", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROSUBTOTAL").Value
-                                Conectar()
-                            Next
-                            DialogResult = DialogResult.OK
-                            MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
-                            Me.Close()
+                        If TXTENGANCHE.Text = String.Empty Then
+                            comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = 0
+                        Else
+                            comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = Me.TXTENGANCHE.Text
                         End If
-                    Else
-                        MsgBox("Ingresa los meses a pagar", MsgBoxStyle.Critical, "error")
+                        comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = IDUSUARIOACTUAL
+                            comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
+                            comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
+                            If Conectar() = True Then
+                                Dim VENID As Long
+                                VENID = comando.Parameters("@RETORNO").Value
+                                For REC = 0 To Me.DtgProductos.RowCount - 1
+                                    StrSql = "ALTADETVENTA"
+                                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                                    comando.CommandType = CommandType.StoredProcedure
+                                    comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = VENID
+                                    comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DtgProductos.Rows(REC).Cells("PROID").Value
+                                    comando.Parameters.Add("@DETCANTIDAD", SqlDbType.Int).Value = Me.DtgProductos.Rows(REC).Cells("PROCANTIDAD").Value
+                                    comando.Parameters.Add("DETPRECIO", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROPRECIO").Value
+                                    comando.Parameters.Add("DETSUBTOTAL", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROSUBTOTAL").Value
+                                    Conectar()
+                                Next
+                                DialogResult = DialogResult.OK
+                                MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+                                Me.Close()
+                            End If
+                        Else
+                            MsgBox("Ingresa las semanas de crédito", MsgBoxStyle.Critical, "error")
+                        TXTMESES.Focus()
                     End If
                 End If
             Else
@@ -174,37 +182,74 @@ Public Class FrmAltaVentas
                 Me.CMBPRODUCTO.Focus()
             End If
         Else
-            MsgBox("Ingresa un cliente para continuar", MsgBoxStyle.Critical, "error")
+            MsgBox("Ingresa un cliente", MsgBoxStyle.Critical, "error")
             Me.CmbClientes.Focus()
         End If
 
     End Sub
 
     Private Sub TxtPago_TextChanged(sender As Object, e As EventArgs) Handles TXTPAGO.TextChanged
-        If Val(Me.TXTPAGO.Text) < Val(Me.LBLTOTAL.Text) Then
-            Me.TXTCAMBIO.Text = 0.ToString("C2")
+
+        If TXTPAGO.Text < LBLTOTAL.Text Then
+            TXTCAMBIO.Text = 0.ToString("C2")
         Else
-            Me.TXTCAMBIO.Text = (Val(Me.TXTPAGO.Text) - Val(Me.LBLTOTAL.Text)).ToString("C2")
+            Me.TXTCAMBIO.Text = (Val(TXTPAGO.Text) - LBLTOTAL.Text).ToString("C2")
         End If
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
+
         If CMBPRODUCTO.Text = String.Empty Then
             CMBPRODUCTO.Focus()
         ElseIf TxtCantidad.Text = String.Empty Then
             TxtCantidad.Focus()
+        ElseIf TxtCantidad.Text < 1 Then
+            MsgBox("Agrega al menos un producto", MsgBoxStyle.Critical, "Error")
+            TxtCantidad.Focus()
         Else
-            Dim SUBT As Integer = (Me.LblSubTotal.Text).ToString
-            Me.DtgProductos.Rows.Add(Me.CmbClave.SelectedValue, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, Me.TxtCantidad.Text, Me.CMBPRECIO.Text, SUBT)
-            Dim SUBTOT As Integer = (Val(Me.LBLSUB.Text) + SUBT).ToString("F2")
-            Me.LBLSUB.Text = SUBTOT
+            ' Obtener valores actuales
+            Dim cantidad As Integer = Val(Me.TxtCantidad.Text)
+            Dim precio As Double = Val(Me.CMBPRECIO.Text)
+            Dim subtotal As Double = cantidad * precio  ' Calcular el subtotal del producto
+            Dim productoId As Long = Me.CmbClave.SelectedValue
+
+            ' Verificar si el producto ya existe en el DataGridView
+            Dim productoExistente As DataGridViewRow = Nothing
+            For Each fila As DataGridViewRow In Me.DtgProductos.Rows
+                If Not fila.IsNewRow AndAlso Convert.ToInt64(fila.Cells("PROID").Value) = productoId Then
+                    productoExistente = fila
+                    Exit For
+                End If
+            Next
+
+            If productoExistente IsNot Nothing Then
+                ' Si el producto ya existe, actualizar la cantidad y el subtotal
+                Dim cantidadExistente As Integer = Convert.ToInt32(productoExistente.Cells("PROCANTIDAD").Value)
+                Dim nuevaCantidad As Integer = cantidadExistente + cantidad
+                productoExistente.Cells("PROCANTIDAD").Value = nuevaCantidad
+
+                ' Actualizar el subtotal
+                Dim nuevoSubtotal As Double = nuevaCantidad * precio
+                productoExistente.Cells("PROSUBTOTAL").Value = nuevoSubtotal
+
+                ' Actualizar el total acumulado
+                ActualizarTotales()
+            Else
+                ' Si el producto no existe, agregarlo como una nueva fila
+                Me.DtgProductos.Rows.Add(productoId, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, cantidad, Me.CMBPRECIO.Text, subtotal)
+
+                ' Actualizar el total acumulado
+                ActualizarTotales()
+            End If
+
+            ' Restablecer valores de los ComboBox y campos
             Me.CmbClave.SelectedValue = 0
             Me.CMBPRECIO.SelectedValue = 0
             Me.CMBPRODUCTO.SelectedValue = 0
-            Dim IVA = 0.16
-            Dim IVAAPLI = IVA * SUBTOT
-            LBLIVA.Text = IVAAPLI.ToString("C2")
-            LBLTOTAL.Text = Val(LBLSUB.Text)
+            Me.CMBEXISTENCIAS.SelectedValue = 0
+            Me.TxtCantidad.Text = String.Empty
+
+            ' Configuración final
             CMBPRODUCTO.Focus()
             LblSubTotal.Text = "Procesando..."
             CMBPRECIO.FormatString = "C2"
@@ -212,15 +257,58 @@ Public Class FrmAltaVentas
         End If
     End Sub
 
-    Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
-        LBLSUB.Text = Val(LBLSUB.Text) - Val(DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value)
-        LBLTOTAL.Text = Val(LBLTOTAL.Text) + Val(LBLIVA.Text)
-        LBLIVA.Text = Val(LBLIVA.Text)
-        Dim SUBTOTAL As Double = Val(LBLSUB.Text)
-        LBLIVA.Text = IVA(SUBTOTAL).ToString("F2")
-        Me.LBLTOTAL.Text = Val(Me.LBLSUB.Text) + Val(Me.LBLIVA.Text)
-        DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
+    ' Método para actualizar el total, subtotal e IVA
+    Private Sub ActualizarTotales()
+        ' Acumular el subtotal correctamente
+        Dim subtotalAcumulado As Double = 0
+        For Each fila As DataGridViewRow In Me.DtgProductos.Rows
+            If Not fila.IsNewRow Then  ' Evitar filas en blanco
+                subtotalAcumulado += Convert.ToDouble(fila.Cells("PROSUBTOTAL").Value)
+            End If
+        Next
+
+        ' Actualizar las etiquetas con los valores correctos
+        Me.LBLSUB.Text = subtotalAcumulado.ToString("C2")
+
+        ' Calcular IVA (solo informativo, pero no se suma al total)
+        Dim IVA As Double = Math.Round(0.16 * subtotalAcumulado, 2)
+        LBLIVA.Text = IVA.ToString("C2")
+
+        ' El total ahora es igual al subtotal
+        LBLTOTAL.Text = subtotalAcumulado.ToString("C2")
     End Sub
+
+
+    Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
+        ' Verificar que haya una fila seleccionada
+        If DtgProductos.CurrentRow IsNot Nothing Then
+            ' Obtener la cantidad del producto seleccionado
+            Dim cantidadProducto As Integer = Convert.ToInt32(DtgProductos.CurrentRow.Cells("PROCANTIDAD").Value)
+
+            ' Verificar si la cantidad es mayor que 1
+            If cantidadProducto > 1 Then
+                ' Restar 1 a la cantidad
+                cantidadProducto -= 1
+
+                ' Actualizar la cantidad en la fila
+                DtgProductos.CurrentRow.Cells("PROCANTIDAD").Value = cantidadProducto
+
+                ' Actualizar el subtotal en la fila
+                Dim precio As Double = Convert.ToDouble(DtgProductos.CurrentRow.Cells("PROPRECIO").Value)
+                DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value = cantidadProducto * precio
+            Else
+                ' Si la cantidad es 1 o menor, eliminar la fila
+                DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
+            End If
+
+            ' Recalcular el subtotal acumulado después de quitar el producto
+            ActualizarTotales()
+
+        Else
+            MsgBox("Selecciona un producto para quitar", MsgBoxStyle.Exclamation, "Aviso")
+        End If
+    End Sub
+
 
     Private Function IVA(SUBTOTAL As Double) As Double
         Dim RESULTADO As Double
@@ -255,5 +343,4 @@ Public Class FrmAltaVentas
             e.Handled = True
         End If
     End Sub
-
 End Class

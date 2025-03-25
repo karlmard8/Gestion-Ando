@@ -61,6 +61,8 @@ Public Class FrmAltaClientes
                 DirectCast(ctrl, System.Windows.Forms.TextBox).Clear()
             ElseIf TypeOf ctrl Is System.Windows.Forms.NumericUpDown Then
                 DirectCast(ctrl, System.Windows.Forms.NumericUpDown).Value = 0
+            ElseIf TypeOf ctrl Is System.Windows.Forms.ComboBox Then
+                DirectCast(ctrl, System.Windows.Forms.ComboBox).SelectedIndex = -1
             End If
         Next
 

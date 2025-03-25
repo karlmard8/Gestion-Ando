@@ -150,6 +150,11 @@
                         .Columns("Cliente").DataPropertyName = "Cliente"
                         .Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
+                        .Columns.Add("Enganche", "Enganche")
+                        .Columns("Enganche").DataPropertyName = "Enganche"
+                        .Columns("Enganche").DefaultCellStyle.Format = "C2"
+                        .Columns("Enganche").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+
                         .Columns.Add("A PAGAR", "A pagar")
                         .Columns("A PAGAR").DataPropertyName = "A PAGAR"
                         .Columns("A PAGAR").DefaultCellStyle.Format = "C2"
