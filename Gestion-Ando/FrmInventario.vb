@@ -154,10 +154,60 @@ Public Class FrmInventario
         End Try
     End Sub
 
+    Public Sub MostrarFormularioEmergente()
+        ' Crear un nuevo formulario
+        Dim OPCIONESVENTAS As New Form()
+        OPCIONESVENTAS.Text = "Formato de reporte"
+        OPCIONESVENTAS.Size = New Size(300, 200)
+        OPCIONESVENTAS.ShowIcon = False
+        OPCIONESVENTAS.BackColor = ColorFormulario
+        OPCIONESVENTAS.StartPosition = FormStartPosition.CenterScreen
+        OPCIONESVENTAS.FormBorderStyle = FormBorderStyle.FixedSingle
+        OPCIONESVENTAS.MaximizeBox = False
+        OPCIONESVENTAS.MinimizeBox = False
+
+
+        ' Crear el primer RadioButton
+        Dim opcion1 As New RadioButton()
+        opcion1.Text = "Ventas generales"
+        opcion1.Location = New Point(50, 30)
+        opcion1.AutoSize = True
+
+        ' Crear el segundo RadioButton
+        Dim opcion2 As New RadioButton()
+        opcion2.Text = "Ventas"
+        opcion2.Location = New Point(50, 60)
+        opcion2.AutoSize = True
+
+        ' Crear un botón de aceptar
+        Dim btnAceptar As New Button()
+        btnAceptar.BackColor = ColorBotones
+        btnAceptar.Text = "Aceptar"
+        btnAceptar.Location = New Point(100, 100)
+        AddHandler btnAceptar.Click, Sub(sender, e)
+                                         If opcion1.Checked Then
+                                             MessageBox.Show("Seleccionaste Opción 1", "Resultado")
+                                         ElseIf opcion2.Checked Then
+                                             MessageBox.Show("Seleccionaste Opción 2", "Resultado")
+                                         Else
+                                             MessageBox.Show("Por favor selecciona una opción.", "Advertencia")
+                                         End If
+                                         OPCIONESVENTAS.Close()
+                                     End Sub
+
+        ' Agregar los controles al formulario emergente
+        OPCIONESVENTAS.Controls.Add(opcion1)
+        OPCIONESVENTAS.Controls.Add(opcion2)
+        OPCIONESVENTAS.Controls.Add(btnAceptar)
+
+        ' Mostrar el formulario como emergente
+        OPCIONESVENTAS.ShowDialog()
+    End Sub
+
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
         Dim MUESTRA As New FrmReportes
         Dim MANIFIESTO As New ReportDocument
-        MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+        MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
         Dim crDatabase As Database
         Dim crTables As Tables
         Dim crTable As Table = Nothing
@@ -167,7 +217,7 @@ Public Class FrmInventario
         crTables = crDatabase.Tables
         For Each crTable In crTables
             With crConnInfo
-                .ServerName = "192.168.1.68"
+                .ServerName = "desktop-8q10a8h\sqlexpress"
                 .DatabaseName = "MuebleAlex"
                 .UserID = "sa"
                 .Password = "c1oooooo"

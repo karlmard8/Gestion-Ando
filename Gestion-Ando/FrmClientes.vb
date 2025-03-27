@@ -9,7 +9,6 @@
         BTNNUEVO.BackColor = ColorBotones
         BTNEDITAR.BackColor = ColorBotones
         BTNELIMINAR.BackColor = ColorBotones
-        BTNREPORTE.BackColor = ColorBotones
         CMBFILTRO.SelectedIndex = 0
         CMBFILTRO.BackColor = ColorFormulario
         TXTBUSCAR.Focus()

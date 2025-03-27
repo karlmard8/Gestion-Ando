@@ -46,7 +46,6 @@ Partial Class FrmClientes
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.BTNREPORTE = New System.Windows.Forms.Button()
         Me.CLIIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -268,19 +267,6 @@ Partial Class FrmClientes
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
-        'BTNREPORTE
-        '
-        Me.BTNREPORTE.AutoSize = True
-        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
-        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTE.Location = New System.Drawing.Point(1741, 41)
-        Me.BTNREPORTE.Name = "BTNREPORTE"
-        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
-        Me.BTNREPORTE.TabIndex = 13
-        Me.BTNREPORTE.Text = "Generar reporte"
-        Me.BTNREPORTE.UseVisualStyleBackColor = False
-        '
         'CLIIDDataGridViewTextBoxColumn
         '
         Me.CLIIDDataGridViewTextBoxColumn.DataPropertyName = "CLIID"
@@ -342,7 +328,6 @@ Partial Class FrmClientes
         Me.ClientSize = New System.Drawing.Size(1886, 930)
         Me.Controls.Add(Me.CMBFILTRO)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PictureBox1)
@@ -374,7 +359,6 @@ Partial Class FrmClientes
     Friend WithEvents TXTBUSCAR As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents BTNREPORTE As Button
     Friend WithEvents VISTACLIENTESPRINCIPALBindingSource As BindingSource
     Friend WithEvents VISTACLIENTESPRINCIPALTableAdapter As MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter
     Friend WithEvents VISTACLIENTESPRINCIPALBindingSource1 As BindingSource

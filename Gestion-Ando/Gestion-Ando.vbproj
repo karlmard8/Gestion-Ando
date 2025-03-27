@@ -82,10 +82,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmAltaClientes.Designer.vb">
+    <Compile Include="Resources\FrmAltaClientes.Designer.vb">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmAltaClientes.vb">
+    <Compile Include="Resources\FrmAltaClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAltaProductos.Designer.vb">
@@ -182,9 +182,15 @@
       <DependentUpon>RPTINVENTARIO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPTVENTASGENERAL.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTVENTASGENERAL.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FrmAltaClientes.resx">
+    <EmbeddedResource Include="Resources\FrmAltaClientes.resx">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaProductos.resx">
@@ -230,6 +236,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTINVENTARIO.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPTVENTASGENERAL.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTVENTASGENERAL.vb</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="MuebleAlexDataSet.xsc">
@@ -256,10 +266,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LogoMueblería.ico" />
-    <None Include="Resources\LogoMuebleriaCompleto.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
