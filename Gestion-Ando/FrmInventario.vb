@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 
 Public Class FrmInventario
     Dim ALTAINVENTARIO As New FrmAltaProductos
@@ -152,4 +154,31 @@ Public Class FrmInventario
         End Try
     End Sub
 
+    Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
+        Dim MUESTRA As New FrmReportes
+        Dim MANIFIESTO As New ReportDocument
+        MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+        Dim crDatabase As Database
+        Dim crTables As Tables
+        Dim crTable As Table = Nothing
+        Dim crLogOnInfo As TableLogOnInfo
+        Dim crConnInfo As New ConnectionInfo()
+        crDatabase = MANIFIESTO.Database
+        crTables = crDatabase.Tables
+        For Each crTable In crTables
+            With crConnInfo
+                .ServerName = "192.168.1.68"
+                .DatabaseName = "MuebleAlex"
+                .UserID = "sa"
+                .Password = "c1oooooo"
+            End With
+            crLogOnInfo = crTable.LogOnInfo
+            crLogOnInfo.ConnectionInfo = crConnInfo
+            crTable.ApplyLogOnInfo(crLogOnInfo)
+        Next
+        crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOS"
+        crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
+        MUESTRA.Reportes.ReportSource = MANIFIESTO
+        MUESTRA.ShowDialog()
+    End Sub
 End Class

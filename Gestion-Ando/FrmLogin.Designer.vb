@@ -84,7 +84,7 @@ Partial Class FrmLogin
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.Gestion_Ando.My.Resources.Resources.Imagen_de_WhatsApp_2025_03_05_a_las_12_26_40_68235b6c
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(38, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(366, 136)
