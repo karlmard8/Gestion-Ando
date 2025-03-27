@@ -28,7 +28,6 @@ Partial Class FrmPrincipal
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
@@ -45,7 +44,7 @@ Partial Class FrmPrincipal
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
         Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
+        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -70,12 +69,6 @@ Partial Class FrmPrincipal
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
         Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(118, 34)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
-        '
-        'ReportesToolStripMenuItem
-        '
-        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(106, 34)
-        Me.ReportesToolStripMenuItem.Text = "Reportes"
         '
         'UsuariosToolStripMenuItem
         '
@@ -121,7 +114,7 @@ Partial Class FrmPrincipal
         Me.LBLHORA.AutoSize = True
         Me.LBLHORA.BackColor = System.Drawing.Color.Transparent
         Me.LBLHORA.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLHORA.Location = New System.Drawing.Point(1699, 2)
+        Me.LBLHORA.Location = New System.Drawing.Point(1680, 2)
         Me.LBLHORA.Name = "LBLHORA"
         Me.LBLHORA.Size = New System.Drawing.Size(37, 36)
         Me.LBLHORA.TabIndex = 22
@@ -172,7 +165,6 @@ Partial Class FrmPrincipal
     Friend WithEvents ClientesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VentasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InventarioToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UsuariosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PANELFRAMES As Panel
     Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem

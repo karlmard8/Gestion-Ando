@@ -152,7 +152,7 @@ Partial Class FrmAltaVentas
         Me.TXTCAMBIO.BackColor = System.Drawing.Color.Gold
         Me.TXTCAMBIO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TXTCAMBIO.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTCAMBIO.ForeColor = System.Drawing.Color.Red
+        Me.TXTCAMBIO.ForeColor = System.Drawing.Color.Black
         Me.TXTCAMBIO.Location = New System.Drawing.Point(147, 146)
         Me.TXTCAMBIO.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.TXTCAMBIO.Name = "TXTCAMBIO"
@@ -262,7 +262,7 @@ Partial Class FrmAltaVentas
         Me.LBLTOTAL.BackColor = System.Drawing.Color.Gold
         Me.LBLTOTAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLTOTAL.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLTOTAL.ForeColor = System.Drawing.Color.Red
+        Me.LBLTOTAL.ForeColor = System.Drawing.Color.Black
         Me.LBLTOTAL.Location = New System.Drawing.Point(553, 513)
         Me.LBLTOTAL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLTOTAL.Name = "LBLTOTAL"
@@ -288,7 +288,7 @@ Partial Class FrmAltaVentas
         Me.LBLIVA.BackColor = System.Drawing.Color.Gold
         Me.LBLIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLIVA.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLIVA.ForeColor = System.Drawing.Color.Red
+        Me.LBLIVA.ForeColor = System.Drawing.Color.Black
         Me.LBLIVA.Location = New System.Drawing.Point(553, 488)
         Me.LBLIVA.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLIVA.Name = "LBLIVA"
@@ -314,7 +314,7 @@ Partial Class FrmAltaVentas
         Me.LBLSUB.BackColor = System.Drawing.Color.Gold
         Me.LBLSUB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLSUB.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSUB.ForeColor = System.Drawing.Color.Red
+        Me.LBLSUB.ForeColor = System.Drawing.Color.Black
         Me.LBLSUB.Location = New System.Drawing.Point(553, 463)
         Me.LBLSUB.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLSUB.Name = "LBLSUB"

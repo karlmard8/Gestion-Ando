@@ -52,7 +52,9 @@
 
 
     Public Sub inicio()
-        Conexion = New SqlClient.SqlConnection("server=desktop-8q10a8h\sqlexpress; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
+        Conexion = New SqlClient.SqlConnection("server=192.168.1.68; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
+        'SERVIDOR LOCAL desktop-8q10a8h\sqlexpress
+        'SERVIDOR PUBLICO 192.168.1.68
     End Sub
 
 End Module
