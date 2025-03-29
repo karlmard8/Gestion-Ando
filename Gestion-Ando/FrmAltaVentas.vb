@@ -103,7 +103,7 @@ Public Class FrmAltaVentas
         If Me.CmbClientes.SelectedValue > 0 Then
             If (Me.DtgProductos.RowCount > 0) Then
                 If RBCONTADO.Checked = True Then
-                    If Val(Me.TXTPAGO.Text) >= Val(Me.LBLTOTAL.Text) Then
+                    If Val(Me.TXTPAGO.Text) >= (Me.LBLTOTAL.Text).ToString Then
                         StrSql = "ALTAVENTA"
                         comando = New SqlClient.SqlCommand(StrSql, Conexion)
                         comando.CommandType = CommandType.StoredProcedure

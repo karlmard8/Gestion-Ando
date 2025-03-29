@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Gestion-Ando", "Gestion-Ando\Gestion-Ando.vbproj", "{00F7833C-50A7-4C50-8AD6-DE476503E8D4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "instalador", "instalador\instalador.vdproj", "{B9172E43-0C44-4D17-A0B0-2E83C97DC1CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{00F7833C-50A7-4C50-8AD6-DE476503E8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F7833C-50A7-4C50-8AD6-DE476503E8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F7833C-50A7-4C50-8AD6-DE476503E8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9172E43-0C44-4D17-A0B0-2E83C97DC1CE}.Debug|Any CPU.ActiveCfg = Debug
+		{B9172E43-0C44-4D17-A0B0-2E83C97DC1CE}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

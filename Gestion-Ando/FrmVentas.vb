@@ -223,26 +223,30 @@ Public Class FrmVentas
 
         ' Crear el primer RadioButton
         Dim opcion1 As New RadioButton()
+        opcion1.Checked = True
         opcion1.Text = "Ventas generales"
         opcion1.Location = New Point(50, 30)
+        opcion1.Font = New Font("Dubai", 16, FontStyle.Regular)
         opcion1.AutoSize = True
 
         ' Crear el segundo RadioButton
-        Dim opcion2 As New RadioButton()
-        opcion2.Text = "Ventas"
-        opcion2.Location = New Point(50, 60)
-        opcion2.AutoSize = True
+        'Dim opcion2 As New RadioButton()
+        'opcion2.Text = "Ventas"
+        'opcion2.Location = New Point(50, 60)
+        'opcion2.AutoSize = True
 
         ' Crear un botón de aceptar
         Dim btnAceptar As New Button()
         btnAceptar.BackColor = ColorBotones
         btnAceptar.Text = "Aceptar"
         btnAceptar.Location = New Point(100, 100)
+        btnAceptar.AutoSize = True
+        btnAceptar.Font = New Font("Dubai", 14, FontStyle.Regular)
         AddHandler btnAceptar.Click, Sub(sender, e)
                                          If opcion1.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing
@@ -266,8 +270,8 @@ Public Class FrmVentas
                                              MUESTRA.Reportes.ReportSource = MANIFIESTO
                                              MUESTRA.ShowDialog()
                                              OPCIONESVENTAS.Close()
-                                         ElseIf opcion2.Checked Then
-                                             MessageBox.Show("Seleccionaste Opción 2", "Resultado")
+                                             ' ElseIf opcion2.Checked Then
+                                             '  MessageBox.Show("Seleccionaste Opción 2", "Resultado")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                          End If
@@ -276,7 +280,7 @@ Public Class FrmVentas
 
         ' Agregar los controles al formulario emergente
         OPCIONESVENTAS.Controls.Add(opcion1)
-        OPCIONESVENTAS.Controls.Add(opcion2)
+        'OPCIONESVENTAS.Controls.Add(opcion2)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
         ' Mostrar el formulario como emergente
