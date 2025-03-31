@@ -118,10 +118,6 @@ Public Class FrmInventario
         TXTBUSCAR.Focus()
     End Sub
 
-    Private Sub DATAINVENTARIO_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DATAINVENTARIO.CellClick
-
-    End Sub
-
     Private Sub DATAINVENTARIO_SelectionChanged(sender As Object, e As EventArgs) Handles DATAINVENTARIO.SelectionChanged
         Try
             ' Verificar que el DataGridView tenga filas y una fila seleccionada
@@ -155,30 +151,118 @@ Public Class FrmInventario
     End Sub
 
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
-        Dim MUESTRA As New FrmReportes
-        Dim MANIFIESTO As New ReportDocument
-        MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
-        Dim crDatabase As Database
-        Dim crTables As Tables
-        Dim crTable As Table = Nothing
-        Dim crLogOnInfo As TableLogOnInfo
-        Dim crConnInfo As New ConnectionInfo()
-        crDatabase = MANIFIESTO.Database
-        crTables = crDatabase.Tables
-        For Each crTable In crTables
-            With crConnInfo
-                .ServerName = "desktop-8q10a8h\sqlexpress"
-                .DatabaseName = "MuebleAlex"
-                .UserID = "sa"
-                .Password = "c1oooooo"
-            End With
-            crLogOnInfo = crTable.LogOnInfo
-            crLogOnInfo.ConnectionInfo = crConnInfo
-            crTable.ApplyLogOnInfo(crLogOnInfo)
-        Next
-        crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOS"
-        crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
-        MUESTRA.Reportes.ReportSource = MANIFIESTO
-        MUESTRA.ShowDialog()
+        MostrarFormularioEmergente()
+    End Sub
+
+    Public Sub MostrarFormularioEmergente()
+        ' Crear un nuevo formulario
+        Dim OPCIONESVENTAS As New Form()
+        OPCIONESVENTAS.Text = "Tipo de reporte"
+        OPCIONESVENTAS.Size = New Size(300, 250)
+        OPCIONESVENTAS.ShowIcon = False
+        OPCIONESVENTAS.BackColor = ColorFormulario
+        OPCIONESVENTAS.StartPosition = FormStartPosition.CenterScreen
+        OPCIONESVENTAS.FormBorderStyle = FormBorderStyle.FixedSingle
+        OPCIONESVENTAS.MaximizeBox = False
+        OPCIONESVENTAS.MinimizeBox = False
+
+
+        ' Crear el primer RadioButton
+        Dim opcion1 As New RadioButton()
+        opcion1.Checked = True
+        opcion1.Text = "Inventario general"
+        opcion1.Location = New Point(50, 30)
+        opcion1.Font = New Font("Dubai", 16, FontStyle.Regular)
+        opcion1.AutoSize = True
+        opcion1.TabIndex = 1
+
+        'Crear el segundo RadioButton
+        Dim opcion2 As New RadioButton()
+        opcion2.Text = "Inventario existente"
+        opcion2.Location = New Point(50, 80)
+        opcion2.Font = New Font("Dubai", 16, FontStyle.Regular)
+        opcion2.AutoSize = True
+        opcion2.TabIndex = 2
+
+        ' Crear un botón de aceptar
+        Dim btnAceptar As New Button()
+        btnAceptar.BackColor = ColorBotones
+        btnAceptar.Text = "Aceptar"
+        btnAceptar.Location = New Point(100, 150)
+        btnAceptar.AutoSize = True
+        btnAceptar.Font = New Font("Dubai", 14, FontStyle.Regular)
+        btnAceptar.TabIndex = 3
+        AddHandler btnAceptar.Click, Sub(sender, e)
+                                         If opcion1.Checked Then
+                                             Dim MUESTRA As New FrmReportes
+                                             Dim MANIFIESTO As New ReportDocument
+                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+                                             Dim crDatabase As Database
+                                             Dim crTables As Tables
+                                             Dim crTable As Table = Nothing
+                                             Dim crLogOnInfo As TableLogOnInfo
+                                             Dim crConnInfo As New ConnectionInfo()
+                                             crDatabase = MANIFIESTO.Database
+                                             crTables = crDatabase.Tables
+                                             For Each crTable In crTables
+                                                 With crConnInfo
+                                                     .ServerName = "desktop-8q10a8h\sqlexpress"
+                                                     .DatabaseName = "MuebleAlex"
+                                                     .UserID = "sa"
+                                                     .Password = "c1oooooo"
+                                                 End With
+                                                 crLogOnInfo = crTable.LogOnInfo
+                                                 crLogOnInfo.ConnectionInfo = crConnInfo
+                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
+                                             Next
+                                             crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOS"
+                                             crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
+                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
+                                             MUESTRA.Reportes.RefreshReport()
+                                             MUESTRA.ShowDialog()
+                                             OPCIONESVENTAS.Close()
+
+
+                                         ElseIf opcion2.Checked Then
+                                             Dim MUESTRA As New FrmReportes
+                                             Dim MANIFIESTO As New ReportDocument
+                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
+                                             Dim crDatabase As Database
+                                             Dim crTables As Tables
+                                             Dim crTable As Table = Nothing
+                                             Dim crLogOnInfo As TableLogOnInfo
+                                             Dim crConnInfo As New ConnectionInfo()
+                                             crDatabase = MANIFIESTO.Database
+                                             crTables = crDatabase.Tables
+                                             For Each crTable In crTables
+                                                 With crConnInfo
+                                                     .ServerName = "desktop-8q10a8h\sqlexpress"
+                                                     .DatabaseName = "MuebleAlex"
+                                                     .UserID = "sa"
+                                                     .Password = "c1oooooo"
+                                                 End With
+                                                 crLogOnInfo = crTable.LogOnInfo
+                                                 crLogOnInfo.ConnectionInfo = crConnInfo
+                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
+                                             Next
+                                             crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOSEXISTENTES"
+                                             crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
+                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
+                                             MUESTRA.Reportes.RefreshReport()
+                                             MUESTRA.ShowDialog()
+                                             OPCIONESVENTAS.Close()
+                                         Else
+                                             MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
+                                         End If
+
+                                     End Sub
+
+        ' Agregar los controles al formulario emergente
+        OPCIONESVENTAS.Controls.Add(opcion1)
+        OPCIONESVENTAS.Controls.Add(opcion2)
+        OPCIONESVENTAS.Controls.Add(btnAceptar)
+
+        ' Mostrar el formulario como emergente
+        OPCIONESVENTAS.ShowDialog()
     End Sub
 End Class

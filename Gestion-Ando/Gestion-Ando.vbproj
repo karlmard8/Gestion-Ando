@@ -82,10 +82,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\FrmAltaClientes.Designer.vb">
+    <Compile Include="FrmAltaClientes.Designer.vb">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Resources\FrmAltaClientes.vb">
+    <Compile Include="FrmAltaClientes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAltaProductos.Designer.vb">
@@ -182,6 +182,12 @@
       <DependentUpon>RPTINVENTARIO.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPTINVENTARIOEXISTENTE.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTINVENTARIOEXISTENTE.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RPTVENTASGENERAL.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,7 +196,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\FrmAltaClientes.resx">
+    <EmbeddedResource Include="FrmAltaClientes.resx">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaProductos.resx">
@@ -236,6 +242,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTINVENTARIO.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPTINVENTARIOEXISTENTE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTINVENTARIOEXISTENTE.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RPTVENTASGENERAL.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTVENTASGENERAL.vb</LastGenOutput>
@@ -270,6 +280,8 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
