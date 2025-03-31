@@ -23,7 +23,7 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
         Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,6 +44,8 @@ Partial Class FrmVentas
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,9 +124,9 @@ Partial Class FrmVentas
         '
         Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle1.Format = "C2"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
         Me.VENTOTAL.HeaderText = "Total"
         Me.VENTOTAL.Name = "VENTOTAL"
         Me.VENTOTAL.ReadOnly = True
@@ -234,11 +236,27 @@ Partial Class FrmVentas
         '
         Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
         '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(516, 12)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 20
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Location = New System.Drawing.Point(516, 66)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.TabIndex = 21
+        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(860, 930)
+        Me.Controls.Add(Me.DateTimePicker2)
+        Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.BTNNUEVO)
         Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
@@ -278,4 +296,6 @@ Partial Class FrmVentas
     Friend WithEvents VENID As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
     Friend WithEvents VENEXISTEDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DateTimePicker2 As DateTimePicker
 End Class

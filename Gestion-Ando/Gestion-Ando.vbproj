@@ -188,6 +188,12 @@
       <DependentUpon>RPTINVENTARIOEXISTENTE.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="RPTVENTASFILTRADAS.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTVENTASFILTRADAS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RPTVENTASGENERAL.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -245,6 +251,10 @@
     <EmbeddedResource Include="RPTINVENTARIOEXISTENTE.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTINVENTARIOEXISTENTE.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPTVENTASFILTRADAS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTVENTASFILTRADAS.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RPTVENTASGENERAL.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

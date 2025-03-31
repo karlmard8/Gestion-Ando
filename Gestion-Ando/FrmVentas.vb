@@ -230,10 +230,11 @@ Public Class FrmVentas
         opcion1.AutoSize = True
 
         ' Crear el segundo RadioButton
-        'Dim opcion2 As New RadioButton()
-        'opcion2.Text = "Ventas"
-        'opcion2.Location = New Point(50, 60)
-        'opcion2.AutoSize = True
+        Dim opcion2 As New RadioButton()
+        opcion2.Text = "Ventas"
+        opcion2.Location = New Point(50, 60)
+        opcion2.Font = New Font("Dubai", 16, FontStyle.Regular)
+        opcion2.AutoSize = True
 
         ' Crear un botón de aceptar
         Dim btnAceptar As New Button()
@@ -270,8 +271,41 @@ Public Class FrmVentas
                                              MUESTRA.Reportes.ReportSource = MANIFIESTO
                                              MUESTRA.ShowDialog()
                                              OPCIONESVENTAS.Close()
-                                             ' ElseIf opcion2.Checked Then
-                                             '  MessageBox.Show("Seleccionaste Opción 2", "Resultado")
+
+                                         ElseIf opcion2.Checked Then
+                                             Dim MUESTRA As New FrmReportes
+                                             Dim MANIFIESTO As New ReportDocument
+
+                                             ' Ruta del reporte
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
+
+                                             ' Configurar la conexión a la base de datos
+                                             Dim crConnInfo As New ConnectionInfo()
+                                             With crConnInfo
+                                                 .ServerName = "desktop-8q10a8h\sqlexpress"
+                                                 .DatabaseName = "MuebleAlex"
+                                                 .UserID = "sa"
+                                                 .Password = "c1oooooo"
+                                             End With
+
+                                             ' Aplicar los datos de conexión al reporte
+                                             Dim crDatabase As Database = MANIFIESTO.Database
+                                             Dim crTables As Tables = crDatabase.Tables
+
+                                             For Each crTable As Table In crTables
+                                                 Dim crLogOnInfo As TableLogOnInfo = crTable.LogOnInfo
+                                                 crLogOnInfo.ConnectionInfo = crConnInfo
+                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
+                                             Next
+
+                                             ' (Opcional) Configurar parámetros del procedimiento almacenado
+                                             MANIFIESTO.SetParameterValue("@FECHAINICIAL", DateTimePicker1.Value.Date)
+                                             MANIFIESTO.SetParameterValue("@FECHAFINAL", DateTimePicker2.Value.Date)
+
+                                             ' Mostrar el reporte
+                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
+                                             MUESTRA.Reportes.RefreshReport()
+                                             MUESTRA.ShowDialog()
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                          End If
@@ -280,7 +314,7 @@ Public Class FrmVentas
 
         ' Agregar los controles al formulario emergente
         OPCIONESVENTAS.Controls.Add(opcion1)
-        'OPCIONESVENTAS.Controls.Add(opcion2)
+        OPCIONESVENTAS.Controls.Add(opcion2)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
         ' Mostrar el formulario como emergente
@@ -288,6 +322,7 @@ Public Class FrmVentas
     End Sub
 
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
+        'DateTimePicker1.Format = DateTimePickerFormat.Short ' Muestra la fecha en formato corto (dd/MM/yyyy)
         MostrarFormularioEmergente()
     End Sub
 End Class
