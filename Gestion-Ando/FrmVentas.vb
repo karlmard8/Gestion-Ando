@@ -209,115 +209,134 @@ Public Class FrmVentas
     End Sub
 
     Public Sub MostrarFormularioEmergente()
-        ' Crear un nuevo formulario
         Dim OPCIONESVENTAS As New Form()
         OPCIONESVENTAS.Text = "Formato de reporte"
-        OPCIONESVENTAS.Size = New Size(300, 200)
+        OPCIONESVENTAS.Size = New Size(300, 400)
         OPCIONESVENTAS.ShowIcon = False
         OPCIONESVENTAS.BackColor = ColorFormulario
         OPCIONESVENTAS.StartPosition = FormStartPosition.CenterScreen
         OPCIONESVENTAS.FormBorderStyle = FormBorderStyle.FixedSingle
         OPCIONESVENTAS.MaximizeBox = False
         OPCIONESVENTAS.MinimizeBox = False
+        OPCIONESVENTAS.ShowInTaskbar = False
 
+        ' Crear los RadioButton
+        Dim VENTAGENERAL As New RadioButton()
+        VENTAGENERAL.Checked = True
+        VENTAGENERAL.Text = "Ventas generales"
+        VENTAGENERAL.Location = New Point(50, 30)
+        VENTAGENERAL.Font = New Font("Dubai", 16, FontStyle.Regular)
+        VENTAGENERAL.AutoSize = True
 
-        ' Crear el primer RadioButton
-        Dim opcion1 As New RadioButton()
-        opcion1.Checked = True
-        opcion1.Text = "Ventas generales"
-        opcion1.Location = New Point(50, 30)
-        opcion1.Font = New Font("Dubai", 16, FontStyle.Regular)
-        opcion1.AutoSize = True
+        Dim VENTAFILTRADO As New RadioButton()
+        VENTAFILTRADO.Text = "Ventas de"
+        VENTAFILTRADO.Location = New Point(50, 80)
+        VENTAFILTRADO.Font = New Font("Dubai", 16, FontStyle.Regular)
+        VENTAFILTRADO.AutoSize = True
 
-        ' Crear el segundo RadioButton
-        Dim opcion2 As New RadioButton()
-        opcion2.Text = "Ventas"
-        opcion2.Location = New Point(50, 60)
-        opcion2.Font = New Font("Dubai", 16, FontStyle.Regular)
-        opcion2.AutoSize = True
+        ' Crear los DateTimePicker
+        Dim CALENDARIOINICIAL As New DateTimePicker()
+        CALENDARIOINICIAL.Location = New Point(50, 135)
+        CALENDARIOINICIAL.Width = 200
+        CALENDARIOINICIAL.Format = DateTimePickerFormat.Short
+        CALENDARIOINICIAL.Enabled = False
+        CALENDARIOINICIAL.Font = New Font("Dubai", 14, FontStyle.Regular)
 
-        ' Crear un botón de aceptar
+        Dim CALENDARIOFINAL As New DateTimePicker()
+        CALENDARIOFINAL.Location = New Point(50, 220)
+        CALENDARIOFINAL.Width = 200
+        CALENDARIOFINAL.Format = DateTimePickerFormat.Short
+        CALENDARIOFINAL.Enabled = False
+        CALENDARIOFINAL.Font = New Font("Dubai", 14, FontStyle.Regular)
+
+        ' Evento para habilitar/deshabilitar DateTimePicker
+        AddHandler VENTAFILTRADO.CheckedChanged, Sub(sender, e)
+                                                     CALENDARIOINICIAL.Enabled = VENTAFILTRADO.Checked
+                                                     CALENDARIOFINAL.Enabled = VENTAFILTRADO.Checked
+                                                 End Sub
+
+        ' Botón de aceptar
         Dim btnAceptar As New Button()
         btnAceptar.BackColor = ColorBotones
         btnAceptar.Text = "Aceptar"
-        btnAceptar.Location = New Point(100, 100)
+        btnAceptar.Location = New Point(100, 280)
         btnAceptar.AutoSize = True
         btnAceptar.Font = New Font("Dubai", 14, FontStyle.Regular)
+        btnAceptar.Cursor = Cursors.Hand
+
         AddHandler btnAceptar.Click, Sub(sender, e)
-                                         If opcion1.Checked Then
-                                             Dim MUESTRA As New FrmReportes
-                                             Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
-                                             Dim crDatabase As Database
-                                             Dim crTables As Tables
-                                             Dim crTable As Table = Nothing
-                                             Dim crLogOnInfo As TableLogOnInfo
-                                             Dim crConnInfo As New ConnectionInfo()
-                                             crDatabase = MANIFIESTO.Database
-                                             crTables = crDatabase.Tables
-                                             For Each crTable In crTables
-                                                 With crConnInfo
-                                                     .ServerName = "desktop-8q10a8h\sqlexpress"
-                                                     .DatabaseName = "MuebleAlex"
-                                                     .UserID = "sa"
-                                                     .Password = "c1oooooo"
-                                                 End With
-                                                 crLogOnInfo = crTable.LogOnInfo
-                                                 crLogOnInfo.ConnectionInfo = crConnInfo
-                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
-                                             Next
-                                             crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAVENTAS"
-                                             crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
-                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
-                                             MUESTRA.ShowDialog()
-                                             OPCIONESVENTAS.Close()
-
-                                         ElseIf opcion2.Checked Then
-                                             Dim MUESTRA As New FrmReportes
-                                             Dim MANIFIESTO As New ReportDocument
-
-                                             ' Ruta del reporte
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
-
-                                             ' Configurar la conexión a la base de datos
-                                             Dim crConnInfo As New ConnectionInfo()
-                                             With crConnInfo
-                                                 .ServerName = "desktop-8q10a8h\sqlexpress"
-                                                 .DatabaseName = "MuebleAlex"
-                                                 .UserID = "sa"
-                                                 .Password = "c1oooooo"
-                                             End With
-
-                                             ' Aplicar los datos de conexión al reporte
-                                             Dim crDatabase As Database = MANIFIESTO.Database
-                                             Dim crTables As Tables = crDatabase.Tables
-
-                                             For Each crTable As Table In crTables
-                                                 Dim crLogOnInfo As TableLogOnInfo = crTable.LogOnInfo
-                                                 crLogOnInfo.ConnectionInfo = crConnInfo
-                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
-                                             Next
-
-                                             ' (Opcional) Configurar parámetros del procedimiento almacenado
-                                             MANIFIESTO.SetParameterValue("@FECHAINICIAL", DateTimePicker1.Value.Date)
-                                             MANIFIESTO.SetParameterValue("@FECHAFINAL", DateTimePicker2.Value.Date)
-
-                                             ' Mostrar el reporte
-                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
-                                             MUESTRA.Reportes.RefreshReport()
-                                             MUESTRA.ShowDialog()
+                                         Dim rutaReporte As String
+                                         OPCIONESVENTAS.Close()
+                                         ' Seleccionar el reporte correcto
+                                         If VENTAGENERAL.Checked Then
+                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                         ElseIf VENTAFILTRADO.Checked Then
+                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
+                                             Exit Sub
                                          End If
 
+                                         ' Validar existencia del archivo de reporte
+                                         If Not System.IO.File.Exists(rutaReporte) Then
+                                             MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada: " & rutaReporte, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                             Exit Sub
+                                         End If
+
+                                         ' Cargar el reporte
+                                         Dim MANIFIESTO As New ReportDocument()
+                                         MANIFIESTO.Load(rutaReporte)
+
+                                         ' Configurar conexión a la base de datos
+                                         Dim crConnInfo As New ConnectionInfo()
+                                         With crConnInfo
+                                             .ServerName = "desktop-8q10a8h\sqlexpress"
+                                             .DatabaseName = "MuebleAlex"
+                                             .UserID = "sa"
+                                             .Password = "c1oooooo"
+                                         End With
+
+                                         ' Aplicar conexión a cada tabla del reporte
+                                         Dim crDatabase As Database = MANIFIESTO.Database
+                                         Dim crTables As Tables = crDatabase.Tables
+                                         For Each crTable As Table In crTables
+                                             Dim crLogOnInfo As TableLogOnInfo = crTable.LogOnInfo
+                                             crLogOnInfo.ConnectionInfo = crConnInfo
+                                             crTable.ApplyLogOnInfo(crLogOnInfo)
+
+                                             ' Ajustar la ubicación de la tabla para evitar solicitud de credenciales
+                                             crTable.Location = crConnInfo.DatabaseName & ".dbo." & crTable.Name
+                                         Next
+
+                                         ' Verificar y refrescar la base de datos
+                                         MANIFIESTO.VerifyDatabase()
+                                         MANIFIESTO.Refresh()
+
+                                         ' Si es un reporte filtrado, asignar parámetros de fecha
+                                         If VENTAFILTRADO.Checked Then
+                                             If CALENDARIOINICIAL.Value > CALENDARIOFINAL.Value Then
+                                                 MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                                                 Exit Sub
+                                             End If
+                                             MANIFIESTO.SetParameterValue("@FECHAINICIAL", CALENDARIOINICIAL.Value.ToString("yyyy-MM-dd"))
+                                             MANIFIESTO.SetParameterValue("@FECHAFINAL", CALENDARIOFINAL.Value.ToString("yyyy-MM-dd"))
+                                         End If
+
+                                         ' Asignar el reporte al visor y mostrarlo
+                                         Dim MUESTRA As New FrmReportes()
+                                         MUESTRA.Reportes.ReportSource = MANIFIESTO
+                                         MUESTRA.Reportes.RefreshReport()
+                                         MUESTRA.ShowDialog()
                                      End Sub
 
-        ' Agregar los controles al formulario emergente
-        OPCIONESVENTAS.Controls.Add(opcion1)
-        OPCIONESVENTAS.Controls.Add(opcion2)
+        ' Agregar controles al formulario emergente
+        OPCIONESVENTAS.Controls.Add(VENTAGENERAL)
+        OPCIONESVENTAS.Controls.Add(VENTAFILTRADO)
+        OPCIONESVENTAS.Controls.Add(CALENDARIOINICIAL)
+        OPCIONESVENTAS.Controls.Add(CALENDARIOFINAL)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
-        ' Mostrar el formulario como emergente
+        ' Mostrar el formulario emergente
         OPCIONESVENTAS.ShowDialog()
     End Sub
 

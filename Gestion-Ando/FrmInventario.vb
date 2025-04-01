@@ -168,21 +168,21 @@ Public Class FrmInventario
 
 
         ' Crear el primer RadioButton
-        Dim opcion1 As New RadioButton()
-        opcion1.Checked = True
-        opcion1.Text = "Inventario general"
-        opcion1.Location = New Point(50, 30)
-        opcion1.Font = New Font("Dubai", 16, FontStyle.Regular)
-        opcion1.AutoSize = True
-        opcion1.TabIndex = 1
+        Dim INVENTARIOGEN As New RadioButton()
+        INVENTARIOGEN.Checked = True
+        INVENTARIOGEN.Text = "Inventario general"
+        INVENTARIOGEN.Location = New Point(50, 30)
+        INVENTARIOGEN.Font = New Font("Dubai", 16, FontStyle.Regular)
+        INVENTARIOGEN.AutoSize = True
+        INVENTARIOGEN.TabIndex = 1
 
         'Crear el segundo RadioButton
-        Dim opcion2 As New RadioButton()
-        opcion2.Text = "Inventario existente"
-        opcion2.Location = New Point(50, 80)
-        opcion2.Font = New Font("Dubai", 16, FontStyle.Regular)
-        opcion2.AutoSize = True
-        opcion2.TabIndex = 2
+        Dim INVENTARIOFILTRADO As New RadioButton()
+        INVENTARIOFILTRADO.Text = "Inventario existente"
+        INVENTARIOFILTRADO.Location = New Point(50, 80)
+        INVENTARIOFILTRADO.Font = New Font("Dubai", 16, FontStyle.Regular)
+        INVENTARIOFILTRADO.AutoSize = True
+        INVENTARIOFILTRADO.TabIndex = 2
 
         ' Crear un botón de aceptar
         Dim btnAceptar As New Button()
@@ -190,13 +190,15 @@ Public Class FrmInventario
         btnAceptar.Text = "Aceptar"
         btnAceptar.Location = New Point(100, 150)
         btnAceptar.AutoSize = True
+        btnAceptar.Cursor = Cursors.Hand
         btnAceptar.Font = New Font("Dubai", 14, FontStyle.Regular)
         btnAceptar.TabIndex = 3
+        btnAceptar.Cursor = Cursors.Hand
         AddHandler btnAceptar.Click, Sub(sender, e)
-                                         If opcion1.Checked Then
+                                         If INVENTARIOGEN.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing
@@ -223,10 +225,10 @@ Public Class FrmInventario
                                              OPCIONESVENTAS.Close()
 
 
-                                         ElseIf opcion2.Checked Then
+                                         ElseIf INVENTARIOFILTRADO.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing
@@ -258,8 +260,8 @@ Public Class FrmInventario
                                      End Sub
 
         ' Agregar los controles al formulario emergente
-        OPCIONESVENTAS.Controls.Add(opcion1)
-        OPCIONESVENTAS.Controls.Add(opcion2)
+        OPCIONESVENTAS.Controls.Add(INVENTARIOGEN)
+        OPCIONESVENTAS.Controls.Add(INVENTARIOFILTRADO)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
         ' Mostrar el formulario como emergente
