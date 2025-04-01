@@ -38,7 +38,10 @@ Public Class FrmAltaVentas
             TXTMESES.Enabled = False
             TXTENGANCHE.Enabled = False
         End If
+        Me.KeyPreview = True
+
     End Sub
+
     Private Sub FrmAltaVentas_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         For Each control As Control In Me.Controls
             If TypeOf control Is TextBox Then
@@ -77,8 +80,6 @@ Public Class FrmAltaVentas
             TxtCantidad.Enabled = True
         End If
     End Sub
-
-
 
     Private Sub RBCREDITO_CheckedChanged(sender As Object, e As EventArgs) Handles RBCREDITO.CheckedChanged
         TXTMESES.Enabled = True
@@ -198,7 +199,6 @@ Public Class FrmAltaVentas
     End Sub
 
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles BtnAgregar.Click
-
         If CMBPRODUCTO.Text = String.Empty Then
             CMBPRODUCTO.Focus()
         ElseIf TxtCantidad.Text = String.Empty Then
@@ -240,6 +240,7 @@ Public Class FrmAltaVentas
 
                 ' Actualizar el total acumulado
                 ActualizarTotales()
+
             End If
 
             ' Restablecer valores de los ComboBox y campos
@@ -342,5 +343,17 @@ Public Class FrmAltaVentas
             ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub FrmAltaVentas_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub TXTENGANCHE_TextChanged(sender As Object, e As EventArgs) Handles TXTENGANCHE.TextChanged
+        Dim NUEVOTOTAL As Integer
+        NUEVOTOTAL = Val(LBLTOTAL.Text) - Val(TXTENGANCHE.Text)
+        LBLTOTAL.Text = NUEVOTOTAL
     End Sub
 End Class

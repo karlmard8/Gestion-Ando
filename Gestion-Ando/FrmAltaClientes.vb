@@ -51,7 +51,7 @@ Public Class FrmAltaClientes
 
     Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
+            Me.Close()
         End If
     End Sub
 

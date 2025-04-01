@@ -15,7 +15,7 @@ Public Class FrmVentas
         DETALLEVENTAS.Location = New Point(540, 187)
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATAVENTAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
-
+        DATAVENTAS.BackgroundColor = ColorFormulario
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -147,7 +147,7 @@ Public Class FrmVentas
 
                         .Columns.Add("Fecha", "Fecha de Pago")
                         .Columns("Fecha").DataPropertyName = "Fecha"
-                        .Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                        .Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
                         .Columns.Add("Cliente", "Cliente")
                         .Columns("Cliente").DataPropertyName = "Cliente"
@@ -161,7 +161,7 @@ Public Class FrmVentas
                         .Columns.Add("A PAGAR", "A pagar")
                         .Columns("A PAGAR").DataPropertyName = "A PAGAR"
                         .Columns("A PAGAR").DefaultCellStyle.Format = "C2"
-                        .Columns("A PAGAR").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                        .Columns("A PAGAR").AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
 
                         .Columns.Add("Pagado", "Pagado")
                         .Columns("Pagado").DataPropertyName = "Pagado"
@@ -220,6 +220,16 @@ Public Class FrmVentas
         OPCIONESVENTAS.MinimizeBox = False
         OPCIONESVENTAS.ShowInTaskbar = False
 
+        ' Habilitar KeyPreview para capturar teclas
+        OPCIONESVENTAS.KeyPreview = True
+
+        ' Agregar un manejador de eventos para cerrar el formulario con la tecla Esc
+        AddHandler OPCIONESVENTAS.KeyDown, Sub(sender, e)
+                                               If e.KeyCode = Keys.Escape Then
+                                                   OPCIONESVENTAS.Close()
+                                               End If
+                                           End Sub
+
         ' Crear los RadioButton
         Dim VENTAGENERAL As New RadioButton()
         VENTAGENERAL.Checked = True
@@ -241,6 +251,13 @@ Public Class FrmVentas
         CALENDARIOINICIAL.Format = DateTimePickerFormat.Short
         CALENDARIOINICIAL.Enabled = False
         CALENDARIOINICIAL.Font = New Font("Dubai", 14, FontStyle.Regular)
+
+        Dim ETIQUETA As New Label()
+        ETIQUETA.Text = "a"
+        ETIQUETA.Font = New Font("Dubai", 16, FontStyle.Regular)
+        ETIQUETA.AutoSize = True
+        ETIQUETA.Location = New Point(135, 180)
+        ETIQUETA.BackColor = ColorFormulario
 
         Dim CALENDARIOFINAL As New DateTimePicker()
         CALENDARIOFINAL.Location = New Point(50, 220)
@@ -269,9 +286,9 @@ Public Class FrmVentas
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
+                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub
@@ -334,6 +351,7 @@ Public Class FrmVentas
         OPCIONESVENTAS.Controls.Add(VENTAFILTRADO)
         OPCIONESVENTAS.Controls.Add(CALENDARIOINICIAL)
         OPCIONESVENTAS.Controls.Add(CALENDARIOFINAL)
+        OPCIONESVENTAS.Controls.Add(ETIQUETA)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
         ' Mostrar el formulario emergente
@@ -344,4 +362,5 @@ Public Class FrmVentas
         'DateTimePicker1.Format = DateTimePickerFormat.Short ' Muestra la fecha en formato corto (dd/MM/yyyy)
         MostrarFormularioEmergente()
     End Sub
+
 End Class

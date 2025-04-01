@@ -166,6 +166,15 @@ Public Class FrmInventario
         OPCIONESVENTAS.MaximizeBox = False
         OPCIONESVENTAS.MinimizeBox = False
 
+        ' Activar KeyPreview para capturar teclas
+        OPCIONESVENTAS.KeyPreview = True
+
+        ' Agregar evento KeyDown para capturar la tecla Esc
+        AddHandler OPCIONESVENTAS.KeyDown, Sub(sender, e)
+                                               If e.KeyCode = Keys.Escape Then
+                                                   OPCIONESVENTAS.Close()
+                                               End If
+                                           End Sub
 
         ' Crear el primer RadioButton
         Dim INVENTARIOGEN As New RadioButton()
@@ -176,7 +185,7 @@ Public Class FrmInventario
         INVENTARIOGEN.AutoSize = True
         INVENTARIOGEN.TabIndex = 1
 
-        'Crear el segundo RadioButton
+        ' Crear el segundo RadioButton
         Dim INVENTARIOFILTRADO As New RadioButton()
         INVENTARIOFILTRADO.Text = "Inventario existente"
         INVENTARIOFILTRADO.Location = New Point(50, 80)
@@ -198,7 +207,7 @@ Public Class FrmInventario
                                          If INVENTARIOGEN.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing
@@ -224,11 +233,10 @@ Public Class FrmInventario
                                              MUESTRA.ShowDialog()
                                              OPCIONESVENTAS.Close()
 
-
                                          ElseIf INVENTARIOFILTRADO.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing

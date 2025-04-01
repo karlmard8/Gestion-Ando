@@ -145,11 +145,11 @@
     End Sub
     Public Property imagenRuta As String
     Private Sub BTNCARGARIMG_Click(sender As Object, e As EventArgs) Handles BTNCARGARIMG.Click
-        Dim CARGARIMG As New OpenFileDialog
+        Dim CARGARIMG As New OpenFileDialog()
 
-
+        ' Configurar propiedades del OpenFileDialog
         CARGARIMG.InitialDirectory = "C:\"
-        CARGARIMG.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png;*.gif)|*.jpg;*.jpeg;*.png;*.gif"
+        CARGARIMG.Filter = "Todos los archivos de imagen|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff;*.ico;*.webp|Todos los archivos (*.*)|*.*"
         CARGARIMG.FilterIndex = 1
         CARGARIMG.RestoreDirectory = True
 
