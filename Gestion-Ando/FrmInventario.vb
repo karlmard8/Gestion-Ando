@@ -207,7 +207,7 @@ Public Class FrmInventario
                                          If INVENTARIOGEN.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing
@@ -236,7 +236,7 @@ Public Class FrmInventario
                                          ElseIf INVENTARIOFILTRADO.Checked Then
                                              Dim MUESTRA As New FrmReportes
                                              Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
+                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
                                              Dim crDatabase As Database
                                              Dim crTables As Tables
                                              Dim crTable As Table = Nothing

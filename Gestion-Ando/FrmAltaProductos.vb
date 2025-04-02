@@ -149,7 +149,7 @@
 
         ' Configurar propiedades del OpenFileDialog
         CARGARIMG.InitialDirectory = "C:\"
-        CARGARIMG.Filter = "Todos los archivos de imagen|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff;*.ico;*.webp|Todos los archivos (*.*)|*.*"
+        CARGARIMG.Filter = "Todos los archivos de imagen|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff;*.ico;|Todos los archivos (*.*)|*.*"
         CARGARIMG.FilterIndex = 1
         CARGARIMG.RestoreDirectory = True
 

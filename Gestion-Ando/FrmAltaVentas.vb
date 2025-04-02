@@ -48,6 +48,11 @@ Public Class FrmAltaVentas
         RemoveHandler CMBPRODUCTO.SelectedIndexChanged, AddressOf CMBPRODUCTO_SelectedIndexChanged
 
         ' Configuración de ComboBox de productos
+        CmbClave.DataSource = bsProductos
+        CmbClave.DisplayMember = "PROCLABE"
+        CmbClave.ValueMember = "PROID"
+        CmbClave.SelectedIndex = -1
+
         CMBPRODUCTO.DataSource = bsProductos
         CMBPRODUCTO.DisplayMember = "PRONOMBRE"
         CMBPRODUCTO.ValueMember = "PROID"

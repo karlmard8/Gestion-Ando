@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAltaVentas
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,12 +20,12 @@ Partial Class FrmAltaVentas
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTENGANCHE = New System.Windows.Forms.TextBox()
@@ -379,9 +379,9 @@ Partial Class FrmAltaVentas
         '
         'PROCANTIDAD
         '
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle16.Format = "N0"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle16
         Me.PROCANTIDAD.HeaderText = "CANTIDAD"
         Me.PROCANTIDAD.MinimumWidth = 6
         Me.PROCANTIDAD.Name = "PROCANTIDAD"
@@ -391,9 +391,9 @@ Partial Class FrmAltaVentas
         'PROPRECIO
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle17.Format = "C2"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle17
         Me.PROPRECIO.HeaderText = "PRECIO"
         Me.PROPRECIO.MinimumWidth = 6
         Me.PROPRECIO.Name = "PROPRECIO"
@@ -402,9 +402,9 @@ Partial Class FrmAltaVentas
         '
         'PROSUBTOTAL
         '
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle18.Format = "C2"
+        DataGridViewCellStyle18.NullValue = Nothing
+        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle18
         Me.PROSUBTOTAL.HeaderText = "TOTAL"
         Me.PROSUBTOTAL.MinimumWidth = 6
         Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
@@ -573,7 +573,7 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO.DisplayMember = "PRONOMBRE"
         Me.CMBPRODUCTO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBPRODUCTO.FormattingEnabled = True
-        Me.CMBPRODUCTO.Location = New System.Drawing.Point(87, 15)
+        Me.CMBPRODUCTO.Location = New System.Drawing.Point(96, 13)
         Me.CMBPRODUCTO.Margin = New System.Windows.Forms.Padding(2)
         Me.CMBPRODUCTO.Name = "CMBPRODUCTO"
         Me.CMBPRODUCTO.Size = New System.Drawing.Size(552, 28)
@@ -611,9 +611,9 @@ Partial Class FrmAltaVentas
         Me.CmbClave.BackColor = System.Drawing.SystemColors.Window
         Me.CmbClave.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CmbClave.DisplayMember = "PROCLAVE"
-        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple
+        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbClave.FormattingEnabled = True
-        Me.CmbClave.Location = New System.Drawing.Point(65, 18)
+        Me.CmbClave.Location = New System.Drawing.Point(98, 14)
         Me.CmbClave.Margin = New System.Windows.Forms.Padding(2)
         Me.CmbClave.Name = "CmbClave"
         Me.CmbClave.Size = New System.Drawing.Size(87, 21)

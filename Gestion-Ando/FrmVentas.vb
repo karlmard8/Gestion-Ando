@@ -286,9 +286,9 @@ Public Class FrmVentas
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
+                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub
