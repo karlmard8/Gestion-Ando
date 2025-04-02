@@ -184,7 +184,7 @@ Public Class FrmVentas
                 End If
                 ' Mostrar el formulario de detalles de ventas
                 DETALLEVENTAS.ShowDialog()
-
+                Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
                 ' ===================== LIMPIAR DATA GRID VIEWS AL CERRAR =====================
                 With DETALLEVENTAS.DATADETALLEVENTA
                     .DataSource = Nothing
@@ -286,9 +286,9 @@ Public Class FrmVentas
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
+                                             rutaReporte = "C:\Users\carlo\Documents\GitHub\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub
@@ -330,20 +330,21 @@ Public Class FrmVentas
                                          MANIFIESTO.Refresh()
 
                                          ' Si es un reporte filtrado, asignar parámetros de fecha
+                                         ' Obtener los campos de parámetros del reporte
+                                         Dim paramFields As ParameterFieldDefinitions = MANIFIESTO.DataDefinition.ParameterFields
+
+                                         ' Asignar valores manualmente a cada parámetro
                                          If VENTAFILTRADO.Checked Then
-                                             If CALENDARIOINICIAL.Value > CALENDARIOFINAL.Value Then
-                                                 MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                                                 Exit Sub
-                                             End If
-                                             MANIFIESTO.SetParameterValue("@FECHAINICIAL", CALENDARIOINICIAL.Value.ToString("yyyy-MM-dd"))
-                                             MANIFIESTO.SetParameterValue("@FECHAFINAL", CALENDARIOFINAL.Value.ToString("yyyy-MM-dd"))
+                                             paramFields("@FECHAINICIAL").ApplyCurrentValues(New ParameterValues() From {New ParameterDiscreteValue() With {.Value = CALENDARIOINICIAL.Value.ToString("yyyy-MM-dd")}})
+                                             paramFields("@FECHAFINAL").ApplyCurrentValues(New ParameterValues() From {New ParameterDiscreteValue() With {.Value = CALENDARIOFINAL.Value.ToString("yyyy-MM-dd")}})
                                          End If
 
-                                         ' Asignar el reporte al visor y mostrarlo
+                                         ' Mostrar el reporte
                                          Dim MUESTRA As New FrmReportes()
                                          MUESTRA.Reportes.ReportSource = MANIFIESTO
-                                         MUESTRA.Reportes.RefreshReport()
+                                         MUESTRA.Reportes.Refresh()
                                          MUESTRA.ShowDialog()
+
                                      End Sub
 
         ' Agregar controles al formulario emergente

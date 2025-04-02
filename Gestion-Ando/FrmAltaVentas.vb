@@ -3,13 +3,15 @@ Imports System.Security.Cryptography
 
 Public Class FrmAltaVentas
     Private Sub FrmAltaVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'CONEXION PARA VISTAPRODUCTOS
+        ' CONEXION PARA VISTAPRODUCTOS
         Me.VISTAPRODUCTOSTableAdapter.Connection = Conexion
         Me.VISTAPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAPRODUCTOS)
-        'CONEXION PARA VISTACLIENTES
+
+        ' CONEXION PARA VISTACLIENTES
         Me.VISTACLIENTESTableAdapter.Connection = Conexion
         Me.VISTACLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTES)
 
+        ' Configuración de colores y controles
         Me.BackColor = ColorFormulario
         GRUPO1.BackColor = ColorFormulario
         GRUPO2.BackColor = ColorFormulario
@@ -22,15 +24,13 @@ Public Class FrmAltaVentas
         CmbClave.Visible = False
         CMBEXISTENCIAS.BackColor = Color.White
         LBLCLAVE.Visible = False
-        CMBEXISTENCIAS.SelectedValue = 0
-        CMBPRODUCTO.SelectedValue = -1
-        CMBPRECIO.SelectedValue = 0
         TXTMESES.Enabled = False
         TXTPAGO.Enabled = False
         TXTENGANCHE.Enabled = False
         RBCONTADO.Checked = False
         RBCREDITO.Checked = False
         CMBPRECIO.FormatString = "C2"
+
         If RBCONTADO.Checked = False Then
             TXTPAGO.Enabled = False
         End If
@@ -38,9 +38,43 @@ Public Class FrmAltaVentas
             TXTMESES.Enabled = False
             TXTENGANCHE.Enabled = False
         End If
-        Me.KeyPreview = True
 
+        ' --- CONFIGURACIÓN DE COMBOBOX DE PRODUCTOS ---
+        ' Enlazar todos al mismo origen de datos
+        Dim bsProductos As New BindingSource()
+        bsProductos.DataSource = MuebleAlexDataSet.VISTAPRODUCTOS
+
+        ' Remover eventos para evitar ejecución no deseada
+        RemoveHandler CMBPRODUCTO.SelectedIndexChanged, AddressOf CMBPRODUCTO_SelectedIndexChanged
+
+        ' Configuración de ComboBox de productos
+        CMBPRODUCTO.DataSource = bsProductos
+        CMBPRODUCTO.DisplayMember = "PRONOMBRE"
+        CMBPRODUCTO.ValueMember = "PROID"
+        CMBPRODUCTO.SelectedIndex = -1 ' No seleccionar nada al inicio
+
+        CMBPRECIO.DataSource = bsProductos
+        CMBPRECIO.DisplayMember = "PROPrecio"
+        CMBPRECIO.ValueMember = "PrOID"
+        CMBPRECIO.SelectedIndex = -1 ' No seleccionar nada al inicio
+
+        CMBEXISTENCIAS.DataSource = bsProductos
+        CMBEXISTENCIAS.DisplayMember = "PROExistencias"
+        CMBEXISTENCIAS.ValueMember = "PrOID"
+        CMBEXISTENCIAS.SelectedIndex = -1 ' No seleccionar nada al inicio
+
+        ' Forzar actualización visual
+        CMBPRODUCTO.Refresh()
+        CMBPRECIO.Refresh()
+        CMBEXISTENCIAS.Refresh()
+
+        ' Restaurar evento
+        AddHandler CMBPRODUCTO.SelectedIndexChanged, AddressOf CMBPRODUCTO_SelectedIndexChanged
+
+        ' Activar capturas de teclado
+        Me.KeyPreview = True
     End Sub
+
 
     Private Sub FrmAltaVentas_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         For Each control As Control In Me.Controls
@@ -351,9 +385,29 @@ Public Class FrmAltaVentas
         End If
     End Sub
 
+    Private previousTotal As Double = 0
+
     Private Sub TXTENGANCHE_TextChanged(sender As Object, e As EventArgs) Handles TXTENGANCHE.TextChanged
-        Dim NUEVOTOTAL As Integer
-        NUEVOTOTAL = Val(LBLTOTAL.Text) - Val(TXTENGANCHE.Text)
-        LBLTOTAL.Text = NUEVOTOTAL
+        Dim enganche As Double
+        If Double.TryParse(TXTENGANCHE.Text, enganche) Then
+            ' Store the previous total before modification
+            If previousTotal = 0 Then
+                previousTotal = Val(LBLTOTAL.Text.Replace("$", "").Replace(",", ""))
+            End If
+
+            ' Calculate the new total
+            Dim newTotal As Double = previousTotal - enganche
+
+            ' Ensure the total does not go negative
+            If newTotal < 0 Then
+                LBLTOTAL.Text = "$0.00"
+            Else
+                LBLTOTAL.Text = newTotal.ToString("C2")
+            End If
+        Else
+            ' If the textbox is empty, revert to the previous total
+            LBLTOTAL.Text = previousTotal.ToString("C2")
+        End If
     End Sub
+
 End Class

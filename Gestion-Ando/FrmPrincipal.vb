@@ -157,7 +157,10 @@ Public Class FrmPrincipal
         LBLOPCIONES.Location = New Point(625, 40)
     End Sub
 
+    Private isLoggingOut As Boolean = False
+
     Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
+        isLoggingOut = True
         Me.Close()
         FrmLogin.Show()
         FrmLogin.TXTLOGIN.Text = String.Empty
@@ -166,6 +169,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub FrmPrincipal_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        ' End
+        If Not isLoggingOut Then
+            ' Code to completely stop the application
+            Application.Exit()
+        End If
     End Sub
 End Class
