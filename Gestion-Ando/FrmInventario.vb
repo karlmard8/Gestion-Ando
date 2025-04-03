@@ -155,7 +155,6 @@ Public Class FrmInventario
     End Sub
 
     Public Sub MostrarFormularioEmergente()
-        ' Crear un nuevo formulario
         Dim OPCIONESVENTAS As New Form()
         OPCIONESVENTAS.Text = "Tipo de reporte"
         OPCIONESVENTAS.Size = New Size(300, 250)
@@ -166,113 +165,101 @@ Public Class FrmInventario
         OPCIONESVENTAS.MaximizeBox = False
         OPCIONESVENTAS.MinimizeBox = False
 
-        ' Activar KeyPreview para capturar teclas
+        ' Habilitar KeyPreview para capturar teclas
         OPCIONESVENTAS.KeyPreview = True
 
-        ' Agregar evento KeyDown para capturar la tecla Esc
+        ' Agregar evento para cerrar con tecla Esc
         AddHandler OPCIONESVENTAS.KeyDown, Sub(sender, e)
                                                If e.KeyCode = Keys.Escape Then
                                                    OPCIONESVENTAS.Close()
                                                End If
                                            End Sub
 
-        ' Crear el primer RadioButton
+        ' Crear los RadioButton
         Dim INVENTARIOGEN As New RadioButton()
         INVENTARIOGEN.Checked = True
         INVENTARIOGEN.Text = "Inventario general"
         INVENTARIOGEN.Location = New Point(50, 30)
         INVENTARIOGEN.Font = New Font("Dubai", 16, FontStyle.Regular)
         INVENTARIOGEN.AutoSize = True
-        INVENTARIOGEN.TabIndex = 1
 
-        ' Crear el segundo RadioButton
         Dim INVENTARIOFILTRADO As New RadioButton()
         INVENTARIOFILTRADO.Text = "Inventario existente"
         INVENTARIOFILTRADO.Location = New Point(50, 80)
         INVENTARIOFILTRADO.Font = New Font("Dubai", 16, FontStyle.Regular)
         INVENTARIOFILTRADO.AutoSize = True
-        INVENTARIOFILTRADO.TabIndex = 2
 
-        ' Crear un botón de aceptar
+        ' Botón de aceptar
         Dim btnAceptar As New Button()
         btnAceptar.BackColor = ColorBotones
         btnAceptar.Text = "Aceptar"
         btnAceptar.Location = New Point(100, 150)
         btnAceptar.AutoSize = True
-        btnAceptar.Cursor = Cursors.Hand
         btnAceptar.Font = New Font("Dubai", 14, FontStyle.Regular)
-        btnAceptar.TabIndex = 3
         btnAceptar.Cursor = Cursors.Hand
-        AddHandler btnAceptar.Click, Sub(sender, e)
-                                         If INVENTARIOGEN.Checked Then
-                                             Dim MUESTRA As New FrmReportes
-                                             Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIO.rpt"
-                                             Dim crDatabase As Database
-                                             Dim crTables As Tables
-                                             Dim crTable As Table = Nothing
-                                             Dim crLogOnInfo As TableLogOnInfo
-                                             Dim crConnInfo As New ConnectionInfo()
-                                             crDatabase = MANIFIESTO.Database
-                                             crTables = crDatabase.Tables
-                                             For Each crTable In crTables
-                                                 With crConnInfo
-                                                     .ServerName = "desktop-8q10a8h\sqlexpress"
-                                                     .DatabaseName = "MuebleAlex"
-                                                     .UserID = "sa"
-                                                     .Password = "c1oooooo"
-                                                 End With
-                                                 crLogOnInfo = crTable.LogOnInfo
-                                                 crLogOnInfo.ConnectionInfo = crConnInfo
-                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
-                                             Next
-                                             crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOS"
-                                             crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
-                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
-                                             MUESTRA.Reportes.RefreshReport()
-                                             MUESTRA.ShowDialog()
-                                             OPCIONESVENTAS.Close()
 
+        AddHandler btnAceptar.Click, Sub(sender, e)
+                                         Dim rutaReporte As String
+                                         Dim rutaBase As String = Application.StartupPath
+                                         OPCIONESVENTAS.Close()
+
+                                         ' Seleccionar el reporte correcto
+                                         If INVENTARIOGEN.Checked Then
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTINVENTARIO.rpt")
                                          ElseIf INVENTARIOFILTRADO.Checked Then
-                                             Dim MUESTRA As New FrmReportes
-                                             Dim MANIFIESTO As New ReportDocument
-                                             MANIFIESTO.FileName = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTINVENTARIOEXISTENTE.rpt"
-                                             Dim crDatabase As Database
-                                             Dim crTables As Tables
-                                             Dim crTable As Table = Nothing
-                                             Dim crLogOnInfo As TableLogOnInfo
-                                             Dim crConnInfo As New ConnectionInfo()
-                                             crDatabase = MANIFIESTO.Database
-                                             crTables = crDatabase.Tables
-                                             For Each crTable In crTables
-                                                 With crConnInfo
-                                                     .ServerName = "desktop-8q10a8h\sqlexpress"
-                                                     .DatabaseName = "MuebleAlex"
-                                                     .UserID = "sa"
-                                                     .Password = "c1oooooo"
-                                                 End With
-                                                 crLogOnInfo = crTable.LogOnInfo
-                                                 crLogOnInfo.ConnectionInfo = crConnInfo
-                                                 crTable.ApplyLogOnInfo(crLogOnInfo)
-                                             Next
-                                             crTable.Location = "MuebleAlex" & "." & "dbo" & "." & "VISTAPRODUCTOSEXISTENTES"
-                                             crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
-                                             MUESTRA.Reportes.ReportSource = MANIFIESTO
-                                             MUESTRA.Reportes.RefreshReport()
-                                             MUESTRA.ShowDialog()
-                                             OPCIONESVENTAS.Close()
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTINVENTARIOEXISTENTE.rpt")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
+                                             Exit Sub
                                          End If
 
+                                         ' Validar existencia del archivo de reporte
+                                         If Not System.IO.File.Exists(rutaReporte) Then
+                                             MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada: " & rutaReporte, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                             Exit Sub
+                                         End If
+
+                                         ' Cargar el reporte
+                                         Dim MANIFIESTO As New ReportDocument()
+                                         MANIFIESTO.Load(rutaReporte)
+
+                                         ' Configurar conexión a la base de datos
+                                         Dim crConnInfo As New ConnectionInfo()
+                                         With crConnInfo
+                                             .ServerName = "192.168.1.73"
+                                             .DatabaseName = "MuebleAlex"
+                                             .UserID = "sa"
+                                             .Password = "c1oooooo"
+                                         End With
+
+                                         ' Aplicar conexión a cada tabla del reporte
+                                         Dim crDatabase As Database = MANIFIESTO.Database
+                                         Dim crTables As Tables = crDatabase.Tables
+                                         For Each crTable As Table In crTables
+                                             Dim crLogOnInfo As TableLogOnInfo = crTable.LogOnInfo
+                                             crLogOnInfo.ConnectionInfo = crConnInfo
+                                             crTable.ApplyLogOnInfo(crLogOnInfo)
+                                             crTable.Location = crConnInfo.DatabaseName & ".dbo." & crTable.Name
+                                         Next
+
+                                         ' Verificar y refrescar la base de datos
+                                         MANIFIESTO.VerifyDatabase()
+                                         MANIFIESTO.Refresh()
+
+                                         ' Mostrar el reporte
+                                         Dim MUESTRA As New FrmReportes()
+                                         MUESTRA.Reportes.ReportSource = MANIFIESTO
+                                         MUESTRA.Reportes.Refresh()
+                                         MUESTRA.ShowDialog()
                                      End Sub
 
-        ' Agregar los controles al formulario emergente
+        ' Agregar controles al formulario emergente
         OPCIONESVENTAS.Controls.Add(INVENTARIOGEN)
         OPCIONESVENTAS.Controls.Add(INVENTARIOFILTRADO)
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
-        ' Mostrar el formulario como emergente
+        ' Mostrar el formulario emergente
         OPCIONESVENTAS.ShowDialog()
     End Sub
+
 End Class

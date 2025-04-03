@@ -1,4 +1,5 @@
-﻿Imports CrystalDecisions.CrystalReports.Engine
+﻿Imports System.Web.Routing
+Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
 Public Class FrmVentas
@@ -283,12 +284,13 @@ Public Class FrmVentas
 
         AddHandler btnAceptar.Click, Sub(sender, e)
                                          Dim rutaReporte As String
+                                         Dim rutaBase As String = Application.StartupPath
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASGENERAL.rpt"
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASGENERAL.rpt")
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = "C:\Users\carlo\OneDrive\Escritorio\Copia Gestion-Ando\Gestion-Ando\Gestion-Ando\RPTVENTASFILTRADAS.rpt"
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASFILTRADAS.rpt")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub
@@ -307,7 +309,7 @@ Public Class FrmVentas
                                          ' Configurar conexión a la base de datos
                                          Dim crConnInfo As New ConnectionInfo()
                                          With crConnInfo
-                                             .ServerName = "desktop-8q10a8h\sqlexpress"
+                                             .ServerName = "192.168.1.73"
                                              .DatabaseName = "MuebleAlex"
                                              .UserID = "sa"
                                              .Password = "c1oooooo"
