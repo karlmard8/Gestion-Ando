@@ -164,6 +164,7 @@ Public Class FrmInventario
         OPCIONESVENTAS.FormBorderStyle = FormBorderStyle.FixedSingle
         OPCIONESVENTAS.MaximizeBox = False
         OPCIONESVENTAS.MinimizeBox = False
+        OPCIONESVENTAS.ShowInTaskbar = False
 
         ' Habilitar KeyPreview para capturar teclas
         OPCIONESVENTAS.KeyPreview = True
@@ -226,10 +227,10 @@ Public Class FrmInventario
                                          ' Configurar conexión a la base de datos
                                          Dim crConnInfo As New ConnectionInfo()
                                          With crConnInfo
-                                             .ServerName = "192.168.1.73"
-                                             .DatabaseName = "MuebleAlex"
-                                             .UserID = "sa"
-                                             .Password = "c1oooooo"
+                                             .ServerName = SERVIDOR
+                                             .DatabaseName = BASEDATOS
+                                             .UserID = USUARIO
+                                             .Password = CONTRASEÑA
                                          End With
 
                                          ' Aplicar conexión a cada tabla del reporte

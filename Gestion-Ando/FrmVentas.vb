@@ -17,6 +17,9 @@ Public Class FrmVentas
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATAVENTAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
         DATAVENTAS.BackgroundColor = ColorFormulario
+        If TIPO = "Operativo" Then
+            BTNELIMINAR.Enabled = False
+        End If
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -309,10 +312,10 @@ Public Class FrmVentas
                                          ' Configurar conexión a la base de datos
                                          Dim crConnInfo As New ConnectionInfo()
                                          With crConnInfo
-                                             .ServerName = "192.168.1.73"
-                                             .DatabaseName = "MuebleAlex"
-                                             .UserID = "sa"
-                                             .Password = "c1oooooo"
+                                             .ServerName = SERVIDOR
+                                             .DatabaseName = BASEDATOS
+                                             .UserID = USUARIO
+                                             .Password = CONTRASEÑA
                                          End With
 
                                          ' Aplicar conexión a cada tabla del reporte

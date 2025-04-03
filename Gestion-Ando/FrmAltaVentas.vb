@@ -78,6 +78,9 @@ Public Class FrmAltaVentas
 
         ' Activar capturas de teclado
         Me.KeyPreview = True
+        If TIPO = "Operativo" Then
+            RBCREDITO.Enabled = False
+        End If
     End Sub
 
 

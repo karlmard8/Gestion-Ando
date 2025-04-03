@@ -4,6 +4,12 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 Public Class FrmLogin
 
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'SE DECLARAN LAS CREDENCIALES PARA LA BASE DE DATOS
+        SERVIDOR = "desktop-8q10a8h\sqlexpress"
+        BASEDATOS = "MuebleAlex"
+        USUARIO = "sa"
+        CONTRASEÑA = "c1oooooo"
+
         Me.BackColor = ColorFormulario
         Me.BTNENTRAR.BackColor = ColorBotones
         Call inicio()

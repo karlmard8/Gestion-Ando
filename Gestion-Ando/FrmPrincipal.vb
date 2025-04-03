@@ -83,10 +83,10 @@ Public Class FrmPrincipal
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
                 TIPO = "Administrador"
-                Me.MenuOpciones.Items(4).Visible = True
+                Me.MenuOpciones.Items(3).Visible = True
             Else
                 TIPO = "Operativo"
-                Me.MenuOpciones.Items(4).Visible = False
+                Me.MenuOpciones.Items(3).Visible = False
             End If
         End If
         Dim renderer As New CustomMenuRenderer()

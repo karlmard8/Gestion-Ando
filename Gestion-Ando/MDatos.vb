@@ -50,11 +50,15 @@
         Return ret
     End Function
 
+    Public Property SERVIDOR As String
+    Public Property BASEDATOS As String
+    Public Property USUARIO As String
+    Public Property CONTRASEÑA As String
 
     Public Sub inicio()
-        Conexion = New SqlClient.SqlConnection("server=192.168.1.73; database=MuebleAlex; uid=sa; pwd=c1oooooo;")
+        Conexion = New SqlClient.SqlConnection("server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";")
         'SERVIDOR LOCAL desktop-8q10a8h\sqlexpress
-        'SERVIDOR PUBLICO 192.168.1.68
+        'SERVIDOR PUBLICO 192.168.1.73
     End Sub
 
 End Module
