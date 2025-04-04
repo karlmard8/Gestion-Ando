@@ -24,12 +24,6 @@ Partial Class FrmUsuarios
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATAUSUARIOS = New System.Windows.Forms.DataGridView()
-        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TBLUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
@@ -39,6 +33,12 @@ Partial Class FrmUsuarios
         Me.BTNEDITAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
+        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,6 +62,80 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAUSUARIOS.Size = New System.Drawing.Size(704, 720)
         Me.DATAUSUARIOS.TabIndex = 0
+        '
+        'TBLUSUARIOSBindingSource
+        '
+        Me.TBLUSUARIOSBindingSource.DataMember = "TBLUSUARIOS"
+        Me.TBLUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TXTBUSCAR
+        '
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 30)
+        Me.TXTBUSCAR.Name = "TXTBUSCAR"
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(575, 29)
+        Me.TXTBUSCAR.TabIndex = 11
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(27, 30)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(68, 32)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Buscar"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(704, 62)
+        Me.PictureBox1.TabIndex = 12
+        Me.PictureBox1.TabStop = False
+        '
+        'TBLUSUARIOSTableAdapter
+        '
+        Me.TBLUSUARIOSTableAdapter.ClearBeforeFill = True
+        '
+        'BTNEDITAR
+        '
+        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNEDITAR.Location = New System.Drawing.Point(383, 855)
+        Me.BTNEDITAR.Name = "BTNEDITAR"
+        Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
+        Me.BTNEDITAR.TabIndex = 13
+        Me.BTNEDITAR.Text = "Editar"
+        Me.BTNEDITAR.UseVisualStyleBackColor = True
+        '
+        'BTNNUEVO
+        '
+        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNNUEVO.Location = New System.Drawing.Point(184, 855)
+        Me.BTNNUEVO.Name = "BTNNUEVO"
+        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
+        Me.BTNNUEVO.TabIndex = 12
+        Me.BTNNUEVO.Text = "Nuevo"
+        Me.BTNNUEVO.UseVisualStyleBackColor = True
+        '
+        'BTNELIMINAR
+        '
+        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(584, 855)
+        Me.BTNELIMINAR.Name = "BTNELIMINAR"
+        Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
+        Me.BTNELIMINAR.TabIndex = 14
+        Me.BTNELIMINAR.Text = "Eliminar"
+        Me.BTNELIMINAR.UseVisualStyleBackColor = True
         '
         'USUID
         '
@@ -115,80 +189,6 @@ Partial Class FrmUsuarios
         Me.USUEXISTE.ReadOnly = True
         Me.USUEXISTE.Visible = False
         Me.USUEXISTE.Width = 74
-        '
-        'TBLUSUARIOSBindingSource
-        '
-        Me.TBLUSUARIOSBindingSource.DataMember = "TBLUSUARIOS"
-        Me.TBLUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TXTBUSCAR
-        '
-        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(118, 23)
-        Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(575, 29)
-        Me.TXTBUSCAR.TabIndex = 11
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 26)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 27)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Buscar"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(704, 53)
-        Me.PictureBox1.TabIndex = 12
-        Me.PictureBox1.TabStop = False
-        '
-        'TBLUSUARIOSTableAdapter
-        '
-        Me.TBLUSUARIOSTableAdapter.ClearBeforeFill = True
-        '
-        'BTNEDITAR
-        '
-        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNEDITAR.Location = New System.Drawing.Point(383, 855)
-        Me.BTNEDITAR.Name = "BTNEDITAR"
-        Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNEDITAR.TabIndex = 13
-        Me.BTNEDITAR.Text = "Editar"
-        Me.BTNEDITAR.UseVisualStyleBackColor = True
-        '
-        'BTNNUEVO
-        '
-        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(184, 855)
-        Me.BTNNUEVO.Name = "BTNNUEVO"
-        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
-        Me.BTNNUEVO.TabIndex = 12
-        Me.BTNNUEVO.Text = "Nuevo"
-        Me.BTNNUEVO.UseVisualStyleBackColor = True
-        '
-        'BTNELIMINAR
-        '
-        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(584, 855)
-        Me.BTNELIMINAR.Name = "BTNELIMINAR"
-        Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNELIMINAR.TabIndex = 14
-        Me.BTNELIMINAR.Text = "Eliminar"
-        Me.BTNELIMINAR.UseVisualStyleBackColor = True
         '
         'FrmUsuarios
         '

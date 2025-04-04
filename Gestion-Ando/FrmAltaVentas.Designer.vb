@@ -23,9 +23,9 @@ Partial Class FrmAltaVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTENGANCHE = New System.Windows.Forms.TextBox()
@@ -344,7 +344,6 @@ Partial Class FrmAltaVentas
         Me.DtgProductos.Location = New System.Drawing.Point(0, 335)
         Me.DtgProductos.Margin = New System.Windows.Forms.Padding(2)
         Me.DtgProductos.Name = "DtgProductos"
-        Me.DtgProductos.ReadOnly = True
         Me.DtgProductos.RowHeadersVisible = False
         Me.DtgProductos.RowHeadersWidth = 51
         Me.DtgProductos.RowTemplate.Height = 24
@@ -357,7 +356,6 @@ Partial Class FrmAltaVentas
         Me.PROID.HeaderText = "PROID"
         Me.PROID.MinimumWidth = 6
         Me.PROID.Name = "PROID"
-        Me.PROID.ReadOnly = True
         Me.PROID.Visible = False
         Me.PROID.Width = 125
         '
@@ -366,7 +364,6 @@ Partial Class FrmAltaVentas
         Me.PROCLAVE.HeaderText = "CLAVE"
         Me.PROCLAVE.MinimumWidth = 6
         Me.PROCLAVE.Name = "PROCLAVE"
-        Me.PROCLAVE.ReadOnly = True
         Me.PROCLAVE.Width = 80
         '
         'PRONOMBRE
@@ -375,40 +372,36 @@ Partial Class FrmAltaVentas
         Me.PRONOMBRE.HeaderText = "PRODUCTO"
         Me.PRONOMBRE.MinimumWidth = 6
         Me.PRONOMBRE.Name = "PRONOMBRE"
-        Me.PRONOMBRE.ReadOnly = True
         '
         'PROCANTIDAD
         '
-        DataGridViewCellStyle16.Format = "N0"
-        DataGridViewCellStyle16.NullValue = Nothing
-        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle7.Format = "N0"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle7
         Me.PROCANTIDAD.HeaderText = "CANTIDAD"
         Me.PROCANTIDAD.MinimumWidth = 6
         Me.PROCANTIDAD.Name = "PROCANTIDAD"
-        Me.PROCANTIDAD.ReadOnly = True
         Me.PROCANTIDAD.Width = 75
         '
         'PROPRECIO
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle17.Format = "C2"
-        DataGridViewCellStyle17.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle8
         Me.PROPRECIO.HeaderText = "PRECIO"
         Me.PROPRECIO.MinimumWidth = 6
         Me.PROPRECIO.Name = "PROPRECIO"
-        Me.PROPRECIO.ReadOnly = True
         Me.PROPRECIO.Width = 72
         '
         'PROSUBTOTAL
         '
-        DataGridViewCellStyle18.Format = "C2"
-        DataGridViewCellStyle18.NullValue = Nothing
-        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle9.Format = "C2"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle9
         Me.PROSUBTOTAL.HeaderText = "TOTAL"
         Me.PROSUBTOTAL.MinimumWidth = 6
         Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
-        Me.PROSUBTOTAL.ReadOnly = True
         Me.PROSUBTOTAL.Width = 80
         '
         'GRUPO2
@@ -571,6 +564,7 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO.BackColor = System.Drawing.SystemColors.Window
         Me.CMBPRODUCTO.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CMBPRODUCTO.DisplayMember = "PRONOMBRE"
+        Me.CMBPRODUCTO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CMBPRODUCTO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBPRODUCTO.FormattingEnabled = True
         Me.CMBPRODUCTO.Location = New System.Drawing.Point(96, 13)
@@ -689,6 +683,7 @@ Partial Class FrmAltaVentas
         Me.CmbClientes.BackColor = System.Drawing.SystemColors.Window
         Me.CmbClientes.DataSource = Me.VISTACLIENTESBindingSource
         Me.CmbClientes.DisplayMember = "Expr1"
+        Me.CmbClientes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbClientes.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmbClientes.FormattingEnabled = True
         Me.CmbClientes.Location = New System.Drawing.Point(77, 82)

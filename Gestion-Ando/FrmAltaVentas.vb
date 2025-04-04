@@ -30,6 +30,7 @@ Public Class FrmAltaVentas
         RBCONTADO.Checked = False
         RBCREDITO.Checked = False
         CMBPRECIO.FormatString = "C2"
+        DtgProductos.BackgroundColor = ColorFormulario
 
         If RBCONTADO.Checked = False Then
             TXTPAGO.Enabled = False
@@ -80,6 +81,8 @@ Public Class FrmAltaVentas
         Me.KeyPreview = True
         If TIPO = "Operativo" Then
             RBCREDITO.Enabled = False
+        ElseIf TIPO = "Administrador" Then
+            RBCREDITO.Enabled = True
         End If
     End Sub
 

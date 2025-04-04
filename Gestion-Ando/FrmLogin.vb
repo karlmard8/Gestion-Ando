@@ -1,4 +1,7 @@
 ﻿
+Imports System.Data.SqlClient
+Imports System.Security.Cryptography
+Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class FrmLogin
@@ -36,17 +39,45 @@ Public Class FrmLogin
         End If
     End Sub
 
-    Private Sub BTNENTRAR_Click(sender As Object, e As EventArgs) Handles BTNENTRAR.Click
-        StrSql = "SELECT * FROM TBLUSUARIOS WHERE USULOGIN ='" & Me.TXTLOGIN.Text & "' AND USUCLAVE = '" & Me.TXTCONTRASEÑA.Text & "' AND USUEXISTE = 1"
-        If Leer("TBLUSUARIOS") = True Then
-            Me.Hide()
-            Dim ventana As New FrmPrincipal
-            ventana.Show()
-        Else
-            MsgBox("Usuario o contraseña son incorrectos", MsgBoxStyle.Critical, "Advertencia")
-            TXTLOGIN.Focus()
-        End If
 
+
+    ' Función para generar el hash SHA-256
+    Function GetSHA256Hash(ByVal input As String) As Byte()
+        Using sha256 As SHA256 = sha256.Create()
+            Return sha256.ComputeHash(Encoding.UTF8.GetBytes(input))
+        End Using
+    End Function
+
+    Private Sub BTNENTRAR_Click(sender As Object, e As EventArgs) Handles BTNENTRAR.Click
+        ' Obtener el hash SHA-256 de la contraseña ingresada
+        Dim hashedPassword As Byte() = GetSHA256Hash(Me.TXTCONTRASEÑA.Text)
+
+        ' Crear la consulta con parámetros seguros
+        Dim sql As String = "SELECT * FROM TBLUSUARIOS WHERE USULOGIN = @USULOGIN " &
+                        "AND USUCLAVE = @USUCLAVE " &
+                        "AND USUEXISTE = 1"
+
+        ' Crear la conexión y ejecutar la consulta con parámetros seguros
+        Using conn As New SqlConnection("server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";")
+            Using cmd As New SqlCommand(sql, conn)
+                cmd.Parameters.AddWithValue("@USULOGIN", TXTLOGIN.Text)
+                cmd.Parameters.AddWithValue("@USUCLAVE", hashedPassword) ' Ahora enviamos la contraseña en formato hash
+
+                conn.Open()
+                Dim reader As SqlDataReader = cmd.ExecuteReader()
+
+                If reader.HasRows Then
+                    Me.Hide()
+                    Dim ventana As New FrmPrincipal
+                    ventana.Show()
+                Else
+                    MsgBox("Usuario o contraseña son incorrectos", MsgBoxStyle.Critical, "Advertencia")
+                    TXTLOGIN.Focus()
+                End If
+
+                conn.Close()
+            End Using
+        End Using
     End Sub
 
 

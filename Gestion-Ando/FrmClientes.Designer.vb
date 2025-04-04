@@ -243,7 +243,7 @@ Partial Class FrmClientes
         'TXTBUSCAR
         '
         Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(110, 23)
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(111, 30)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
         Me.TXTBUSCAR.Size = New System.Drawing.Size(651, 29)
         Me.TXTBUSCAR.TabIndex = 11
@@ -251,10 +251,10 @@ Partial Class FrmClientes
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 26)
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(27, 30)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 27)
+        Me.Label1.Size = New System.Drawing.Size(68, 32)
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Buscar"
         '
@@ -263,7 +263,7 @@ Partial Class FrmClientes
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1052, 53)
+        Me.PictureBox1.Size = New System.Drawing.Size(1052, 62)
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
@@ -302,10 +302,10 @@ Partial Class FrmClientes
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(795, 24)
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(795, 30)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(82, 27)
+        Me.Label2.Size = New System.Drawing.Size(95, 32)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Filtrar por"
         '
@@ -315,7 +315,7 @@ Partial Class FrmClientes
         Me.CMBFILTRO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBFILTRO.FormattingEnabled = True
         Me.CMBFILTRO.Items.AddRange(New Object() {"Cliente", "Colonia", "Ciudad"})
-        Me.CMBFILTRO.Location = New System.Drawing.Point(880, 23)
+        Me.CMBFILTRO.Location = New System.Drawing.Point(896, 30)
         Me.CMBFILTRO.Name = "CMBFILTRO"
         Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
         Me.CMBFILTRO.TabIndex = 15

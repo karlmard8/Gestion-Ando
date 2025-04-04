@@ -92,10 +92,10 @@ Partial Class FrmPrincipal
         'LBLOPCIONES
         '
         Me.LBLOPCIONES.AutoSize = True
-        Me.LBLOPCIONES.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLOPCIONES.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLOPCIONES.Location = New System.Drawing.Point(50, 40)
         Me.LBLOPCIONES.Name = "LBLOPCIONES"
-        Me.LBLOPCIONES.Size = New System.Drawing.Size(0, 27)
+        Me.LBLOPCIONES.Size = New System.Drawing.Size(0, 32)
         Me.LBLOPCIONES.TabIndex = 2
         '
         'LBLLOGIN

@@ -38,7 +38,7 @@ Public Class FrmDetallesVentas
             End If
         End If
         Try
-            Using Conexion
+            Using Conexion As New SqlClient.SqlConnection("server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";")
                 Conexion.Open()
 
                 Dim comando As New SqlClient.SqlCommand("DETALLESDEPAGOS", Conexion)

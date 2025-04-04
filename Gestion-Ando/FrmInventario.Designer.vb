@@ -181,17 +181,17 @@ Partial Class FrmInventario
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 26)
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(27, 30)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 27)
+        Me.Label1.Size = New System.Drawing.Size(68, 32)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Buscar"
         '
         'TXTBUSCAR
         '
         Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(110, 23)
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(110, 30)
         Me.TXTBUSCAR.Name = "TXTBUSCAR"
         Me.TXTBUSCAR.Size = New System.Drawing.Size(927, 29)
         Me.TXTBUSCAR.TabIndex = 8
@@ -201,7 +201,7 @@ Partial Class FrmInventario
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1052, 53)
+        Me.PictureBox1.Size = New System.Drawing.Size(1052, 62)
         Me.PictureBox1.TabIndex = 9
         Me.PictureBox1.TabStop = False
         '

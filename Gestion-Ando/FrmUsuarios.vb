@@ -11,7 +11,11 @@ Public Class FrmUsuarios
         Me.DATAUSUARIOS.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
         Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-        Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+        Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+        Dim adapter As New SqlDataAdapter(sql, Conexion)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        DATAUSUARIOS.DataSource = dt
 
         AddHandler BTNELIMINAR.MouseEnter, AddressOf Button1_MouseEnter
         AddHandler BTNELIMINAR.MouseLeave, AddressOf Button1_MouseLeave
@@ -46,7 +50,11 @@ Public Class FrmUsuarios
 
         If ALTAUSUARIO.ShowDialog() = DialogResult.OK Then
             Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-            Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+            Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+            Dim adapter As New SqlDataAdapter(sql, Conexion)
+            Dim dt As New DataTable()
+            adapter.Fill(dt)
+            DATAUSUARIOS.DataSource = dt
         End If
         ME.TXTBUSCAR.Focus()
     End Sub
@@ -61,7 +69,11 @@ Public Class FrmUsuarios
 
             If Conectar() = True Then
                 Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+                Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+                Dim adapter As New SqlDataAdapter(sql, Conexion)
+                Dim dt As New DataTable()
+                adapter.Fill(dt)
+                DATAUSUARIOS.DataSource = dt
                 MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
             End If
         End If
@@ -80,7 +92,11 @@ Public Class FrmUsuarios
 
             If ALTAUSUARIO.ShowDialog = DialogResult.OK Then
                 Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Me.TBLUSUARIOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLUSUARIOS)
+                Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+                Dim adapter As New SqlDataAdapter(sql, Conexion)
+                Dim dt As New DataTable()
+                adapter.Fill(dt)
+                DATAUSUARIOS.DataSource = dt
             End If
         End If
         Me.TXTBUSCAR.Focus()

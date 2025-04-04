@@ -19,6 +19,8 @@ Public Class FrmVentas
         DATAVENTAS.BackgroundColor = ColorFormulario
         If TIPO = "Operativo" Then
             BTNELIMINAR.Enabled = False
+        ElseIf TIPO = "Administrador" Then
+            BTNELIMINAR.Enabled = True
         End If
     End Sub
 

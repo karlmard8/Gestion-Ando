@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.Runtime.InteropServices
 Imports System.Security.Cryptography.X509Certificates
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
@@ -148,7 +149,12 @@ Public Class FrmPrincipal
         Dim USUARIOS As New FrmUsuarios
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
-        FrmUsuarios.TBLUSUARIOSTableAdapter.Fill(FrmUsuarios.MuebleAlexDataSet.TBLUSUARIOS)
+        Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+        Dim adapter As New SqlDataAdapter(sql, Conexion)
+        Dim dt As New DataTable()
+        adapter.Fill(dt)
+        FrmUsuarios.DATAUSUARIOS.DataSource = dt
+
         FrmUsuarios.TopLevel = False
         PANELFRAMES.Controls.Add(FrmUsuarios)
         FrmUsuarios.Location = New Point(575, 0)
