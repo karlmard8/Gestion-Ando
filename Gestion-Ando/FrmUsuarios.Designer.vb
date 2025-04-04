@@ -24,25 +24,28 @@ Partial Class FrmUsuarios
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATAUSUARIOS = New System.Windows.Forms.DataGridView()
-        Me.TBLUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.TBLUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLUSUARIOSTableAdapter()
         Me.BTNEDITAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
+        Me.TBLUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.TBLUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLUSUARIOSTableAdapter()
+        Me.VISTAUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
         Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUCLAVE = New System.Windows.Forms.DataGridViewImageColumn()
         Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DATAUSUARIOS
@@ -54,7 +57,7 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.BackgroundColor = System.Drawing.SystemColors.ButtonShadow
         Me.DATAUSUARIOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DATAUSUARIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USUID, Me.USUNOMBRE, Me.USULOGIN, Me.USUCLAVE, Me.USUTIPO, Me.USUEXISTE})
-        Me.DATAUSUARIOS.DataSource = Me.TBLUSUARIOSBindingSource
+        Me.DATAUSUARIOS.DataSource = Me.VISTAUSUARIOSBindingSource
         Me.DATAUSUARIOS.Location = New System.Drawing.Point(12, 92)
         Me.DATAUSUARIOS.Name = "DATAUSUARIOS"
         Me.DATAUSUARIOS.ReadOnly = True
@@ -62,16 +65,6 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAUSUARIOS.Size = New System.Drawing.Size(704, 720)
         Me.DATAUSUARIOS.TabIndex = 0
-        '
-        'TBLUSUARIOSBindingSource
-        '
-        Me.TBLUSUARIOSBindingSource.DataMember = "TBLUSUARIOS"
-        Me.TBLUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TXTBUSCAR
         '
@@ -99,10 +92,6 @@ Partial Class FrmUsuarios
         Me.PictureBox1.Size = New System.Drawing.Size(704, 62)
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
-        '
-        'TBLUSUARIOSTableAdapter
-        '
-        Me.TBLUSUARIOSTableAdapter.ClearBeforeFill = True
         '
         'BTNEDITAR
         '
@@ -137,6 +126,29 @@ Partial Class FrmUsuarios
         Me.BTNELIMINAR.Text = "Eliminar"
         Me.BTNELIMINAR.UseVisualStyleBackColor = True
         '
+        'TBLUSUARIOSBindingSource
+        '
+        Me.TBLUSUARIOSBindingSource.DataMember = "TBLUSUARIOS"
+        Me.TBLUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TBLUSUARIOSTableAdapter
+        '
+        Me.TBLUSUARIOSTableAdapter.ClearBeforeFill = True
+        '
+        'VISTAUSUARIOSBindingSource
+        '
+        Me.VISTAUSUARIOSBindingSource.DataMember = "VISTAUSUARIOS"
+        Me.VISTAUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'VISTAUSUARIOSTableAdapter
+        '
+        Me.VISTAUSUARIOSTableAdapter.ClearBeforeFill = True
+        '
         'USUID
         '
         Me.USUID.DataPropertyName = "USUID"
@@ -144,37 +156,35 @@ Partial Class FrmUsuarios
         Me.USUID.Name = "USUID"
         Me.USUID.ReadOnly = True
         Me.USUID.Visible = False
-        Me.USUID.Width = 66
         '
         'USUNOMBRE
         '
         Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
-        Me.USUNOMBRE.HeaderText = "Nombre"
+        Me.USUNOMBRE.HeaderText = "Usuario"
         Me.USUNOMBRE.Name = "USUNOMBRE"
         Me.USUNOMBRE.ReadOnly = True
         '
         'USULOGIN
         '
-        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.USULOGIN.DataPropertyName = "USULOGIN"
-        Me.USULOGIN.HeaderText = "Usuario"
+        Me.USULOGIN.HeaderText = "Login"
         Me.USULOGIN.Name = "USULOGIN"
         Me.USULOGIN.ReadOnly = True
-        Me.USULOGIN.Width = 68
+        Me.USULOGIN.Width = 58
         '
         'USUCLAVE
         '
-        Me.USUCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.USUCLAVE.DataPropertyName = "USUCLAVE"
-        Me.USUCLAVE.HeaderText = "Contraseña"
+        Me.USUCLAVE.HeaderText = "USUCLAVE"
         Me.USUCLAVE.Name = "USUCLAVE"
         Me.USUCLAVE.ReadOnly = True
-        Me.USUCLAVE.Width = 86
+        Me.USUCLAVE.Visible = False
         '
         'USUTIPO
         '
-        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.USUTIPO.DataPropertyName = "USUTIPO"
         Me.USUTIPO.HeaderText = "Tipo de usuario"
         Me.USUTIPO.Name = "USUTIPO"
@@ -188,7 +198,6 @@ Partial Class FrmUsuarios
         Me.USUEXISTE.Name = "USUEXISTE"
         Me.USUEXISTE.ReadOnly = True
         Me.USUEXISTE.Visible = False
-        Me.USUEXISTE.Width = 74
         '
         'FrmUsuarios
         '
@@ -207,9 +216,10 @@ Partial Class FrmUsuarios
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmUsuarios"
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,10 +235,12 @@ Partial Class FrmUsuarios
     Friend WithEvents BTNEDITAR As Button
     Friend WithEvents BTNNUEVO As Button
     Friend WithEvents BTNELIMINAR As Button
+    Friend WithEvents VISTAUSUARIOSBindingSource As BindingSource
+    Friend WithEvents VISTAUSUARIOSTableAdapter As MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter
     Friend WithEvents USUID As DataGridViewTextBoxColumn
     Friend WithEvents USUNOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents USULOGIN As DataGridViewTextBoxColumn
-    Friend WithEvents USUCLAVE As DataGridViewTextBoxColumn
+    Friend WithEvents USUCLAVE As DataGridViewImageColumn
     Friend WithEvents USUTIPO As DataGridViewTextBoxColumn
     Friend WithEvents USUEXISTE As DataGridViewCheckBoxColumn
 End Class

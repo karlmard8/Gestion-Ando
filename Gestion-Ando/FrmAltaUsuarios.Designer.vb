@@ -132,6 +132,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTCLAVE.Location = New System.Drawing.Point(151, 132)
         Me.TXTCLAVE.MaxLength = 10
         Me.TXTCLAVE.Name = "TXTCLAVE"
+        Me.TXTCLAVE.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TXTCLAVE.Size = New System.Drawing.Size(289, 26)
         Me.TXTCLAVE.TabIndex = 42
         '

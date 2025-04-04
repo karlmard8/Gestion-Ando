@@ -3,6 +3,8 @@
 Public Class FrmUsuarios
     Dim ALTAUSUARIO As New FrmAltaUsuarios
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAUSUARIOS' Puede moverla o quitarla según sea necesario.
+
 
         Me.BackColor = ColorFormulario
         BTNNUEVO.BackColor = ColorBotones
@@ -11,7 +13,7 @@ Public Class FrmUsuarios
         Me.DATAUSUARIOS.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
         Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-        Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+        Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
         Dim adapter As New SqlDataAdapter(sql, Conexion)
         Dim dt As New DataTable()
         adapter.Fill(dt)
@@ -50,7 +52,7 @@ Public Class FrmUsuarios
 
         If ALTAUSUARIO.ShowDialog() = DialogResult.OK Then
             Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-            Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+            Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
             Dim adapter As New SqlDataAdapter(sql, Conexion)
             Dim dt As New DataTable()
             adapter.Fill(dt)
@@ -69,7 +71,7 @@ Public Class FrmUsuarios
 
             If Conectar() = True Then
                 Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+                Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
                 Dim adapter As New SqlDataAdapter(sql, Conexion)
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
@@ -87,12 +89,12 @@ Public Class FrmUsuarios
             idbusqueda = DATAUSUARIOS.CurrentRow.Cells("USUID").Value
             ALTAUSUARIO.TXTNOMBRE.Text = DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value
             ALTAUSUARIO.TXTLOGIN.Text = DATAUSUARIOS.CurrentRow.Cells("USULOGIN").Value
-            ALTAUSUARIO.TXTCLAVE.Text = DATAUSUARIOS.CurrentRow.Cells("USUCLAVE").Value
+            'ALTAUSUARIO.TXTCLAVE.Text = DATAUSUARIOS.CurrentRow.Cells("USUCLAVE").Value
             ALTAUSUARIO.TXTTIPO.Text = DATAUSUARIOS.CurrentRow.Cells("USUTIPO").Value
 
             If ALTAUSUARIO.ShowDialog = DialogResult.OK Then
                 Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+                Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
                 Dim adapter As New SqlDataAdapter(sql, Conexion)
                 Dim dt As New DataTable()
                 adapter.Fill(dt)
