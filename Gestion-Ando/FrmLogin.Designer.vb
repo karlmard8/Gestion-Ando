@@ -29,6 +29,7 @@ Partial Class FrmLogin
         Me.TXTCONTRASEÑA = New System.Windows.Forms.TextBox()
         Me.BTNENTRAR = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btnlogin = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -94,12 +95,26 @@ Partial Class FrmLogin
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
         '
+        'btnlogin
+        '
+        Me.btnlogin.AutoSize = True
+        Me.btnlogin.BackColor = System.Drawing.Color.Snow
+        Me.btnlogin.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnlogin.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnlogin.Location = New System.Drawing.Point(141, 154)
+        Me.btnlogin.Name = "btnlogin"
+        Me.btnlogin.Size = New System.Drawing.Size(160, 47)
+        Me.btnlogin.TabIndex = 6
+        Me.btnlogin.Text = "login"
+        Me.btnlogin.UseVisualStyleBackColor = False
+        '
         'FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(444, 361)
+        Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)
         Me.Controls.Add(Me.Label2)
@@ -124,4 +139,5 @@ Partial Class FrmLogin
     Friend WithEvents TXTCONTRASEÑA As TextBox
     Friend WithEvents BTNENTRAR As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnlogin As Button
 End Class
