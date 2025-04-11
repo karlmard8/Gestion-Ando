@@ -1,11 +1,9 @@
-﻿
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
 Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar
 
 Public Class FrmLogin
-
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'SE DECLARAN LAS CREDENCIALES PARA LA BASE DE DATOS
         SERVIDOR = "desktop-8q10a8h\sqlexpress"
@@ -23,12 +21,7 @@ Public Class FrmLogin
             End If
         Next
     End Sub
-    Private Sub TXTCONTRASEÑA_KeyDown(sender As Object, e As KeyEventArgs) Handles TXTCONTRASEÑA.KeyDown
-        If e.KeyCode = Keys.Enter Then
-            BTNENTRAR.PerformClick()
-        End If
 
-    End Sub
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
@@ -39,11 +32,9 @@ Public Class FrmLogin
         End If
     End Sub
 
-
-
     ' Función para generar el hash SHA-256
     Function GetSHA256Hash(ByVal input As String) As Byte()
-        Using sha256 As SHA256 = sha256.Create()
+        Using sha256 As SHA256 = SHA256.Create()
             Return sha256.ComputeHash(Encoding.UTF8.GetBytes(input))
         End Using
     End Function
@@ -79,6 +70,4 @@ Public Class FrmLogin
             End Using
         End Using
     End Sub
-
-
 End Class

@@ -44,9 +44,6 @@ Partial Class FrmInventario
         Me.TBLPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLPRODUCTOSTableAdapter()
         Me.VISTAPRODUCTO = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.LBLPRODUCTO = New System.Windows.Forms.Label()
-        Me.LBLEXISTENCIAS = New System.Windows.Forms.Label()
-        Me.LBLPRECIO = New System.Windows.Forms.Label()
         CType(Me.DATAINVENTARIO, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -234,42 +231,13 @@ Partial Class FrmInventario
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(1483, 92)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(343, 27)
+        Me.Label2.Size = New System.Drawing.Size(345, 29)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Selecciona un producto para mostrar su imagen"
-        '
-        'LBLPRODUCTO
-        '
-        Me.LBLPRODUCTO.AutoSize = True
-        Me.LBLPRODUCTO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLPRODUCTO.Location = New System.Drawing.Point(1418, 581)
-        Me.LBLPRODUCTO.Name = "LBLPRODUCTO"
-        Me.LBLPRODUCTO.Size = New System.Drawing.Size(33, 27)
-        Me.LBLPRODUCTO.TabIndex = 17
-        Me.LBLPRODUCTO.Text = ". . . "
-        '
-        'LBLEXISTENCIAS
-        '
-        Me.LBLEXISTENCIAS.AutoSize = True
-        Me.LBLEXISTENCIAS.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLEXISTENCIAS.Location = New System.Drawing.Point(1418, 608)
-        Me.LBLEXISTENCIAS.Name = "LBLEXISTENCIAS"
-        Me.LBLEXISTENCIAS.Size = New System.Drawing.Size(33, 27)
-        Me.LBLEXISTENCIAS.TabIndex = 18
-        Me.LBLEXISTENCIAS.Text = ". . . "
-        '
-        'LBLPRECIO
-        '
-        Me.LBLPRECIO.AutoSize = True
-        Me.LBLPRECIO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLPRECIO.Location = New System.Drawing.Point(1418, 635)
-        Me.LBLPRECIO.Name = "LBLPRECIO"
-        Me.LBLPRECIO.Size = New System.Drawing.Size(33, 27)
-        Me.LBLPRECIO.TabIndex = 19
-        Me.LBLPRECIO.Text = ". . . "
         '
         'FrmInventario
         '
@@ -277,9 +245,6 @@ Partial Class FrmInventario
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1896, 940)
-        Me.Controls.Add(Me.LBLPRECIO)
-        Me.Controls.Add(Me.LBLEXISTENCIAS)
-        Me.Controls.Add(Me.LBLPRODUCTO)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.VISTAPRODUCTO)
         Me.Controls.Add(Me.BTNREPORTE)
@@ -323,7 +288,4 @@ Partial Class FrmInventario
     Friend WithEvents PROEXISTED As DataGridViewCheckBoxColumn
     Friend WithEvents VISTAPRODUCTO As PictureBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents LBLPRODUCTO As Label
-    Friend WithEvents LBLEXISTENCIAS As Label
-    Friend WithEvents LBLPRECIO As Label
 End Class

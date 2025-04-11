@@ -1,21 +1,4 @@
-﻿
-
-Public Class FrmAltaClientes
-
-    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
-        ' Definir el ancho del borde
-        Dim bordeAncho As Integer = 1
-
-        ' Crear un pincel para el borde (color y grosor)
-        Dim bordeColor As Color = Color.Black ' Color negro para simular FixedSingle
-        Dim bordePen As New Pen(bordeColor, bordeAncho)
-
-        ' Dibujar el borde alrededor del formulario
-        e.Graphics.DrawRectangle(bordePen, 0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
-
-        ' Liberar el recurso del pincel
-        bordePen.Dispose()
-    End Sub
+﻿Public Class FrmAltaClientes
 
     Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
@@ -27,10 +10,15 @@ Public Class FrmAltaClientes
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button Then
                 AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Textbox_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Button_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf FrmAltaClientes_KeyDown
             End If
         Next
+    End Sub
+
+    Private Sub FrmAltaClientes_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
@@ -39,19 +27,6 @@ Public Class FrmAltaClientes
 
             Dim currentControl As Control = CType(sender, Control)
             Me.SelectNextControl(currentControl, True, True, True, True)
-        End If
-    End Sub
-
-    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-
-    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            Me.Close()
         End If
     End Sub
 
@@ -71,7 +46,6 @@ Public Class FrmAltaClientes
         End If
     End Sub
 
-
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.TXTCREDITO.SelectedIndex = -1
         Me.Close()
@@ -79,7 +53,6 @@ Public Class FrmAltaClientes
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
             MsgBox("Código faltante", MsgBoxStyle.Critical, "Advertencia")
             TXTCODIGO.Focus()
@@ -140,4 +113,18 @@ Public Class FrmAltaClientes
         TXTRFC.SelectionStart = cursorPos
     End Sub
 
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
+        ' Definir el ancho del borde
+        Dim bordeAncho As Integer = 1
+
+        ' Crear un pincel para el borde (color y grosor)
+        Dim bordeColor As Color = Color.Black ' Color negro para simular FixedSingle
+        Dim bordePen As New Pen(bordeColor, bordeAncho)
+
+        ' Dibujar el borde alrededor del formulario
+        e.Graphics.DrawRectangle(bordePen, 0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
+
+        ' Liberar el recurso del pincel
+        bordePen.Dispose()
+    End Sub
 End Class

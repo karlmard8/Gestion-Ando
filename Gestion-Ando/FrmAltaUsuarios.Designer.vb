@@ -34,6 +34,8 @@ Partial Class FrmAltaUsuarios
         Me.TXTCLAVE = New System.Windows.Forms.TextBox()
         Me.TXTTIPO = New System.Windows.Forms.ComboBox()
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
+        Me.TXTCONFIRMAR = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'LBLUSUARIOS
@@ -50,7 +52,7 @@ Partial Class FrmAltaUsuarios
         '
         Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNGUARDAR.Location = New System.Drawing.Point(33, 220)
+        Me.BTNGUARDAR.Location = New System.Drawing.Point(33, 270)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
         Me.BTNGUARDAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNGUARDAR.TabIndex = 45
@@ -61,7 +63,7 @@ Partial Class FrmAltaUsuarios
         '
         Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCANCELAR.Location = New System.Drawing.Point(338, 220)
+        Me.BTNCANCELAR.Location = New System.Drawing.Point(338, 270)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 47
@@ -72,7 +74,7 @@ Partial Class FrmAltaUsuarios
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(79, 164)
+        Me.Label4.Location = New System.Drawing.Point(79, 213)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(43, 27)
         Me.Label4.TabIndex = 43
@@ -82,11 +84,11 @@ Partial Class FrmAltaUsuarios
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(73, 132)
+        Me.Label3.Location = New System.Drawing.Point(31, 131)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 27)
+        Me.Label3.Size = New System.Drawing.Size(91, 27)
         Me.Label3.TabIndex = 42
-        Me.Label3.Text = "Clave"
+        Me.Label3.Text = "Contraseña"
         '
         'TXTLOGIN
         '
@@ -142,7 +144,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTTIPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTTIPO.FormattingEnabled = True
         Me.TXTTIPO.Items.AddRange(New Object() {"Administrador", "Operativo"})
-        Me.TXTTIPO.Location = New System.Drawing.Point(151, 164)
+        Me.TXTTIPO.Location = New System.Drawing.Point(151, 213)
         Me.TXTTIPO.Name = "TXTTIPO"
         Me.TXTTIPO.Size = New System.Drawing.Size(289, 28)
         Me.TXTTIPO.TabIndex = 43
@@ -151,18 +153,39 @@ Partial Class FrmAltaUsuarios
         '
         Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNLIMPIAR.Location = New System.Drawing.Point(188, 220)
+        Me.BTNLIMPIAR.Location = New System.Drawing.Point(188, 270)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
         Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNLIMPIAR.TabIndex = 46
         Me.BTNLIMPIAR.Text = "Limpiar"
         Me.BTNLIMPIAR.UseVisualStyleBackColor = True
         '
+        'TXTCONFIRMAR
+        '
+        Me.TXTCONFIRMAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTCONFIRMAR.Location = New System.Drawing.Point(151, 172)
+        Me.TXTCONFIRMAR.MaxLength = 10
+        Me.TXTCONFIRMAR.Name = "TXTCONFIRMAR"
+        Me.TXTCONFIRMAR.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TXTCONFIRMAR.Size = New System.Drawing.Size(289, 26)
+        Me.TXTCONFIRMAR.TabIndex = 49
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(31, 158)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(91, 62)
+        Me.Label5.TabIndex = 50
+        Me.Label5.Text = "Confirmar contraseña"
+        '
         'FrmAltaUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(479, 297)
+        Me.ClientSize = New System.Drawing.Size(479, 350)
+        Me.Controls.Add(Me.TXTCONFIRMAR)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.BTNLIMPIAR)
         Me.Controls.Add(Me.TXTTIPO)
         Me.Controls.Add(Me.TXTCLAVE)
@@ -197,4 +220,6 @@ Partial Class FrmAltaUsuarios
     Friend WithEvents TXTCLAVE As TextBox
     Friend WithEvents TXTTIPO As ComboBox
     Friend WithEvents BTNLIMPIAR As Button
+    Friend WithEvents TXTCONFIRMAR As TextBox
+    Friend WithEvents Label5 As Label
 End Class

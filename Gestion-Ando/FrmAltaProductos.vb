@@ -10,10 +10,7 @@
         SPINNER.Maximum = 1000
         SPINNER.TabIndex = 4
         Me.Controls.Add(SPINNER)
-        If TIPO = "Operativo" Then
 
-
-        End If
         If FrmInventario.BANDERA = "NUEVO" Then
             PRODIMAGEN.Image = Nothing
             imagenRuta = String.Empty
@@ -21,11 +18,15 @@
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button OrElse TypeOf ctrl Is NumericUpDown Then
                 AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Textbox_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Button_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf SPINNER_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf FrmAltaProductos_KeyDown
             End If
         Next
+    End Sub
+
+    Private Sub FrmAltaProductos_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
+        End If
     End Sub
 
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
@@ -52,24 +53,6 @@
         End If
     End Sub
 
-    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-
-    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-
-    Private Sub SPINNER_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-
     Private Sub BTNCANCELAR_Click(sender As Object, e As EventArgs) Handles BTNCANCELAR.Click
         Me.TXTCLAVE.Focus()
         Me.Close()
@@ -88,62 +71,80 @@
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-        If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-            TXTCLAVE.Focus()
+        If imagenRuta.Length = Nothing Then
+            Dim respuesta = MsgBox("¿Guardar producto sin imagen?", MsgBoxStyle.YesNo, "Advertencia")
+            If respuesta = MsgBoxResult.Yes Then
 
-        ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-            TXTCLAVE.Focus()
+                If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
+                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+                    TXTCLAVE.Focus()
 
-        ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-            TXTCLAVE.Focus()
+                ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
+                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+                    TXTCLAVE.Focus()
 
-        Else
-            If idbusqueda = 0 Then
-                StrSql = "ALTAPRODUCTOS"
-                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
-            Else
-                StrSql = "EDITARPRODUCTOS"
-                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
-                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
-            End If
-
-            comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
-            comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
-            comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
-            comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
-
-            comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
-
-            If Conectar() = True Then
-                If comando.Parameters("@RETORNO").Value = "GUARDADO" Then
-                    MsgBox("Producto guardado", MsgBoxStyle.Information, "Confirmación")
-                    DialogResult = DialogResult.OK
-                    Me.Close()
+                ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
+                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+                    TXTCLAVE.Focus()
 
                 Else
-                    MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
-                    TXTCLAVE.Focus()
+                    If idbusqueda = 0 Then
+                        StrSql = "ALTAPRODUCTOS"
+                        comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                        comando.CommandType = CommandType.StoredProcedure
+                        comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+                    Else
+                        StrSql = "EDITARPRODUCTOS"
+                        comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                        comando.CommandType = CommandType.StoredProcedure
+                        comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
+                        comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+                    End If
+
+                    comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
+                    comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
+                    comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
+                    comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
+
+                    comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
+
+                    If Conectar() = True Then
+                        If comando.Parameters("@RETORNO").Value = "GUARDADO" Then
+                            MsgBox("Producto guardado", MsgBoxStyle.Information, "Confirmación")
+                            DialogResult = DialogResult.OK
+                            Me.Close()
+
+                        Else
+                            MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
+                            TXTCLAVE.Focus()
+                        End If
+
+                    End If
+
                 End If
-
             End If
-
         End If
     End Sub
 
     Private Sub TXTPRECIO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTPRECIO.KeyPress
-        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
+        ' Permitir números, el punto decimal, el signo negativo y la tecla de retroceso
+        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "." AndAlso e.KeyChar <> "-" AndAlso e.KeyChar <> Chr(8) Then
+            e.Handled = True ' Bloquear cualquier otra entrada
+        End If
+
+        ' Evitar múltiples puntos decimales
+        If e.KeyChar = "." AndAlso (sender.Text.Contains(".") Or sender.Text = "") Then
+            e.Handled = True
+        End If
+
+        ' Evitar múltiples signos negativos y asegurar que solo estén al inicio
+        If e.KeyChar = "-" AndAlso sender.SelectionStart <> 0 Then
             e.Handled = True
         End If
     End Sub
+
     Public Property imagenRuta As String
+
     Private Sub BTNCARGARIMG_Click(sender As Object, e As EventArgs) Handles BTNCARGARIMG.Click
         Dim CARGARIMG As New OpenFileDialog()
 

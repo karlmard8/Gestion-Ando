@@ -93,6 +93,7 @@ Partial Class FrmAltaProductos
         '
         Me.TXTPRECIO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTPRECIO.Location = New System.Drawing.Point(151, 164)
+        Me.TXTPRECIO.MaxLength = 15
         Me.TXTPRECIO.Name = "TXTPRECIO"
         Me.TXTPRECIO.Size = New System.Drawing.Size(289, 26)
         Me.TXTPRECIO.TabIndex = 7
@@ -176,10 +177,10 @@ Partial Class FrmAltaProductos
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(500, 47)
+        Me.Label5.Font = New System.Drawing.Font("Dubai", 9.749999!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(499, 43)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(57, 18)
+        Me.Label5.Size = New System.Drawing.Size(67, 22)
         Me.Label5.TabIndex = 42
         Me.Label5.Text = "Fotografía"
         '

@@ -1,4 +1,32 @@
 ﻿Public Class FrmAltaUsuarios
+    Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.BackColor = ColorFormulario
+        BTNGUARDAR.BackColor = ColorBotones
+        BTNLIMPIAR.BackColor = ColorBotones
+        BTNCANCELAR.BackColor = ColorBotones
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button OrElse TypeOf ctrl Is NumericUpDown Then
+                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
+                AddHandler ctrl.KeyDown, AddressOf FrmAltaUsuarios_KeyDown
+            End If
+        Next
+    End Sub
+
+    Private Sub FrmAltaUsuarios_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
+
+            Dim currentControl As Control = CType(sender, Control)
+            Me.SelectNextControl(currentControl, True, True, True, True)
+        End If
+    End Sub
+
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         ' Definir el ancho del borde
         Dim bordeAncho As Integer = 1
@@ -27,36 +55,40 @@
     End Sub
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-        If String.IsNullOrWhiteSpace(TXTLOGIN.Text) Then
-            MsgBox("Login faltante", MsgBoxStyle.Information)
-            TXTLOGIN.Focus()
+        If TXTCONFIRMAR.Text <> TXTCLAVE.Text Then
+            MsgBox("Las contraseñas no coinciden", MsgBoxStyle.Critical, "Error")
         Else
-            If idbusqueda = 0 Then
-                StrSql = "ALTAUSUARIOS"
-                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                comando.CommandType = CommandType.StoredProcedure
-
+            If String.IsNullOrWhiteSpace(TXTLOGIN.Text) Then
+                MsgBox("Login faltante", MsgBoxStyle.Information)
+                TXTLOGIN.Focus()
             Else
-                StrSql = "EDITARUSUARIOS"
-                comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.Add("USUID", SqlDbType.BigInt).Value = idbusqueda
-            End If
+                If idbusqueda = 0 Then
+                    StrSql = "ALTAUSUARIOS"
+                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                    comando.CommandType = CommandType.StoredProcedure
 
-            comando.Parameters.Add("@USUNOMBRE", SqlDbType.VarChar, 80).Value = TXTNOMBRE.Text
-            comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text
-            comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
-            comando.Parameters.Add("@USUTIPO", SqlDbType.VarChar, 15).Value = TXTTIPO.Text
-            comando.Parameters.Add("@RETORNO", SqlDbType.Int).Direction = ParameterDirection.Output
-
-            If Conectar() = True Then
-                If comando.Parameters("@RETORNO").Value = 1 Then
-                    MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
-                    DialogResult = DialogResult.OK
-                    Me.Close()
                 Else
-                    MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
-                    TXTNOMBRE.Focus()
+                    StrSql = "EDITARUSUARIOS"
+                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                    comando.CommandType = CommandType.StoredProcedure
+                    comando.Parameters.Add("USUID", SqlDbType.BigInt).Value = idbusqueda
+                End If
+
+                comando.Parameters.Add("@USUNOMBRE", SqlDbType.VarChar, 80).Value = TXTNOMBRE.Text
+                comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text
+                comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
+                comando.Parameters.Add("@USUTIPO", SqlDbType.VarChar, 15).Value = TXTTIPO.Text
+                comando.Parameters.Add("@RETORNO", SqlDbType.Int).Direction = ParameterDirection.Output
+
+                If Conectar() = True Then
+                    If comando.Parameters("@RETORNO").Value = 1 Then
+                        MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
+                        DialogResult = DialogResult.OK
+                        Me.Close()
+                    Else
+                        MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
+                        TXTNOMBRE.Focus()
+                    End If
                 End If
             End If
         End If
@@ -75,38 +107,4 @@
         TXTNOMBRE.Focus()
     End Sub
 
-    Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.BackColor = ColorFormulario
-        BTNGUARDAR.BackColor = ColorBotones
-        BTNLIMPIAR.BackColor = ColorBotones
-        BTNCANCELAR.BackColor = ColorBotones
-        For Each ctrl As Control In Me.Controls
-            If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button OrElse TypeOf ctrl Is NumericUpDown Then
-                AddHandler ctrl.KeyDown, AddressOf Control_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Textbox_KeyDown
-                AddHandler ctrl.KeyDown, AddressOf Button_KeyDown
-            End If
-        Next
-    End Sub
-
-    Private Sub Control_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then
-            e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter
-
-            Dim currentControl As Control = CType(sender, Control)
-            Me.SelectNextControl(currentControl, True, True, True, True)
-        End If
-    End Sub
-
-    Public Sub Textbox_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
-
-    Private Sub Button_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Escape Then
-            BTNCANCELAR.PerformClick()
-        End If
-    End Sub
 End Class

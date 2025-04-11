@@ -57,7 +57,7 @@ Public Class FrmInventario
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.TBLPRODUCTOSBindingSource.Filter = "PRONOMBRE LIKE '*" & TXTBUSCAR.Text & "*'"
+        Me.TBLPRODUCTOSBindingSource.Filter = "PRONOMBRE LIKE '*" & Me.TXTBUSCAR.Text & "*'"
     End Sub
 
     Public Property rutaImagen As String
@@ -128,9 +128,7 @@ Public Class FrmInventario
                 Dim NombreProducto As String = DATAINVENTARIO.SelectedRows(0).Cells("PRONOMBRE").Value
                 Dim EXISTENCIAS As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROEXISTENCIAS").Value
                 Dim PRECIO As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROPRECIO").Value
-                LBLPRODUCTO.Text = "Producto: " + NombreProducto
-                LBLEXISTENCIAS.Text = "Existencias: " + EXISTENCIAS.ToString("N0")
-                LBLPRECIO.Text = "Precio: " + PRECIO.ToString("C2")
+
                 ' Verificar que la ruta de la imagen no esté vacía o nula
                 If Not String.IsNullOrEmpty(rutaImagen) AndAlso File.Exists(rutaImagen) Then
                     ' Cargar la imagen desde la ruta
@@ -141,7 +139,7 @@ Public Class FrmInventario
                 Else
                     ' Manejar el caso donde la ruta de la imagen es inválida
                     VISTAPRODUCTO.Image = Nothing
-                    MessageBox.Show("Error al cargar la imagen")
+                    MsgBox("Error al cargar la imágen o imágen inexistente", MsgBoxStyle.Critical, "Error")
                 End If
             End If
         Catch ex As Exception
@@ -262,5 +260,4 @@ Public Class FrmInventario
         ' Mostrar el formulario emergente
         OPCIONESVENTAS.ShowDialog()
     End Sub
-
 End Class

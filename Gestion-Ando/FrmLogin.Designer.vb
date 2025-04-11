@@ -36,6 +36,7 @@ Partial Class FrmLogin
         '
         Me.TXTLOGIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTLOGIN.Location = New System.Drawing.Point(146, 191)
+        Me.TXTLOGIN.MaxLength = 10
         Me.TXTLOGIN.Name = "TXTLOGIN"
         Me.TXTLOGIN.Size = New System.Drawing.Size(242, 29)
         Me.TXTLOGIN.TabIndex = 0
@@ -64,6 +65,7 @@ Partial Class FrmLogin
         '
         Me.TXTCONTRASEÑA.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(146, 241)
+        Me.TXTCONTRASEÑA.MaxLength = 10
         Me.TXTCONTRASEÑA.Name = "TXTCONTRASEÑA"
         Me.TXTCONTRASEÑA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TXTCONTRASEÑA.Size = New System.Drawing.Size(242, 29)
