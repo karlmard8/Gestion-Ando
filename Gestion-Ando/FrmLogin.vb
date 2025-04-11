@@ -20,38 +20,8 @@ Public Class FrmLogin
                 AddHandler ctrl.KeyDown, AddressOf TextBox_KeyDown
             End If
         Next
-
-        'VERIFICACIÓN DE LICENCIA
-
     End Sub
-    Private Async Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim email As String = txtEmail.Text
-        Dim password As String = txtPassword.Text
 
-        If Await IniciarSesion(email, password) Then
-            Dim validador As New FirestoreConexion()
-            Dim Calve As Integer = 123 ' 🔥 Ahora buscamos por número
-            Dim snapshot = Await validador.ObtenerDocumento(Calve)
-
-            If snapshot IsNot Nothing AndAlso snapshot.ContainsKey("Estado") AndAlso snapshot.ContainsKey("FechaVencimiento") Then
-                Dim estado As String = snapshot("Estado").ToString()
-
-                ' 🔹 Convertir timestamp de Firestore a DateTime
-                Dim fechaVencimientoTimestamp As Google.Cloud.Firestore.Timestamp = snapshot("FechaVencimiento")
-                Dim fechaVencimiento As DateTime = fechaVencimientoTimestamp.ToDateTime()
-
-                If estado.Trim() = "Activa" And fechaVencimiento >= DateTime.Now Then
-                    MessageBox.Show("Licencia válida. La aplicación continuará.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Licencia inválida. Estado: " & estado & " - Fecha vencida: " & fechaVencimiento, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Application.Exit()
-                End If
-            Else
-                MessageBox.Show("Error: No se encontró el campo 'Estado' o 'FechaVencimiento' en Firestore.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Application.Exit()
-            End If
-        End If
-    End Sub
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True ' Evitar el sonido "ding" cuando se presiona Enter

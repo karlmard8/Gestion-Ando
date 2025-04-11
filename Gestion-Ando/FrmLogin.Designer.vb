@@ -29,9 +29,6 @@ Partial Class FrmLogin
         Me.TXTCONTRASEÑA = New System.Windows.Forms.TextBox()
         Me.BTNENTRAR = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.btnLogin = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -97,40 +94,12 @@ Partial Class FrmLogin
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
         '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(332, 286)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(100, 20)
-        Me.txtEmail.TabIndex = 6
-        Me.txtEmail.Text = "karlsant888@gmail.com"
-        '
-        'txtPassword
-        '
-        Me.txtPassword.Location = New System.Drawing.Point(332, 312)
-        Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(100, 20)
-        Me.txtPassword.TabIndex = 7
-        Me.txtPassword.Text = "c1oooooo"
-        '
-        'btnLogin
-        '
-        Me.btnLogin.Location = New System.Drawing.Point(343, 338)
-        Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
-        Me.btnLogin.TabIndex = 8
-        Me.btnLogin.Text = "Button1"
-        Me.btnLogin.UseVisualStyleBackColor = True
-        '
         'FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(444, 361)
-        Me.Controls.Add(Me.btnLogin)
-        Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)
         Me.Controls.Add(Me.Label2)
@@ -155,7 +124,4 @@ Partial Class FrmLogin
     Friend WithEvents TXTCONTRASEÑA As TextBox
     Friend WithEvents BTNENTRAR As Button
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents txtEmail As TextBox
-    Friend WithEvents txtPassword As TextBox
-    Friend WithEvents btnLogin As Button
 End Class
