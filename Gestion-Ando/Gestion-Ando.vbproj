@@ -582,6 +582,7 @@
     <None Include="protos\google\type\timeofday.proto" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="home.ico" />
     <Content Include="LogoMueblería.ico" />
   </ItemGroup>
   <ItemGroup>
