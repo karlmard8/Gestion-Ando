@@ -67,6 +67,8 @@ Partial Class FrmVentas
         '
         Me.DATAVENTAS.AllowUserToAddRows = False
         Me.DATAVENTAS.AllowUserToDeleteRows = False
+        Me.DATAVENTAS.AllowUserToResizeColumns = False
+        Me.DATAVENTAS.AllowUserToResizeRows = False
         Me.DATAVENTAS.AutoGenerateColumns = False
         Me.DATAVENTAS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DATAVENTAS.BackgroundColor = System.Drawing.Color.White
@@ -76,6 +78,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.DataSource = Me.VISTAVENTASBindingSource
         Me.DATAVENTAS.GridColor = System.Drawing.SystemColors.Control
         Me.DATAVENTAS.Location = New System.Drawing.Point(12, 92)
+        Me.DATAVENTAS.MultiSelect = False
         Me.DATAVENTAS.Name = "DATAVENTAS"
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False

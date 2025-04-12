@@ -33,8 +33,16 @@ Partial Class FrmReportes
         Me.Reportes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Reportes.Location = New System.Drawing.Point(0, 0)
         Me.Reportes.Name = "Reportes"
+        Me.Reportes.ShowCloseButton = False
+        Me.Reportes.ShowCopyButton = False
+        Me.Reportes.ShowGroupTreeButton = False
+        Me.Reportes.ShowLogo = False
+        Me.Reportes.ShowParameterPanelButton = False
+        Me.Reportes.ShowRefreshButton = False
+        Me.Reportes.ShowTextSearchButton = False
         Me.Reportes.Size = New System.Drawing.Size(784, 761)
         Me.Reportes.TabIndex = 0
+        Me.Reportes.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'FrmReportes
         '

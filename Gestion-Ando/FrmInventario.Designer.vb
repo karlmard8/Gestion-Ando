@@ -55,6 +55,8 @@ Partial Class FrmInventario
         '
         Me.DATAINVENTARIO.AllowUserToAddRows = False
         Me.DATAINVENTARIO.AllowUserToDeleteRows = False
+        Me.DATAINVENTARIO.AllowUserToResizeColumns = False
+        Me.DATAINVENTARIO.AllowUserToResizeRows = False
         Me.DATAINVENTARIO.AutoGenerateColumns = False
         Me.DATAINVENTARIO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DATAINVENTARIO.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
@@ -63,6 +65,7 @@ Partial Class FrmInventario
         Me.DATAINVENTARIO.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PROID, Me.PROCLAVE, Me.PRONOMBRE, Me.PROEXISTENCIAS, Me.PROPRECIO, Me.PROIMAGEN, Me.PROEXISTED})
         Me.DATAINVENTARIO.DataSource = Me.TBLPRODUCTOSBindingSource
         Me.DATAINVENTARIO.Location = New System.Drawing.Point(12, 92)
+        Me.DATAINVENTARIO.MultiSelect = False
         Me.DATAINVENTARIO.Name = "DATAINVENTARIO"
         Me.DATAINVENTARIO.ReadOnly = True
         Me.DATAINVENTARIO.RowHeadersVisible = False

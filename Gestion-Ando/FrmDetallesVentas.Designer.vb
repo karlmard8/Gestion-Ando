@@ -71,6 +71,8 @@ Partial Class FrmDetallesVentas
         '
         Me.DATADETALLEVENTA.AllowUserToAddRows = False
         Me.DATADETALLEVENTA.AllowUserToDeleteRows = False
+        Me.DATADETALLEVENTA.AllowUserToResizeColumns = False
+        Me.DATADETALLEVENTA.AllowUserToResizeRows = False
         Me.DATADETALLEVENTA.AutoGenerateColumns = False
         Me.DATADETALLEVENTA.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -229,6 +231,8 @@ Partial Class FrmDetallesVentas
         '
         Me.DATAPAGOS.AllowUserToAddRows = False
         Me.DATAPAGOS.AllowUserToDeleteRows = False
+        Me.DATAPAGOS.AllowUserToResizeColumns = False
+        Me.DATAPAGOS.AllowUserToResizeRows = False
         Me.DATAPAGOS.AutoGenerateColumns = False
         Me.DATAPAGOS.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -251,6 +255,7 @@ Partial Class FrmDetallesVentas
         DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DATAPAGOS.DefaultCellStyle = DataGridViewCellStyle11
         Me.DATAPAGOS.Location = New System.Drawing.Point(0, 292)
+        Me.DATAPAGOS.MultiSelect = False
         Me.DATAPAGOS.Name = "DATAPAGOS"
         Me.DATAPAGOS.ReadOnly = True
         DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft

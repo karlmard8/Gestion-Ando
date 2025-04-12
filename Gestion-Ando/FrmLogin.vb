@@ -20,6 +20,8 @@ Public Class FrmLogin
                 AddHandler ctrl.KeyDown, AddressOf TextBox_KeyDown
             End If
         Next
+        btnlogin.Visible = False
+        btnLogin_Click(sender, e)
     End Sub
 
     Private Async Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
