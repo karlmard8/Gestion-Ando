@@ -100,12 +100,12 @@ Partial Class FrmLogin
         Me.btnlogin.AutoSize = True
         Me.btnlogin.BackColor = System.Drawing.Color.Snow
         Me.btnlogin.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnlogin.Enabled = False
         Me.btnlogin.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnlogin.Location = New System.Drawing.Point(12, 12)
+        Me.btnlogin.Location = New System.Drawing.Point(434, -1)
         Me.btnlogin.Name = "btnlogin"
-        Me.btnlogin.Size = New System.Drawing.Size(67, 42)
+        Me.btnlogin.Size = New System.Drawing.Size(10, 10)
         Me.btnlogin.TabIndex = 6
-        Me.btnlogin.Text = "login"
         Me.btnlogin.UseVisualStyleBackColor = False
         '
         'FrmLogin

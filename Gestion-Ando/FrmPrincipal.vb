@@ -166,12 +166,21 @@ Public Class FrmPrincipal
     Private isLoggingOut As Boolean = False
 
     Private Sub CerrarSesiónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CerrarSesiónToolStripMenuItem.Click
-        isLoggingOut = True
-        Me.Close()
-        FrmLogin.Show()
-        FrmLogin.TXTLOGIN.Text = String.Empty
-        FrmLogin.TXTCONTRASEÑA.Text = String.Empty
-        FrmLogin.TXTLOGIN.Focus()
+        Dim CONFIRMACION As DialogResult
+        CONFIRMACION = MessageBox.Show("¿Cerrar sesión?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If CONFIRMACION = DialogResult.Yes Then
+            isLoggingOut = True
+            Me.Close()
+            FrmLogin.Show()
+            FrmLogin.TXTLOGIN.Text = String.Empty
+            FrmLogin.TXTCONTRASEÑA.Text = String.Empty
+            FrmLogin.TXTLOGIN.Focus()
+        Else
+
+        End If
+
+
     End Sub
 
     Private Sub FrmPrincipal_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
