@@ -52,7 +52,6 @@ Partial Class FrmReportes
         Me.Controls.Add(Me.Reportes)
         Me.Name = "FrmReportes"
         Me.ShowIcon = False
-        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reportes"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

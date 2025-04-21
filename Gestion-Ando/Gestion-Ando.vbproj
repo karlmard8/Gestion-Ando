@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{00F7833C-50A7-4C50-8AD6-DE476503E8D4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>Gestion_Ando.My.MyApplication</StartupObject>
     <RootNamespace>Gestion_Ando</RootNamespace>
     <AssemblyName>Gestion-Ando</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -14,9 +14,6 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,8 +26,11 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -321,13 +321,6 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AuthFirebase.vb" />
-    <Compile Include="CrearUsuarioPrincipal.vb" />
-    <Compile Include="RPTTICKETVENTA.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RPTTICKETVENTA.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="FrmAltaClientes.Designer.vb">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </Compile>
@@ -407,6 +400,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MuebleAlexDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -444,10 +442,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RPTTICKETVENTA.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>RPTTICKETVENTA.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaClientes.resx">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +515,7 @@
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

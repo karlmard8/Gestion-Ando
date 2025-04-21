@@ -44,7 +44,6 @@ Partial Class FrmVentas
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
-        Me.BTNIMPRIMIR = New System.Windows.Forms.Button()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,25 +237,11 @@ Partial Class FrmVentas
         '
         Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
         '
-        'BTNIMPRIMIR
-        '
-        Me.BTNIMPRIMIR.AutoSize = True
-        Me.BTNIMPRIMIR.BackColor = System.Drawing.Color.White
-        Me.BTNIMPRIMIR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNIMPRIMIR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNIMPRIMIR.Location = New System.Drawing.Point(576, 41)
-        Me.BTNIMPRIMIR.Name = "BTNIMPRIMIR"
-        Me.BTNIMPRIMIR.Size = New System.Drawing.Size(133, 45)
-        Me.BTNIMPRIMIR.TabIndex = 20
-        Me.BTNIMPRIMIR.Text = "Imprimir ticket"
-        Me.BTNIMPRIMIR.UseVisualStyleBackColor = False
-        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(860, 930)
-        Me.Controls.Add(Me.BTNIMPRIMIR)
         Me.Controls.Add(Me.BTNNUEVO)
         Me.Controls.Add(Me.BTNREPORTE)
         Me.Controls.Add(Me.TXTBUSCAR)
@@ -296,5 +281,4 @@ Partial Class FrmVentas
     Friend WithEvents VENID As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
     Friend WithEvents VENEXISTEDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents BTNIMPRIMIR As Button
 End Class
