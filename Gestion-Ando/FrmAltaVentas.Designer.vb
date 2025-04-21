@@ -23,9 +23,9 @@ Partial Class FrmAltaVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTENGANCHE = New System.Windows.Forms.TextBox()
@@ -107,11 +107,11 @@ Partial Class FrmAltaVentas
         Me.GroupBox2.Controls.Add(Me.RBCONTADO)
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 462)
+        Me.GroupBox2.Location = New System.Drawing.Point(2, 508)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox2.Size = New System.Drawing.Size(474, 198)
+        Me.GroupBox2.Size = New System.Drawing.Size(654, 198)
         Me.GroupBox2.TabIndex = 33
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "PAGO"
@@ -121,7 +121,7 @@ Partial Class FrmAltaVentas
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label1.Location = New System.Drawing.Point(305, 144)
+        Me.Label1.Location = New System.Drawing.Point(443, 144)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(79, 27)
@@ -131,7 +131,7 @@ Partial Class FrmAltaVentas
         'TXTENGANCHE
         '
         Me.TXTENGANCHE.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTENGANCHE.Location = New System.Drawing.Point(388, 141)
+        Me.TXTENGANCHE.Location = New System.Drawing.Point(526, 141)
         Me.TXTENGANCHE.Margin = New System.Windows.Forms.Padding(2)
         Me.TXTENGANCHE.MaxLength = 15
         Me.TXTENGANCHE.Name = "TXTENGANCHE"
@@ -150,8 +150,7 @@ Partial Class FrmAltaVentas
         '
         'TXTCAMBIO
         '
-        Me.TXTCAMBIO.AutoSize = True
-        Me.TXTCAMBIO.BackColor = System.Drawing.Color.Gold
+        Me.TXTCAMBIO.BackColor = System.Drawing.Color.Transparent
         Me.TXTCAMBIO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TXTCAMBIO.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTCAMBIO.ForeColor = System.Drawing.Color.Black
@@ -191,7 +190,7 @@ Partial Class FrmAltaVentas
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label14.Location = New System.Drawing.Point(310, 85)
+        Me.Label14.Location = New System.Drawing.Point(448, 85)
         Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(74, 27)
@@ -201,7 +200,7 @@ Partial Class FrmAltaVentas
         'TXTMESES
         '
         Me.TXTMESES.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTMESES.Location = New System.Drawing.Point(388, 84)
+        Me.TXTMESES.Location = New System.Drawing.Point(526, 84)
         Me.TXTMESES.Margin = New System.Windows.Forms.Padding(2)
         Me.TXTMESES.MaxLength = 10
         Me.TXTMESES.Name = "TXTMESES"
@@ -212,7 +211,7 @@ Partial Class FrmAltaVentas
         '
         Me.RBCREDITO.AutoSize = True
         Me.RBCREDITO.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.RBCREDITO.Location = New System.Drawing.Point(375, 23)
+        Me.RBCREDITO.Location = New System.Drawing.Point(513, 23)
         Me.RBCREDITO.Margin = New System.Windows.Forms.Padding(2)
         Me.RBCREDITO.Name = "RBCREDITO"
         Me.RBCREDITO.Size = New System.Drawing.Size(81, 31)
@@ -251,25 +250,24 @@ Partial Class FrmAltaVentas
         Me.BTNPAGAR.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.BTNPAGAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNPAGAR.Font = New System.Drawing.Font("Dubai", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNPAGAR.Location = New System.Drawing.Point(515, 565)
+        Me.BTNPAGAR.Location = New System.Drawing.Point(1000, 618)
         Me.BTNPAGAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTNPAGAR.Name = "BTNPAGAR"
         Me.BTNPAGAR.Size = New System.Drawing.Size(130, 85)
-        Me.BTNPAGAR.TabIndex = 30
+        Me.BTNPAGAR.TabIndex = 35
         Me.BTNPAGAR.Text = "Pagar"
         Me.BTNPAGAR.UseVisualStyleBackColor = False
         '
         'LBLTOTAL
         '
-        Me.LBLTOTAL.AutoSize = True
-        Me.LBLTOTAL.BackColor = System.Drawing.Color.Gold
+        Me.LBLTOTAL.BackColor = System.Drawing.Color.Transparent
         Me.LBLTOTAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLTOTAL.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLTOTAL.ForeColor = System.Drawing.Color.Black
-        Me.LBLTOTAL.Location = New System.Drawing.Point(553, 526)
+        Me.LBLTOTAL.Location = New System.Drawing.Point(1000, 575)
         Me.LBLTOTAL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLTOTAL.Name = "LBLTOTAL"
-        Me.LBLTOTAL.Size = New System.Drawing.Size(92, 26)
+        Me.LBLTOTAL.Size = New System.Drawing.Size(127, 26)
         Me.LBLTOTAL.TabIndex = 32
         Me.LBLTOTAL.Text = "Procesando..."
         '
@@ -278,7 +276,7 @@ Partial Class FrmAltaVentas
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label17.Location = New System.Drawing.Point(488, 528)
+        Me.Label17.Location = New System.Drawing.Point(911, 577)
         Me.Label17.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(61, 27)
@@ -287,15 +285,14 @@ Partial Class FrmAltaVentas
         '
         'LBLIVA
         '
-        Me.LBLIVA.AutoSize = True
-        Me.LBLIVA.BackColor = System.Drawing.Color.Gold
+        Me.LBLIVA.BackColor = System.Drawing.Color.Transparent
         Me.LBLIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLIVA.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLIVA.ForeColor = System.Drawing.Color.Black
-        Me.LBLIVA.Location = New System.Drawing.Point(553, 501)
+        Me.LBLIVA.Location = New System.Drawing.Point(1000, 549)
         Me.LBLIVA.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLIVA.Name = "LBLIVA"
-        Me.LBLIVA.Size = New System.Drawing.Size(92, 26)
+        Me.LBLIVA.Size = New System.Drawing.Size(127, 26)
         Me.LBLIVA.TabIndex = 30
         Me.LBLIVA.Text = "Procesando..."
         '
@@ -304,7 +301,7 @@ Partial Class FrmAltaVentas
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label15.Location = New System.Drawing.Point(510, 501)
+        Me.Label15.Location = New System.Drawing.Point(933, 550)
         Me.Label15.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(39, 27)
@@ -313,15 +310,14 @@ Partial Class FrmAltaVentas
         '
         'LBLSUB
         '
-        Me.LBLSUB.AutoSize = True
-        Me.LBLSUB.BackColor = System.Drawing.Color.Gold
+        Me.LBLSUB.BackColor = System.Drawing.Color.Transparent
         Me.LBLSUB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLSUB.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLSUB.ForeColor = System.Drawing.Color.Black
-        Me.LBLSUB.Location = New System.Drawing.Point(553, 476)
+        Me.LBLSUB.Location = New System.Drawing.Point(1000, 525)
         Me.LBLSUB.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLSUB.Name = "LBLSUB"
-        Me.LBLSUB.Size = New System.Drawing.Size(92, 26)
+        Me.LBLSUB.Size = New System.Drawing.Size(127, 26)
         Me.LBLSUB.TabIndex = 28
         Me.LBLSUB.Text = "Procesando..."
         '
@@ -330,7 +326,7 @@ Partial Class FrmAltaVentas
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label11.Location = New System.Drawing.Point(477, 477)
+        Me.Label11.Location = New System.Drawing.Point(900, 526)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(75, 27)
@@ -351,7 +347,7 @@ Partial Class FrmAltaVentas
         Me.DtgProductos.RowHeadersWidth = 51
         Me.DtgProductos.RowTemplate.Height = 24
         Me.DtgProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DtgProductos.Size = New System.Drawing.Size(650, 122)
+        Me.DtgProductos.Size = New System.Drawing.Size(1184, 169)
         Me.DtgProductos.TabIndex = 26
         '
         'PROID
@@ -378,9 +374,9 @@ Partial Class FrmAltaVentas
         '
         'PROCANTIDAD
         '
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle10.Format = "N0"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle10
         Me.PROCANTIDAD.HeaderText = "CANTIDAD"
         Me.PROCANTIDAD.MinimumWidth = 6
         Me.PROCANTIDAD.Name = "PROCANTIDAD"
@@ -389,9 +385,9 @@ Partial Class FrmAltaVentas
         'PROPRECIO
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle11.Format = "C2"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle11
         Me.PROPRECIO.HeaderText = "PRECIO"
         Me.PROPRECIO.MinimumWidth = 6
         Me.PROPRECIO.Name = "PROPRECIO"
@@ -399,9 +395,9 @@ Partial Class FrmAltaVentas
         '
         'PROSUBTOTAL
         '
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle12.Format = "C2"
+        DataGridViewCellStyle12.NullValue = Nothing
+        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle12
         Me.PROSUBTOTAL.HeaderText = "TOTAL"
         Me.PROSUBTOTAL.MinimumWidth = 6
         Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
@@ -428,7 +424,7 @@ Partial Class FrmAltaVentas
         Me.GRUPO2.Location = New System.Drawing.Point(0, 158)
         Me.GRUPO2.Margin = New System.Windows.Forms.Padding(2)
         Me.GRUPO2.Name = "GRUPO2"
-        Me.GRUPO2.Size = New System.Drawing.Size(650, 173)
+        Me.GRUPO2.Size = New System.Drawing.Size(1184, 173)
         Me.GRUPO2.TabIndex = 25
         '
         'CMBEXISTENCIAS
@@ -492,7 +488,7 @@ Partial Class FrmAltaVentas
         '
         Me.BtnQuitar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnQuitar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnQuitar.Location = New System.Drawing.Point(573, 128)
+        Me.BtnQuitar.Location = New System.Drawing.Point(1100, 128)
         Me.BtnQuitar.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnQuitar.Name = "BtnQuitar"
         Me.BtnQuitar.Size = New System.Drawing.Size(66, 33)
@@ -505,7 +501,7 @@ Partial Class FrmAltaVentas
         Me.BtnAgregar.AutoSize = True
         Me.BtnAgregar.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BtnAgregar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnAgregar.Location = New System.Drawing.Point(465, 128)
+        Me.BtnAgregar.Location = New System.Drawing.Point(1000, 128)
         Me.BtnAgregar.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnAgregar.Name = "BtnAgregar"
         Me.BtnAgregar.Size = New System.Drawing.Size(74, 33)
@@ -520,7 +516,7 @@ Partial Class FrmAltaVentas
         Me.LblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LblSubTotal.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblSubTotal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LblSubTotal.Location = New System.Drawing.Point(281, 136)
+        Me.LblSubTotal.Location = New System.Drawing.Point(528, 83)
         Me.LblSubTotal.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LblSubTotal.Name = "LblSubTotal"
         Me.LblSubTotal.Size = New System.Drawing.Size(92, 26)
@@ -532,7 +528,7 @@ Partial Class FrmAltaVentas
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label12.Location = New System.Drawing.Point(202, 138)
+        Me.Label12.Location = New System.Drawing.Point(449, 84)
         Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(75, 27)
@@ -544,7 +540,7 @@ Partial Class FrmAltaVentas
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label6.Location = New System.Drawing.Point(9, 138)
+        Me.Label6.Location = New System.Drawing.Point(20, 138)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(74, 27)
@@ -554,7 +550,7 @@ Partial Class FrmAltaVentas
         'TxtCantidad
         '
         Me.TxtCantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCantidad.Location = New System.Drawing.Point(87, 137)
+        Me.TxtCantidad.Location = New System.Drawing.Point(98, 137)
         Me.TxtCantidad.Margin = New System.Windows.Forms.Padding(2)
         Me.TxtCantidad.Name = "TxtCantidad"
         Me.TxtCantidad.Size = New System.Drawing.Size(65, 26)
@@ -573,7 +569,7 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO.Location = New System.Drawing.Point(96, 13)
         Me.CMBPRODUCTO.Margin = New System.Windows.Forms.Padding(2)
         Me.CMBPRODUCTO.Name = "CMBPRODUCTO"
-        Me.CMBPRODUCTO.Size = New System.Drawing.Size(552, 28)
+        Me.CMBPRODUCTO.Size = New System.Drawing.Size(1088, 28)
         Me.CMBPRODUCTO.TabIndex = 9
         Me.CMBPRODUCTO.ValueMember = "PROID"
         '
@@ -637,7 +633,7 @@ Partial Class FrmAltaVentas
         Me.LBLDETALLESPRODUCTO.Location = New System.Drawing.Point(0, 130)
         Me.LBLDETALLESPRODUCTO.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLDETALLESPRODUCTO.Name = "LBLDETALLESPRODUCTO"
-        Me.LBLDETALLESPRODUCTO.Size = New System.Drawing.Size(650, 28)
+        Me.LBLDETALLESPRODUCTO.Size = New System.Drawing.Size(1184, 28)
         Me.LBLDETALLESPRODUCTO.TabIndex = 24
         Me.LBLDETALLESPRODUCTO.Text = "Datos del producto"
         Me.LBLDETALLESPRODUCTO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -647,7 +643,7 @@ Partial Class FrmAltaVentas
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.Label3.Location = New System.Drawing.Point(305, 40)
+        Me.Label3.Location = New System.Drawing.Point(820, 39)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(66, 27)
@@ -673,7 +669,7 @@ Partial Class FrmAltaVentas
         Me.LBLUSUARIOACTUAL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.LBLUSUARIOACTUAL.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLUSUARIOACTUAL.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LBLUSUARIOACTUAL.Location = New System.Drawing.Point(379, 41)
+        Me.LBLUSUARIOACTUAL.Location = New System.Drawing.Point(894, 40)
         Me.LBLUSUARIOACTUAL.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.LBLUSUARIOACTUAL.Name = "LBLUSUARIOACTUAL"
         Me.LBLUSUARIOACTUAL.Size = New System.Drawing.Size(2, 26)
@@ -692,7 +688,7 @@ Partial Class FrmAltaVentas
         Me.CmbClientes.Location = New System.Drawing.Point(77, 82)
         Me.CmbClientes.Margin = New System.Windows.Forms.Padding(2)
         Me.CmbClientes.Name = "CmbClientes"
-        Me.CmbClientes.Size = New System.Drawing.Size(554, 35)
+        Me.CmbClientes.Size = New System.Drawing.Size(1107, 35)
         Me.CmbClientes.TabIndex = 7
         Me.CmbClientes.ValueMember = "CLIID"
         '
@@ -720,7 +716,7 @@ Partial Class FrmAltaVentas
         Me.GRUPO1.Margin = New System.Windows.Forms.Padding(2)
         Me.GRUPO1.Name = "GRUPO1"
         Me.GRUPO1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GRUPO1.Size = New System.Drawing.Size(650, 130)
+        Me.GRUPO1.Size = New System.Drawing.Size(1184, 130)
         Me.GRUPO1.TabIndex = 23
         Me.GRUPO1.TabStop = False
         Me.GRUPO1.Text = "Datos de la venta"
@@ -750,7 +746,7 @@ Partial Class FrmAltaVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(650, 661)
+        Me.ClientSize = New System.Drawing.Size(1184, 711)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.BTNPAGAR)
         Me.Controls.Add(Me.LBLTOTAL)

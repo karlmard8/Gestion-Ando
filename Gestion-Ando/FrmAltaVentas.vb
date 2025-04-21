@@ -15,6 +15,7 @@ Public Class FrmAltaVentas
         Me.VISTACLIENTESTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTES)
 
         ' Configuración de colores y controles
+        DtgProductos.TabStop = False
         Me.BackColor = ColorFormulario
         GRUPO1.BackColor = ColorFormulario
         GRUPO2.BackColor = ColorFormulario
