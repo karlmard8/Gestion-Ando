@@ -2,6 +2,7 @@
 
 Public Class FrmDetallesVentas
     Private Sub FrmDetallesVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.KeyPreview = True
         Me.BackColor = ColorFormulario
         DATADETALLEVENTA.BackgroundColor = ColorFormulario
         DATADETALLEVENTA.DefaultCellStyle.Font = New Font("Dubai", 12)
@@ -18,6 +19,13 @@ Public Class FrmDetallesVentas
         Else
             BTNABONO.Visible = True
             Me.Size = New Size(816, 633)
+        End If
+
+    End Sub
+
+    Public Sub FrmDetallesVentas_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
         End If
     End Sub
 

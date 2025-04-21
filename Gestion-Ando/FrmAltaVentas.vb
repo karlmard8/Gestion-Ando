@@ -1,5 +1,8 @@
 ﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.Security.Cryptography
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 
 Public Class FrmAltaVentas
     Private Sub FrmAltaVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -145,6 +148,7 @@ Public Class FrmAltaVentas
         TXTENGANCHE.Text = String.Empty
     End Sub
 
+    Dim VENID As Long
     Private Sub BTNPAGAR_Click(sender As Object, e As EventArgs) Handles BTNPAGAR.Click
         If Me.CmbClientes.SelectedValue > 0 Then
             If (Me.DtgProductos.RowCount > 0) Then
@@ -164,7 +168,7 @@ Public Class FrmAltaVentas
                         comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
                         comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
                         If Conectar() = True Then
-                            Dim VENID As Long = comando.Parameters("@RETORNO").Value
+                            VENID = comando.Parameters("@RETORNO").Value
                             For REC = 0 To Me.DtgProductos.RowCount - 1
                                 StrSql = "ALTADETVENTA"
                                 comando = New SqlClient.SqlCommand(StrSql, Conexion)
@@ -198,28 +202,27 @@ Public Class FrmAltaVentas
                             comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = Me.TXTENGANCHE.Text
                         End If
                         comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = IDUSUARIOACTUAL
-                            comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
-                            comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
-                            If Conectar() = True Then
-                                Dim VENID As Long
-                                VENID = comando.Parameters("@RETORNO").Value
-                                For REC = 0 To Me.DtgProductos.RowCount - 1
-                                    StrSql = "ALTADETVENTA"
-                                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                                    comando.CommandType = CommandType.StoredProcedure
-                                    comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = VENID
-                                    comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DtgProductos.Rows(REC).Cells("PROID").Value
-                                    comando.Parameters.Add("@DETCANTIDAD", SqlDbType.Int).Value = Me.DtgProductos.Rows(REC).Cells("PROCANTIDAD").Value
-                                    comando.Parameters.Add("DETPRECIO", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROPRECIO").Value
-                                    comando.Parameters.Add("DETSUBTOTAL", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROSUBTOTAL").Value
-                                    Conectar()
-                                Next
-                                DialogResult = DialogResult.OK
-                                MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
-                                Me.Close()
-                            End If
-                        Else
-                            MsgBox("Ingresa las semanas de crédito", MsgBoxStyle.Critical, "error")
+                        comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.CmbClientes.SelectedValue
+                        comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
+                        If Conectar() = True Then
+                            VENID = comando.Parameters("@RETORNO").Value
+                            For REC = 0 To Me.DtgProductos.RowCount - 1
+                                StrSql = "ALTADETVENTA"
+                                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                                comando.CommandType = CommandType.StoredProcedure
+                                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = VENID
+                                comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DtgProductos.Rows(REC).Cells("PROID").Value
+                                comando.Parameters.Add("@DETCANTIDAD", SqlDbType.Int).Value = Me.DtgProductos.Rows(REC).Cells("PROCANTIDAD").Value
+                                comando.Parameters.Add("DETPRECIO", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROPRECIO").Value
+                                comando.Parameters.Add("DETSUBTOTAL", SqlDbType.Money).Value = Me.DtgProductos.Rows(REC).Cells("PROSUBTOTAL").Value
+                                Conectar()
+                            Next
+                            DialogResult = DialogResult.OK
+                            MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+                            Me.Close()
+                        End If
+                    Else
+                        MsgBox("Ingresa las semanas de crédito", MsgBoxStyle.Critical, "error")
                         TXTMESES.Focus()
                     End If
                 End If
@@ -232,6 +235,67 @@ Public Class FrmAltaVentas
             Me.CmbClientes.Focus()
         End If
 
+        Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If IMPRIMIR = DialogResult.Yes Then
+            ' Llamar al método de impresión
+            ImprimirTicket(Me)
+        End If
+
+    End Sub
+
+    Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)
+
+
+        ' 🔥 Detectar desde qué formulario se ejecuta
+        If TypeOf formularioOrigen Is FrmAltaVentas Then
+            ' 🔹 Obtener VENID desde la variable declarada en FrmAltaVentas
+            VENID = CType(formularioOrigen, FrmAltaVentas).VENID
+        ElseIf TypeOf formularioOrigen Is FrmVentas Then
+            ' 🔹 Obtener VENID desde un DataGridView en otro formulario
+            If CType(formularioOrigen, FrmVentas).DATAVENTAS.SelectedRows.Count > 0 Then
+                VENID = CType(formularioOrigen, FrmVentas).DATAVENTAS.SelectedRows(0).Cells("VENID").Value
+            Else
+                MessageBox.Show("Selecciona una venta antes de imprimir el ticket.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+        Else
+            MessageBox.Show("El formulario origen no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        ' 🔹 Definir la ruta del reporte
+        Dim RUTAREPORTE As String = System.IO.Path.Combine(Application.StartupPath, "RPTTICKETVENTA.rpt")
+        If Not System.IO.File.Exists(RUTAREPORTE) Then
+            MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' 🔹 Crear conexión a SQL Server
+        Dim conexion As New SqlConnection("Server=" & SERVIDOR & ";Database=" & BASEDATOS & ";User Id=" & USUARIO & ";Password=" & CONTRASEÑA)
+        Dim comando As New SqlCommand("EXEC IMPRIMIRTICKET @VENID", conexion)
+        comando.Parameters.AddWithValue("@VENID", VENID)
+        Dim adapter As New SqlDataAdapter(comando)
+        Dim ds As New DataSet()
+
+        Try
+            conexion.Open()
+            adapter.Fill(ds, "IMPRIMIRTICKET")
+            conexion.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+
+        ' 🔹 Cargar el reporte y asignar el DataSet
+        Dim MANIFIESTO As New ReportDocument()
+        MANIFIESTO.Load(RUTAREPORTE)
+        MANIFIESTO.SetDataSource(ds.Tables("IMPRIMIRTICKET"))
+
+        ' 🔹 Mostrar el reporte
+        Dim MUESTRA As New FrmReportes()
+        MUESTRA.Reportes.ReportSource = MANIFIESTO
+        MUESTRA.Reportes.Refresh()
+        MUESTRA.ShowDialog()
     End Sub
 
     Private Sub TxtPago_TextChanged(sender As Object, e As EventArgs) Handles TXTPAGO.TextChanged

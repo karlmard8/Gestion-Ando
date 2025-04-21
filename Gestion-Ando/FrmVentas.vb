@@ -12,6 +12,7 @@ Public Class FrmVentas
         BTNNUEVO.BackColor = ColorBotones
         BTNELIMINAR.BackColor = ColorBotones
         BTNREPORTE.BackColor = ColorBotones
+        BTNIMPRIMIR.BackColor = ColorBotones
         DATAVENTAS.BackgroundColor = ColorFormulario
         DETALLEVENTAS.Location = New Point(540, 187)
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
@@ -190,6 +191,7 @@ Public Class FrmVentas
                 End If
                 ' Mostrar el formulario de detalles de ventas
                 DETALLEVENTAS.ShowDialog()
+
                 Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
                 ' ===================== LIMPIAR DATA GRID VIEWS AL CERRAR =====================
                 With DETALLEVENTAS.DATADETALLEVENTA
@@ -363,7 +365,7 @@ Public Class FrmVentas
         OPCIONESVENTAS.Controls.Add(btnAceptar)
 
         ' Mostrar el formulario emergente
-        OPCIONESVENTAS.ShowDialog()
+        OPCIONESVENTAS.ShowDialog(Me)
     End Sub
 
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
@@ -371,4 +373,7 @@ Public Class FrmVentas
         MostrarFormularioEmergente()
     End Sub
 
+    Private Sub BTNIMPRIMIR_Click(sender As Object, e As EventArgs) Handles BTNIMPRIMIR.Click
+        FrmAltaVentas.ImprimirTicket(Me)
+    End Sub
 End Class
