@@ -9,6 +9,7 @@ Public Class FrmVentas
         Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
         Me.BackColor = ColorFormulario
+        BTNIMPRIMIR.BackColor = ColorBotones
         BTNNUEVO.BackColor = ColorBotones
         BTNELIMINAR.BackColor = ColorBotones
         BTNREPORTE.BackColor = ColorBotones
@@ -369,6 +370,10 @@ Public Class FrmVentas
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
         'DateTimePicker1.Format = DateTimePickerFormat.Short ' Muestra la fecha en formato corto (dd/MM/yyyy)
         MostrarFormularioEmergente()
+    End Sub
+
+    Private Sub BTNIMPRIMIR_Click(sender As Object, e As EventArgs) Handles BTNIMPRIMIR.Click
+        FrmAltaVentas.ImprimirTicket(Me)
     End Sub
 
 End Class

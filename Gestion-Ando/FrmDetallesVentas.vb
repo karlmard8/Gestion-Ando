@@ -6,7 +6,7 @@ Public Class FrmDetallesVentas
         DATADETALLEVENTA.BackgroundColor = ColorFormulario
         DATADETALLEVENTA.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATADETALLEVENTA.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
-
+        Me.KeyPreview = True
         DATAPAGOS.BackgroundColor = ColorFormulario
         DATAPAGOS.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATAPAGOS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
@@ -18,6 +18,11 @@ Public Class FrmDetallesVentas
         Else
             BTNABONO.Visible = True
             Me.Size = New Size(816, 633)
+        End If
+    End Sub
+    Public Sub FrmDetallesVentas_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.Close()
         End If
     End Sub
 
