@@ -30,6 +30,7 @@ Partial Class FrmLogin
         Me.BTNENTRAR = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.btnlogin = New System.Windows.Forms.Button()
+        Me.BTNCREARUSUARIO = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -108,12 +109,26 @@ Partial Class FrmLogin
         Me.btnlogin.TabIndex = 6
         Me.btnlogin.UseVisualStyleBackColor = False
         '
+        'BTNCREARUSUARIO
+        '
+        Me.BTNCREARUSUARIO.AutoSize = True
+        Me.BTNCREARUSUARIO.BackColor = System.Drawing.Color.Snow
+        Me.BTNCREARUSUARIO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNCREARUSUARIO.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNCREARUSUARIO.Location = New System.Drawing.Point(314, -1)
+        Me.BTNCREARUSUARIO.Name = "BTNCREARUSUARIO"
+        Me.BTNCREARUSUARIO.Size = New System.Drawing.Size(130, 42)
+        Me.BTNCREARUSUARIO.TabIndex = 7
+        Me.BTNCREARUSUARIO.Text = "Crear usuario"
+        Me.BTNCREARUSUARIO.UseVisualStyleBackColor = False
+        '
         'FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(444, 361)
+        Me.Controls.Add(Me.BTNCREARUSUARIO)
         Me.Controls.Add(Me.btnlogin)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)
@@ -140,4 +155,5 @@ Partial Class FrmLogin
     Friend WithEvents BTNENTRAR As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents btnlogin As Button
+    Friend WithEvents BTNCREARUSUARIO As Button
 End Class

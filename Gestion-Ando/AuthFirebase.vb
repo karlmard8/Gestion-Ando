@@ -3,7 +3,7 @@ Imports Firebase.Auth
 Imports Google.Cloud.Firestore
 
 Module AuthFirebase
-    Public Property BLOQUEO As Boolean = False   'ESTABLECER SI LA LICENCIA ES REMOTA O LOCAL (FALSE ES REMOTA Y TRUE ES LOCAL)
+    Public Property BLOQUEO As Boolean = True   'ESTABLECER SI LA LICENCIA ES REMOTA O LOCAL (FALSE ES REMOTA Y TRUE ES LOCAL)
 
     Private ReadOnly ApiKey As String = "AIzaSyCkl-B3TYEUS3y1PUwmHrbSt13_sl_PmMM" ' Reemplázalo con la clave API Web de Firebase
     Private authProvider As New FirebaseAuthProvider(New FirebaseConfig(ApiKey))

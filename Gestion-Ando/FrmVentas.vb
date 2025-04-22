@@ -23,6 +23,17 @@ Public Class FrmVentas
         ElseIf TIPO = "Administrador" Then
             BTNELIMINAR.Enabled = True
         End If
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf BTNELIMINAR_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf BTNELIMINAR_MouseLeave
+    End Sub
+    Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
+    End Sub
+
+    Private Sub BTNELIMINAR_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
@@ -30,7 +41,7 @@ Public Class FrmVentas
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim CONFIRMACION = MsgBox("¿Eliminar venta?", MsgBoxStyle.YesNo, "Advertencia")
+        Dim CONFIRMACION = MsgBox("¿Eliminar venta?", MsgBoxStyle.YesNo, "Confirmación")
         If CONFIRMACION = DialogResult.Yes Then
             StrSql = "ELIMINARVENTA"
             comando = New SqlClient.SqlCommand(StrSql, Conexion)

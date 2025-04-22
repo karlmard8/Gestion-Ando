@@ -15,8 +15,18 @@ Public Class FrmUsuarios
         ' Cargar la tabla completa y almacenarla en la variable global
         CargarDatos()
         AplicarFormatoDataGridView()
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf BTNELIMINAR_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf BTNELIMINAR_MouseLeave
+    End Sub
+    Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
     End Sub
 
+    Private Sub BTNELIMINAR_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
+    End Sub
     Private Sub CargarDatos()
         Dim cadenaConexion As String = "server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";"
         Dim conexion As New SqlConnection(cadenaConexion)
@@ -97,7 +107,7 @@ Public Class FrmUsuarios
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Advertencia")
+        Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Confirmación")
         If ELIMINAR = DialogResult.Yes Then
             StrSql = "ELIMINARUSUARIOS"
             comando = New SqlClient.SqlCommand(StrSql, Conexion)

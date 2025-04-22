@@ -14,6 +14,7 @@ Public Class FrmLogin
 
         Me.BackColor = ColorFormulario
         Me.BTNENTRAR.BackColor = ColorBotones
+        Me.BTNCREARUSUARIO.BackColor = ColorBotones
         Call inicio()
 
         For Each ctrl As Control In Me.Controls
@@ -21,7 +22,21 @@ Public Class FrmLogin
                 AddHandler ctrl.KeyDown, AddressOf TextBox_KeyDown
             End If
         Next
+        VerificarUsuarios()
 
+    End Sub
+
+    Dim BOTON As Boolean = False
+    Public Sub VerificarUsuarios()
+        StrSql = "SELECT * FROM TBLUSUARIOS WHERE USUEXISTE = 1"
+        If Leer("TBLUSUARIOS") = False Then
+            If BOTON = False Then
+                MessageBox.Show("No hay usuarios en el sistema, es momento de crear uno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+            FrmAltaUsuarios.ShowDialog()
+            ElseIf Leer("TBLUSUARIOS") = True Then
+                BTNCREARUSUARIO.Visible = False
+        End If
     End Sub
 
     Private Sub FrmLogin_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -105,7 +120,6 @@ Public Class FrmLogin
 
         Return True
     End Function
-
 
 
 
@@ -210,7 +224,6 @@ Public Class FrmLogin
         NUEVAFECHAS.ShowInTaskbar = False
         NUEVAFECHAS.BackColor = ColorFormulario
 
-
         Dim FECHA As DateTimePicker = New DateTimePicker()
         FECHA.Location = New Point(30, 30)
         FECHA.Font = New Font("Dubai", 14, FontStyle.Regular)
@@ -226,7 +239,6 @@ Public Class FrmLogin
         CONFIRMAR.Font = New Font("Dubai", 14, FontStyle.Regular)
         CONFIRMAR.AutoSize = True
         CONFIRMAR.Cursor = Cursors.Hand
-
 
         AddHandler CONFIRMAR.Click, Sub(sender2, e2)
                                         Dim fechaSeleccionada As String = FECHA.Value.ToString("dd/MM/yyyy")
@@ -351,9 +363,7 @@ Public Class FrmLogin
         Dim hashedPassword As Byte() = GetSHA256Hash(Me.TXTCONTRASEÑA.Text)
 
         ' Crear la consulta con parámetros seguros
-        Dim sql As String = "SELECT * FROM TBLUSUARIOS WHERE USULOGIN = @USULOGIN " &
-                        "AND USUCLAVE = @USUCLAVE " &
-                        "AND USUEXISTE = 1"
+        Dim sql As String = "SELECT * FROM TBLUSUARIOS WHERE USULOGIN = @USULOGIN " & "AND USUCLAVE = @USUCLAVE " & "AND USUEXISTE = 1"
 
         ' Crear la conexión y ejecutar la consulta con parámetros seguros
         Using conn As New SqlConnection("server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";")
@@ -385,5 +395,10 @@ Public Class FrmLogin
             INICIARNORMAL()
         End If
 
+    End Sub
+
+    Private Sub BTNCREARUSUARIO_Click(sender As Object, e As EventArgs) Handles BTNCREARUSUARIO.Click
+        BOTON = True
+        VerificarUsuarios()
     End Sub
 End Class

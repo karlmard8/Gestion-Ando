@@ -1,4 +1,6 @@
-﻿Public Class FrmAltaUsuarios
+﻿Imports System.ComponentModel
+
+Public Class FrmAltaUsuarios
     Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
         BTNGUARDAR.BackColor = ColorBotones
@@ -73,23 +75,27 @@
                     comando.CommandType = CommandType.StoredProcedure
                     comando.Parameters.Add("USUID", SqlDbType.BigInt).Value = idbusqueda
                 End If
+                If TXTCLAVE.Text = String.Empty Then
+                    MsgBox("Clave faltante", MsgBoxStyle.Information)
+                Else
+                    comando.Parameters.Add("@USUNOMBRE", SqlDbType.VarChar, 80).Value = TXTNOMBRE.Text
+                    comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text
+                    comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
+                    comando.Parameters.Add("@USUTIPO", SqlDbType.VarChar, 15).Value = TXTTIPO.Text
+                    comando.Parameters.Add("@RETORNO", SqlDbType.Int).Direction = ParameterDirection.Output
 
-                comando.Parameters.Add("@USUNOMBRE", SqlDbType.VarChar, 80).Value = TXTNOMBRE.Text
-                comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text
-                comando.Parameters.Add("@USUCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
-                comando.Parameters.Add("@USUTIPO", SqlDbType.VarChar, 15).Value = TXTTIPO.Text
-                comando.Parameters.Add("@RETORNO", SqlDbType.Int).Direction = ParameterDirection.Output
-
-                If Conectar() = True Then
-                    If comando.Parameters("@RETORNO").Value = 1 Then
-                        MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
-                        DialogResult = DialogResult.OK
-                        Me.Close()
-                    Else
-                        MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
-                        TXTNOMBRE.Focus()
+                    If Conectar() = True Then
+                        If comando.Parameters("@RETORNO").Value = 1 Then
+                            MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
+                            DialogResult = DialogResult.OK
+                            Me.Close()
+                        Else
+                            MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
+                            TXTNOMBRE.Focus()
+                        End If
                     End If
                 End If
+
             End If
         End If
         TXTNOMBRE.Focus()
@@ -106,5 +112,4 @@
         Next
         TXTNOMBRE.Focus()
     End Sub
-
 End Class

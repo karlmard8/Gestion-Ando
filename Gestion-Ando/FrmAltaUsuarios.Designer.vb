@@ -168,7 +168,7 @@ Partial Class FrmAltaUsuarios
         Me.TXTCONFIRMAR.Name = "TXTCONFIRMAR"
         Me.TXTCONFIRMAR.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TXTCONFIRMAR.Size = New System.Drawing.Size(289, 26)
-        Me.TXTCONFIRMAR.TabIndex = 49
+        Me.TXTCONFIRMAR.TabIndex = 43
         '
         'Label5
         '
