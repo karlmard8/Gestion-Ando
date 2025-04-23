@@ -10,6 +10,10 @@
     Public IDUSUARIOACTUAL As Integer
     Public FECHA
 
+    'VARIABLE PARA ESTABLECER PRODUCTO EN CLASE O PRODUCTO EN VENTA
+    Public TIPOPRODUCTO As String = "CLASE"
+
+
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
 
     Public Property ColorFormulario As Color = Color.FromArgb(255, 251, 248) 'Color principal

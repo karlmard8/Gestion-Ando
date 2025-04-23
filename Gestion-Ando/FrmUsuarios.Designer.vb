@@ -24,6 +24,14 @@ Partial Class FrmUsuarios
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATAUSUARIOS = New System.Windows.Forms.DataGridView()
+        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUCLAVE = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VISTAUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -31,21 +39,13 @@ Partial Class FrmUsuarios
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.TBLUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TBLUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLUSUARIOSTableAdapter()
-        Me.VISTAUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
-        Me.USUID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USULOGIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUCLAVE = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.USUTIPO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DATAUSUARIOS
@@ -65,6 +65,67 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAUSUARIOS.Size = New System.Drawing.Size(704, 720)
         Me.DATAUSUARIOS.TabIndex = 0
+        Me.DATAUSUARIOS.TabStop = False
+        '
+        'USUID
+        '
+        Me.USUID.DataPropertyName = "USUID"
+        Me.USUID.HeaderText = "USUID"
+        Me.USUID.Name = "USUID"
+        Me.USUID.ReadOnly = True
+        Me.USUID.Visible = False
+        '
+        'USUNOMBRE
+        '
+        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
+        Me.USUNOMBRE.HeaderText = "Usuario"
+        Me.USUNOMBRE.Name = "USUNOMBRE"
+        Me.USUNOMBRE.ReadOnly = True
+        '
+        'USULOGIN
+        '
+        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.USULOGIN.DataPropertyName = "USULOGIN"
+        Me.USULOGIN.HeaderText = "Login"
+        Me.USULOGIN.Name = "USULOGIN"
+        Me.USULOGIN.ReadOnly = True
+        Me.USULOGIN.Width = 58
+        '
+        'USUCLAVE
+        '
+        Me.USUCLAVE.DataPropertyName = "USUCLAVE"
+        Me.USUCLAVE.HeaderText = "USUCLAVE"
+        Me.USUCLAVE.Name = "USUCLAVE"
+        Me.USUCLAVE.ReadOnly = True
+        Me.USUCLAVE.Visible = False
+        '
+        'USUTIPO
+        '
+        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.USUTIPO.DataPropertyName = "USUTIPO"
+        Me.USUTIPO.HeaderText = "Tipo de usuario"
+        Me.USUTIPO.Name = "USUTIPO"
+        Me.USUTIPO.ReadOnly = True
+        Me.USUTIPO.Width = 97
+        '
+        'USUEXISTE
+        '
+        Me.USUEXISTE.DataPropertyName = "USUEXISTE"
+        Me.USUEXISTE.HeaderText = "USUEXISTE"
+        Me.USUEXISTE.Name = "USUEXISTE"
+        Me.USUEXISTE.ReadOnly = True
+        Me.USUEXISTE.Visible = False
+        '
+        'VISTAUSUARIOSBindingSource
+        '
+        Me.VISTAUSUARIOSBindingSource.DataMember = "VISTAUSUARIOS"
+        Me.VISTAUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TXTBUSCAR
         '
@@ -131,73 +192,13 @@ Partial Class FrmUsuarios
         Me.TBLUSUARIOSBindingSource.DataMember = "TBLUSUARIOS"
         Me.TBLUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
         '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'TBLUSUARIOSTableAdapter
         '
         Me.TBLUSUARIOSTableAdapter.ClearBeforeFill = True
         '
-        'VISTAUSUARIOSBindingSource
-        '
-        Me.VISTAUSUARIOSBindingSource.DataMember = "VISTAUSUARIOS"
-        Me.VISTAUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
         'VISTAUSUARIOSTableAdapter
         '
         Me.VISTAUSUARIOSTableAdapter.ClearBeforeFill = True
-        '
-        'USUID
-        '
-        Me.USUID.DataPropertyName = "USUID"
-        Me.USUID.HeaderText = "USUID"
-        Me.USUID.Name = "USUID"
-        Me.USUID.ReadOnly = True
-        Me.USUID.Visible = False
-        '
-        'USUNOMBRE
-        '
-        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
-        Me.USUNOMBRE.HeaderText = "Usuario"
-        Me.USUNOMBRE.Name = "USUNOMBRE"
-        Me.USUNOMBRE.ReadOnly = True
-        '
-        'USULOGIN
-        '
-        Me.USULOGIN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.USULOGIN.DataPropertyName = "USULOGIN"
-        Me.USULOGIN.HeaderText = "Login"
-        Me.USULOGIN.Name = "USULOGIN"
-        Me.USULOGIN.ReadOnly = True
-        Me.USULOGIN.Width = 58
-        '
-        'USUCLAVE
-        '
-        Me.USUCLAVE.DataPropertyName = "USUCLAVE"
-        Me.USUCLAVE.HeaderText = "USUCLAVE"
-        Me.USUCLAVE.Name = "USUCLAVE"
-        Me.USUCLAVE.ReadOnly = True
-        Me.USUCLAVE.Visible = False
-        '
-        'USUTIPO
-        '
-        Me.USUTIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.USUTIPO.DataPropertyName = "USUTIPO"
-        Me.USUTIPO.HeaderText = "Tipo de usuario"
-        Me.USUTIPO.Name = "USUTIPO"
-        Me.USUTIPO.ReadOnly = True
-        Me.USUTIPO.Width = 97
-        '
-        'USUEXISTE
-        '
-        Me.USUEXISTE.DataPropertyName = "USUEXISTE"
-        Me.USUEXISTE.HeaderText = "USUEXISTE"
-        Me.USUEXISTE.Name = "USUEXISTE"
-        Me.USUEXISTE.ReadOnly = True
-        Me.USUEXISTE.Visible = False
         '
         'FrmUsuarios
         '
@@ -216,10 +217,10 @@ Partial Class FrmUsuarios
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmUsuarios"
         CType(Me.DATAUSUARIOS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

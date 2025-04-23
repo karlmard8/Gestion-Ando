@@ -36,7 +36,9 @@ Partial Class FrmPrincipal
         Me.LBLHORA = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LBLFECHA = New System.Windows.Forms.Label()
+        Me.BTNDEUDORES = New System.Windows.Forms.Button()
         Me.MenuOpciones.SuspendLayout()
+        Me.PANELFRAMES.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuOpciones
@@ -84,6 +86,7 @@ Partial Class FrmPrincipal
         '
         'PANELFRAMES
         '
+        Me.PANELFRAMES.Controls.Add(Me.BTNDEUDORES)
         Me.PANELFRAMES.Location = New System.Drawing.Point(12, 45)
         Me.PANELFRAMES.Name = "PANELFRAMES"
         Me.PANELFRAMES.Size = New System.Drawing.Size(1896, 940)
@@ -134,6 +137,18 @@ Partial Class FrmPrincipal
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
         '
+        'BTNDEUDORES
+        '
+        Me.BTNDEUDORES.AutoSize = True
+        Me.BTNDEUDORES.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNDEUDORES.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNDEUDORES.Location = New System.Drawing.Point(1757, 0)
+        Me.BTNDEUDORES.Name = "BTNDEUDORES"
+        Me.BTNDEUDORES.Size = New System.Drawing.Size(139, 42)
+        Me.BTNDEUDORES.TabIndex = 0
+        Me.BTNDEUDORES.Text = "Deudas del día"
+        Me.BTNDEUDORES.UseVisualStyleBackColor = True
+        '
         'FrmPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -156,6 +171,8 @@ Partial Class FrmPrincipal
         Me.Text = "Gestion-Ando"
         Me.MenuOpciones.ResumeLayout(False)
         Me.MenuOpciones.PerformLayout()
+        Me.PANELFRAMES.ResumeLayout(False)
+        Me.PANELFRAMES.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -173,4 +190,5 @@ Partial Class FrmPrincipal
     Friend WithEvents LBLHORA As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents LBLFECHA As Label
+    Friend WithEvents BTNDEUDORES As Button
 End Class

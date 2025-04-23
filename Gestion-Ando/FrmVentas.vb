@@ -4,6 +4,11 @@ Imports CrystalDecisions.Shared
 
 Public Class FrmVentas
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If TIPOPRODUCTO = "CLASE" Then
+            BTNIMPRIMIR.Visible = False
+        End If
+
+
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
         Me.VISTAVENTASTableAdapter.Connection = Conexion
         Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)

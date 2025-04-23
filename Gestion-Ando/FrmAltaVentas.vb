@@ -237,12 +237,15 @@ Public Class FrmAltaVentas
             Me.CmbClientes.Focus()
         End If
 
-        Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If IMPRIMIR = DialogResult.Yes Then
-            ' Llamar al método de impresión
-            ImprimirTicket(Me)
-        End If
 
+
+        If TIPOPRODUCTO <> "CLASE" Then
+            Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If IMPRIMIR = DialogResult.Yes Then
+                ' Llamar al método de impresión
+                ImprimirTicket(Me)
+            End If
+        End If
     End Sub
 
     Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)

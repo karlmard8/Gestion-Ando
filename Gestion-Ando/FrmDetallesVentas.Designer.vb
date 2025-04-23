@@ -110,6 +110,7 @@ Partial Class FrmDetallesVentas
         Me.DATADETALLEVENTA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATADETALLEVENTA.Size = New System.Drawing.Size(799, 198)
         Me.DATADETALLEVENTA.TabIndex = 0
+        Me.DATADETALLEVENTA.TabStop = False
         '
         'Producto
         '
@@ -270,6 +271,7 @@ Partial Class FrmDetallesVentas
         Me.DATAPAGOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAPAGOS.Size = New System.Drawing.Size(799, 198)
         Me.DATAPAGOS.TabIndex = 5
+        Me.DATAPAGOS.TabStop = False
         '
         'PAGID
         '

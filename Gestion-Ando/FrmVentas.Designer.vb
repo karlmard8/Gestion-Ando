@@ -86,6 +86,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAVENTAS.Size = New System.Drawing.Size(836, 720)
         Me.DATAVENTAS.TabIndex = 4
+        Me.DATAVENTAS.TabStop = False
         '
         'VENFECHA
         '

@@ -72,6 +72,7 @@ Partial Class FrmInventario
         Me.DATAINVENTARIO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DATAINVENTARIO.Size = New System.Drawing.Size(1400, 720)
         Me.DATAINVENTARIO.TabIndex = 0
+        Me.DATAINVENTARIO.TabStop = False
         '
         'PROID
         '

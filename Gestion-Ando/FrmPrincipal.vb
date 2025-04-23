@@ -60,7 +60,7 @@ Public Class FrmPrincipal
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
         Me.MenuOpciones.BackColor = ColorMenuStrip
-
+        BTNDEUDORES.BackColor = ColorBotones
         LBLFECHA.BackColor = ColorMenuStrip
         LBLFECHA.ForeColor = Color.White
         LBLHORA.BackColor = ColorMenuStrip
@@ -95,6 +95,83 @@ Public Class FrmPrincipal
         IDUSUARIOACTUAL = comando.Parameters("@RETORNO3").Value
         ' Asignar el renderizador personalizado al MenuStrip
         MenuOpciones.Renderer = renderer
+
+        If TIPOPRODUCTO = "CLASE" Then
+            BTNDEUDORES.Visible = False
+        End If
+
+    End Sub
+
+
+    Public Sub ALERTADEUDORES()
+        Dim DEUDAS As New DataTable()
+        Dim TABLADEUDAS As New DataGridView()
+        Dim DEUDORES As New Form
+
+        DEUDORES.Text = "Deudas pendientes"
+        DEUDORES.Size = New Size(615, 300)
+        DEUDORES.StartPosition = FormStartPosition.CenterScreen
+        DEUDORES.FormBorderStyle = FormBorderStyle.FixedSingle
+        DEUDORES.MaximizeBox = False
+        DEUDORES.MinimizeBox = False
+        DEUDORES.BackColor = ColorFormulario
+        DEUDORES.ShowIcon = False
+        DEUDORES.ShowInTaskbar = False
+
+        ' 🔥 Capturar la tecla ESC para cerrar el formulario
+        DEUDORES.KeyPreview = True
+        AddHandler DEUDORES.KeyDown, Sub(sender, e)
+                                         If e.KeyCode = Keys.Escape Then
+                                             DEUDORES.Close()
+                                         End If
+                                     End Sub
+
+        Try
+            StrSql = "SELECT  
+                    TBLUSUARIOS.USUNOMBRE AS Cliente,  
+                    TBLPAGOS.PAGMONTO AS 'A pagar',  
+                    TBLPAGOS.PAGFECHA AS 'Fecha límite',  
+                    DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) AS 'Días restantes'  
+                FROM TBLVENTAS  
+                JOIN TBLUSUARIOS ON TBLVENTAS.USUID = TBLUSUARIOS.USUID  
+                JOIN TBLPAGOS ON TBLVENTAS.VENID = TBLPAGOS.VENID  
+                WHERE TBLVENTAS.VENEXISTE = 1  
+                AND TBLVENTAS.VENFORMA = 'CRÉDITO'  
+                AND DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) BETWEEN 0 AND 3;"
+
+            Using conexion As New SqlClient.SqlConnection("Server=" & SERVIDOR & ";Database=" & BASEDATOS & ";User Id=" & USUARIO & ";Password=" & CONTRASEÑA)
+                conexion.Open()
+                Dim comando As New SqlClient.SqlCommand(StrSql, conexion)
+                Dim adaptador As New SqlClient.SqlDataAdapter(comando)
+                adaptador.Fill(DEUDAS) ' 🔥 Llenar el `DataTable` con los resultados de SQL
+                conexion.Close()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener deudores: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        ' 🔹 Crear `DataGridView` para mostrar deudores
+
+        TABLADEUDAS.DataSource = DEUDAS
+        TABLADEUDAS.Size = New Size(599, 200)
+        TABLADEUDAS.Location = New Point(0, 50)
+        TABLADEUDAS.BackgroundColor = ColorFormulario
+        TABLADEUDAS.RowHeadersVisible = False
+        TABLADEUDAS.DefaultCellStyle.Font = New Font("Dubai", 12)
+        TABLADEUDAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
+        TABLADEUDAS.MultiSelect = False
+        TABLADEUDAS.AllowUserToAddRows = False
+        TABLADEUDAS.AllowUserToDeleteRows = False
+        TABLADEUDAS.AllowUserToOrderColumns = False
+        TABLADEUDAS.AllowUserToResizeColumns = False
+        TABLADEUDAS.AllowUserToResizeRows = False
+        TABLADEUDAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        TABLADEUDAS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        TABLADEUDAS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
+
+        ' 🔹 Agregar controles al formulario
+        DEUDORES.Controls.Add(TABLADEUDAS)
+        DEUDORES.ShowDialog()
     End Sub
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
@@ -188,5 +265,8 @@ Public Class FrmPrincipal
             ' Code to completely stop the application
             Application.Exit()
         End If
+    End Sub
+    Private Sub BTNDEUDORES_Click(sender As Object, e As EventArgs) Handles BTNDEUDORES.Click
+        ALERTADEUDORES()
     End Sub
 End Class
