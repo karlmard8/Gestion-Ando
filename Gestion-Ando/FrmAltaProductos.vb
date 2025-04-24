@@ -74,55 +74,60 @@
         If imagenRuta.Length = Nothing Then
             Dim respuesta = MsgBox("¿Guardar producto sin imagen?", MsgBoxStyle.YesNo, "Advertencia")
             If respuesta = MsgBoxResult.Yes Then
+                REGISTRARPRODUCTO()
+            End If
+        Else
+            REGISTRARPRODUCTO()
+        End If
+    End Sub
 
-                If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
-                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-                    TXTCLAVE.Focus()
+    Public Sub REGISTRARPRODUCTO()
+        If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            TXTCLAVE.Focus()
 
-                ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
-                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-                    TXTCLAVE.Focus()
+        ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            TXTCLAVE.Focus()
 
-                ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
-                    MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
-                    TXTCLAVE.Focus()
+        ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
+            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            TXTCLAVE.Focus()
+
+        Else
+            If idbusqueda = 0 Then
+                StrSql = "ALTAPRODUCTOS"
+                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+            Else
+                StrSql = "EDITARPRODUCTOS"
+                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
+                comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
+            End If
+
+            comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
+            comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
+            comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
+            comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
+
+            comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
+
+            If Conectar() = True Then
+                If comando.Parameters("@RETORNO").Value = "GUARDADO" Then
+                    MsgBox("Producto guardado", MsgBoxStyle.Information, "Confirmación")
+                    DialogResult = DialogResult.OK
+                    Me.Close()
 
                 Else
-                    If idbusqueda = 0 Then
-                        StrSql = "ALTAPRODUCTOS"
-                        comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                        comando.CommandType = CommandType.StoredProcedure
-                        comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
-                    Else
-                        StrSql = "EDITARPRODUCTOS"
-                        comando = New SqlClient.SqlCommand(StrSql, Conexion)
-                        comando.CommandType = CommandType.StoredProcedure
-                        comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
-                        comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
-                    End If
-
-                    comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
-                    comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
-                    comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)
-                    comando.Parameters.Add("@PROIMAGEN", SqlDbType.VarChar, 100).Value = imagenRuta
-
-                    comando.Parameters.Add("@RETORNO", SqlDbType.VarChar, 30).Direction = ParameterDirection.Output
-
-                    If Conectar() = True Then
-                        If comando.Parameters("@RETORNO").Value = "GUARDADO" Then
-                            MsgBox("Producto guardado", MsgBoxStyle.Information, "Confirmación")
-                            DialogResult = DialogResult.OK
-                            Me.Close()
-
-                        Else
-                            MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
-                            TXTCLAVE.Focus()
-                        End If
-
-                    End If
-
+                    MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
+                    TXTCLAVE.Focus()
                 End If
+
             End If
+
         End If
     End Sub
 

@@ -106,25 +106,25 @@ Public Class FrmPrincipal
     Public Sub ALERTADEUDORES()
         Dim DEUDAS As New DataTable()
         Dim TABLADEUDAS As New DataGridView()
-        Dim DEUDORES As New Form
+        Dim FRMDEUDORES As New Form
 
-        DEUDORES.Text = "Deudas pendientes"
-        DEUDORES.Size = New Size(615, 300)
-        DEUDORES.StartPosition = FormStartPosition.CenterScreen
-        DEUDORES.FormBorderStyle = FormBorderStyle.FixedSingle
-        DEUDORES.MaximizeBox = False
-        DEUDORES.MinimizeBox = False
-        DEUDORES.BackColor = ColorFormulario
-        DEUDORES.ShowIcon = False
-        DEUDORES.ShowInTaskbar = False
+        FRMDEUDORES.Text = "Deudas pendientes"
+        FRMDEUDORES.Size = New Size(615, 250)
+        FRMDEUDORES.StartPosition = FormStartPosition.CenterScreen
+        FRMDEUDORES.FormBorderStyle = FormBorderStyle.FixedSingle
+        FRMDEUDORES.MaximizeBox = False
+        FRMDEUDORES.MinimizeBox = False
+        FRMDEUDORES.BackColor = ColorFormulario
+        FRMDEUDORES.ShowIcon = False
+        FRMDEUDORES.ShowInTaskbar = False
 
         ' 🔥 Capturar la tecla ESC para cerrar el formulario
-        DEUDORES.KeyPreview = True
-        AddHandler DEUDORES.KeyDown, Sub(sender, e)
-                                         If e.KeyCode = Keys.Escape Then
-                                             DEUDORES.Close()
-                                         End If
-                                     End Sub
+        FRMDEUDORES.KeyPreview = True
+        AddHandler FRMDEUDORES.KeyDown, Sub(sender, e)
+                                            If e.KeyCode = Keys.Escape Then
+                                                FRMDEUDORES.Close()
+                                            End If
+                                        End Sub
 
         Try
             StrSql = "SELECT  
@@ -143,7 +143,7 @@ Public Class FrmPrincipal
                 conexion.Open()
                 Dim comando As New SqlClient.SqlCommand(StrSql, conexion)
                 Dim adaptador As New SqlClient.SqlDataAdapter(comando)
-                adaptador.Fill(DEUDAS) ' 🔥 Llenar el `DataTable` con los resultados de SQL
+                adaptador.Fill(DEUDAS) 'Llenar el `DataTable` con los resultados de SQL
                 conexion.Close()
             End Using
         Catch ex As Exception
@@ -154,7 +154,7 @@ Public Class FrmPrincipal
 
         TABLADEUDAS.DataSource = DEUDAS
         TABLADEUDAS.Size = New Size(599, 200)
-        TABLADEUDAS.Location = New Point(0, 50)
+        TABLADEUDAS.Location = New Point(0, 0)
         TABLADEUDAS.BackgroundColor = ColorFormulario
         TABLADEUDAS.RowHeadersVisible = False
         TABLADEUDAS.DefaultCellStyle.Font = New Font("Dubai", 12)
@@ -170,8 +170,8 @@ Public Class FrmPrincipal
         TABLADEUDAS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
 
         ' 🔹 Agregar controles al formulario
-        DEUDORES.Controls.Add(TABLADEUDAS)
-        DEUDORES.ShowDialog()
+        FRMDEUDORES.Controls.Add(TABLADEUDAS)
+        FRMDEUDORES.ShowDialog()
     End Sub
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
@@ -199,9 +199,9 @@ Public Class FrmPrincipal
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
         FrmVentas.Show()
-        FrmVentas.Location = New Point(540, 0)
+        FrmVentas.Location = New Point(430, 0)
         LBLOPCIONES.Text = "Ventas"
-        LBLOPCIONES.Location = New Point(625, 40)
+        LBLOPCIONES.Location = New Point(625, 38)
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click

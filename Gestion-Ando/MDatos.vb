@@ -11,7 +11,7 @@
     Public FECHA
 
     'VARIABLE PARA ESTABLECER PRODUCTO EN CLASE O PRODUCTO EN VENTA
-    Public TIPOPRODUCTO As String = "CLASE"
+    Public TIPOPRODUCTO As String = "VENTA"
 
 
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café

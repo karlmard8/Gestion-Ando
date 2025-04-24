@@ -65,6 +65,8 @@ Public Class FrmInventario
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         ALTAINVENTARIO.LBLPRODUCTOS.Text = "Editar inforación de producto"
         ALTAINVENTARIO.LBLPRODUCTOS.Location = New Point(165, 9)
+        ALTAINVENTARIO.SPINNER.Minimum = -1000
+        ALTAINVENTARIO.SPINNER.Maximum = 1000
 
         If DATAINVENTARIO.RowCount > 0 Then
             idbusqueda = DATAINVENTARIO.CurrentRow.Cells("PROID").Value
