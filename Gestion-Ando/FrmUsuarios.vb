@@ -3,6 +3,8 @@
 Public Class FrmUsuarios
     Dim ALTAUSUARIO As New FrmAltaUsuarios
     Dim tablaOriginal As DataTable
+    Public MENSAJE As Boolean = False
+
 
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
@@ -104,49 +106,66 @@ Public Class FrmUsuarios
             DATAUSUARIOS.DataSource = dt
         End If
         Me.TXTBUSCAR.Focus()
+        MENSAJE = False
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Confirmación")
-        If ELIMINAR = DialogResult.Yes Then
-            StrSql = "ELIMINARUSUARIOS"
-            comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            comando.CommandType = CommandType.StoredProcedure
-            comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = Me.DATAUSUARIOS.CurrentRow.Cells("USUID").Value
 
-            If Conectar() = True Then
-                Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
-                Dim adapter As New SqlDataAdapter(sql, Conexion)
-                Dim dt As New DataTable()
-                adapter.Fill(dt)
-                DATAUSUARIOS.DataSource = dt
-                MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
+        If DATAUSUARIOS.RowCount <= 0 Then
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
+
+        Else
+            If DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value = USUARIOACTUAL Then
+                MsgBox("No puedes eliminar el usuario actual", MsgBoxStyle.Critical, "Advertencia")
+            Else
+                Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Confirmación")
+                If ELIMINAR = DialogResult.Yes Then
+                    StrSql = "ELIMINARUSUARIOS"
+                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                    comando.CommandType = CommandType.StoredProcedure
+                    comando.Parameters.Add("@USUID", SqlDbType.BigInt).Value = Me.DATAUSUARIOS.CurrentRow.Cells("USUID").Value
+
+                    If Conectar() = True Then
+                        Me.TBLUSUARIOSTableAdapter.Connection = Conexion
+                        Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
+                        Dim adapter As New SqlDataAdapter(sql, Conexion)
+                        Dim dt As New DataTable()
+                        adapter.Fill(dt)
+                        DATAUSUARIOS.DataSource = dt
+                        MsgBox("Usuario eliminado", MsgBoxStyle.Information, "Confirmación")
+                    End If
+                End If
+                Me.TXTBUSCAR.Focus()
             End If
         End If
-        Me.TXTBUSCAR.Focus()
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
-        ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
-        ALTAUSUARIO.LBLUSUARIOS.Location = New Point(155, 9)
-        If DATAUSUARIOS.RowCount > 0 Then
-            idbusqueda = DATAUSUARIOS.CurrentRow.Cells("USUID").Value
-            ALTAUSUARIO.TXTNOMBRE.Text = DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value
-            ALTAUSUARIO.TXTLOGIN.Text = DATAUSUARIOS.CurrentRow.Cells("USULOGIN").Value
-            'ALTAUSUARIO.TXTCLAVE.Text = DATAUSUARIOS.CurrentRow.Cells("USUCLAVE").Value
-            ALTAUSUARIO.TXTTIPO.Text = DATAUSUARIOS.CurrentRow.Cells("USUTIPO").Value
+        MENSAJE = True
+        If DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value <> USUARIOACTUAL Then
+            MsgBox("No puedes modificar este perfil de usuario", MsgBoxStyle.Critical, "Advertencia")
+        Else
+            ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
 
-            If ALTAUSUARIO.ShowDialog = DialogResult.OK Then
-                Me.TBLUSUARIOSTableAdapter.Connection = Conexion
-                Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
-                Dim adapter As New SqlDataAdapter(sql, Conexion)
-                Dim dt As New DataTable()
-                adapter.Fill(dt)
-                DATAUSUARIOS.DataSource = dt
+            ALTAUSUARIO.LBLUSUARIOS.Location = New Point(155, 9)
+            If DATAUSUARIOS.RowCount > 0 Then
+                idbusqueda = DATAUSUARIOS.CurrentRow.Cells("USUID").Value
+                ALTAUSUARIO.TXTNOMBRE.Text = DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value
+                ALTAUSUARIO.TXTLOGIN.Text = DATAUSUARIOS.CurrentRow.Cells("USULOGIN").Value
+                ALTAUSUARIO.TXTTIPO.Text = DATAUSUARIOS.CurrentRow.Cells("USUTIPO").Value
+
+                If ALTAUSUARIO.ShowDialog = DialogResult.OK Then
+                    Me.TBLUSUARIOSTableAdapter.Connection = Conexion
+                    Dim sql As String = "SELECT * FROM VISTAUSUARIOS"
+                    Dim adapter As New SqlDataAdapter(sql, Conexion)
+                    Dim dt As New DataTable()
+                    adapter.Fill(dt)
+                    DATAUSUARIOS.DataSource = dt
+                End If
             End If
+            Me.TXTBUSCAR.Focus()
         End If
-        Me.TXTBUSCAR.Focus()
+
 
     End Sub
 End Class

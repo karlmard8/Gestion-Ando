@@ -104,20 +104,25 @@ Public Class FrmInventario
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim CONFIRMAR = MsgBox("¿Eliminar producto?", MsgBoxStyle.YesNo, "Confirmación")
-        If CONFIRMAR = MsgBoxResult.Yes Then
-            StrSql = "ELIMINARPRODUCTOS"
-            comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            comando.CommandType = CommandType.StoredProcedure
-            comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DATAINVENTARIO.CurrentRow.Cells("PROID").Value
+        If DATAINVENTARIO.RowCount <= 0 Then
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
 
-            If Conectar() = True Then
-                Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
-                Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
-                MsgBox("Producto eliminado", MsgBoxStyle.Information, "Conformación")
+        Else
+            Dim CONFIRMAR = MsgBox("¿Eliminar producto?", MsgBoxStyle.YesNo, "Confirmación")
+            If CONFIRMAR = MsgBoxResult.Yes Then
+                StrSql = "ELIMINARPRODUCTOS"
+                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DATAINVENTARIO.CurrentRow.Cells("PROID").Value
+
+                If Conectar() = True Then
+                    Me.TBLPRODUCTOSTableAdapter.Connection = Conexion
+                    Me.TBLPRODUCTOSTableAdapter.Fill(Me.MuebleAlexDataSet.TBLPRODUCTOS)
+                    MsgBox("Producto eliminado", MsgBoxStyle.Information, "Conformación")
+                End If
             End If
+            TXTBUSCAR.Focus()
         End If
-        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub DATAINVENTARIO_SelectionChanged(sender As Object, e As EventArgs) Handles DATAINVENTARIO.SelectionChanged

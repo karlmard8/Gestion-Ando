@@ -115,20 +115,25 @@
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim CONFIRMAR = MsgBox("¿Eliminar cliente?", MsgBoxStyle.YesNo, "Confirmación")
-        If CONFIRMAR = MsgBoxResult.Yes Then
-            StrSql = "ELIMINARCLIENTES"
-            comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            comando.CommandType = CommandType.StoredProcedure
-            comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.DATACLIENTES.CurrentRow.Cells("CLIID").Value
+        If DATACLIENTES.RowCount <= 0 Then
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
 
-            If Conectar() = True Then
-                Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
-                Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
-                MsgBox("Cliente eliminado", MsgBoxStyle.Information, "Confirmación")
+        Else
+            Dim CONFIRMAR = MsgBox("¿Eliminar cliente?", MsgBoxStyle.YesNo, "Confirmación")
+            If CONFIRMAR = MsgBoxResult.Yes Then
+                StrSql = "ELIMINARCLIENTES"
+                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add("@CLIID", SqlDbType.BigInt).Value = Me.DATACLIENTES.CurrentRow.Cells("CLIID").Value
+
+                If Conectar() = True Then
+                    Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+                    Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
+                    MsgBox("Cliente eliminado", MsgBoxStyle.Information, "Confirmación")
+                End If
             End If
+            TXTBUSCAR.Focus()
         End If
-        TXTBUSCAR.Focus()
     End Sub
 
     Private Sub DATACLIENTES_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DATACLIENTES.CellFormatting

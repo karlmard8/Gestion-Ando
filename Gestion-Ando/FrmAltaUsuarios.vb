@@ -2,6 +2,13 @@
 
 Public Class FrmAltaUsuarios
     Private Sub FrmAltaUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim LBLMENSAJE As New Label()
+        LBLMENSAJE.Font = New Font("Dubai", 10)
+        LBLMENSAJE.BackColor = Color.Transparent
+        LBLMENSAJE.AutoSize = True
+        LBLMENSAJE.Location = New Point(70, 35)
+        LBLMENSAJE.Text = "*Por seguridad tendrás que volver a escribir tu contraseña*"
+
         Me.BackColor = ColorFormulario
         BTNGUARDAR.BackColor = ColorBotones
         BTNLIMPIAR.BackColor = ColorBotones
@@ -12,6 +19,7 @@ Public Class FrmAltaUsuarios
                 AddHandler ctrl.KeyDown, AddressOf FrmAltaUsuarios_KeyDown
             End If
         Next
+        Me.Controls.Add(LBLMENSAJE)
     End Sub
 
     Private Sub FrmAltaUsuarios_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -76,7 +84,7 @@ Public Class FrmAltaUsuarios
                     comando.Parameters.Add("USUID", SqlDbType.BigInt).Value = idbusqueda
                 End If
                 If TXTCLAVE.Text = String.Empty Then
-                    MsgBox("Clave faltante", MsgBoxStyle.Information)
+                    MsgBox("Contraseña faltante", MsgBoxStyle.Information)
                 Else
                     comando.Parameters.Add("@USUNOMBRE", SqlDbType.VarChar, 80).Value = TXTNOMBRE.Text
                     comando.Parameters.Add("@USULOGIN", SqlDbType.VarChar, 10).Value = TXTLOGIN.Text

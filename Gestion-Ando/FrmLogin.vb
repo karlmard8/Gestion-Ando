@@ -33,6 +33,9 @@ Public Class FrmLogin
             If BOTON = False Then
                 MessageBox.Show("No hay usuarios en el sistema, es momento de crear uno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            FrmAltaUsuarios.LBLUSUARIOS.Text = "Crear nuevo usuario"
+            FrmAltaUsuarios.LBLUSUARIOS.Location = New Point(160, 10)
+            FrmAltaUsuarios.ShowInTaskbar = True
             FrmAltaUsuarios.ShowDialog()
             ElseIf Leer("TBLUSUARIOS") = True Then
                 BTNCREARUSUARIO.Visible = False

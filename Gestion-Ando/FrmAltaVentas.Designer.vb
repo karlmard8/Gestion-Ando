@@ -202,7 +202,7 @@ Partial Class FrmAltaVentas
         Me.TXTMESES.Font = New System.Drawing.Font("Dubai", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTMESES.Location = New System.Drawing.Point(526, 84)
         Me.TXTMESES.Margin = New System.Windows.Forms.Padding(2)
-        Me.TXTMESES.MaxLength = 10
+        Me.TXTMESES.MaxLength = 5
         Me.TXTMESES.Name = "TXTMESES"
         Me.TXTMESES.Size = New System.Drawing.Size(68, 30)
         Me.TXTMESES.TabIndex = 24

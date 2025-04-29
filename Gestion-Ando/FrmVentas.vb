@@ -46,20 +46,27 @@ Public Class FrmVentas
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
-        Dim CONFIRMACION = MsgBox("¿Eliminar venta?", MsgBoxStyle.YesNo, "Confirmación")
-        If CONFIRMACION = DialogResult.Yes Then
-            StrSql = "ELIMINARVENTA"
-            comando = New SqlClient.SqlCommand(StrSql, Conexion)
-            comando.CommandType = CommandType.StoredProcedure
-            comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Me.DATAVENTAS.CurrentRow.Cells("VENID").Value
 
-            If Conectar() = True Then
-                Me.VISTAVENTASTableAdapter.Connection = Conexion
-                Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
-                Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
-                MsgBox("Venta eliminada", MsgBoxStyle.Information, "Confirmación")
+        If DATAVENTAS.RowCount <= 0 Then
+            MsgBox("No hay productos para eliminar", MsgBoxStyle.Critical, "Advertencia")
+
+        Else
+            Dim CONFIRMACION = MsgBox("¿Eliminar venta?", MsgBoxStyle.YesNo, "Confirmación")
+            If CONFIRMACION = DialogResult.Yes Then
+                StrSql = "ELIMINARVENTA"
+                comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                comando.CommandType = CommandType.StoredProcedure
+                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = Me.DATAVENTAS.CurrentRow.Cells("VENID").Value
+
+                If Conectar() = True Then
+                    Me.VISTAVENTASTableAdapter.Connection = Conexion
+                    Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
+                    Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
+                    MsgBox("Venta eliminada", MsgBoxStyle.Information, "Confirmación")
+                End If
             End If
         End If
+
     End Sub
 
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click

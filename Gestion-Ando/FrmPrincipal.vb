@@ -165,6 +165,7 @@ Public Class FrmPrincipal
         TABLADEUDAS.AllowUserToOrderColumns = False
         TABLADEUDAS.AllowUserToResizeColumns = False
         TABLADEUDAS.AllowUserToResizeRows = False
+        TABLADEUDAS.ReadOnly = True
         TABLADEUDAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         TABLADEUDAS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         TABLADEUDAS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
@@ -201,7 +202,7 @@ Public Class FrmPrincipal
         FrmVentas.Show()
         FrmVentas.Location = New Point(430, 0)
         LBLOPCIONES.Text = "Ventas"
-        LBLOPCIONES.Location = New Point(625, 38)
+        LBLOPCIONES.Location = New Point(480, 38)
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
@@ -226,7 +227,7 @@ Public Class FrmPrincipal
         Dim USUARIOS As New FrmUsuarios
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
-        Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios"
+        Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios WHERE USUEXISTE=1"
         Dim adapter As New SqlDataAdapter(sql, Conexion)
         Dim dt As New DataTable()
         adapter.Fill(dt)

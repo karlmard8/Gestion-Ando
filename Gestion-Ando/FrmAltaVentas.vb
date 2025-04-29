@@ -182,6 +182,13 @@ Public Class FrmAltaVentas
                                 Conectar()
                             Next
                             MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+                            If TIPOPRODUCTO <> "CLASE" Then
+                                Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                If IMPRIMIR = DialogResult.Yes Then
+                                    ' Llamar al método de impresión
+                                    ImprimirTicket(Me)
+                                End If
+                            End If
                             DialogResult = DialogResult.OK
                             Me.Close()
                         End If
@@ -220,6 +227,13 @@ Public Class FrmAltaVentas
                             Next
                             DialogResult = DialogResult.OK
                             MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+                            If TIPOPRODUCTO <> "CLASE" Then
+                                Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                                If IMPRIMIR = DialogResult.Yes Then
+                                    ' Llamar al método de impresión
+                                    ImprimirTicket(Me)
+                                End If
+                            End If
                             Me.Close()
                         End If
                     Else
@@ -238,14 +252,6 @@ Public Class FrmAltaVentas
         End If
 
 
-
-        If TIPOPRODUCTO <> "CLASE" Then
-            Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If IMPRIMIR = DialogResult.Yes Then
-                ' Llamar al método de impresión
-                ImprimirTicket(Me)
-            End If
-        End If
     End Sub
 
     Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)
