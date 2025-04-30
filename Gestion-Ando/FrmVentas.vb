@@ -1,8 +1,10 @@
-﻿Imports System.Web.Routing
+﻿Imports System.Data.SqlClient
+Imports System.Web.Routing
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 
 Public Class FrmVentas
+    Dim tablaOriginal As DataTable
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If TIPOPRODUCTO = "CLASE" Then
             BTNIMPRIMIR.Visible = False
@@ -10,9 +12,9 @@ Public Class FrmVentas
 
 
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
-        Me.VISTAVENTASTableAdapter.Connection = Conexion
-        Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
-        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
+        'Me.VISTAVENTASTableAdapter.Connection = Conexion
+        'Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
+        CargarDatos()
         Me.BackColor = ColorFormulario
         BTNIMPRIMIR.BackColor = ColorBotones
         BTNNUEVO.BackColor = ColorBotones
@@ -30,6 +32,28 @@ Public Class FrmVentas
         End If
         AddHandler BTNELIMINAR.MouseEnter, AddressOf BTNELIMINAR_MouseEnter
         AddHandler BTNELIMINAR.MouseLeave, AddressOf BTNELIMINAR_MouseLeave
+    End Sub
+
+    Private Sub CargarDatos()
+        Dim cadenaConexion As String = "server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";"
+        Dim conexion As New SqlConnection(cadenaConexion)
+        Dim sql As String = "SELECT * FROM VISTAVENTAS ORDER BY VENID DESC"
+        Dim adapter As New SqlDataAdapter(sql, conexion)
+        Dim dt As New DataTable()
+
+        Try
+            conexion.Open()
+            adapter.Fill(dt)
+
+            ' Guardar una copia de la tabla original para restauración
+            tablaOriginal = dt.Copy()
+
+            DATAVENTAS.DataSource = tablaOriginal
+        Catch ex As Exception
+            MessageBox.Show("Error al cargar datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            conexion.Close()
+        End Try
     End Sub
     Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
         ' Cambiar el color del botón a rojo cuando el cursor pasa por encima

@@ -7,7 +7,7 @@ Imports System.Text
 Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'SE DECLARAN LAS CREDENCIALES PARA LA BASE DE DATOS
-        SERVIDOR = "192.168.1.67"
+        SERVIDOR = "desktop-8q10a8h\sqlexpress"
         BASEDATOS = "MuebleAlex"
         USUARIO = "sa"
         CONTRASEÑA = "c1oooooo"
