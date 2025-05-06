@@ -23,10 +23,19 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
+        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAGOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VENEXISTEDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet1 = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
@@ -37,15 +46,7 @@ Partial Class FrmVentas
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTAVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAVENTASTableAdapter()
         Me.BTNIMPRIMIR = New System.Windows.Forms.Button()
-        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PAGOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.VENEXISTEDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,106 +80,22 @@ Partial Class FrmVentas
         Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENID, Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.PAGOS, Me.CLIEXISTE, Me.VENEXISTEDataGridViewCheckBoxColumn})
         Me.DATAVENTAS.DataSource = Me.VISTAVENTASBindingSource
         Me.DATAVENTAS.GridColor = System.Drawing.SystemColors.Control
-        Me.DATAVENTAS.Location = New System.Drawing.Point(12, 92)
+        Me.DATAVENTAS.Location = New System.Drawing.Point(12, 120)
         Me.DATAVENTAS.MultiSelect = False
         Me.DATAVENTAS.Name = "DATAVENTAS"
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(976, 720)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(976, 707)
         Me.DATAVENTAS.TabIndex = 4
         Me.DATAVENTAS.TabStop = False
-        '
-        'VISTAVENTASBindingSource
-        '
-        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
-        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet1
-        '
-        'MuebleAlexDataSet1
-        '
-        Me.MuebleAlexDataSet1.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TXTBUSCAR
-        '
-        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(115, 23)
-        Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(385, 29)
-        Me.TXTBUSCAR.TabIndex = 15
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 26)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 27)
-        Me.Label1.TabIndex = 14
-        Me.Label1.Text = "Buscar"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(503, 53)
-        Me.PictureBox1.TabIndex = 16
-        Me.PictureBox1.TabStop = False
-        '
-        'BTNREPORTE
-        '
-        Me.BTNREPORTE.AutoSize = True
-        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
-        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTE.Location = New System.Drawing.Point(855, 41)
-        Me.BTNREPORTE.Name = "BTNREPORTE"
-        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
-        Me.BTNREPORTE.TabIndex = 18
-        Me.BTNREPORTE.Text = "Generar reporte"
-        Me.BTNREPORTE.UseVisualStyleBackColor = False
-        '
-        'BTNNUEVO
-        '
-        Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(656, 855)
-        Me.BTNNUEVO.Name = "BTNNUEVO"
-        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
-        Me.BTNNUEVO.TabIndex = 19
-        Me.BTNNUEVO.Text = "Nuevo"
-        Me.BTNNUEVO.UseVisualStyleBackColor = False
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'VISTAVENTASTableAdapter
-        '
-        Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
-        '
-        'BTNIMPRIMIR
-        '
-        Me.BTNIMPRIMIR.AutoSize = True
-        Me.BTNIMPRIMIR.BackColor = System.Drawing.Color.White
-        Me.BTNIMPRIMIR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNIMPRIMIR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNIMPRIMIR.Location = New System.Drawing.Point(716, 41)
-        Me.BTNIMPRIMIR.Name = "BTNIMPRIMIR"
-        Me.BTNIMPRIMIR.Size = New System.Drawing.Size(133, 45)
-        Me.BTNIMPRIMIR.TabIndex = 20
-        Me.BTNIMPRIMIR.Text = "Imprimir ticket"
-        Me.BTNIMPRIMIR.UseVisualStyleBackColor = False
         '
         'VENID
         '
         Me.VENID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.VENID.DataPropertyName = "VENID"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.VENID.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.VENID.DefaultCellStyle = DataGridViewCellStyle7
         Me.VENID.HeaderText = "No.Venta"
         Me.VENID.Name = "VENID"
         Me.VENID.ReadOnly = True
@@ -223,9 +140,9 @@ Partial Class FrmVentas
         '
         Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle8
         Me.VENTOTAL.HeaderText = "Total"
         Me.VENTOTAL.Name = "VENTOTAL"
         Me.VENTOTAL.ReadOnly = True
@@ -256,11 +173,107 @@ Partial Class FrmVentas
         Me.VENEXISTEDataGridViewCheckBoxColumn.ReadOnly = True
         Me.VENEXISTEDataGridViewCheckBoxColumn.Visible = False
         '
+        'VISTAVENTASBindingSource
+        '
+        Me.VISTAVENTASBindingSource.DataMember = "VISTAVENTAS"
+        Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet1
+        '
+        'MuebleAlexDataSet1
+        '
+        Me.MuebleAlexDataSet1.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TXTBUSCAR
+        '
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(115, 23)
+        Me.TXTBUSCAR.Name = "TXTBUSCAR"
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(385, 29)
+        Me.TXTBUSCAR.TabIndex = 15
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(27, 26)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(59, 27)
+        Me.Label1.TabIndex = 14
+        Me.Label1.Text = "Buscar"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(503, 53)
+        Me.PictureBox1.TabIndex = 16
+        Me.PictureBox1.TabStop = False
+        '
+        'BTNREPORTE
+        '
+        Me.BTNREPORTE.AutoSize = True
+        Me.BTNREPORTE.BackColor = System.Drawing.Color.White
+        Me.BTNREPORTE.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNREPORTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNREPORTE.Location = New System.Drawing.Point(855, 69)
+        Me.BTNREPORTE.Name = "BTNREPORTE"
+        Me.BTNREPORTE.Size = New System.Drawing.Size(133, 45)
+        Me.BTNREPORTE.TabIndex = 18
+        Me.BTNREPORTE.Text = "Generar reporte"
+        Me.BTNREPORTE.UseVisualStyleBackColor = False
+        '
+        'BTNNUEVO
+        '
+        Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNNUEVO.Location = New System.Drawing.Point(656, 855)
+        Me.BTNNUEVO.Name = "BTNNUEVO"
+        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
+        Me.BTNNUEVO.TabIndex = 19
+        Me.BTNNUEVO.Text = "Nuevo"
+        Me.BTNNUEVO.UseVisualStyleBackColor = False
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'VISTAVENTASTableAdapter
+        '
+        Me.VISTAVENTASTableAdapter.ClearBeforeFill = True
+        '
+        'BTNIMPRIMIR
+        '
+        Me.BTNIMPRIMIR.AutoSize = True
+        Me.BTNIMPRIMIR.BackColor = System.Drawing.Color.White
+        Me.BTNIMPRIMIR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNIMPRIMIR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNIMPRIMIR.Location = New System.Drawing.Point(716, 69)
+        Me.BTNIMPRIMIR.Name = "BTNIMPRIMIR"
+        Me.BTNIMPRIMIR.Size = New System.Drawing.Size(133, 45)
+        Me.BTNIMPRIMIR.TabIndex = 20
+        Me.BTNIMPRIMIR.Text = "Imprimir ticket"
+        Me.BTNIMPRIMIR.UseVisualStyleBackColor = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 88)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(347, 29)
+        Me.Label2.TabIndex = 21
+        Me.Label2.Text = "Haz doble clic en una venta para ver los detalles"
+        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1000, 930)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.BTNIMPRIMIR)
         Me.Controls.Add(Me.BTNNUEVO)
         Me.Controls.Add(Me.BTNREPORTE)
@@ -302,4 +315,5 @@ Partial Class FrmVentas
     Friend WithEvents PAGOS As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
     Friend WithEvents VENEXISTEDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents Label2 As Label
 End Class

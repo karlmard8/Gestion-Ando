@@ -6,10 +6,8 @@ Public Class FrmInventario
     Dim ALTAINVENTARIO As New FrmAltaProductos
     Private Sub FrmInventario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
-        BTNNUEVO.BackColor = ColorBotones
-        BTNEDITAR.BackColor = ColorBotones
-        BTNELIMINAR.BackColor = ColorBotones
-        BTNREPORTE.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         Me.DATAINVENTARIO.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.TBLPRODUCTOS' Puede moverla o quitarla según sea necesario.

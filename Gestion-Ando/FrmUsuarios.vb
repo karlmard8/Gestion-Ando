@@ -8,9 +8,7 @@ Public Class FrmUsuarios
 
     Private Sub FrmUsuarios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
-        BTNNUEVO.BackColor = ColorBotones
-        BTNEDITAR.BackColor = ColorBotones
-        BTNELIMINAR.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
         Me.DATAUSUARIOS.BackgroundColor = ColorFormulario
         TXTBUSCAR.Focus()
 

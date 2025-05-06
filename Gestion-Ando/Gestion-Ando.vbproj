@@ -351,6 +351,12 @@
     <Compile Include="FrmClientes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmCorteDeCaja.Designer.vb">
+      <DependentUpon>FrmCorteDeCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCorteDeCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmDetallesVentas.Designer.vb">
       <DependentUpon>FrmDetallesVentas.vb</DependentUpon>
     </Compile>
@@ -462,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCorteDeCaja.resx">
+      <DependentUpon>FrmCorteDeCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetallesVentas.resx">
       <DependentUpon>FrmDetallesVentas.vb</DependentUpon>

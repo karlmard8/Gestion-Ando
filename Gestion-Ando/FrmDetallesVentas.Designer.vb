@@ -26,22 +26,16 @@ Partial Class FrmDetallesVentas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATADETALLEVENTA = New System.Windows.Forms.DataGridView()
-        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Unidades = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Semanas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Enganche = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VISTADETALLEVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.VISTADETALLEVENTASTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTADETALLEVENTASTableAdapter()
@@ -59,6 +53,12 @@ Partial Class FrmDetallesVentas
         Me.DETALLESDEPAGOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BTNABONO = New System.Windows.Forms.Button()
         Me.DETALLESDEPAGOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.DETALLESDEPAGOSTableAdapter()
+        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Unidades = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUnitario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Semanas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Enganche = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DATADETALLEVENTA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTADETALLEVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -111,68 +111,6 @@ Partial Class FrmDetallesVentas
         Me.DATADETALLEVENTA.Size = New System.Drawing.Size(799, 198)
         Me.DATADETALLEVENTA.TabIndex = 0
         Me.DATADETALLEVENTA.TabStop = False
-        '
-        'Producto
-        '
-        Me.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Producto.DataPropertyName = "Producto"
-        Me.Producto.HeaderText = "Producto"
-        Me.Producto.Name = "Producto"
-        Me.Producto.ReadOnly = True
-        '
-        'Unidades
-        '
-        Me.Unidades.DataPropertyName = "Unidades"
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Unidades.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Unidades.HeaderText = "Unidades"
-        Me.Unidades.Name = "Unidades"
-        Me.Unidades.ReadOnly = True
-        Me.Unidades.Width = 70
-        '
-        'PrecioUnitario
-        '
-        Me.PrecioUnitario.DataPropertyName = "Precio unitario"
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PrecioUnitario.HeaderText = "Precio unitario"
-        Me.PrecioUnitario.Name = "PrecioUnitario"
-        Me.PrecioUnitario.ReadOnly = True
-        '
-        'Semanas
-        '
-        Me.Semanas.DataPropertyName = "Semanas"
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Semanas.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Semanas.HeaderText = "Semanas"
-        Me.Semanas.Name = "Semanas"
-        Me.Semanas.ReadOnly = True
-        Me.Semanas.Width = 65
-        '
-        'Enganche
-        '
-        Me.Enganche.DataPropertyName = "Enganche"
-        DataGridViewCellStyle5.Format = "C2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Enganche.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Enganche.HeaderText = "Enganche"
-        Me.Enganche.Name = "Enganche"
-        Me.Enganche.ReadOnly = True
-        Me.Enganche.Width = 80
-        '
-        'Total
-        '
-        Me.Total.DataPropertyName = "Total"
-        DataGridViewCellStyle6.Format = "C2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 80
         '
         'VISTADETALLEVENTASBindingSource
         '
@@ -348,6 +286,70 @@ Partial Class FrmDetallesVentas
         '
         Me.DETALLESDEPAGOSTableAdapter.ClearBeforeFill = True
         '
+        'Producto
+        '
+        Me.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Producto.DataPropertyName = "Producto"
+        Me.Producto.HeaderText = "Producto"
+        Me.Producto.Name = "Producto"
+        Me.Producto.ReadOnly = True
+        '
+        'Unidades
+        '
+        Me.Unidades.DataPropertyName = "Unidades"
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Unidades.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Unidades.HeaderText = "Unidades"
+        Me.Unidades.Name = "Unidades"
+        Me.Unidades.ReadOnly = True
+        Me.Unidades.Width = 70
+        '
+        'PrecioUnitario
+        '
+        Me.PrecioUnitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.PrecioUnitario.DataPropertyName = "Precio unitario"
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.PrecioUnitario.DefaultCellStyle = DataGridViewCellStyle3
+        Me.PrecioUnitario.HeaderText = "Precio unitario"
+        Me.PrecioUnitario.Name = "PrecioUnitario"
+        Me.PrecioUnitario.ReadOnly = True
+        Me.PrecioUnitario.Width = 99
+        '
+        'Semanas
+        '
+        Me.Semanas.DataPropertyName = "Semanas"
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Semanas.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Semanas.HeaderText = "Semanas"
+        Me.Semanas.Name = "Semanas"
+        Me.Semanas.ReadOnly = True
+        Me.Semanas.Width = 65
+        '
+        'Enganche
+        '
+        Me.Enganche.DataPropertyName = "Enganche"
+        DataGridViewCellStyle5.Format = "C2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Enganche.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Enganche.HeaderText = "Enganche"
+        Me.Enganche.Name = "Enganche"
+        Me.Enganche.ReadOnly = True
+        Me.Enganche.Width = 80
+        '
+        'Total
+        '
+        Me.Total.DataPropertyName = "Total"
+        DataGridViewCellStyle6.Format = "C2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        Me.Total.Width = 80
+        '
         'FrmDetallesVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -384,12 +386,6 @@ Partial Class FrmDetallesVentas
     Friend WithEvents VISTADETALLEVENTASBindingSource As BindingSource
     Friend WithEvents MuebleAlexDataSet As MuebleAlexDataSet
     Friend WithEvents VISTADETALLEVENTASTableAdapter As MuebleAlexDataSetTableAdapters.VISTADETALLEVENTASTableAdapter
-    Friend WithEvents Producto As DataGridViewTextBoxColumn
-    Friend WithEvents Unidades As DataGridViewTextBoxColumn
-    Friend WithEvents PrecioUnitario As DataGridViewTextBoxColumn
-    Friend WithEvents Semanas As DataGridViewTextBoxColumn
-    Friend WithEvents Enganche As DataGridViewTextBoxColumn
-    Friend WithEvents Total As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label2 As Label
@@ -404,4 +400,10 @@ Partial Class FrmDetallesVentas
     Friend WithEvents Cliente As DataGridViewTextBoxColumn
     Friend WithEvents PAGAR As DataGridViewTextBoxColumn
     Friend WithEvents Pagado As DataGridViewTextBoxColumn
+    Friend WithEvents Producto As DataGridViewTextBoxColumn
+    Friend WithEvents Unidades As DataGridViewTextBoxColumn
+    Friend WithEvents PrecioUnitario As DataGridViewTextBoxColumn
+    Friend WithEvents Semanas As DataGridViewTextBoxColumn
+    Friend WithEvents Enganche As DataGridViewTextBoxColumn
+    Friend WithEvents Total As DataGridViewTextBoxColumn
 End Class

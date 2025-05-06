@@ -13,8 +13,8 @@ Public Class FrmLogin
         CONTRASEÑA = "c1oooooo"
 
         Me.BackColor = ColorFormulario
-        Me.BTNENTRAR.BackColor = ColorBotones
-        Me.BTNCREARUSUARIO.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         Call inicio()
 
         For Each ctrl As Control In Me.Controls

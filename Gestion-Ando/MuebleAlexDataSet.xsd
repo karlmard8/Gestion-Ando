@@ -481,6 +481,26 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VISTACORTECAJATableAdapter" GeneratorDataComponentClassName="VISTACORTECAJATableAdapter" Name="VISTACORTECAJA" UserDataComponentName="VISTACORTECAJATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-8q10a8h\sqlexpress.MuebleAlex.dbo" DbObjectName="MuebleAlex.dbo.VISTACORTECAJA" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [No.Venta], Fecha, Venta, Vendedor, Total FROM dbo.VISTACORTECAJA</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="No.Venta" DataSetColumn="No_Venta" />
+              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="Venta" DataSetColumn="Venta" />
+              <Mapping SourceColumn="Vendedor" DataSetColumn="Vendedor" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -861,21 +881,21 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DETALLESDEPAGOS" msprop:Generator_RowClassName="DETALLESDEPAGOSRow" msprop:Generator_RowEvHandlerName="DETALLESDEPAGOSRowChangeEventHandler" msprop:Generator_RowDeletedName="DETALLESDEPAGOSRowDeleted" msprop:Generator_RowDeletingName="DETALLESDEPAGOSRowDeleting" msprop:Generator_RowEvArgName="DETALLESDEPAGOSRowChangeEvent" msprop:Generator_TablePropName="DETALLESDEPAGOS" msprop:Generator_RowChangedName="DETALLESDEPAGOSRowChanged" msprop:Generator_UserTableName="DETALLESDEPAGOS" msprop:Generator_RowChangingName="DETALLESDEPAGOSRowChanging" msprop:Generator_TableClassName="DETALLESDEPAGOSDataTable" msprop:Generator_TableVarName="tableDETALLESDEPAGOS">
+        <xs:element name="DETALLESDEPAGOS" msprop:Generator_RowEvHandlerName="DETALLESDEPAGOSRowChangeEventHandler" msprop:Generator_RowDeletedName="DETALLESDEPAGOSRowDeleted" msprop:Generator_RowDeletingName="DETALLESDEPAGOSRowDeleting" msprop:Generator_RowEvArgName="DETALLESDEPAGOSRowChangeEvent" msprop:Generator_TablePropName="DETALLESDEPAGOS" msprop:Generator_RowChangedName="DETALLESDEPAGOSRowChanged" msprop:Generator_UserTableName="DETALLESDEPAGOS" msprop:Generator_RowChangingName="DETALLESDEPAGOSRowChanging" msprop:Generator_RowClassName="DETALLESDEPAGOSRow" msprop:Generator_TableClassName="DETALLESDEPAGOSDataTable" msprop:Generator_TableVarName="tableDETALLESDEPAGOS">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="PAGID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="PAGID" msprop:Generator_ColumnPropNameInTable="PAGIDColumn" msprop:Generator_ColumnPropNameInRow="PAGID" msprop:Generator_ColumnVarNameInTable="columnPAGID" type="xs:long" />
-              <xs:element name="Cliente" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" minOccurs="0">
+              <xs:element name="PAGID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnPropNameInTable="PAGIDColumn" msprop:Generator_ColumnPropNameInRow="PAGID" msprop:Generator_UserColumnName="PAGID" msprop:Generator_ColumnVarNameInTable="columnPAGID" type="xs:long" />
+              <xs:element name="Cliente" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="ClienteColumn" msprop:Generator_ColumnPropNameInRow="Cliente" msprop:Generator_UserColumnName="Cliente" msprop:Generator_ColumnVarNameInTable="columnCliente" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="202" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="A_x0020_pagar" msprop:Generator_UserColumnName="A pagar" msprop:Generator_ColumnPropNameInTable="A_pagarColumn" msprop:Generator_ColumnPropNameInRow="A_pagar" msprop:Generator_ColumnVarNameInTable="columnA_pagar" type="xs:decimal" minOccurs="0" />
-              <xs:element name="VENID" msprop:Generator_UserColumnName="VENID" msprop:Generator_ColumnPropNameInTable="VENIDColumn" msprop:Generator_ColumnPropNameInRow="VENID" msprop:Generator_ColumnVarNameInTable="columnVENID" type="xs:long" minOccurs="0" />
-              <xs:element name="Pagado" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Pagado" msprop:Generator_ColumnPropNameInTable="PagadoColumn" msprop:Generator_ColumnPropNameInRow="Pagado" msprop:Generator_ColumnVarNameInTable="columnPagado" minOccurs="0">
+              <xs:element name="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_UserColumnName="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="A_x0020_pagar" msprop:Generator_ColumnPropNameInTable="A_pagarColumn" msprop:Generator_ColumnPropNameInRow="A_pagar" msprop:Generator_UserColumnName="A pagar" msprop:Generator_ColumnVarNameInTable="columnA_pagar" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VENID" msprop:Generator_ColumnPropNameInTable="VENIDColumn" msprop:Generator_ColumnPropNameInRow="VENID" msprop:Generator_UserColumnName="VENID" msprop:Generator_ColumnVarNameInTable="columnVENID" type="xs:long" minOccurs="0" />
+              <xs:element name="Pagado" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInTable="PagadoColumn" msprop:Generator_ColumnPropNameInRow="Pagado" msprop:Generator_UserColumnName="Pagado" msprop:Generator_ColumnVarNameInTable="columnPagado" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="11" />
@@ -885,33 +905,56 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="VISTAUSUARIOS" msprop:Generator_RowEvHandlerName="VISTAUSUARIOSRowChangeEventHandler" msprop:Generator_RowDeletedName="VISTAUSUARIOSRowDeleted" msprop:Generator_RowDeletingName="VISTAUSUARIOSRowDeleting" msprop:Generator_RowEvArgName="VISTAUSUARIOSRowChangeEvent" msprop:Generator_TablePropName="VISTAUSUARIOS" msprop:Generator_RowChangedName="VISTAUSUARIOSRowChanged" msprop:Generator_RowChangingName="VISTAUSUARIOSRowChanging" msprop:Generator_TableClassName="VISTAUSUARIOSDataTable" msprop:Generator_RowClassName="VISTAUSUARIOSRow" msprop:Generator_TableVarName="tableVISTAUSUARIOS" msprop:Generator_UserTableName="VISTAUSUARIOS">
+        <xs:element name="VISTAUSUARIOS" msprop:Generator_RowClassName="VISTAUSUARIOSRow" msprop:Generator_RowEvHandlerName="VISTAUSUARIOSRowChangeEventHandler" msprop:Generator_RowDeletedName="VISTAUSUARIOSRowDeleted" msprop:Generator_RowDeletingName="VISTAUSUARIOSRowDeleting" msprop:Generator_RowEvArgName="VISTAUSUARIOSRowChangeEvent" msprop:Generator_TablePropName="VISTAUSUARIOS" msprop:Generator_RowChangedName="VISTAUSUARIOSRowChanged" msprop:Generator_UserTableName="VISTAUSUARIOS" msprop:Generator_RowChangingName="VISTAUSUARIOSRowChanging" msprop:Generator_TableClassName="VISTAUSUARIOSDataTable" msprop:Generator_TableVarName="tableVISTAUSUARIOS">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="USUID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="USUID" msprop:Generator_ColumnPropNameInTable="USUIDColumn" msprop:Generator_ColumnVarNameInTable="columnUSUID" msprop:Generator_UserColumnName="USUID" type="xs:long" />
-              <xs:element name="USUNOMBRE" msprop:Generator_ColumnPropNameInRow="USUNOMBRE" msprop:Generator_ColumnPropNameInTable="USUNOMBREColumn" msprop:Generator_ColumnVarNameInTable="columnUSUNOMBRE" msprop:Generator_UserColumnName="USUNOMBRE" minOccurs="0">
+              <xs:element name="USUID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="USUID" msprop:Generator_ColumnPropNameInTable="USUIDColumn" msprop:Generator_ColumnPropNameInRow="USUID" msprop:Generator_ColumnVarNameInTable="columnUSUID" type="xs:long" />
+              <xs:element name="USUNOMBRE" msprop:Generator_UserColumnName="USUNOMBRE" msprop:Generator_ColumnPropNameInTable="USUNOMBREColumn" msprop:Generator_ColumnPropNameInRow="USUNOMBRE" msprop:Generator_ColumnVarNameInTable="columnUSUNOMBRE" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="80" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="USULOGIN" msprop:Generator_ColumnPropNameInRow="USULOGIN" msprop:Generator_ColumnPropNameInTable="USULOGINColumn" msprop:Generator_ColumnVarNameInTable="columnUSULOGIN" msprop:Generator_UserColumnName="USULOGIN" minOccurs="0">
+              <xs:element name="USULOGIN" msprop:Generator_UserColumnName="USULOGIN" msprop:Generator_ColumnPropNameInTable="USULOGINColumn" msprop:Generator_ColumnPropNameInRow="USULOGIN" msprop:Generator_ColumnVarNameInTable="columnUSULOGIN" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="USUCLAVE" msprop:Generator_ColumnPropNameInRow="USUCLAVE" msprop:Generator_ColumnPropNameInTable="USUCLAVEColumn" msprop:Generator_ColumnVarNameInTable="columnUSUCLAVE" msprop:Generator_UserColumnName="USUCLAVE" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="USUTIPO" msprop:Generator_ColumnPropNameInRow="USUTIPO" msprop:Generator_ColumnPropNameInTable="USUTIPOColumn" msprop:Generator_ColumnVarNameInTable="columnUSUTIPO" msprop:Generator_UserColumnName="USUTIPO" minOccurs="0">
+              <xs:element name="USUCLAVE" msprop:Generator_UserColumnName="USUCLAVE" msprop:Generator_ColumnPropNameInTable="USUCLAVEColumn" msprop:Generator_ColumnPropNameInRow="USUCLAVE" msprop:Generator_ColumnVarNameInTable="columnUSUCLAVE" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="USUTIPO" msprop:Generator_UserColumnName="USUTIPO" msprop:Generator_ColumnPropNameInTable="USUTIPOColumn" msprop:Generator_ColumnPropNameInRow="USUTIPO" msprop:Generator_ColumnVarNameInTable="columnUSUTIPO" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="USUEXISTE" msprop:Generator_ColumnPropNameInRow="USUEXISTE" msprop:Generator_ColumnPropNameInTable="USUEXISTEColumn" msprop:Generator_ColumnVarNameInTable="columnUSUEXISTE" msprop:Generator_UserColumnName="USUEXISTE" type="xs:boolean" minOccurs="0" />
+              <xs:element name="USUEXISTE" msprop:Generator_UserColumnName="USUEXISTE" msprop:Generator_ColumnPropNameInTable="USUEXISTEColumn" msprop:Generator_ColumnPropNameInRow="USUEXISTE" msprop:Generator_ColumnVarNameInTable="columnUSUEXISTE" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="VISTACORTECAJA" msprop:Generator_RowEvHandlerName="VISTACORTECAJARowChangeEventHandler" msprop:Generator_RowDeletedName="VISTACORTECAJARowDeleted" msprop:Generator_RowDeletingName="VISTACORTECAJARowDeleting" msprop:Generator_RowEvArgName="VISTACORTECAJARowChangeEvent" msprop:Generator_TablePropName="VISTACORTECAJA" msprop:Generator_RowChangedName="VISTACORTECAJARowChanged" msprop:Generator_RowChangingName="VISTACORTECAJARowChanging" msprop:Generator_TableClassName="VISTACORTECAJADataTable" msprop:Generator_RowClassName="VISTACORTECAJARow" msprop:Generator_TableVarName="tableVISTACORTECAJA" msprop:Generator_UserTableName="VISTACORTECAJA">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="No_Venta" msprop:Generator_ColumnPropNameInRow="No_Venta" msprop:Generator_ColumnPropNameInTable="No_VentaColumn" msprop:Generator_ColumnVarNameInTable="columnNo_Venta" msprop:Generator_UserColumnName="No_Venta" type="xs:long" />
+              <xs:element name="Fecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Venta" msprop:Generator_ColumnPropNameInRow="Venta" msprop:Generator_ColumnPropNameInTable="VentaColumn" msprop:Generator_ColumnVarNameInTable="columnVenta" msprop:Generator_UserColumnName="Venta" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Vendedor" msprop:Generator_ColumnPropNameInRow="Vendedor" msprop:Generator_ColumnPropNameInTable="VendedorColumn" msprop:Generator_ColumnVarNameInTable="columnVendedor" msprop:Generator_UserColumnName="Vendedor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_UserColumnName="Total" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -952,6 +995,10 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
     <xs:unique name="VISTAUSUARIOS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:VISTAUSUARIOS" />
       <xs:field xpath="mstns:USUID" />
+    </xs:unique>
+    <xs:unique name="VISTACORTECAJA_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VISTACORTECAJA" />
+      <xs:field xpath="mstns:No_Venta" />
     </xs:unique>
   </xs:element>
 </xs:schema>

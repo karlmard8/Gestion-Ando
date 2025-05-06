@@ -2,9 +2,7 @@
 
     Private Sub FrmAltaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
-        BTNCANCELAR.BackColor = ColorBotones
-        BTNLIMPIAR.BackColor = ColorBotones
-        BTNGUARDAR.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
 
         TXTCODIGO.Focus()
         For Each ctrl As Control In Me.Controls
@@ -126,5 +124,17 @@
 
         ' Liberar el recurso del pincel
         bordePen.Dispose()
+    End Sub
+
+    Private Sub TXTTELEFONO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTTELEFONO.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "." AndAlso e.KeyChar <> "-" AndAlso e.KeyChar <> Chr(8) Then
+            e.Handled = True ' Bloquear cualquier otra entrada
+        End If
+    End Sub
+
+    Private Sub TXTCP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTCP.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> "." AndAlso e.KeyChar <> "-" AndAlso e.KeyChar <> Chr(8) Then
+            e.Handled = True ' Bloquear cualquier otra entrada
+        End If
     End Sub
 End Class

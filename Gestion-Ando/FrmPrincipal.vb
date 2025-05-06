@@ -57,10 +57,33 @@ Public Class FrmPrincipal
         LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
     End Sub
 
+    Dim mensajeMostradoHoy As Boolean = False
+    Private Sub VerificarHora(sender As Object, e As EventArgs)
+        Dim horaObjetivo As TimeSpan = New TimeSpan(12, 25, 0) ' 🔥 Hora específica
+        Dim horaActual As TimeSpan = DateTime.Now.TimeOfDay ' 🔹 Obtener la hora actual
+
+        ' 🔥 Mostrar el mensaje solo una vez cuando sea exactamente la hora
+        If horaActual.Hours = horaObjetivo.Hours AndAlso horaActual.Minutes = horaObjetivo.Minutes AndAlso Not mensajeMostradoHoy Then
+            mensajeMostradoHoy = True ' 🔥 Marcar el mensaje como mostrado para evitar repetición
+            MessageBox.Show("¡Es hora de cerrar la caja!", "Alerta de horario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+        ' 🔥 Reiniciar la bandera al inicio del día
+        If horaActual.Hours = 0 AndAlso horaActual.Minutes = 0 Then
+            mensajeMostradoHoy = False ' 🔹 Permitir que se muestre nuevamente al día siguiente
+        End If
+    End Sub
+
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Timer1.Interval = 1000 ' 🔹 Cada segundo verifica la hora
+        AddHandler Timer1.Tick, AddressOf VerificarHora
+        Timer1.Start()
+
+
         Me.BackColor = ColorFormulario
         Me.MenuOpciones.BackColor = ColorMenuStrip
         BTNDEUDORES.BackColor = ColorBotones
+
         LBLFECHA.BackColor = ColorMenuStrip
         LBLFECHA.ForeColor = Color.White
         LBLHORA.BackColor = ColorMenuStrip
@@ -69,8 +92,7 @@ Public Class FrmPrincipal
         LBLLOGIN.ForeColor = Color.White
         FECHA = Today.Date.ToString("dd/MM/yyyy")
         LBLFECHA.Text = FECHA
-        Timer1.Interval = 1000 ' 1000 milisegundos = 1 segundo
-        Timer1.Start()
+
         LBLLOGIN.Text = "Bienvenido " + FrmLogin.TXTLOGIN.Text.ToUpper()
         StrSql = "INICIARSESION"
         comando = New SqlClient.SqlCommand(StrSql, Conexion)
@@ -179,6 +201,7 @@ Public Class FrmPrincipal
         FrmInventario.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
+        FrmCorteDeCaja.Close()
         Dim CLIENTES As New FrmClientes
         idbusqueda = 0
         FrmClientes.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -194,6 +217,7 @@ Public Class FrmPrincipal
         FrmClientes.Close()
         FrmInventario.Close()
         FrmUsuarios.Close()
+        FrmCorteDeCaja.Close()
         idbusqueda = 0
         FrmVentas.VISTAVENTASTableAdapter.Connection = Conexion
         FrmVentas.VISTAVENTASTableAdapter.Fill(FrmVentas.MuebleAlexDataSet.VISTAVENTAS)
@@ -209,6 +233,7 @@ Public Class FrmPrincipal
         FrmClientes.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
+        FrmCorteDeCaja.Close()
         Dim INVENTARIO As New FrmInventario
         idbusqueda = 0
         FrmInventario.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -224,7 +249,7 @@ Public Class FrmPrincipal
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
-        Dim USUARIOS As New FrmUsuarios
+        FrmCorteDeCaja.Close()
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
         Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios WHERE USUEXISTE=1"
@@ -239,6 +264,14 @@ Public Class FrmPrincipal
         FrmUsuarios.Show()
         LBLOPCIONES.Text = "Usuarios"
         LBLOPCIONES.Location = New Point(625, 40)
+    End Sub
+
+    Private Sub CorteDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteDeCajaToolStripMenuItem.Click
+        FrmClientes.Close()
+        FrmInventario.Close()
+        FrmVentas.Close()
+        FrmUsuarios.Close()
+        FrmCorteDeCaja.ShowDialog()
     End Sub
 
     Private isLoggingOut As Boolean = False
@@ -263,8 +296,12 @@ Public Class FrmPrincipal
 
     Private Sub FrmPrincipal_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Not isLoggingOut Then
-            ' Code to completely stop the application
-            Application.Exit()
+            Dim respuesta As DialogResult = MessageBox.Show("¿Está seguro de que desea cerrar la aplicación?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If respuesta = DialogResult.No Then
+                e.Cancel = True
+            Else
+                Application.Exit()
+            End If
         End If
     End Sub
     Private Sub BTNDEUDORES_Click(sender As Object, e As EventArgs) Handles BTNDEUDORES.Click

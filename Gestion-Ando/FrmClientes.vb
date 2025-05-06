@@ -6,9 +6,8 @@
         Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
         Me.BackColor = ColorFormulario
         Me.DATACLIENTES.BackgroundColor = ColorFormulario
-        BTNNUEVO.BackColor = ColorBotones
-        BTNEDITAR.BackColor = ColorBotones
-        BTNELIMINAR.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         CMBFILTRO.SelectedIndex = 0
         CMBFILTRO.BackColor = ColorFormulario
         TXTBUSCAR.Focus()

@@ -65,4 +65,16 @@
         'SERVIDOR PUBLICO 192.168.1.67
     End Sub
 
+    Public Class EstiloBotones
+        Public Shared Sub CambiarColorBotones(ByVal formulario As Form)
+            For Each ctrl As Control In formulario.Controls
+                If TypeOf ctrl Is Button Then
+                    Dim btn As Button = CType(ctrl, Button)
+                    btn.BackColor = ColorBotones ' 🔥 Usa el color global definido en otro módulo
+                    btn.ForeColor = Color.Black
+                End If
+            Next
+        End Sub
+    End Class
+
 End Module

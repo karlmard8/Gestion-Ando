@@ -11,7 +11,7 @@ Public Class FrmDetallesVentas
         DATAPAGOS.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATAPAGOS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
 
-        Me.BTNABONO.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
         If FrmVentas.contado = "True" Then
             BTNABONO.Visible = False
             Me.Size = New Size(816, 280)
@@ -48,7 +48,7 @@ Public Class FrmDetallesVentas
 
                 Dim comando As New SqlClient.SqlCommand("DETALLESDEPAGOS", Conexion)
                 comando.CommandType = CommandType.StoredProcedure
-                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = DATAPAGOS.CurrentRow.Cells("VENID").Value ' Ajusta el parámetro según tu lógica
+                comando.Parameters.Add("@VENID", SqlDbType.BigInt).Value = DATAPAGOS.CurrentRow.Cells("VENID").Value
 
                 Dim adaptador As New SqlClient.SqlDataAdapter(comando)
                 Dim tabla As New DataTable()
@@ -60,6 +60,7 @@ Public Class FrmDetallesVentas
         Catch ex As Exception
             MessageBox.Show("Error al actualizar los datos: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+        FrmVentas.CargarDatos()
     End Sub
 
 End Class

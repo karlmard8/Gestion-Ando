@@ -9,17 +9,13 @@ Public Class FrmVentas
         If TIPOPRODUCTO = "CLASE" Then
             BTNIMPRIMIR.Visible = False
         End If
-
-
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
         'Me.VISTAVENTASTableAdapter.Connection = Conexion
         'Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
         CargarDatos()
         Me.BackColor = ColorFormulario
-        BTNIMPRIMIR.BackColor = ColorBotones
-        BTNNUEVO.BackColor = ColorBotones
-        BTNELIMINAR.BackColor = ColorBotones
-        BTNREPORTE.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         DATAVENTAS.BackgroundColor = ColorFormulario
         DETALLEVENTAS.Location = New Point(540, 187)
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
@@ -34,7 +30,7 @@ Public Class FrmVentas
         AddHandler BTNELIMINAR.MouseLeave, AddressOf BTNELIMINAR_MouseLeave
     End Sub
 
-    Private Sub CargarDatos()
+    Public Sub CargarDatos()
         Dim cadenaConexion As String = "server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";"
         Dim conexion As New SqlConnection(cadenaConexion)
         Dim sql As String = "SELECT * FROM VISTAVENTAS ORDER BY VENID DESC"
@@ -169,6 +165,7 @@ Public Class FrmVentas
                     .Columns.Add("Unidades", "Unidades")
                     .Columns("Unidades").DataPropertyName = "Unidades"
                     .Columns("Unidades").DefaultCellStyle.Format = "N0"
+                    .Columns("Unidades").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
 
                     .Columns.Add("PrecioUnitario", "Precio unitario")
                     .Columns("PrecioUnitario").DataPropertyName = "Precio unitario"
@@ -178,6 +175,7 @@ Public Class FrmVentas
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
                     .Columns("Total").DefaultCellStyle.Format = "C2"
+                    .Columns("Total").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
                 End With
 

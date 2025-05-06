@@ -1,10 +1,8 @@
 ﻿Public Class FrmAltaProductos
     Private Sub FrmAltaProductos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.BackColor = ColorFormulario
-        BTNGUARDAR.BackColor = ColorBotones
-        BTNLIMPIAR.BackColor = ColorBotones
-        BTNCANCELAR.BackColor = ColorBotones
-        BTNCARGARIMG.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         'Revisar cuando guarda 1000
         SPINNER.Minimum = -1000
         SPINNER.Maximum = 1000

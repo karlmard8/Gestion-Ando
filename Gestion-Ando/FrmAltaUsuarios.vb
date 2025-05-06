@@ -10,9 +10,8 @@ Public Class FrmAltaUsuarios
         LBLMENSAJE.Text = "*Por seguridad tendrás que volver a escribir tu contraseña*"
 
         Me.BackColor = ColorFormulario
-        BTNGUARDAR.BackColor = ColorBotones
-        BTNLIMPIAR.BackColor = ColorBotones
-        BTNCANCELAR.BackColor = ColorBotones
+        EstiloBotones.CambiarColorBotones(Me)
+
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox OrElse TypeOf ctrl Is ComboBox OrElse TypeOf ctrl Is Button OrElse TypeOf ctrl Is NumericUpDown Then
                 AddHandler ctrl.KeyDown, AddressOf Control_KeyDown

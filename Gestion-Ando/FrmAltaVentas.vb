@@ -19,9 +19,9 @@ Public Class FrmAltaVentas
         Me.BackColor = ColorFormulario
         GRUPO1.BackColor = ColorFormulario
         GRUPO2.BackColor = ColorFormulario
-        BtnAgregar.BackColor = ColorBotones
-        BtnQuitar.BackColor = ColorBotones
-        BTNPAGAR.BackColor = ColorBotones
+        DtgProductos.BackgroundColor = ColorFormulario
+        EstiloBotones.CambiarColorBotones(Me)
+
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
         CmbClave.SelectedValue = -1
@@ -34,7 +34,6 @@ Public Class FrmAltaVentas
         RBCONTADO.Checked = False
         RBCREDITO.Checked = False
         CMBPRECIO.FormatString = "C2"
-        DtgProductos.BackgroundColor = ColorFormulario
 
         If RBCONTADO.Checked = False Then
             TXTPAGO.Enabled = False
@@ -190,6 +189,7 @@ Public Class FrmAltaVentas
                                 End If
                             End If
                             DialogResult = DialogResult.OK
+                            FrmVentas.CargarDatos()
                             Me.Close()
                         End If
                     Else
