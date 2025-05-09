@@ -120,6 +120,7 @@ Public Class FrmPrincipal
 
         If TIPOPRODUCTO = "CLASE" Then
             BTNDEUDORES.Visible = False
+            MenuOpciones.Items(4).Visible = False
         End If
 
     End Sub

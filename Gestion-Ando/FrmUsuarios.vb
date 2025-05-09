@@ -27,7 +27,8 @@ Public Class FrmUsuarios
         ' Restaurar el color original del botón cuando el cursor sale del botón
         BTNELIMINAR.BackColor = ColorBotones
     End Sub
-    Private Sub CargarDatos()
+
+    Public Sub CargarDatos()
         Dim cadenaConexion As String = "server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";"
         Dim conexion As New SqlConnection(cadenaConexion)
         Dim sql As String = "SELECT * FROM VISTAUSUARIOS"

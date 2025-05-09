@@ -62,7 +62,20 @@ Public Class FrmVentas
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.VISTAVENTASBindingSource.Filter = "CLIENTE LIKE '*" & Me.TXTBUSCAR.Text & "*'"
+        If tablaOriginal IsNot Nothing Then
+            If TXTBUSCAR.Text.Trim() = "" Then
+                ' Restaurar la tabla completa
+                DATAVENTAS.DataSource = tablaOriginal.Copy()
+            Else
+                ' Filtrar solo si hay texto
+                Dim resultado = tablaOriginal.Select("USUNOMBRE LIKE '%" & TXTBUSCAR.Text & "%'")
+                If resultado.Length > 0 Then
+                    DATAVENTAS.DataSource = resultado.CopyToDataTable()
+                Else
+                    DATAVENTAS.DataSource = tablaOriginal.Clone() ' Mostrar tabla vacía si no hay resultados
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click

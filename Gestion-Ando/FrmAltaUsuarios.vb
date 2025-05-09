@@ -94,6 +94,7 @@ Public Class FrmAltaUsuarios
                     If Conectar() = True Then
                         If comando.Parameters("@RETORNO").Value = 1 Then
                             MsgBox("Usuario guardado", MsgBoxStyle.Information, "Confirmacion")
+                            FrmUsuarios.CargarDatos()
                             DialogResult = DialogResult.OK
                             Me.Close()
                         Else

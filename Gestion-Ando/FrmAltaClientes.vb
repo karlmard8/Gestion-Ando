@@ -92,7 +92,6 @@
 
                 Else
                     MsgBox("Cliente existente", MsgBoxStyle.Critical, "Advertencia")
-                    Me.ShowDialog()
                     TXTCODIGO.Focus()
 
                 End If

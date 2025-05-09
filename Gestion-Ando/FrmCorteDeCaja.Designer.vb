@@ -23,8 +23,8 @@ Partial Class FrmCorteDeCaja
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATACORTECAJA = New System.Windows.Forms.DataGridView()
         Me.VISTACORTECAJABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
@@ -43,7 +43,7 @@ Partial Class FrmCorteDeCaja
         Me.LBLSALDOFINAL = New System.Windows.Forms.Label()
         Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
         Me.VISTACORTECAJATableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter()
-        Me.NoVenta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.No_Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,7 +65,7 @@ Partial Class FrmCorteDeCaja
         Me.DATACORTECAJA.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DATACORTECAJA.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACORTECAJA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATACORTECAJA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NoVenta, Me.Fecha, Me.Venta, Me.Vendedor, Me.Total})
+        Me.DATACORTECAJA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.No_Venta, Me.Fecha, Me.Venta, Me.Vendedor, Me.Total})
         Me.DATACORTECAJA.DataSource = Me.VISTACORTECAJABindingSource
         Me.DATACORTECAJA.Location = New System.Drawing.Point(12, 85)
         Me.DATACORTECAJA.MultiSelect = False
@@ -101,6 +101,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.CMBUSUARIO.DataSource = Me.VISTAUSUARIOSBindingSource
         Me.CMBUSUARIO.DisplayMember = "USUNOMBRE"
+        Me.CMBUSUARIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CMBUSUARIO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBUSUARIO.FormattingEnabled = True
         Me.CMBUSUARIO.Location = New System.Drawing.Point(144, 12)
@@ -226,16 +227,16 @@ Partial Class FrmCorteDeCaja
         '
         Me.VISTACORTECAJATableAdapter.ClearBeforeFill = True
         '
-        'NoVenta
+        'No_Venta
         '
-        Me.NoVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.NoVenta.DataPropertyName = "NoVenta"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.NoVenta.DefaultCellStyle = DataGridViewCellStyle1
-        Me.NoVenta.HeaderText = "No.Venta"
-        Me.NoVenta.Name = "NoVenta"
-        Me.NoVenta.ReadOnly = True
-        Me.NoVenta.Width = 77
+        Me.No_Venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.No_Venta.DataPropertyName = "No_Venta"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.No_Venta.DefaultCellStyle = DataGridViewCellStyle3
+        Me.No_Venta.HeaderText = "No.Venta"
+        Me.No_Venta.Name = "No_Venta"
+        Me.No_Venta.ReadOnly = True
+        Me.No_Venta.Width = 77
         '
         'Fecha
         '
@@ -267,9 +268,9 @@ Partial Class FrmCorteDeCaja
         '
         Me.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.Total.DataPropertyName = "Total"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Total.DefaultCellStyle = DataGridViewCellStyle4
         Me.Total.HeaderText = "Total"
         Me.Total.Name = "Total"
         Me.Total.ReadOnly = True
@@ -327,6 +328,7 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents VISTACORTECAJABindingSource As BindingSource
     Friend WithEvents VISTACORTECAJATableAdapter As MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter
     Friend WithEvents NoVenta As DataGridViewTextBoxColumn
+    Friend WithEvents No_Venta As DataGridViewTextBoxColumn
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents Venta As DataGridViewTextBoxColumn
     Friend WithEvents Vendedor As DataGridViewTextBoxColumn

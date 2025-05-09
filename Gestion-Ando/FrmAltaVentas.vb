@@ -181,6 +181,10 @@ Public Class FrmAltaVentas
                                 Conectar()
                             Next
                             MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+
+                            FrmVentas.CargarDatos()
+
+
                             If TIPOPRODUCTO <> "CLASE" Then
                                 Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                                 If IMPRIMIR = DialogResult.Yes Then
@@ -227,6 +231,10 @@ Public Class FrmAltaVentas
                             Next
                             DialogResult = DialogResult.OK
                             MsgBox("Venta exitosa", MsgBoxStyle.Information, "Confirmación")
+
+                            previousTotal = 0
+                            FrmVentas.CargarDatos()
+
                             If TIPOPRODUCTO <> "CLASE" Then
                                 Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                                 If IMPRIMIR = DialogResult.Yes Then
@@ -255,7 +263,6 @@ Public Class FrmAltaVentas
     End Sub
 
     Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)
-
 
         ' 🔥 Detectar desde qué formulario se ejecuta
         If TypeOf formularioOrigen Is FrmAltaVentas Then
@@ -475,6 +482,7 @@ Public Class FrmAltaVentas
     Private previousTotal As Double = 0
 
     Private Sub TXTENGANCHE_TextChanged(sender As Object, e As EventArgs) Handles TXTENGANCHE.TextChanged
+        LBLTOTAL.Text = (LBLSUB.Text).ToString
         Dim enganche As Double
         If Double.TryParse(TXTENGANCHE.Text, enganche) Then
             ' Store the previous total before modification
