@@ -6,6 +6,7 @@ Imports CrystalDecisions.Shared
 Public Class FrmVentas
     Dim tablaOriginal As DataTable
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CMBFILTRO.SelectedIndex = 0
         If TIPOPRODUCTO = "CLASE" Then
             BTNIMPRIMIR.Visible = False
         End If
@@ -62,13 +63,21 @@ Public Class FrmVentas
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
+
+        Dim OPCIONES As String
+        If CMBFILTRO.SelectedItem = "Vendedor" Then
+            OPCIONES = "USUNOMBRE"
+        Else
+            OPCIONES = "Cliente"
+        End If
+
         If tablaOriginal IsNot Nothing Then
             If TXTBUSCAR.Text.Trim() = "" Then
                 ' Restaurar la tabla completa
                 DATAVENTAS.DataSource = tablaOriginal.Copy()
             Else
                 ' Filtrar solo si hay texto
-                Dim resultado = tablaOriginal.Select("USUNOMBRE LIKE '%" & TXTBUSCAR.Text & "%'")
+                Dim resultado = tablaOriginal.Select(OPCIONES & " LIKE '%" & TXTBUSCAR.Text & "%'")
                 If resultado.Length > 0 Then
                     DATAVENTAS.DataSource = resultado.CopyToDataTable()
                 Else
