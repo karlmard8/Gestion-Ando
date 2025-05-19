@@ -47,6 +47,8 @@ Partial Class FrmCorteDeCaja
         Me.ETIQUETAS = New System.Windows.Forms.GroupBox()
         Me.TXTSALDOREAL = New System.Windows.Forms.TextBox()
         Me.LBLSALDOREAL = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.DATACORTECAJA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACORTECAJABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -70,7 +72,7 @@ Partial Class FrmCorteDeCaja
         Me.DATACORTECAJA.ReadOnly = True
         Me.DATACORTECAJA.RowHeadersVisible = False
         Me.DATACORTECAJA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATACORTECAJA.Size = New System.Drawing.Size(780, 800)
+        Me.DATACORTECAJA.Size = New System.Drawing.Size(811, 800)
         Me.DATACORTECAJA.TabIndex = 0
         Me.DATACORTECAJA.TabStop = False
         '
@@ -103,7 +105,7 @@ Partial Class FrmCorteDeCaja
         Me.CMBUSUARIO.FormattingEnabled = True
         Me.CMBUSUARIO.Location = New System.Drawing.Point(161, 21)
         Me.CMBUSUARIO.Name = "CMBUSUARIO"
-        Me.CMBUSUARIO.Size = New System.Drawing.Size(631, 35)
+        Me.CMBUSUARIO.Size = New System.Drawing.Size(321, 35)
         Me.CMBUSUARIO.TabIndex = 2
         Me.CMBUSUARIO.ValueMember = "USUID"
         '
@@ -288,12 +290,38 @@ Partial Class FrmCorteDeCaja
         Me.LBLSALDOREAL.TabIndex = 18
         Me.LBLSALDOREAL.Text = "Dinero en caja"
         '
+        'Button1
+        '
+        Me.Button1.AutoSize = True
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(497, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(173, 42)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "Reporte de usuario"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.AutoSize = True
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(676, 19)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(147, 42)
+        Me.Button2.TabIndex = 20
+        Me.Button2.Text = "Reporte global"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'FrmCorteDeCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1886, 930)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LBLSALDOREAL)
         Me.Controls.Add(Me.TXTSALDOREAL)
         Me.Controls.Add(Me.Label6)
@@ -348,4 +376,6 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents ETIQUETAS As GroupBox
     Friend WithEvents TXTSALDOREAL As TextBox
     Friend WithEvents LBLSALDOREAL As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

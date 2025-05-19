@@ -6,7 +6,7 @@ Imports Microsoft.Extensions.Logging
 
 Public Class FrmCorteDeCaja
 
-    Private usuarioIDSeleccionado As Integer 'Guardar el ID antes de cerrar
+    Private usuarioIDSeleccionado As Integer
     Private Sub FrmCorteDeCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         EstiloBotones.CambiarColorBotones(Me)
         Me.BackColor = ColorFormulario
@@ -168,8 +168,14 @@ Public Class FrmCorteDeCaja
     End Sub
 
     Private Sub BTNABRIRCAJA_Click(sender As Object, e As EventArgs) Handles BTNABRIRCAJA.Click
-        If DATACORTECAJA.Rows.Count > 0 OrElse LBLSALDOINICIAL.Text <> "$0.00" Then
-            MsgBox("Ya hay una caja abierta para este usuario", MsgBoxStyle.Critical, "Error")
+        If CMBUSUARIO.SelectedIndex < 0 Then
+            MsgBox("Selecciona un usuario para abrir caja", MsgBoxStyle.Critical, "Advertencia")
+            CMBUSUARIO.Focus()
+            Return
+        End If
+
+        If corteIDVariable > 0 Then
+            MsgBox("Ya hay una caja abierta para este usuario", MsgBoxStyle.Critical, "Advertencia")
             Return
         End If
 
@@ -240,6 +246,7 @@ Public Class FrmCorteDeCaja
                                                              MsgBox("Caja abierta correctamente", MsgBoxStyle.Information, "Éxito")
                                                              AbrirCaja.Close()
                                                              CMBUSUARIO.Focus()
+                                                             CMBUSUARIO_SelectedIndexChanged(s, ea)
                                                          Else
                                                              MsgBox("Error al abrir la caja", MsgBoxStyle.Critical, "Error")
                                                          End If
@@ -268,46 +275,56 @@ Public Class FrmCorteDeCaja
 
 
     Private Sub BTNCERRARCAJA_Click(sender As Object, e As EventArgs) Handles BTNCERRARCAJA.Click
-        If CMBUSUARIO.SelectedIndex <= -1 Then
-            MsgBox("Seleccione un usuario para cerrar caja", MsgBoxStyle.Critical, "Error")
-            Return
-        End If
+        Try
+            If CMBUSUARIO.SelectedIndex <= -1 Then
+                MsgBox("Seleccione un usuario para cerrar caja", MsgBoxStyle.Critical, "Error")
+                CMBUSUARIO.Focus()
+                Return
+            End If
 
-        Dim SALDOINICIAL As Decimal = Convert.ToDecimal(LBLSALDOINICIAL.Text.Replace("$", "").Replace(",", ""))
-        If SALDOINICIAL = 0 Then
-            MsgBox("No hay caja abierta para este usuario", MsgBoxStyle.Critical, "Error")
-            Return
-        End If
+            Dim SALDOINICIAL As Decimal = Convert.ToDecimal(LBLSALDOINICIAL.Text.Replace("$", "").Replace(",", ""))
+            If SALDOINICIAL = 0 Then
+                MsgBox("No hay caja abierta para este usuario", MsgBoxStyle.Critical, "Error")
+                BTNABRIRCAJA.Focus()
+                Return
+            End If
 
-        Dim CONFIRMARACION As DialogResult = MsgBox("¿Está seguro de cerrar la caja?", MsgBoxStyle.YesNo, "Confirmación")
-        If CONFIRMARACION = DialogResult.No Then
-            Return
-        End If
+            Dim CONFIRMARACION As DialogResult = MsgBox("¿Está seguro de cerrar la caja?", MsgBoxStyle.YesNo, "Confirmación")
+            If CONFIRMARACION = DialogResult.No Then
+                Return
+            End If
 
-        StrSql = "CERRARCORTECAJA"
-        comando = New SqlClient.SqlCommand(StrSql, Conexion)
-        comando.CommandType = CommandType.StoredProcedure
-        comando.Parameters.Add("@CorteID", SqlDbType.BigInt).Value = corteIDVariable
-        comando.Parameters.Add("@SALDOINGRESADO", SqlDbType.Money).Value = Convert.ToDecimal(LBLINGRESOS.Text.Replace("$", "").Replace(",", ""))
-        comando.Parameters.Add("@SALDOEGRESADO", SqlDbType.Money).Value = Convert.ToDecimal(LBLEGRESOS.Text.Replace("$", "").Replace(",", ""))
-        comando.Parameters.Add("@SALDOFINAL", SqlDbType.Money).Value = Convert.ToDecimal(LBLSALDOFINAL.Text.Replace("$", "").Replace(",", ""))
-        comando.Parameters.Add("@SALDOREAL", SqlDbType.Money).Value = TXTSALDOREAL.Text
-        If String.IsNullOrWhiteSpace(TXTNOTAS.Text) Then
+            StrSql = "CERRARCORTECAJA"
+            comando = New SqlClient.SqlCommand(StrSql, Conexion)
+            comando.CommandType = CommandType.StoredProcedure
+            comando.Parameters.Add("@CorteID", SqlDbType.BigInt).Value = corteIDVariable
+            comando.Parameters.Add("@SALDOINGRESADO", SqlDbType.Money).Value = Convert.ToDecimal(LBLINGRESOS.Text.Replace("$", "").Replace(",", ""))
+            comando.Parameters.Add("@SALDOEGRESADO", SqlDbType.Money).Value = Convert.ToDecimal(LBLEGRESOS.Text.Replace("$", "").Replace(",", ""))
+            If String.IsNullOrEmpty(TXTSALDOREAL.Text) Then
+                comando.Parameters.Add("@SALDOREAL", SqlDbType.Money).Value = 0
+            Else
+                comando.Parameters.Add("@SALDOREAL", SqlDbType.Money).Value = TXTSALDOREAL.Text
+            End If
+            comando.Parameters.Add("@SALDOFINAL", SqlDbType.Money).Value = Convert.ToDecimal(LBLSALDOFINAL.Text.Replace("$", "").Replace(",", ""))
+
+            If String.IsNullOrWhiteSpace(TXTNOTAS.Text) Then
                 comando.Parameters.Add("@NOTAS", SqlDbType.VarChar, 255).Value = ""
             Else
                 comando.Parameters.Add("@NOTAS", SqlDbType.NVarChar).Value = TXTNOTAS.Text
             End If
-        comando.Parameters.Add("@FECHAFINALCORTE", SqlDbType.DateTime).Value = fechaParametro
-        comando.Parameters.Add("@RETORNO", SqlDbType.Bit).Direction = ParameterDirection.Output
-        If Conectar() = True Then
-            If comando.Parameters("@RETORNO").Value = "TRUE" Then
-                MsgBox("Caja cerrada correctamente", MsgBoxStyle.Information, "Éxito")
-                CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
-            Else
-                MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "Error")
+            comando.Parameters.Add("@FECHAFINALCORTE", SqlDbType.DateTime).Value = fechaParametro
+            comando.Parameters.Add("@RETORNO", SqlDbType.Bit).Direction = ParameterDirection.Output
+            If Conectar() = True Then
+                If comando.Parameters("@RETORNO").Value = "TRUE" Then
+                    MsgBox("Caja cerrada correctamente", MsgBoxStyle.Information, "Éxito")
+                    CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
+                Else
+                    MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "ErrorC1")
+                End If
             End If
-        End If
-
+        Catch
+            MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "ErrorC2")
+        End Try
     End Sub
 
     Public fechaParametro As DateTime
@@ -318,7 +335,7 @@ Public Class FrmCorteDeCaja
 
     Private Sub TXTSALDOREAL_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTSALDOREAL.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> ControlChars.Back Then
-            e.Handled = True ' 🔥 Bloquear la entrada si no es un número
+            e.Handled = True
         End If
     End Sub
 End Class
