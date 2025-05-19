@@ -52,28 +52,6 @@ Public Class FrmPrincipal
         MyBase.WndProc(m)
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim horaActual As DateTime = DateTime.Now
-        LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
-    End Sub
-
-    Dim mensajeMostradoHoy As Boolean = False
-    Private Sub VerificarHora(sender As Object, e As EventArgs)
-        Dim horaObjetivo As TimeSpan = New TimeSpan(12, 25, 0) ' 🔥 Hora específica
-        Dim horaActual As TimeSpan = DateTime.Now.TimeOfDay ' 🔹 Obtener la hora actual
-
-        ' 🔥 Mostrar el mensaje solo una vez cuando sea exactamente la hora
-        If horaActual.Hours = horaObjetivo.Hours AndAlso horaActual.Minutes = horaObjetivo.Minutes AndAlso Not mensajeMostradoHoy Then
-            mensajeMostradoHoy = True ' 🔥 Marcar el mensaje como mostrado para evitar repetición
-            MessageBox.Show("¡Es hora de cerrar la caja!", "Alerta de horario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-
-        ' 🔥 Reiniciar la bandera al inicio del día
-        If horaActual.Hours = 0 AndAlso horaActual.Minutes = 0 Then
-            mensajeMostradoHoy = False ' 🔹 Permitir que se muestre nuevamente al día siguiente
-        End If
-    End Sub
-
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Interval = 1000 ' 🔹 Cada segundo verifica la hora
         AddHandler Timer1.Tick, AddressOf VerificarHora
@@ -126,13 +104,40 @@ Public Class FrmPrincipal
     End Sub
 
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim horaActual As DateTime = DateTime.Now
+        LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
+    End Sub
+
+    Public Class FrmTiempo
+        Public WithEvents Timer1 As New Timer()
+    End Class
+
+    Dim mensajeMostradoHoy As Boolean = False
+    Private Sub VerificarHora(sender As Object, e As EventArgs)
+        Dim horaObjetivo As TimeSpan = New TimeSpan(12, 25, 0) ' 🔥 Hora específica
+        Dim horaActual As TimeSpan = DateTime.Now.TimeOfDay ' 🔹 Obtener la hora actual
+
+        ' 🔥 Mostrar el mensaje solo una vez cuando sea exactamente la hora
+        If horaActual.Hours = horaObjetivo.Hours AndAlso horaActual.Minutes = horaObjetivo.Minutes AndAlso Not mensajeMostradoHoy Then
+            mensajeMostradoHoy = True ' 🔥 Marcar el mensaje como mostrado para evitar repetición
+            MessageBox.Show("¡Es hora de cerrar la caja!", "Alerta de horario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+        ' 🔥 Reiniciar la bandera al inicio del día
+        If horaActual.Hours = 0 AndAlso horaActual.Minutes = 0 Then
+            mensajeMostradoHoy = False ' 🔹 Permitir que se muestre nuevamente al día siguiente
+        End If
+    End Sub
+
+
     Public Sub ALERTADEUDORES()
         Dim DEUDAS As New DataTable()
         Dim TABLADEUDAS As New DataGridView()
         Dim FRMDEUDORES As New Form
 
         FRMDEUDORES.Text = "Deudas pendientes"
-        FRMDEUDORES.Size = New Size(615, 250)
+        FRMDEUDORES.Size = New Size(750, 350)
         FRMDEUDORES.StartPosition = FormStartPosition.CenterScreen
         FRMDEUDORES.FormBorderStyle = FormBorderStyle.FixedSingle
         FRMDEUDORES.MaximizeBox = False
@@ -151,16 +156,18 @@ Public Class FrmPrincipal
 
         Try
             StrSql = "SELECT  
-                    TBLUSUARIOS.USUNOMBRE AS Cliente,  
-                    TBLPAGOS.PAGMONTO AS 'A pagar',  
-                    TBLPAGOS.PAGFECHA AS 'Fecha límite',  
-                    DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) AS 'Días restantes'  
-                FROM TBLVENTAS  
-                JOIN TBLUSUARIOS ON TBLVENTAS.USUID = TBLUSUARIOS.USUID  
-                JOIN TBLPAGOS ON TBLVENTAS.VENID = TBLPAGOS.VENID  
-                WHERE TBLVENTAS.VENEXISTE = 1  
-                AND TBLVENTAS.VENFORMA = 'CRÉDITO'  
-                AND DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) BETWEEN 0 AND 3;"
+                        TBLVENTAS.VENID AS 'No.Venta',
+                        TBLUSUARIOS.USUNOMBRE AS Cliente,  
+                        TBLPAGOS.PAGMONTO AS 'A pagar',  
+                        TBLPAGOS.PAGFECHA AS 'Fecha límite',  
+                        DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) AS 'Días restantes'  
+                    FROM TBLVENTAS  
+                    JOIN TBLUSUARIOS ON TBLVENTAS.USUID = TBLUSUARIOS.USUID  
+                    JOIN TBLPAGOS ON TBLVENTAS.VENID = TBLPAGOS.VENID  
+                    WHERE TBLVENTAS.VENEXISTE = 1  
+                    AND TBLVENTAS.VENFORMA = 'CRÉDITO'  
+                    AND DATEDIFF(DAY, GETDATE(), TBLPAGOS.PAGFECHA) BETWEEN 0 AND 3  
+                    ORDER BY TBLVENTAS.VENID DESC;;"
 
             Using conexion As New SqlClient.SqlConnection("Server=" & SERVIDOR & ";Database=" & BASEDATOS & ";User Id=" & USUARIO & ";Password=" & CONTRASEÑA)
                 conexion.Open()
@@ -169,31 +176,51 @@ Public Class FrmPrincipal
                 adaptador.Fill(DEUDAS) 'Llenar el `DataTable` con los resultados de SQL
                 conexion.Close()
             End Using
+
+            TABLADEUDAS.DataSource = DEUDAS
+
+            For Each col As DataGridViewColumn In TABLADEUDAS.Columns
+                Debug.Print(col.Name)
+            Next
+
+            TABLADEUDAS.Size = New Size(733, 300)
+            TABLADEUDAS.Location = New Point(0, 0)
+            TABLADEUDAS.BackgroundColor = ColorFormulario
+            TABLADEUDAS.RowHeadersVisible = False
+            TABLADEUDAS.DefaultCellStyle.Font = New Font("Dubai", 12)
+            TABLADEUDAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
+            TABLADEUDAS.MultiSelect = False
+            TABLADEUDAS.AllowUserToAddRows = False
+            TABLADEUDAS.AllowUserToDeleteRows = False
+            TABLADEUDAS.AllowUserToOrderColumns = False
+            TABLADEUDAS.AllowUserToResizeColumns = False
+            TABLADEUDAS.AllowUserToResizeRows = False
+            TABLADEUDAS.ReadOnly = True
+            TABLADEUDAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            TABLADEUDAS.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+            TABLADEUDAS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+            TABLADEUDAS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
+
+
         Catch ex As Exception
             MessageBox.Show("Error al obtener deudores: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        ' 🔹 Crear `DataGridView` para mostrar deudores
 
-        TABLADEUDAS.DataSource = DEUDAS
-        TABLADEUDAS.Size = New Size(599, 200)
-        TABLADEUDAS.Location = New Point(0, 0)
-        TABLADEUDAS.BackgroundColor = ColorFormulario
-        TABLADEUDAS.RowHeadersVisible = False
-        TABLADEUDAS.DefaultCellStyle.Font = New Font("Dubai", 12)
-        TABLADEUDAS.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
-        TABLADEUDAS.MultiSelect = False
-        TABLADEUDAS.AllowUserToAddRows = False
-        TABLADEUDAS.AllowUserToDeleteRows = False
-        TABLADEUDAS.AllowUserToOrderColumns = False
-        TABLADEUDAS.AllowUserToResizeColumns = False
-        TABLADEUDAS.AllowUserToResizeRows = False
-        TABLADEUDAS.ReadOnly = True
-        TABLADEUDAS.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        TABLADEUDAS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        TABLADEUDAS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
+        AddHandler TABLADEUDAS.DataBindingComplete, Sub(sender, e)
+                                                        If TABLADEUDAS.Columns.Count > 0 Then
+                                                            TABLADEUDAS.Columns("A pagar").DefaultCellStyle.Format = "C2"
+                                                            TABLADEUDAS.Columns("No.Venta").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                                                            TABLADEUDAS.Columns("Fecha límite").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+                                                            TABLADEUDAS.Columns("Días restantes").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                                                        End If
+                                                    End Sub
 
         ' 🔹 Agregar controles al formulario
+
+        Application.DoEvents() ' 🔥 Deja que la UI procese los cambios antes de continuar
+        TABLADEUDAS.Refresh() ' 🔥 Refresca el `DataGridView` para cargar las columnas correctamente
+
         FRMDEUDORES.Controls.Add(TABLADEUDAS)
         FRMDEUDORES.ShowDialog()
     End Sub
@@ -210,6 +237,7 @@ Public Class FrmPrincipal
         FrmClientes.TopLevel = False
         PANELFRAMES.Controls.Add(FrmClientes)
         FrmClientes.Show()
+        LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Clientes"
         LBLOPCIONES.Location = New Point(50, 40)
     End Sub
@@ -225,9 +253,10 @@ Public Class FrmPrincipal
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
         FrmVentas.Show()
-        FrmVentas.Location = New Point(430, 0)
+        FrmVentas.Location = New Point(380, 0)
+        LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Ventas"
-        LBLOPCIONES.Location = New Point(480, 38)
+        LBLOPCIONES.Location = New Point(430, 38)
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
@@ -242,6 +271,7 @@ Public Class FrmPrincipal
         FrmInventario.TopLevel = False
         PANELFRAMES.Controls.Add(FrmInventario)
         FrmInventario.Show()
+        LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Inventario"
         LBLOPCIONES.Location = New Point(50, 40)
     End Sub
@@ -263,6 +293,7 @@ Public Class FrmPrincipal
         PANELFRAMES.Controls.Add(FrmUsuarios)
         FrmUsuarios.Location = New Point(575, 0)
         FrmUsuarios.Show()
+        LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Usuarios"
         LBLOPCIONES.Location = New Point(625, 40)
     End Sub
@@ -272,7 +303,11 @@ Public Class FrmPrincipal
         FrmInventario.Close()
         FrmVentas.Close()
         FrmUsuarios.Close()
-        FrmCorteDeCaja.ShowDialog()
+
+        FrmCorteDeCaja.TopLevel = False
+        PANELFRAMES.Controls.Add(FrmCorteDeCaja)
+        FrmCorteDeCaja.Show()
+        LBLOPCIONES.Visible = False
     End Sub
 
     Private isLoggingOut As Boolean = False

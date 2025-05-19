@@ -87,6 +87,10 @@ Public Class FrmAltaVentas
         ElseIf TIPO = "Administrador" Then
             RBCREDITO.Enabled = True
         End If
+
+        AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha ' 🔥 Vincular evento Tick
+        FrmPrincipal.Timer1.Interval = 1000 ' 🔥 Cada segundo
+        FrmPrincipal.Timer1.Start()
     End Sub
 
 
@@ -148,6 +152,14 @@ Public Class FrmAltaVentas
         TXTENGANCHE.Text = String.Empty
     End Sub
 
+
+    Public fechaParametro As DateTime
+
+    Private Sub ActualizarFecha(sender As Object, e As EventArgs)
+        fechaParametro = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second)
+        'LabelFecha.Text = fechaParametro.ToString("dd/MM/yyyy HH:mm:ss") ' 🔥 Mostrar en etiqueta
+    End Sub
+
     Dim VENID As Long
     Private Sub BTNPAGAR_Click(sender As Object, e As EventArgs) Handles BTNPAGAR.Click
         If Me.CmbClientes.SelectedValue > 0 Then
@@ -157,7 +169,7 @@ Public Class FrmAltaVentas
                         StrSql = "ALTAVENTA"
                         comando = New SqlClient.SqlCommand(StrSql, Conexion)
                         comando.CommandType = CommandType.StoredProcedure
-                        comando.Parameters.Add("@VENFECHA", SqlDbType.Date).Value = FECHA
+                        comando.Parameters.Add("@VENFECHA", SqlDbType.DateTime).Value = fechaParametro.ToString("yyyy-MM-dd HH:mm:ss")
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
                         comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Contado"
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = 0
@@ -204,7 +216,7 @@ Public Class FrmAltaVentas
                         StrSql = "ALTAVENTA"
                         comando = New SqlClient.SqlCommand(StrSql, Conexion)
                         comando.CommandType = CommandType.StoredProcedure
-                        comando.Parameters.Add("@VENFECHA", SqlDbType.Date).Value = FECHA
+                        comando.Parameters.Add("@VENFECHA", SqlDbType.DateTime).Value = fechaParametro.ToString("yyyy-MM-dd HH:mm:ss")
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
                         comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Crédito"
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = Me.TXTMESES.Text

@@ -59,6 +59,7 @@ Partial Class FrmUsuarios
         Me.DATAUSUARIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.USUID, Me.USUNOMBRE, Me.USULOGIN, Me.USUCLAVE, Me.USUTIPO, Me.USUEXISTE})
         Me.DATAUSUARIOS.DataSource = Me.VISTAUSUARIOSBindingSource
         Me.DATAUSUARIOS.Location = New System.Drawing.Point(12, 92)
+        Me.DATAUSUARIOS.MultiSelect = False
         Me.DATAUSUARIOS.Name = "DATAUSUARIOS"
         Me.DATAUSUARIOS.ReadOnly = True
         Me.DATAUSUARIOS.RowHeadersVisible = False

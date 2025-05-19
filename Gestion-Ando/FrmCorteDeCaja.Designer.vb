@@ -23,8 +23,6 @@ Partial Class FrmCorteDeCaja
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATACORTECAJA = New System.Windows.Forms.DataGridView()
         Me.VISTACORTECAJABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
@@ -43,15 +41,17 @@ Partial Class FrmCorteDeCaja
         Me.LBLSALDOFINAL = New System.Windows.Forms.Label()
         Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
         Me.VISTACORTECAJATableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter()
-        Me.No_Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Venta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TXTNOTAS = New System.Windows.Forms.TextBox()
+        Me.LBLNOTAS = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ETIQUETAS = New System.Windows.Forms.GroupBox()
+        Me.TXTSALDOREAL = New System.Windows.Forms.TextBox()
+        Me.LBLSALDOREAL = New System.Windows.Forms.Label()
         CType(Me.DATACORTECAJA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACORTECAJABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ETIQUETAS.SuspendLayout()
         Me.SuspendLayout()
         '
         'DATACORTECAJA
@@ -60,20 +60,17 @@ Partial Class FrmCorteDeCaja
         Me.DATACORTECAJA.AllowUserToDeleteRows = False
         Me.DATACORTECAJA.AllowUserToResizeColumns = False
         Me.DATACORTECAJA.AllowUserToResizeRows = False
-        Me.DATACORTECAJA.AutoGenerateColumns = False
         Me.DATACORTECAJA.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DATACORTECAJA.BackgroundColor = System.Drawing.SystemColors.Control
         Me.DATACORTECAJA.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACORTECAJA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATACORTECAJA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.No_Venta, Me.Fecha, Me.Venta, Me.Vendedor, Me.Total})
-        Me.DATACORTECAJA.DataSource = Me.VISTACORTECAJABindingSource
         Me.DATACORTECAJA.Location = New System.Drawing.Point(12, 85)
         Me.DATACORTECAJA.MultiSelect = False
         Me.DATACORTECAJA.Name = "DATACORTECAJA"
         Me.DATACORTECAJA.ReadOnly = True
         Me.DATACORTECAJA.RowHeadersVisible = False
         Me.DATACORTECAJA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATACORTECAJA.Size = New System.Drawing.Size(776, 230)
+        Me.DATACORTECAJA.Size = New System.Drawing.Size(780, 800)
         Me.DATACORTECAJA.TabIndex = 0
         Me.DATACORTECAJA.TabStop = False
         '
@@ -90,10 +87,10 @@ Partial Class FrmCorteDeCaja
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 14)
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(12, 24)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 27)
+        Me.Label1.Size = New System.Drawing.Size(143, 32)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Corte de caja de:"
         '
@@ -104,9 +101,9 @@ Partial Class FrmCorteDeCaja
         Me.CMBUSUARIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CMBUSUARIO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBUSUARIO.FormattingEnabled = True
-        Me.CMBUSUARIO.Location = New System.Drawing.Point(144, 12)
+        Me.CMBUSUARIO.Location = New System.Drawing.Point(161, 21)
         Me.CMBUSUARIO.Name = "CMBUSUARIO"
-        Me.CMBUSUARIO.Size = New System.Drawing.Size(339, 35)
+        Me.CMBUSUARIO.Size = New System.Drawing.Size(631, 35)
         Me.CMBUSUARIO.TabIndex = 2
         Me.CMBUSUARIO.ValueMember = "USUID"
         '
@@ -119,10 +116,10 @@ Partial Class FrmCorteDeCaja
         '
         Me.BTNABRIRCAJA.AutoSize = True
         Me.BTNABRIRCAJA.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNABRIRCAJA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNABRIRCAJA.Location = New System.Drawing.Point(542, 12)
+        Me.BTNABRIRCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNABRIRCAJA.Location = New System.Drawing.Point(962, 85)
         Me.BTNABRIRCAJA.Name = "BTNABRIRCAJA"
-        Me.BTNABRIRCAJA.Size = New System.Drawing.Size(112, 37)
+        Me.BTNABRIRCAJA.Size = New System.Drawing.Size(141, 79)
         Me.BTNABRIRCAJA.TabIndex = 3
         Me.BTNABRIRCAJA.Text = "Abrir caja"
         Me.BTNABRIRCAJA.UseVisualStyleBackColor = True
@@ -131,91 +128,91 @@ Partial Class FrmCorteDeCaja
         '
         Me.BTNCERRARCAJA.AutoSize = True
         Me.BTNCERRARCAJA.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNCERRARCAJA.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCERRARCAJA.Location = New System.Drawing.Point(676, 12)
+        Me.BTNCERRARCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNCERRARCAJA.Location = New System.Drawing.Point(1592, 85)
         Me.BTNCERRARCAJA.Name = "BTNCERRARCAJA"
-        Me.BTNCERRARCAJA.Size = New System.Drawing.Size(112, 37)
+        Me.BTNCERRARCAJA.Size = New System.Drawing.Size(141, 79)
         Me.BTNCERRARCAJA.TabIndex = 4
-        Me.BTNCERRARCAJA.Text = "Corte de caja"
+        Me.BTNCERRARCAJA.Text = "Cerrar caja"
         Me.BTNCERRARCAJA.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(12, 358)
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(23, 36)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(147, 27)
+        Me.Label2.Size = New System.Drawing.Size(168, 32)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Saldo de caja inicial"
+        Me.Label2.Text = "Saldo inicial de caja"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(245, 358)
+        Me.Label3.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(256, 36)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(121, 27)
+        Me.Label3.Size = New System.Drawing.Size(129, 32)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Ingresos del día"
+        Me.Label3.Text = "Ingresos a caja"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(458, 358)
+        Me.Label4.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(469, 36)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(116, 27)
+        Me.Label4.Size = New System.Drawing.Size(134, 32)
         Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Egresos del día"
+        Me.Label4.Text = "Egresos de caja"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(651, 358)
+        Me.Label5.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(662, 36)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(137, 27)
+        Me.Label5.Size = New System.Drawing.Size(156, 32)
         Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Saldo de caja final"
+        Me.Label5.Text = "Saldo final de caja"
         '
         'LBLSALDOINICIAL
         '
         Me.LBLSALDOINICIAL.AutoSize = True
-        Me.LBLSALDOINICIAL.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSALDOINICIAL.Location = New System.Drawing.Point(67, 397)
+        Me.LBLSALDOINICIAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLSALDOINICIAL.Location = New System.Drawing.Point(67, 75)
         Me.LBLSALDOINICIAL.Name = "LBLSALDOINICIAL"
-        Me.LBLSALDOINICIAL.Size = New System.Drawing.Size(29, 27)
+        Me.LBLSALDOINICIAL.Size = New System.Drawing.Size(34, 32)
         Me.LBLSALDOINICIAL.TabIndex = 9
         Me.LBLSALDOINICIAL.Text = ". . ."
         '
         'LBLINGRESOS
         '
         Me.LBLINGRESOS.AutoSize = True
-        Me.LBLINGRESOS.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLINGRESOS.Location = New System.Drawing.Point(285, 397)
+        Me.LBLINGRESOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLINGRESOS.Location = New System.Drawing.Point(267, 75)
         Me.LBLINGRESOS.Name = "LBLINGRESOS"
-        Me.LBLINGRESOS.Size = New System.Drawing.Size(29, 27)
+        Me.LBLINGRESOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLINGRESOS.TabIndex = 10
         Me.LBLINGRESOS.Text = ". . ."
         '
         'LBLEGRESOS
         '
         Me.LBLEGRESOS.AutoSize = True
-        Me.LBLEGRESOS.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLEGRESOS.Location = New System.Drawing.Point(496, 397)
+        Me.LBLEGRESOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLEGRESOS.Location = New System.Drawing.Point(507, 75)
         Me.LBLEGRESOS.Name = "LBLEGRESOS"
-        Me.LBLEGRESOS.Size = New System.Drawing.Size(29, 27)
+        Me.LBLEGRESOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLEGRESOS.TabIndex = 11
         Me.LBLEGRESOS.Text = ". . ."
         '
         'LBLSALDOFINAL
         '
         Me.LBLSALDOFINAL.AutoSize = True
-        Me.LBLSALDOFINAL.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSALDOFINAL.Location = New System.Drawing.Point(706, 397)
+        Me.LBLSALDOFINAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLSALDOFINAL.Location = New System.Drawing.Point(673, 75)
         Me.LBLSALDOFINAL.Name = "LBLSALDOFINAL"
-        Me.LBLSALDOFINAL.Size = New System.Drawing.Size(29, 27)
+        Me.LBLSALDOFINAL.Size = New System.Drawing.Size(34, 32)
         Me.LBLSALDOFINAL.TabIndex = 12
         Me.LBLSALDOFINAL.Text = ". . ."
         '
@@ -227,83 +224,100 @@ Partial Class FrmCorteDeCaja
         '
         Me.VISTACORTECAJATableAdapter.ClearBeforeFill = True
         '
-        'No_Venta
+        'TXTNOTAS
         '
-        Me.No_Venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.No_Venta.DataPropertyName = "No_Venta"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.No_Venta.DefaultCellStyle = DataGridViewCellStyle3
-        Me.No_Venta.HeaderText = "No.Venta"
-        Me.No_Venta.Name = "No_Venta"
-        Me.No_Venta.ReadOnly = True
-        Me.No_Venta.Width = 77
+        Me.TXTNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTNOTAS.Location = New System.Drawing.Point(1592, 272)
+        Me.TXTNOTAS.MaxLength = 255
+        Me.TXTNOTAS.Name = "TXTNOTAS"
+        Me.TXTNOTAS.Size = New System.Drawing.Size(265, 40)
+        Me.TXTNOTAS.TabIndex = 13
         '
-        'Fecha
+        'LBLNOTAS
         '
-        Me.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Fecha.DataPropertyName = "Fecha"
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        Me.Fecha.Width = 62
+        Me.LBLNOTAS.AutoSize = True
+        Me.LBLNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLNOTAS.Location = New System.Drawing.Point(1466, 280)
+        Me.LBLNOTAS.Name = "LBLNOTAS"
+        Me.LBLNOTAS.Size = New System.Drawing.Size(120, 32)
+        Me.LBLNOTAS.TabIndex = 14
+        Me.LBLNOTAS.Text = "Notas de caja"
         '
-        'Venta
+        'Label6
         '
-        Me.Venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Venta.DataPropertyName = "Venta"
-        Me.Venta.HeaderText = "Venta"
-        Me.Venta.Name = "Venta"
-        Me.Venta.ReadOnly = True
-        Me.Venta.Width = 60
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(1412, 280)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(57, 18)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "* Opcional"
         '
-        'Vendedor
+        'ETIQUETAS
         '
-        Me.Vendedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Vendedor.DataPropertyName = "Vendedor"
-        Me.Vendedor.HeaderText = "Vendedor"
-        Me.Vendedor.Name = "Vendedor"
-        Me.Vendedor.ReadOnly = True
+        Me.ETIQUETAS.Controls.Add(Me.Label4)
+        Me.ETIQUETAS.Controls.Add(Me.Label2)
+        Me.ETIQUETAS.Controls.Add(Me.Label3)
+        Me.ETIQUETAS.Controls.Add(Me.LBLSALDOFINAL)
+        Me.ETIQUETAS.Controls.Add(Me.Label5)
+        Me.ETIQUETAS.Controls.Add(Me.LBLEGRESOS)
+        Me.ETIQUETAS.Controls.Add(Me.LBLSALDOINICIAL)
+        Me.ETIQUETAS.Controls.Add(Me.LBLINGRESOS)
+        Me.ETIQUETAS.Location = New System.Drawing.Point(910, 465)
+        Me.ETIQUETAS.Name = "ETIQUETAS"
+        Me.ETIQUETAS.Size = New System.Drawing.Size(849, 131)
+        Me.ETIQUETAS.TabIndex = 16
+        Me.ETIQUETAS.TabStop = False
         '
-        'Total
+        'TXTSALDOREAL
         '
-        Me.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Total.DataPropertyName = "Total"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Total.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Width = 56
+        Me.TXTSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTSALDOREAL.Location = New System.Drawing.Point(1037, 272)
+        Me.TXTSALDOREAL.MaxLength = 10
+        Me.TXTSALDOREAL.Name = "TXTSALDOREAL"
+        Me.TXTSALDOREAL.Size = New System.Drawing.Size(265, 40)
+        Me.TXTSALDOREAL.TabIndex = 12
+        '
+        'LBLSALDOREAL
+        '
+        Me.LBLSALDOREAL.AutoSize = True
+        Me.LBLSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLSALDOREAL.Location = New System.Drawing.Point(904, 280)
+        Me.LBLSALDOREAL.Name = "LBLSALDOREAL"
+        Me.LBLSALDOREAL.Size = New System.Drawing.Size(126, 32)
+        Me.LBLSALDOREAL.TabIndex = 18
+        Me.LBLSALDOREAL.Text = "Dinero en caja"
         '
         'FrmCorteDeCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.LBLSALDOFINAL)
-        Me.Controls.Add(Me.LBLEGRESOS)
-        Me.Controls.Add(Me.LBLINGRESOS)
-        Me.Controls.Add(Me.LBLSALDOINICIAL)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.ClientSize = New System.Drawing.Size(1886, 930)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.LBLSALDOREAL)
+        Me.Controls.Add(Me.TXTSALDOREAL)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.LBLNOTAS)
+        Me.Controls.Add(Me.TXTNOTAS)
         Me.Controls.Add(Me.BTNCERRARCAJA)
         Me.Controls.Add(Me.BTNABRIRCAJA)
         Me.Controls.Add(Me.CMBUSUARIO)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DATACORTECAJA)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Controls.Add(Me.ETIQUETAS)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmCorteDeCaja"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Corte de caja"
         CType(Me.DATACORTECAJA, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACORTECAJABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ETIQUETAS.ResumeLayout(False)
+        Me.ETIQUETAS.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -328,9 +342,10 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents VISTACORTECAJABindingSource As BindingSource
     Friend WithEvents VISTACORTECAJATableAdapter As MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter
     Friend WithEvents NoVenta As DataGridViewTextBoxColumn
-    Friend WithEvents No_Venta As DataGridViewTextBoxColumn
-    Friend WithEvents Fecha As DataGridViewTextBoxColumn
-    Friend WithEvents Venta As DataGridViewTextBoxColumn
-    Friend WithEvents Vendedor As DataGridViewTextBoxColumn
-    Friend WithEvents Total As DataGridViewTextBoxColumn
+    Friend WithEvents TXTNOTAS As TextBox
+    Friend WithEvents LBLNOTAS As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents ETIQUETAS As GroupBox
+    Friend WithEvents TXTSALDOREAL As TextBox
+    Friend WithEvents LBLSALDOREAL As Label
 End Class

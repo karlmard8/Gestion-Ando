@@ -21,6 +21,8 @@
 
         DATACLIENTES.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATACLIENTES.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
+        AddHandler BTNELIMINAR.MouseEnter, AddressOf BTNELIMINAR_MouseEnter
+        AddHandler BTNELIMINAR.MouseLeave, AddressOf BTNELIMINAR_MouseLeave
     End Sub
 
     Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
@@ -60,17 +62,19 @@
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         NUEVO.LBLCLIENTES.Text = "Editar registro de cliente"
         NUEVO.LBLCLIENTES.Location = New Point(155, 15)
+
         If DATACLIENTES.RowCount > 0 Then
             idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
             NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value
             Dim nombreCompleto As String = DATACLIENTES.CurrentRow.Cells("CLIENTES").Value.ToString().Trim()
-            Dim partes() As String = nombreCompleto.Split(" "c) ' Dividir por espacios
+            Dim partes() As String = nombreCompleto.Split(" "c) ' 🔥 Dividir por espacios
 
             ' Inicializar variables
             Dim nombre As String = ""
             Dim apellidoPaterno As String = ""
             Dim apellidoMaterno As String = ""
 
+            ' 🔥 Aplicar la lógica de separación según la cantidad de palabras
             Select Case partes.Length
                 Case 1 ' Solo un nombre
                     nombre = partes(0)
@@ -81,6 +85,10 @@
                     nombre = partes(0)
                     apellidoPaterno = partes(1)
                     apellidoMaterno = partes(2)
+                Case 5 ' 🔥 Cuando hay 5 palabras
+                    nombre = partes(0) & " " & partes(1) & " " & partes(2) ' Las primeras 3 son el nombre
+                    apellidoPaterno = partes(3) ' La cuarta es el apellido paterno
+                    apellidoMaterno = partes(4) ' La quinta es el apellido materno
                 Case Else ' Más de 3 palabras (ej. nombres compuestos)
                     nombre = partes(0) & " " & partes(1) ' Se asume que el nombre es compuesto
                     apellidoPaterno = partes(2)
@@ -91,7 +99,6 @@
             NUEVO.TXTNOMBRE.Text = nombre
             NUEVO.TXTAPEPATERNO.Text = apellidoPaterno
             NUEVO.TXTAPEMATERNO.Text = apellidoMaterno
-
 
             NUEVO.TXTCALLE.Text = DATACLIENTES.CurrentRow.Cells("CLIDIRECCION").Value
             NUEVO.TXTCOLONIIA.Text = DATACLIENTES.CurrentRow.Cells("CLICOLONIA").Value
@@ -110,9 +117,19 @@
                 Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
             End If
         End If
+
         TXTBUSCAR.Focus()
     End Sub
 
+    Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
+        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
+        BTNELIMINAR.BackColor = Color.Red
+    End Sub
+
+    Private Sub BTNELIMINAR_MouseLeave(sender As Object, e As EventArgs)
+        ' Restaurar el color original del botón cuando el cursor sale del botón
+        BTNELIMINAR.BackColor = ColorBotones
+    End Sub
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
         If DATACLIENTES.RowCount <= 0 Then
             MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")

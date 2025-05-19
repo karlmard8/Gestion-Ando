@@ -29,6 +29,7 @@ Partial Class FrmPrincipal
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CorteDeCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
         Me.BTNDEUDORES = New System.Windows.Forms.Button()
@@ -37,7 +38,6 @@ Partial Class FrmPrincipal
         Me.LBLHORA = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LBLFECHA = New System.Windows.Forms.Label()
-        Me.CorteDeCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuOpciones.SuspendLayout()
         Me.PANELFRAMES.SuspendLayout()
         Me.SuspendLayout()
@@ -78,6 +78,12 @@ Partial Class FrmPrincipal
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
         Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(104, 34)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
+        '
+        'CorteDeCajaToolStripMenuItem
+        '
+        Me.CorteDeCajaToolStripMenuItem.Name = "CorteDeCajaToolStripMenuItem"
+        Me.CorteDeCajaToolStripMenuItem.Size = New System.Drawing.Size(177, 34)
+        Me.CorteDeCajaToolStripMenuItem.Text = "Abrir/Cerrar caja"
         '
         'CerrarSesiónToolStripMenuItem
         '
@@ -149,12 +155,6 @@ Partial Class FrmPrincipal
         Me.LBLFECHA.Size = New System.Drawing.Size(37, 36)
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
-        '
-        'CorteDeCajaToolStripMenuItem
-        '
-        Me.CorteDeCajaToolStripMenuItem.Name = "CorteDeCajaToolStripMenuItem"
-        Me.CorteDeCajaToolStripMenuItem.Size = New System.Drawing.Size(147, 34)
-        Me.CorteDeCajaToolStripMenuItem.Text = "Corte de caja"
         '
         'FrmPrincipal
         '
