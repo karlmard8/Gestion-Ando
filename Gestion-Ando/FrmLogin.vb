@@ -6,24 +6,39 @@ Imports System.Text
 
 Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'SE DECLARAN LAS CREDENCIALES PARA LA BASE DE DATOS
-        SERVIDOR = "desktop-8q10a8h\sqlexpress"
-        BASEDATOS = "MuebleAlex"
-        USUARIO = "sa"
-        CONTRASEÑA = "c1oooooo"
 
+        If String.IsNullOrEmpty(My.Settings.ServidorSql) OrElse
+       String.IsNullOrEmpty(My.Settings.BaseDatosSQL) OrElse
+       String.IsNullOrEmpty(My.Settings.UsuarioSQL) OrElse
+       String.IsNullOrEmpty(My.Settings.ContraseñaSQL) Then
+
+            My.Settings.ServidorSql = InputBox("Ingrese el nombre del servidor:", "Configuración de conexión")
+            My.Settings.BaseDatosSQL = InputBox("Ingrese el nombre de la base de datos:", "Configuración de conexión")
+            My.Settings.UsuarioSQL = InputBox("Ingrese el usuario de la base de datos:", "Configuración de conexión")
+            My.Settings.ContraseñaSQL = InputBox("Ingrese la contraseña:", "Configuración de conexión")
+            My.Settings.Save()
+        End If
+
+        SERVIDOR = My.Settings.ServidorSql
+        BASEDATOS = My.Settings.BaseDatosSQL
+        USUARIO = My.Settings.UsuarioSQL
+        CONTRASEÑA = My.Settings.ContraseñaSQL
+
+        ' 🔥 Aplicar configuraciones de diseño
         Me.BackColor = ColorFormulario
         EstiloBotones.CambiarColorBotones(Me)
 
+        ' 🔥 Llamar funciones adicionales
         Call inicio()
 
+        ' 🔥 Manejar eventos para los `TextBox`
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox Then
                 AddHandler ctrl.KeyDown, AddressOf TextBox_KeyDown
             End If
         Next
-        VerificarUsuarios()
 
+        VerificarUsuarios()
     End Sub
 
     Dim BOTON As Boolean = False

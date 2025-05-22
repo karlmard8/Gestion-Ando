@@ -66,15 +66,20 @@
     End Sub
 
     Public Class EstiloBotones
-        Public Shared Sub CambiarColorBotones(ByVal formulario As Form)
-            For Each ctrl As Control In formulario.Controls
+        Public Shared Sub CambiarColorBotones(ByVal parentControl As Control)
+            For Each ctrl As Control In parentControl.Controls
                 If TypeOf ctrl Is Button Then
                     Dim btn As Button = CType(ctrl, Button)
-                    btn.BackColor = ColorBotones ' 🔥 Usa el color global definido en otro módulo
+                    btn.BackColor = ColorBotones ' 🔥 Usa el color global definido
                     btn.ForeColor = Color.Black
+                End If
+                ' 🔥 Si el control es un contenedor (GroupBox, Panel, etc.), recorrer sus controles
+                If ctrl.HasChildren Then
+                    CambiarColorBotones(ctrl)
                 End If
             Next
         End Sub
     End Class
+
 
 End Module

@@ -29,8 +29,6 @@ Partial Class FrmCorteDeCaja
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CMBUSUARIO = New System.Windows.Forms.ComboBox()
         Me.VISTAUSUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BTNABRIRCAJA = New System.Windows.Forms.Button()
-        Me.BTNCERRARCAJA = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -41,19 +39,23 @@ Partial Class FrmCorteDeCaja
         Me.LBLSALDOFINAL = New System.Windows.Forms.Label()
         Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
         Me.VISTACORTECAJATableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter()
-        Me.TXTNOTAS = New System.Windows.Forms.TextBox()
-        Me.LBLNOTAS = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.ETIQUETAS = New System.Windows.Forms.GroupBox()
+        Me.BTNHISTORIALCAJA = New System.Windows.Forms.Button()
+        Me.BTNREPORTECAJA = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LBLNOTAS = New System.Windows.Forms.Label()
         Me.TXTSALDOREAL = New System.Windows.Forms.TextBox()
+        Me.TXTNOTAS = New System.Windows.Forms.TextBox()
         Me.LBLSALDOREAL = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.BTNABRIRCAJA = New System.Windows.Forms.Button()
+        Me.BTNCERRARCAJA = New System.Windows.Forms.Button()
+        Me.CAJABOTONES = New System.Windows.Forms.GroupBox()
         CType(Me.DATACORTECAJA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACORTECAJABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ETIQUETAS.SuspendLayout()
+        Me.CAJABOTONES.SuspendLayout()
         Me.SuspendLayout()
         '
         'DATACORTECAJA
@@ -113,30 +115,6 @@ Partial Class FrmCorteDeCaja
         '
         Me.VISTAUSUARIOSBindingSource.DataMember = "VISTAUSUARIOS"
         Me.VISTAUSUARIOSBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'BTNABRIRCAJA
-        '
-        Me.BTNABRIRCAJA.AutoSize = True
-        Me.BTNABRIRCAJA.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNABRIRCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNABRIRCAJA.Location = New System.Drawing.Point(962, 85)
-        Me.BTNABRIRCAJA.Name = "BTNABRIRCAJA"
-        Me.BTNABRIRCAJA.Size = New System.Drawing.Size(141, 79)
-        Me.BTNABRIRCAJA.TabIndex = 3
-        Me.BTNABRIRCAJA.Text = "Abrir caja"
-        Me.BTNABRIRCAJA.UseVisualStyleBackColor = True
-        '
-        'BTNCERRARCAJA
-        '
-        Me.BTNCERRARCAJA.AutoSize = True
-        Me.BTNCERRARCAJA.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNCERRARCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCERRARCAJA.Location = New System.Drawing.Point(1592, 85)
-        Me.BTNCERRARCAJA.Name = "BTNCERRARCAJA"
-        Me.BTNCERRARCAJA.Size = New System.Drawing.Size(141, 79)
-        Me.BTNCERRARCAJA.TabIndex = 4
-        Me.BTNCERRARCAJA.Text = "Cerrar caja"
-        Me.BTNCERRARCAJA.UseVisualStyleBackColor = True
         '
         'Label2
         '
@@ -226,35 +204,6 @@ Partial Class FrmCorteDeCaja
         '
         Me.VISTACORTECAJATableAdapter.ClearBeforeFill = True
         '
-        'TXTNOTAS
-        '
-        Me.TXTNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTNOTAS.Location = New System.Drawing.Point(1592, 272)
-        Me.TXTNOTAS.MaxLength = 255
-        Me.TXTNOTAS.Name = "TXTNOTAS"
-        Me.TXTNOTAS.Size = New System.Drawing.Size(265, 40)
-        Me.TXTNOTAS.TabIndex = 13
-        '
-        'LBLNOTAS
-        '
-        Me.LBLNOTAS.AutoSize = True
-        Me.LBLNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLNOTAS.Location = New System.Drawing.Point(1466, 280)
-        Me.LBLNOTAS.Name = "LBLNOTAS"
-        Me.LBLNOTAS.Size = New System.Drawing.Size(120, 32)
-        Me.LBLNOTAS.TabIndex = 14
-        Me.LBLNOTAS.Text = "Notas de caja"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(1412, 280)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(57, 18)
-        Me.Label6.TabIndex = 15
-        Me.Label6.Text = "* Opcional"
-        '
         'ETIQUETAS
         '
         Me.ETIQUETAS.Controls.Add(Me.Label4)
@@ -265,54 +214,123 @@ Partial Class FrmCorteDeCaja
         Me.ETIQUETAS.Controls.Add(Me.LBLEGRESOS)
         Me.ETIQUETAS.Controls.Add(Me.LBLSALDOINICIAL)
         Me.ETIQUETAS.Controls.Add(Me.LBLINGRESOS)
-        Me.ETIQUETAS.Location = New System.Drawing.Point(910, 465)
+        Me.ETIQUETAS.Location = New System.Drawing.Point(921, 464)
         Me.ETIQUETAS.Name = "ETIQUETAS"
         Me.ETIQUETAS.Size = New System.Drawing.Size(849, 131)
         Me.ETIQUETAS.TabIndex = 16
         Me.ETIQUETAS.TabStop = False
         '
+        'BTNHISTORIALCAJA
+        '
+        Me.BTNHISTORIALCAJA.AutoSize = True
+        Me.BTNHISTORIALCAJA.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNHISTORIALCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNHISTORIALCAJA.Location = New System.Drawing.Point(650, 21)
+        Me.BTNHISTORIALCAJA.Name = "BTNHISTORIALCAJA"
+        Me.BTNHISTORIALCAJA.Size = New System.Drawing.Size(173, 42)
+        Me.BTNHISTORIALCAJA.TabIndex = 19
+        Me.BTNHISTORIALCAJA.Text = "Historial de cajas"
+        Me.BTNHISTORIALCAJA.UseVisualStyleBackColor = True
+        '
+        'BTNREPORTECAJA
+        '
+        Me.BTNREPORTECAJA.AutoSize = True
+        Me.BTNREPORTECAJA.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNREPORTECAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNREPORTECAJA.Location = New System.Drawing.Point(934, 24)
+        Me.BTNREPORTECAJA.Name = "BTNREPORTECAJA"
+        Me.BTNREPORTECAJA.Size = New System.Drawing.Size(147, 42)
+        Me.BTNREPORTECAJA.TabIndex = 20
+        Me.BTNREPORTECAJA.Text = "Reporte global"
+        Me.BTNREPORTECAJA.UseVisualStyleBackColor = True
+        Me.BTNREPORTECAJA.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(511, 203)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(57, 18)
+        Me.Label6.TabIndex = 15
+        Me.Label6.Text = "* Opcional"
+        '
+        'LBLNOTAS
+        '
+        Me.LBLNOTAS.AutoSize = True
+        Me.LBLNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLNOTAS.Location = New System.Drawing.Point(565, 203)
+        Me.LBLNOTAS.Name = "LBLNOTAS"
+        Me.LBLNOTAS.Size = New System.Drawing.Size(120, 32)
+        Me.LBLNOTAS.TabIndex = 14
+        Me.LBLNOTAS.Text = "Notas de caja"
+        '
         'TXTSALDOREAL
         '
         Me.TXTSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTSALDOREAL.Location = New System.Drawing.Point(1037, 272)
+        Me.TXTSALDOREAL.Location = New System.Drawing.Point(136, 195)
         Me.TXTSALDOREAL.MaxLength = 10
         Me.TXTSALDOREAL.Name = "TXTSALDOREAL"
         Me.TXTSALDOREAL.Size = New System.Drawing.Size(265, 40)
         Me.TXTSALDOREAL.TabIndex = 12
         '
+        'TXTNOTAS
+        '
+        Me.TXTNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTNOTAS.Location = New System.Drawing.Point(691, 195)
+        Me.TXTNOTAS.MaxLength = 255
+        Me.TXTNOTAS.Name = "TXTNOTAS"
+        Me.TXTNOTAS.Size = New System.Drawing.Size(265, 40)
+        Me.TXTNOTAS.TabIndex = 13
+        '
         'LBLSALDOREAL
         '
         Me.LBLSALDOREAL.AutoSize = True
         Me.LBLSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSALDOREAL.Location = New System.Drawing.Point(904, 280)
+        Me.LBLSALDOREAL.Location = New System.Drawing.Point(3, 203)
         Me.LBLSALDOREAL.Name = "LBLSALDOREAL"
         Me.LBLSALDOREAL.Size = New System.Drawing.Size(126, 32)
         Me.LBLSALDOREAL.TabIndex = 18
         Me.LBLSALDOREAL.Text = "Dinero en caja"
         '
-        'Button1
+        'BTNABRIRCAJA
         '
-        Me.Button1.AutoSize = True
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(497, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(173, 42)
-        Me.Button1.TabIndex = 19
-        Me.Button1.Text = "Reporte de usuario"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTNABRIRCAJA.AutoSize = True
+        Me.BTNABRIRCAJA.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNABRIRCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNABRIRCAJA.Location = New System.Drawing.Point(61, 19)
+        Me.BTNABRIRCAJA.Name = "BTNABRIRCAJA"
+        Me.BTNABRIRCAJA.Size = New System.Drawing.Size(141, 79)
+        Me.BTNABRIRCAJA.TabIndex = 3
+        Me.BTNABRIRCAJA.Text = "Abrir caja"
+        Me.BTNABRIRCAJA.UseVisualStyleBackColor = True
         '
-        'Button2
+        'BTNCERRARCAJA
         '
-        Me.Button2.AutoSize = True
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(676, 19)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(147, 42)
-        Me.Button2.TabIndex = 20
-        Me.Button2.Text = "Reporte global"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BTNCERRARCAJA.AutoSize = True
+        Me.BTNCERRARCAJA.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNCERRARCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNCERRARCAJA.Location = New System.Drawing.Point(691, 19)
+        Me.BTNCERRARCAJA.Name = "BTNCERRARCAJA"
+        Me.BTNCERRARCAJA.Size = New System.Drawing.Size(141, 79)
+        Me.BTNCERRARCAJA.TabIndex = 4
+        Me.BTNCERRARCAJA.Text = "Cerrar caja"
+        Me.BTNCERRARCAJA.UseVisualStyleBackColor = True
+        '
+        'CAJABOTONES
+        '
+        Me.CAJABOTONES.Controls.Add(Me.BTNCERRARCAJA)
+        Me.CAJABOTONES.Controls.Add(Me.Label6)
+        Me.CAJABOTONES.Controls.Add(Me.BTNABRIRCAJA)
+        Me.CAJABOTONES.Controls.Add(Me.TXTSALDOREAL)
+        Me.CAJABOTONES.Controls.Add(Me.LBLNOTAS)
+        Me.CAJABOTONES.Controls.Add(Me.TXTNOTAS)
+        Me.CAJABOTONES.Controls.Add(Me.LBLSALDOREAL)
+        Me.CAJABOTONES.Location = New System.Drawing.Point(873, 85)
+        Me.CAJABOTONES.Name = "CAJABOTONES"
+        Me.CAJABOTONES.Size = New System.Drawing.Size(967, 276)
+        Me.CAJABOTONES.TabIndex = 21
+        Me.CAJABOTONES.TabStop = False
         '
         'FrmCorteDeCaja
         '
@@ -320,19 +338,13 @@ Partial Class FrmCorteDeCaja
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1886, 930)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.LBLSALDOREAL)
-        Me.Controls.Add(Me.TXTSALDOREAL)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.LBLNOTAS)
-        Me.Controls.Add(Me.TXTNOTAS)
-        Me.Controls.Add(Me.BTNCERRARCAJA)
-        Me.Controls.Add(Me.BTNABRIRCAJA)
+        Me.Controls.Add(Me.BTNREPORTECAJA)
+        Me.Controls.Add(Me.BTNHISTORIALCAJA)
         Me.Controls.Add(Me.CMBUSUARIO)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DATACORTECAJA)
         Me.Controls.Add(Me.ETIQUETAS)
+        Me.Controls.Add(Me.CAJABOTONES)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -346,6 +358,8 @@ Partial Class FrmCorteDeCaja
         CType(Me.VISTAUSUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ETIQUETAS.ResumeLayout(False)
         Me.ETIQUETAS.PerformLayout()
+        Me.CAJABOTONES.ResumeLayout(False)
+        Me.CAJABOTONES.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -354,8 +368,6 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents DATACORTECAJA As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents CMBUSUARIO As ComboBox
-    Friend WithEvents BTNABRIRCAJA As Button
-    Friend WithEvents BTNCERRARCAJA As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
@@ -370,12 +382,15 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents VISTACORTECAJABindingSource As BindingSource
     Friend WithEvents VISTACORTECAJATableAdapter As MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter
     Friend WithEvents NoVenta As DataGridViewTextBoxColumn
-    Friend WithEvents TXTNOTAS As TextBox
-    Friend WithEvents LBLNOTAS As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents ETIQUETAS As GroupBox
+    Friend WithEvents BTNHISTORIALCAJA As Button
+    Friend WithEvents BTNREPORTECAJA As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents LBLNOTAS As Label
     Friend WithEvents TXTSALDOREAL As TextBox
+    Friend WithEvents TXTNOTAS As TextBox
     Friend WithEvents LBLSALDOREAL As Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents BTNABRIRCAJA As Button
+    Friend WithEvents BTNCERRARCAJA As Button
+    Friend WithEvents CAJABOTONES As GroupBox
 End Class

@@ -29,6 +29,7 @@ Public Class FrmCorteDeCaja
         Else
             CMBUSUARIO.SelectedIndex = -1
         End If
+
     End Sub
 
     Dim corteIDVariable As Integer
@@ -118,6 +119,10 @@ Public Class FrmCorteDeCaja
     End Sub
 
     Private Sub CMBUSUARIO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBUSUARIO.SelectedIndexChanged
+        ETIQUETAS.Show()
+        CAJABOTONES.Show()
+        DATACORTECAJA.Size = New Size(811, 800)
+
         If CMBUSUARIO.SelectedValue IsNot Nothing AndAlso IsNumeric(CMBUSUARIO.SelectedValue) Then
             usuarioIDSeleccionado = Convert.ToInt32(CMBUSUARIO.SelectedValue)
             CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
@@ -317,7 +322,7 @@ Public Class FrmCorteDeCaja
             If Conectar() = True Then
                 If comando.Parameters("@RETORNO").Value = "TRUE" Then
                     MsgBox("Caja cerrada correctamente", MsgBoxStyle.Information, "Éxito")
-                    CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
+                    CMBUSUARIO_SelectedIndexChanged(sender, e)
                 Else
                     MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "ErrorC1")
                 End If
@@ -328,7 +333,6 @@ Public Class FrmCorteDeCaja
     End Sub
 
     Public fechaParametro As DateTime
-
     Private Sub ActualizarFecha(sender As Object, e As EventArgs)
         fechaParametro = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second)
     End Sub
@@ -337,5 +341,33 @@ Public Class FrmCorteDeCaja
         If Not Char.IsDigit(e.KeyChar) AndAlso e.KeyChar <> ControlChars.Back Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub BTNHISTORIALCAJA_Click(sender As Object, e As EventArgs) Handles BTNHISTORIALCAJA.Click
+        ETIQUETAS.Hide()
+        CAJABOTONES.Hide()
+        CMBUSUARIO.SelectedIndex = -1
+        DATACORTECAJA.DataSource = Nothing
+        DATACORTECAJA.Size = New Size(1870, 800)
+
+        StrSql = "SELECT * FROM VISTACORTECAJA WHERE CIERRE BETWEEN DATEADD(MONTH, -2, GETDATE()) AND GETDATE()"
+        Dim comando As New SqlClient.SqlCommand(StrSql, Conexion)
+        Dim adapter As New SqlClient.SqlDataAdapter(comando)
+        Dim table As New DataTable()
+        adapter.Fill(table)
+        DATACORTECAJA.DataSource = table
+        DATACORTECAJA.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
+        DATACORTECAJA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells
+        DATACORTECAJA.Columns("DINERO EN CAJA").DefaultCellStyle.Format = "C2"
+        DATACORTECAJA.Columns("INGRESOS").DefaultCellStyle.Format = "C2"
+        DATACORTECAJA.Columns("EGRESOS").DefaultCellStyle.Format = "C2"
+        DATACORTECAJA.Columns("TOTAL DE CAJA").DefaultCellStyle.Format = "C2"
+        DATACORTECAJA.Columns("DINERO REPORTADO").DefaultCellStyle.Format = "C2"
+        DATACORTECAJA.Columns("NOTAS").AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
+        DATACORTECAJA.Columns("NOTAS").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+    End Sub
+
+    Private Sub BTNREPORTECAJA_Click(sender As Object, e As EventArgs) Handles BTNREPORTECAJA.Click
+        MsgBox(Environment.MachineName)
     End Sub
 End Class

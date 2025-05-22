@@ -16,7 +16,7 @@ Public Class FrmVentas
         CargarDatos()
         Me.BackColor = ColorFormulario
         EstiloBotones.CambiarColorBotones(Me)
-
+        TXTBUSCAR.Focus()
         DATAVENTAS.BackgroundColor = ColorFormulario
         DETALLEVENTAS.Location = New Point(540, 187)
         DATAVENTAS.DefaultCellStyle.Font = New Font("Dubai", 12)
@@ -443,4 +443,7 @@ Public Class FrmVentas
         FrmAltaVentas.ImprimirTicket(Me)
     End Sub
 
+    Private Sub CMBFILTRO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBFILTRO.SelectedIndexChanged
+        TXTBUSCAR_TextChanged(sender, e)
+    End Sub
 End Class

@@ -23,8 +23,8 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
         Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,8 +96,8 @@ Partial Class FrmVentas
         '
         Me.VENID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.VENID.DataPropertyName = "VENID"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.VENID.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.VENID.DefaultCellStyle = DataGridViewCellStyle1
         Me.VENID.HeaderText = "No.Venta"
         Me.VENID.Name = "VENID"
         Me.VENID.ReadOnly = True
@@ -142,9 +142,9 @@ Partial Class FrmVentas
         '
         Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
         Me.VENTOTAL.HeaderText = "Total"
         Me.VENTOTAL.Name = "VENTOTAL"
         Me.VENTOTAL.ReadOnly = True

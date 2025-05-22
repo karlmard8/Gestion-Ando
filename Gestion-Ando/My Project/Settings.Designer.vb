@@ -89,6 +89,54 @@ Namespace My
                 Me("FirebaseTokenGuardado") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ServidorSql() As String
+            Get
+                Return CType(Me("ServidorSql"),String)
+            End Get
+            Set
+                Me("ServidorSql") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property BaseDatosSQL() As String
+            Get
+                Return CType(Me("BaseDatosSQL"),String)
+            End Get
+            Set
+                Me("BaseDatosSQL") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property UsuarioSQL() As String
+            Get
+                Return CType(Me("UsuarioSQL"),String)
+            End Get
+            Set
+                Me("UsuarioSQL") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ContraseñaSQL() As String
+            Get
+                Return CType(Me("ContraseñaSQL"),String)
+            End Get
+            Set
+                Me("ContraseñaSQL") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
