@@ -170,7 +170,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.LBLINGRESOS.AutoSize = True
         Me.LBLINGRESOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLINGRESOS.Location = New System.Drawing.Point(267, 75)
+        Me.LBLINGRESOS.Location = New System.Drawing.Point(280, 75)
         Me.LBLINGRESOS.Name = "LBLINGRESOS"
         Me.LBLINGRESOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLINGRESOS.TabIndex = 10
@@ -180,7 +180,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.LBLEGRESOS.AutoSize = True
         Me.LBLEGRESOS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLEGRESOS.Location = New System.Drawing.Point(507, 75)
+        Me.LBLEGRESOS.Location = New System.Drawing.Point(490, 75)
         Me.LBLEGRESOS.Name = "LBLEGRESOS"
         Me.LBLEGRESOS.Size = New System.Drawing.Size(34, 32)
         Me.LBLEGRESOS.TabIndex = 11
@@ -190,7 +190,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.LBLSALDOFINAL.AutoSize = True
         Me.LBLSALDOFINAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSALDOFINAL.Location = New System.Drawing.Point(673, 75)
+        Me.LBLSALDOFINAL.Location = New System.Drawing.Point(700, 75)
         Me.LBLSALDOFINAL.Name = "LBLSALDOFINAL"
         Me.LBLSALDOFINAL.Size = New System.Drawing.Size(34, 32)
         Me.LBLSALDOFINAL.TabIndex = 12
@@ -225,7 +225,7 @@ Partial Class FrmCorteDeCaja
         Me.BTNHISTORIALCAJA.AutoSize = True
         Me.BTNHISTORIALCAJA.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNHISTORIALCAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNHISTORIALCAJA.Location = New System.Drawing.Point(650, 21)
+        Me.BTNHISTORIALCAJA.Location = New System.Drawing.Point(497, 19)
         Me.BTNHISTORIALCAJA.Name = "BTNHISTORIALCAJA"
         Me.BTNHISTORIALCAJA.Size = New System.Drawing.Size(173, 42)
         Me.BTNHISTORIALCAJA.TabIndex = 19
@@ -237,13 +237,12 @@ Partial Class FrmCorteDeCaja
         Me.BTNREPORTECAJA.AutoSize = True
         Me.BTNREPORTECAJA.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNREPORTECAJA.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNREPORTECAJA.Location = New System.Drawing.Point(934, 24)
+        Me.BTNREPORTECAJA.Location = New System.Drawing.Point(676, 19)
         Me.BTNREPORTECAJA.Name = "BTNREPORTECAJA"
         Me.BTNREPORTECAJA.Size = New System.Drawing.Size(147, 42)
         Me.BTNREPORTECAJA.TabIndex = 20
         Me.BTNREPORTECAJA.Text = "Reporte global"
         Me.BTNREPORTECAJA.UseVisualStyleBackColor = True
-        Me.BTNREPORTECAJA.Visible = False
         '
         'Label6
         '

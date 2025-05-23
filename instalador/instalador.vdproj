@@ -1659,6 +1659,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E7E4F57053C64ABC8BFE8578FACD097C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EF320EAE6CD9D4AEECDDEA0B69470476"
         "OwnerKey" = "8:_AC39590A33C64AA7986DD7FEE0AE41F0"
         "MsmSig" = "8:_UNDEFINED"
@@ -1709,6 +1715,12 @@
         {
         "MsmKey" = "8:_FBB827465516F0A2E38A89A28FB84A46"
         "OwnerKey" = "8:_AC39590A33C64AA7986DD7FEE0AE41F0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE5AA20C8BAC468F90847CF5FD0D2143"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -7633,6 +7645,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E7E4F57053C64ABC8BFE8578FACD097C"
+            {
+            "SourcePath" = "8:..\\Gestion-Ando\\bin\\Debug\\RPTCORTECAJA.rpt"
+            "TargetName" = "8:RPTCORTECAJA.rpt"
+            "Tag" = "8:"
+            "Folder" = "8:_F93429DF12BE45399839707DBDA23083"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EF320EAE6CD9D4AEECDDEA0B69470476"
             {
             "AssemblyRegister" = "3:1"
@@ -7870,6 +7902,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FE5AA20C8BAC468F90847CF5FD0D2143"
+            {
+            "SourcePath" = "8:..\\Gestion-Ando\\bin\\Debug\\RPTCORTECAJA.vb"
+            "TargetName" = "8:RPTCORTECAJA.vb"
+            "Tag" = "8:"
+            "Folder" = "8:_F93429DF12BE45399839707DBDA23083"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FE604A8EAA3D5D364B2FC97090BC8ACB"
             {
             "AssemblyRegister" = "3:1"
@@ -7969,7 +8021,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gestion-Ando"
         "ProductCode" = "8:{ED9ECCAC-35C1-44A7-8B37-ACB2E27E89B0}"
-        "PackageCode" = "8:{70A9DC6C-44EB-4655-9B9D-5F4BE2493305}"
+        "PackageCode" = "8:{8C83AAAD-3D14-485B-9583-7EF344680A96}"
         "UpgradeCode" = "8:{338C5F91-0772-4669-B315-4490F6E2A716}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

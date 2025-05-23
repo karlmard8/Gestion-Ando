@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports CrystalDecisions.CrystalReports.Engine
+Imports CrystalDecisions.Shared
 Imports Gestion_Ando.FrmPrincipal
 Imports Google
 Imports Microsoft.Extensions.Logging
@@ -127,7 +129,7 @@ Public Class FrmCorteDeCaja
             usuarioIDSeleccionado = Convert.ToInt32(CMBUSUARIO.SelectedValue)
             CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
 
-            ' Consulta saldo inicial en la base de datos
+            ' 🔥 Consulta saldo inicial en la base de datos
             StrSql = "SALDOINICIALCAJA"
             comando = New SqlClient.SqlCommand(StrSql, Conexion)
             comando.CommandType = CommandType.StoredProcedure
@@ -137,33 +139,37 @@ Public Class FrmCorteDeCaja
             Dim saldoInicial As Decimal = 0
             If Conectar() = True Then
                 saldoInicial = If(IsDBNull(comando.Parameters("@SaldoInicial").Value), 0, Convert.ToDecimal(comando.Parameters("@SaldoInicial").Value))
-                LBLSALDOINICIAL.Text = saldoInicial.ToString("C2") 'Formato moneda
+                LBLSALDOINICIAL.Text = saldoInicial.ToString("C2") ' 🔥 Formato moneda
             End If
 
-            'Calcular ingresos desde `DATACORTECAJA`
+            ' 🔥 Calcular ingresos y egresos desde `DATACORTECAJA`
             Dim INGRESOS As Decimal = 0
+            Dim EGRESOS As Decimal = 0
+
             For Each row As DataGridViewRow In Me.DATACORTECAJA.Rows
                 If Not row.IsNewRow AndAlso Not IsDBNull(row.Cells("Venta").Value) Then
                     Dim tipoVenta As String = row.Cells("Venta").Value.ToString()
 
                     If tipoVenta = "Crédito" AndAlso Not IsDBNull(row.Cells("Enganche").Value) Then
-
                         INGRESOS += Convert.ToDecimal(row.Cells("Enganche").Value)
                     ElseIf Not IsDBNull(row.Cells("Total").Value) Then
+                        Dim total As Decimal = Convert.ToDecimal(row.Cells("Total").Value)
 
-                        INGRESOS += Convert.ToDecimal(row.Cells("Total").Value)
+                        If total < 0 Then
+                            EGRESOS += Math.Abs(total) ' 🔥 Si es negativo, se suma a egresos
+                        Else
+                            INGRESOS += total ' 🔥 Si es positivo, se suma a ingresos
+                        End If
                     End If
                 End If
             Next
 
+            ' 🔥 Asignar valores con formato correcto
             LBLINGRESOS.Text = INGRESOS.ToString("C2")
+            LBLEGRESOS.Text = EGRESOS.ToString("C2")
 
-            'Asignar ingresos y egresos con formato correcto
-            LBLINGRESOS.Text = INGRESOS.ToString("C2")
-            LBLEGRESOS.Text = 0.ToString("C2")
-
-            'Calcular saldo final correctamente sin errores de conversión
-            Dim saldoFinal As Decimal = saldoInicial + INGRESOS
+            ' 🔥 Calcular saldo final sin errores de conversión
+            Dim saldoFinal As Decimal = saldoInicial + INGRESOS - EGRESOS
             LBLSALDOFINAL.Text = saldoFinal.ToString("C2")
         End If
     End Sub
@@ -368,6 +374,52 @@ Public Class FrmCorteDeCaja
     End Sub
 
     Private Sub BTNREPORTECAJA_Click(sender As Object, e As EventArgs) Handles BTNREPORTECAJA.Click
-        MsgBox(Environment.MachineName)
+        Dim rutaReporte As String
+        Dim rutaBase As String = Application.StartupPath
+
+        rutaReporte = System.IO.Path.Combine(rutaBase, "RPTCORTECAJA.rpt")
+
+
+        ' Validar existencia del archivo de reporte
+        If Not System.IO.File.Exists(rutaReporte) Then
+            MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada: " & rutaReporte, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' Cargar el reporte
+        Dim MANIFIESTO As New ReportDocument()
+        MANIFIESTO.Load(rutaReporte)
+
+        ' Configurar conexión a la base de datos
+        Dim crConnInfo As New ConnectionInfo()
+        With crConnInfo
+            .ServerName = SERVIDOR
+            .DatabaseName = BASEDATOS
+            .UserID = USUARIO
+            .Password = CONTRASEÑA
+        End With
+
+        ' Aplicar conexión a cada tabla del reporte
+        Dim crDatabase As Database = MANIFIESTO.Database
+        Dim crTables As Tables = crDatabase.Tables
+        For Each crTable As Table In crTables
+            Dim crLogOnInfo As TableLogOnInfo = crTable.LogOnInfo
+            crLogOnInfo.ConnectionInfo = crConnInfo
+            crTable.ApplyLogOnInfo(crLogOnInfo)
+            MANIFIESTO.VerifyDatabase()
+            MANIFIESTO.Refresh()
+            ' Ajustar la ubicación de la tabla para evitar solicitud de credenciales
+            crTable.Location = crConnInfo.DatabaseName & ".dbo." & crTable.Name
+        Next
+
+        ' Verificar y refrescar la base de datos
+        MANIFIESTO.VerifyDatabase()
+        MANIFIESTO.Refresh()
+
+        ' Mostrar el reporte
+        Dim MUESTRA As New FrmReportes()
+        MUESTRA.Reportes.ReportSource = MANIFIESTO
+        MUESTRA.Reportes.Refresh()
+        MUESTRA.ShowDialog()
     End Sub
 End Class

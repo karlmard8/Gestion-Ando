@@ -23,8 +23,8 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
         Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -64,7 +64,7 @@ Partial Class FrmVentas
         Me.BTNELIMINAR.Location = New System.Drawing.Point(956, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNELIMINAR.TabIndex = 5
+        Me.BTNELIMINAR.TabIndex = 20
         Me.BTNELIMINAR.Text = "Eliminar"
         Me.BTNELIMINAR.UseVisualStyleBackColor = False
         '
@@ -96,8 +96,8 @@ Partial Class FrmVentas
         '
         Me.VENID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.VENID.DataPropertyName = "VENID"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.VENID.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.VENID.DefaultCellStyle = DataGridViewCellStyle3
         Me.VENID.HeaderText = "No.Venta"
         Me.VENID.Name = "VENID"
         Me.VENID.ReadOnly = True
@@ -142,9 +142,9 @@ Partial Class FrmVentas
         '
         Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle2.Format = "C2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Format = "C2"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle4
         Me.VENTOTAL.HeaderText = "Total"
         Me.VENTOTAL.Name = "VENTOTAL"
         Me.VENTOTAL.ReadOnly = True
@@ -255,7 +255,7 @@ Partial Class FrmVentas
         Me.BTNIMPRIMIR.Location = New System.Drawing.Point(816, 69)
         Me.BTNIMPRIMIR.Name = "BTNIMPRIMIR"
         Me.BTNIMPRIMIR.Size = New System.Drawing.Size(133, 45)
-        Me.BTNIMPRIMIR.TabIndex = 20
+        Me.BTNIMPRIMIR.TabIndex = 17
         Me.BTNIMPRIMIR.Text = "Imprimir ticket"
         Me.BTNIMPRIMIR.UseVisualStyleBackColor = False
         '
@@ -279,7 +279,7 @@ Partial Class FrmVentas
         Me.CMBFILTRO.Location = New System.Drawing.Point(628, 24)
         Me.CMBFILTRO.Name = "CMBFILTRO"
         Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
-        Me.CMBFILTRO.TabIndex = 23
+        Me.CMBFILTRO.TabIndex = 16
         '
         'Label3
         '

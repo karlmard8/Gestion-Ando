@@ -54,7 +54,6 @@ Public Class FrmPrincipal
 
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Interval = 1000 ' 🔹 Cada segundo verifica la hora
-        AddHandler Timer1.Tick, AddressOf VerificarHora
         Timer1.Start()
 
 
@@ -112,23 +111,6 @@ Public Class FrmPrincipal
     Public Class FrmTiempo
         Public WithEvents Timer1 As New Timer()
     End Class
-
-    Dim mensajeMostradoHoy As Boolean = False
-    Private Sub VerificarHora(sender As Object, e As EventArgs)
-        Dim horaObjetivo As TimeSpan = New TimeSpan(12, 25, 0) ' 🔥 Hora específica
-        Dim horaActual As TimeSpan = DateTime.Now.TimeOfDay ' 🔹 Obtener la hora actual
-
-        ' 🔥 Mostrar el mensaje solo una vez cuando sea exactamente la hora
-        If horaActual.Hours = horaObjetivo.Hours AndAlso horaActual.Minutes = horaObjetivo.Minutes AndAlso Not mensajeMostradoHoy Then
-            mensajeMostradoHoy = True ' 🔥 Marcar el mensaje como mostrado para evitar repetición
-            MessageBox.Show("¡Es hora de cerrar la caja!", "Alerta de horario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        End If
-
-        ' 🔥 Reiniciar la bandera al inicio del día
-        If horaActual.Hours = 0 AndAlso horaActual.Minutes = 0 Then
-            mensajeMostradoHoy = False ' 🔹 Permitir que se muestre nuevamente al día siguiente
-        End If
-    End Sub
 
 
     Public Sub ALERTADEUDORES()

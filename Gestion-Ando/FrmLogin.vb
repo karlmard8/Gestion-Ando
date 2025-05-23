@@ -6,7 +6,6 @@ Imports System.Text
 
 Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         If String.IsNullOrEmpty(My.Settings.ServidorSql) OrElse
        String.IsNullOrEmpty(My.Settings.BaseDatosSQL) OrElse
        String.IsNullOrEmpty(My.Settings.UsuarioSQL) OrElse

@@ -321,6 +321,12 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AuthFirebase.vb" />
+    <Compile Include="RPTCORTECAJA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPTCORTECAJA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmAltaClientes.Designer.vb">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </Compile>
@@ -454,6 +460,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="RPTCORTECAJA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPTCORTECAJA.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAltaClientes.resx">
       <DependentUpon>FrmAltaClientes.vb</DependentUpon>
     </EmbeddedResource>
