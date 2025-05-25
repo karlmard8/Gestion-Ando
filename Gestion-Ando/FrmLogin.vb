@@ -312,7 +312,6 @@ Public Class FrmLogin
         End Try
     End Sub
 
-
     Private Function CalcularHashArchivo(ruta As String) As String
         Using sha256 As SHA256 = SHA256.Create()
             Using stream As FileStream = File.OpenRead(ruta)
@@ -321,7 +320,6 @@ Public Class FrmLogin
             End Using
         End Using
     End Function
-
 
     Private Function VerificarIntegridadLicencia() As Boolean
         Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
@@ -340,7 +338,6 @@ Public Class FrmLogin
             Return hashGuardado = hashActual
         End If
     End Function
-
 
     Private Sub TextBox_KeyDown(sender As Object, e As KeyEventArgs)
         If e.KeyCode = Keys.Enter Then
