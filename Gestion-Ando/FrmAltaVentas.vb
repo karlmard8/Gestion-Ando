@@ -88,8 +88,8 @@ Public Class FrmAltaVentas
             RBCREDITO.Enabled = True
         End If
 
-        AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha ' 🔥 Vincular evento Tick
-        FrmPrincipal.Timer1.Interval = 1000 ' 🔥 Cada segundo
+        AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha 'Vincular evento Tick
+        FrmPrincipal.Timer1.Interval = 1000 'Cada segundo
         FrmPrincipal.Timer1.Start()
     End Sub
 
@@ -157,7 +157,7 @@ Public Class FrmAltaVentas
 
     Private Sub ActualizarFecha(sender As Object, e As EventArgs)
         fechaParametro = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second)
-        'LabelFecha.Text = fechaParametro.ToString("dd/MM/yyyy HH:mm:ss") ' 🔥 Mostrar en etiqueta
+        'LabelFecha.Text = fechaParametro.ToString("dd/MM/yyyy HH:mm:ss") 'Mostrar en etiqueta
     End Sub
 
     Dim VENID As Long
@@ -196,13 +196,10 @@ Public Class FrmAltaVentas
 
                             FrmVentas.CargarDatos()
 
-
-                            If TIPOPRODUCTO <> "CLASE" Then
-                                Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                                If IMPRIMIR = DialogResult.Yes Then
-                                    ' Llamar al método de impresión
-                                    ImprimirTicket(Me)
-                                End If
+                            Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            If IMPRIMIR = DialogResult.Yes Then
+                                ' Llamar al método de impresión
+                                ImprimirTicket(Me)
                             End If
                             DialogResult = DialogResult.OK
                             FrmVentas.CargarDatos()
@@ -247,13 +244,13 @@ Public Class FrmAltaVentas
                             previousTotal = 0
                             FrmVentas.CargarDatos()
 
-                            If TIPOPRODUCTO <> "CLASE" Then
-                                Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                                If IMPRIMIR = DialogResult.Yes Then
-                                    ' Llamar al método de impresión
-                                    ImprimirTicket(Me)
-                                End If
+
+                            Dim IMPRIMIR As DialogResult = MessageBox.Show("¿Desea imprimir el ticket?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            If IMPRIMIR = DialogResult.Yes Then
+                                ' Llamar al método de impresión
+                                ImprimirTicket(Me)
                             End If
+
                             Me.Close()
                         End If
                     Else
@@ -276,7 +273,7 @@ Public Class FrmAltaVentas
 
     Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)
 
-        ' 🔥 Detectar desde qué formulario se ejecuta
+        'Detectar desde qué formulario se ejecuta
         If TypeOf formularioOrigen Is FrmAltaVentas Then
             ' 🔹 Obtener VENID desde la variable declarada en FrmAltaVentas
             VENID = CType(formularioOrigen, FrmAltaVentas).VENID

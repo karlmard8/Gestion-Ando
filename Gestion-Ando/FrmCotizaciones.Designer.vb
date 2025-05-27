@@ -1,0 +1,449 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class FrmCotizaciones
+    Inherits System.Windows.Forms.Form
+
+    'Form reemplaza a Dispose para limpiar la lista de componentes.
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Requerido por el Diseñador de Windows Forms
+    Private components As System.ComponentModel.IContainer
+
+    'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
+    'Se puede modificar usando el Diseñador de Windows Forms.  
+    'No lo modifique con el editor de código.
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Me.DATACOTIZACIONES = New System.Windows.Forms.DataGridView()
+        Me.CMBCLIENTE = New System.Windows.Forms.ComboBox()
+        Me.VISTACLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CMBPRODUCTO = New System.Windows.Forms.ComboBox()
+        Me.VISTAPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BTNGUARDAR = New System.Windows.Forms.Button()
+        Me.BTNIMPRIMIR = New System.Windows.Forms.Button()
+        Me.BTNENVIAR = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.VISTACLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter()
+        Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.TXTCANTIDAD = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.BTNSUM = New System.Windows.Forms.Button()
+        Me.BTNRES = New System.Windows.Forms.Button()
+        Me.BTNAGREGAR = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.LBLPRECIO = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.LBLTOTAL = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LBLSUBTOTAL = New System.Windows.Forms.Label()
+        Me.LBLDESCUENTO = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        CType(Me.DATACOTIZACIONES, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'DATACOTIZACIONES
+        '
+        Me.DATACOTIZACIONES.AllowUserToAddRows = False
+        Me.DATACOTIZACIONES.AllowUserToDeleteRows = False
+        Me.DATACOTIZACIONES.AllowUserToResizeColumns = False
+        Me.DATACOTIZACIONES.AllowUserToResizeRows = False
+        Me.DATACOTIZACIONES.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.DATACOTIZACIONES.BackgroundColor = System.Drawing.Color.White
+        Me.DATACOTIZACIONES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+        Me.DATACOTIZACIONES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DATACOTIZACIONES.Location = New System.Drawing.Point(0, 242)
+        Me.DATACOTIZACIONES.MultiSelect = False
+        Me.DATACOTIZACIONES.Name = "DATACOTIZACIONES"
+        Me.DATACOTIZACIONES.RowHeadersVisible = False
+        Me.DATACOTIZACIONES.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DATACOTIZACIONES.Size = New System.Drawing.Size(1700, 567)
+        Me.DATACOTIZACIONES.TabIndex = 0
+        Me.DATACOTIZACIONES.TabStop = False
+        '
+        'CMBCLIENTE
+        '
+        Me.CMBCLIENTE.DataSource = Me.VISTACLIENTESBindingSource
+        Me.CMBCLIENTE.DisplayMember = "Expr1"
+        Me.CMBCLIENTE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBCLIENTE.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CMBCLIENTE.FormattingEnabled = True
+        Me.CMBCLIENTE.Location = New System.Drawing.Point(110, 67)
+        Me.CMBCLIENTE.Name = "CMBCLIENTE"
+        Me.CMBCLIENTE.Size = New System.Drawing.Size(414, 35)
+        Me.CMBCLIENTE.TabIndex = 1
+        Me.CMBCLIENTE.ValueMember = "CLIID"
+        '
+        'VISTACLIENTESBindingSource
+        '
+        Me.VISTACLIENTESBindingSource.DataMember = "VISTACLIENTES"
+        Me.VISTACLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(29, 70)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(70, 32)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Cliente"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(12, 143)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(87, 32)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Producto"
+        '
+        'CMBPRODUCTO
+        '
+        Me.CMBPRODUCTO.DataSource = Me.VISTAPRODUCTOSBindingSource
+        Me.CMBPRODUCTO.DisplayMember = "PRONOMBRE"
+        Me.CMBPRODUCTO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBPRODUCTO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CMBPRODUCTO.FormattingEnabled = True
+        Me.CMBPRODUCTO.Location = New System.Drawing.Point(110, 140)
+        Me.CMBPRODUCTO.Name = "CMBPRODUCTO"
+        Me.CMBPRODUCTO.Size = New System.Drawing.Size(1315, 35)
+        Me.CMBPRODUCTO.TabIndex = 3
+        Me.CMBPRODUCTO.ValueMember = "PROID"
+        '
+        'VISTAPRODUCTOSBindingSource
+        '
+        Me.VISTAPRODUCTOSBindingSource.DataMember = "VISTAPRODUCTOS"
+        Me.VISTAPRODUCTOSBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'BTNGUARDAR
+        '
+        Me.BTNGUARDAR.AutoSize = True
+        Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNGUARDAR.Location = New System.Drawing.Point(1706, 242)
+        Me.BTNGUARDAR.Name = "BTNGUARDAR"
+        Me.BTNGUARDAR.Size = New System.Drawing.Size(177, 42)
+        Me.BTNGUARDAR.TabIndex = 6
+        Me.BTNGUARDAR.Text = "Guardar cotización"
+        Me.BTNGUARDAR.UseVisualStyleBackColor = True
+        '
+        'BTNIMPRIMIR
+        '
+        Me.BTNIMPRIMIR.AutoSize = True
+        Me.BTNIMPRIMIR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNIMPRIMIR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNIMPRIMIR.Location = New System.Drawing.Point(1706, 441)
+        Me.BTNIMPRIMIR.Name = "BTNIMPRIMIR"
+        Me.BTNIMPRIMIR.Size = New System.Drawing.Size(177, 42)
+        Me.BTNIMPRIMIR.TabIndex = 7
+        Me.BTNIMPRIMIR.Text = "Imprimir cotización"
+        Me.BTNIMPRIMIR.UseVisualStyleBackColor = True
+        '
+        'BTNENVIAR
+        '
+        Me.BTNENVIAR.AutoSize = True
+        Me.BTNENVIAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNENVIAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNENVIAR.Location = New System.Drawing.Point(1706, 642)
+        Me.BTNENVIAR.Name = "BTNENVIAR"
+        Me.BTNENVIAR.Size = New System.Drawing.Size(177, 42)
+        Me.BTNENVIAR.TabIndex = 8
+        Me.BTNENVIAR.Text = "Enviar por correo"
+        Me.BTNENVIAR.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(1579, 9)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(133, 32)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "No. Cotización:"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(1718, 12)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(29, 27)
+        Me.Label7.TabIndex = 10
+        Me.Label7.Text = ". . ."
+        '
+        'VISTACLIENTESTableAdapter
+        '
+        Me.VISTACLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTAPRODUCTOSTableAdapter
+        '
+        Me.VISTAPRODUCTOSTableAdapter.ClearBeforeFill = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1896, 49)
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = False
+        '
+        'TXTCANTIDAD
+        '
+        Me.TXTCANTIDAD.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTCANTIDAD.Location = New System.Drawing.Point(156, 204)
+        Me.TXTCANTIDAD.MaxLength = 10
+        Me.TXTCANTIDAD.Name = "TXTCANTIDAD"
+        Me.TXTCANTIDAD.Size = New System.Drawing.Size(100, 26)
+        Me.TXTCANTIDAD.TabIndex = 12
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(14, 201)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(85, 32)
+        Me.Label8.TabIndex = 13
+        Me.Label8.Text = "Cantidad"
+        '
+        'BTNSUM
+        '
+        Me.BTNSUM.AutoSize = True
+        Me.BTNSUM.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNSUM.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNSUM.Location = New System.Drawing.Point(262, 202)
+        Me.BTNSUM.Name = "BTNSUM"
+        Me.BTNSUM.Size = New System.Drawing.Size(29, 30)
+        Me.BTNSUM.TabIndex = 14
+        Me.BTNSUM.Text = "+"
+        Me.BTNSUM.UseVisualStyleBackColor = True
+        '
+        'BTNRES
+        '
+        Me.BTNRES.AutoSize = True
+        Me.BTNRES.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNRES.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNRES.Location = New System.Drawing.Point(121, 202)
+        Me.BTNRES.Name = "BTNRES"
+        Me.BTNRES.Size = New System.Drawing.Size(29, 30)
+        Me.BTNRES.TabIndex = 15
+        Me.BTNRES.Text = "-"
+        Me.BTNRES.UseVisualStyleBackColor = True
+        '
+        'BTNAGREGAR
+        '
+        Me.BTNAGREGAR.AutoSize = True
+        Me.BTNAGREGAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNAGREGAR.Location = New System.Drawing.Point(890, 193)
+        Me.BTNAGREGAR.Name = "BTNAGREGAR"
+        Me.BTNAGREGAR.Size = New System.Drawing.Size(77, 37)
+        Me.BTNAGREGAR.TabIndex = 16
+        Me.BTNAGREGAR.Text = "Agregar"
+        Me.BTNAGREGAR.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(1430, 143)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(68, 32)
+        Me.Label9.TabIndex = 17
+        Me.Label9.Text = "Precio:"
+        '
+        'LBLPRECIO
+        '
+        Me.LBLPRECIO.AutoSize = True
+        Me.LBLPRECIO.Font = New System.Drawing.Font("Dubai Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLPRECIO.Location = New System.Drawing.Point(1490, 146)
+        Me.LBLPRECIO.Name = "LBLPRECIO"
+        Me.LBLPRECIO.Size = New System.Drawing.Size(34, 27)
+        Me.LBLPRECIO.TabIndex = 18
+        Me.LBLPRECIO.Text = ". . ."
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.Location = New System.Drawing.Point(0, 131)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1700, 105)
+        Me.PictureBox2.TabIndex = 19
+        Me.PictureBox2.TabStop = False
+        '
+        'LBLTOTAL
+        '
+        Me.LBLTOTAL.AutoSize = True
+        Me.LBLTOTAL.Font = New System.Drawing.Font("Dubai Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLTOTAL.Location = New System.Drawing.Point(1492, 70)
+        Me.LBLTOTAL.Name = "LBLTOTAL"
+        Me.LBLTOTAL.Size = New System.Drawing.Size(34, 27)
+        Me.LBLTOTAL.TabIndex = 0
+        Me.LBLTOTAL.Text = ". . ."
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(1481, 16)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(56, 32)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Total"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(150, 16)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(87, 32)
+        Me.Label5.TabIndex = 2
+        Me.Label5.Text = "SubTotal"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(783, 16)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(168, 32)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Descuento aplicado"
+        '
+        'LBLSUBTOTAL
+        '
+        Me.LBLSUBTOTAL.AutoSize = True
+        Me.LBLSUBTOTAL.Font = New System.Drawing.Font("Dubai Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLSUBTOTAL.Location = New System.Drawing.Point(161, 70)
+        Me.LBLSUBTOTAL.Name = "LBLSUBTOTAL"
+        Me.LBLSUBTOTAL.Size = New System.Drawing.Size(34, 27)
+        Me.LBLSUBTOTAL.TabIndex = 4
+        Me.LBLSUBTOTAL.Text = ". . ."
+        '
+        'LBLDESCUENTO
+        '
+        Me.LBLDESCUENTO.AutoSize = True
+        Me.LBLDESCUENTO.Font = New System.Drawing.Font("Dubai Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLDESCUENTO.Location = New System.Drawing.Point(819, 70)
+        Me.LBLDESCUENTO.Name = "LBLDESCUENTO"
+        Me.LBLDESCUENTO.Size = New System.Drawing.Size(34, 27)
+        Me.LBLDESCUENTO.TabIndex = 5
+        Me.LBLDESCUENTO.Text = ". . ."
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.LBLDESCUENTO)
+        Me.GroupBox1.Controls.Add(Me.LBLSUBTOTAL)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.Label5)
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.LBLTOTAL)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 815)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(1700, 100)
+        Me.GroupBox1.TabIndex = 5
+        Me.GroupBox1.TabStop = False
+        '
+        'FrmCotizaciones
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(1896, 930)
+        Me.Controls.Add(Me.LBLPRECIO)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.BTNAGREGAR)
+        Me.Controls.Add(Me.BTNRES)
+        Me.Controls.Add(Me.BTNSUM)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.TXTCANTIDAD)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.BTNENVIAR)
+        Me.Controls.Add(Me.BTNIMPRIMIR)
+        Me.Controls.Add(Me.BTNGUARDAR)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.CMBPRODUCTO)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.CMBCLIENTE)
+        Me.Controls.Add(Me.DATACOTIZACIONES)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "FrmCotizaciones"
+        Me.ShowInTaskbar = False
+        Me.Text = "FrmCotizaciones"
+        CType(Me.DATACOTIZACIONES, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VISTAPRODUCTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+
+    Friend WithEvents DATACOTIZACIONES As DataGridView
+    Friend WithEvents CMBCLIENTE As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents CMBPRODUCTO As ComboBox
+    Friend WithEvents BTNGUARDAR As Button
+    Friend WithEvents BTNIMPRIMIR As Button
+    Friend WithEvents BTNENVIAR As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents MuebleAlexDataSet As MuebleAlexDataSet
+    Friend WithEvents VISTACLIENTESBindingSource As BindingSource
+    Friend WithEvents VISTACLIENTESTableAdapter As MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter
+    Friend WithEvents VISTAPRODUCTOSBindingSource As BindingSource
+    Friend WithEvents VISTAPRODUCTOSTableAdapter As MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents TXTCANTIDAD As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents BTNSUM As Button
+    Friend WithEvents BTNRES As Button
+    Friend WithEvents BTNAGREGAR As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents LBLPRECIO As Label
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents LBLTOTAL As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents LBLSUBTOTAL As Label
+    Friend WithEvents LBLDESCUENTO As Label
+    Friend WithEvents GroupBox1 As GroupBox
+End Class

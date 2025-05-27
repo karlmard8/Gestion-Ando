@@ -55,7 +55,8 @@ Public Class FrmInventario
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Me.TBLPRODUCTOSBindingSource.Filter = "PRONOMBRE LIKE '*" & Me.TXTBUSCAR.Text & "*'"
+        Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''")
+        Me.TBLPRODUCTOSBindingSource.Filter = "PRONOMBRE LIKE '*" & textoFiltrado & "*'"
     End Sub
 
     Public Property rutaImagen As String
@@ -71,7 +72,7 @@ Public Class FrmInventario
             ALTAINVENTARIO.TXTCLAVE.Text = DATAINVENTARIO.CurrentRow.Cells("PROCLAVE").Value
             ALTAINVENTARIO.TXTNOMBRE.Text = DATAINVENTARIO.CurrentRow.Cells("PRONOMBRE").Value
             ALTAINVENTARIO.SPINNER.Value = DATAINVENTARIO.CurrentRow.Cells("PROEXISTENCIAS").Value
-            ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt32(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
+            ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt64(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
             ALTAINVENTARIO.imagenRuta = DATAINVENTARIO.CurrentRow.Cells("PROIMAGEN").Value
 
             'CODIGO PARA CARGAR LA IMAGEN DE UN REGISTRO EXISTENTE
@@ -132,7 +133,7 @@ Public Class FrmInventario
 
                 Dim NombreProducto As String = DATAINVENTARIO.SelectedRows(0).Cells("PRONOMBRE").Value
                 Dim EXISTENCIAS As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROEXISTENCIAS").Value
-                Dim PRECIO As Integer = DATAINVENTARIO.SelectedRows(0).Cells("PROPRECIO").Value
+                Dim PRECIO As Long = DATAINVENTARIO.SelectedRows(0).Cells("PROPRECIO").Value
 
                 ' Verificar que la ruta de la imagen no esté vacía o nula
                 If Not String.IsNullOrEmpty(rutaImagen) AndAlso File.Exists(rutaImagen) Then

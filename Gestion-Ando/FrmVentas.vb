@@ -7,9 +7,6 @@ Public Class FrmVentas
     Dim tablaOriginal As DataTable
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CMBFILTRO.SelectedIndex = 0
-        If TIPOPRODUCTO = "CLASE" Then
-            BTNIMPRIMIR.Visible = False
-        End If
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
         'Me.VISTAVENTASTableAdapter.Connection = Conexion
         'Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
@@ -63,7 +60,6 @@ Public Class FrmVentas
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-
         Dim OPCIONES As String
         If CMBFILTRO.SelectedItem = "Vendedor" Then
             OPCIONES = "USUNOMBRE"
@@ -72,12 +68,14 @@ Public Class FrmVentas
         End If
 
         If tablaOriginal IsNot Nothing Then
-            If TXTBUSCAR.Text.Trim() = "" Then
+            Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''") ' Escapar apóstrofes
+
+            If textoFiltrado.Trim() = "" Then
                 ' Restaurar la tabla completa
                 DATAVENTAS.DataSource = tablaOriginal.Copy()
             Else
                 ' Filtrar solo si hay texto
-                Dim resultado = tablaOriginal.Select(OPCIONES & " LIKE '%" & TXTBUSCAR.Text & "%'")
+                Dim resultado = tablaOriginal.Select(OPCIONES & " LIKE '%" & textoFiltrado & "%'")
                 If resultado.Length > 0 Then
                     DATAVENTAS.DataSource = resultado.CopyToDataTable()
                 Else

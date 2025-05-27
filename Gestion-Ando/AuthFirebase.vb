@@ -14,7 +14,7 @@ Module AuthFirebase
     ' 🔹 Función para iniciar sesión con email y contraseña
     Public Async Function IniciarSesion(email As String, password As String) As Task(Of Boolean)
         If BLOQUEO = True Then
-            Return False ' 🔥 Devolver un valor si el acceso está bloqueado
+            Return False 'Devolver un valor si el acceso está bloqueado
         End If
 
         Try
@@ -23,7 +23,7 @@ Module AuthFirebase
         Catch ex As FirebaseAuthException
             MessageBox.Show("Error de autenticación: Verifique la conexión a internet o llame a soporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Application.Exit()
-            Return False ' 🔥 Asegurar que siempre haya un retorno
+            Return False 'Asegurar que siempre haya un retorno
         End Try
     End Function
 
@@ -67,7 +67,7 @@ Module AuthFirebase
 
         Async Function ObtenerDocumento(calveNumero As Integer) As Task(Of Dictionary(Of String, Object))
             If BLOQUEO = True Then
-                Return Nothing ' 🔥 Siempre debe devolver un valor
+                Return Nothing 'Siempre debe devolver un valor
             End If
 
             If AuthFirebase.AuthUser Is Nothing Then
@@ -91,7 +91,7 @@ Module AuthFirebase
                 MessageBox.Show("Error al consultar Firestore: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
 
-            Return Nothing ' 🔥 Asegurar que se devuelva un valor en todos los casos
+            Return Nothing 'Asegurar que se devuelva un valor en todos los casos
         End Function
 
     End Class

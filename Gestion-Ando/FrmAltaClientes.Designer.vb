@@ -56,6 +56,8 @@ Partial Class FrmAltaClientes
         Me.BTNLIMPIAR = New System.Windows.Forms.Button()
         Me.BTNGUARDAR = New System.Windows.Forms.Button()
         Me.TXTCREDITO = New System.Windows.Forms.ComboBox()
+        Me.LBLCORREO = New System.Windows.Forms.Label()
+        Me.TXTCORREO = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'TXTCODIGO
@@ -252,7 +254,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(86, 391)
+        Me.Label11.Location = New System.Drawing.Point(86, 422)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(53, 27)
         Me.Label11.TabIndex = 21
@@ -261,7 +263,7 @@ Partial Class FrmAltaClientes
         'TXTNOTAS
         '
         Me.TXTNOTAS.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTNOTAS.Location = New System.Drawing.Point(146, 391)
+        Me.TXTNOTAS.Location = New System.Drawing.Point(146, 422)
         Me.TXTNOTAS.MaxLength = 255
         Me.TXTNOTAS.Name = "TXTNOTAS"
         Me.TXTNOTAS.Size = New System.Drawing.Size(288, 26)
@@ -271,7 +273,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(77, 423)
+        Me.Label12.Location = New System.Drawing.Point(77, 454)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(63, 27)
         Me.Label12.TabIndex = 23
@@ -281,7 +283,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(95, 457)
+        Me.Label13.Location = New System.Drawing.Point(95, 488)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(39, 27)
         Me.Label13.TabIndex = 25
@@ -290,7 +292,7 @@ Partial Class FrmAltaClientes
         'TXTRFC
         '
         Me.TXTRFC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTRFC.Location = New System.Drawing.Point(146, 457)
+        Me.TXTRFC.Location = New System.Drawing.Point(146, 488)
         Me.TXTRFC.MaxLength = 20
         Me.TXTRFC.Name = "TXTRFC"
         Me.TXTRFC.Size = New System.Drawing.Size(288, 26)
@@ -300,7 +302,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(29, 489)
+        Me.Label14.Location = New System.Drawing.Point(29, 520)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(111, 27)
         Me.Label14.TabIndex = 27
@@ -309,7 +311,7 @@ Partial Class FrmAltaClientes
         'TXTREGIMEN
         '
         Me.TXTREGIMEN.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTREGIMEN.Location = New System.Drawing.Point(146, 489)
+        Me.TXTREGIMEN.Location = New System.Drawing.Point(146, 520)
         Me.TXTREGIMEN.MaxLength = 100
         Me.TXTREGIMEN.Name = "TXTREGIMEN"
         Me.TXTREGIMEN.Size = New System.Drawing.Size(288, 26)
@@ -319,7 +321,7 @@ Partial Class FrmAltaClientes
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(95, 521)
+        Me.Label15.Location = New System.Drawing.Point(95, 552)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(45, 27)
         Me.Label15.TabIndex = 29
@@ -328,7 +330,7 @@ Partial Class FrmAltaClientes
         'TXTCFDI
         '
         Me.TXTCFDI.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTCFDI.Location = New System.Drawing.Point(146, 521)
+        Me.TXTCFDI.Location = New System.Drawing.Point(146, 552)
         Me.TXTCFDI.MaxLength = 100
         Me.TXTCFDI.Name = "TXTCFDI"
         Me.TXTCFDI.Size = New System.Drawing.Size(288, 26)
@@ -348,7 +350,7 @@ Partial Class FrmAltaClientes
         '
         Me.BTNCANCELAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNCANCELAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNCANCELAR.Location = New System.Drawing.Point(332, 580)
+        Me.BTNCANCELAR.Location = New System.Drawing.Point(332, 620)
         Me.BTNCANCELAR.Name = "BTNCANCELAR"
         Me.BTNCANCELAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNCANCELAR.TabIndex = 33
@@ -359,7 +361,7 @@ Partial Class FrmAltaClientes
         '
         Me.BTNLIMPIAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNLIMPIAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNLIMPIAR.Location = New System.Drawing.Point(180, 580)
+        Me.BTNLIMPIAR.Location = New System.Drawing.Point(180, 620)
         Me.BTNLIMPIAR.Name = "BTNLIMPIAR"
         Me.BTNLIMPIAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNLIMPIAR.TabIndex = 32
@@ -370,7 +372,7 @@ Partial Class FrmAltaClientes
         '
         Me.BTNGUARDAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNGUARDAR.Location = New System.Drawing.Point(27, 580)
+        Me.BTNGUARDAR.Location = New System.Drawing.Point(27, 620)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
         Me.BTNGUARDAR.Size = New System.Drawing.Size(102, 47)
         Me.BTNGUARDAR.TabIndex = 31
@@ -383,16 +385,37 @@ Partial Class FrmAltaClientes
         Me.TXTCREDITO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTCREDITO.FormattingEnabled = True
         Me.TXTCREDITO.Items.AddRange(New Object() {"Acreditado", "No acreditado", "Pendiente"})
-        Me.TXTCREDITO.Location = New System.Drawing.Point(146, 423)
+        Me.TXTCREDITO.Location = New System.Drawing.Point(146, 454)
         Me.TXTCREDITO.Name = "TXTCREDITO"
         Me.TXTCREDITO.Size = New System.Drawing.Size(288, 28)
         Me.TXTCREDITO.TabIndex = 22
+        '
+        'LBLCORREO
+        '
+        Me.LBLCORREO.AutoSize = True
+        Me.LBLCORREO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCORREO.Location = New System.Drawing.Point(75, 390)
+        Me.LBLCORREO.Name = "LBLCORREO"
+        Me.LBLCORREO.Size = New System.Drawing.Size(59, 27)
+        Me.LBLCORREO.TabIndex = 35
+        Me.LBLCORREO.Text = "Correo"
+        '
+        'TXTCORREO
+        '
+        Me.TXTCORREO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTCORREO.Location = New System.Drawing.Point(146, 390)
+        Me.TXTCORREO.MaxLength = 100
+        Me.TXTCORREO.Name = "TXTCORREO"
+        Me.TXTCORREO.Size = New System.Drawing.Size(288, 26)
+        Me.TXTCORREO.TabIndex = 19
         '
         'FrmAltaClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(479, 657)
+        Me.ClientSize = New System.Drawing.Size(479, 697)
+        Me.Controls.Add(Me.LBLCORREO)
+        Me.Controls.Add(Me.TXTCORREO)
         Me.Controls.Add(Me.TXTCREDITO)
         Me.Controls.Add(Me.BTNGUARDAR)
         Me.Controls.Add(Me.BTNLIMPIAR)
@@ -473,4 +496,6 @@ Partial Class FrmAltaClientes
     Friend WithEvents BTNLIMPIAR As Button
     Friend WithEvents BTNGUARDAR As Button
     Friend WithEvents TXTCREDITO As ComboBox
+    Friend WithEvents LBLCORREO As Label
+    Friend WithEvents TXTCORREO As TextBox
 End Class

@@ -93,7 +93,7 @@ Partial Class FrmAltaProductos
         '
         Me.TXTPRECIO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTPRECIO.Location = New System.Drawing.Point(151, 164)
-        Me.TXTPRECIO.MaxLength = 15
+        Me.TXTPRECIO.MaxLength = 14
         Me.TXTPRECIO.Name = "TXTPRECIO"
         Me.TXTPRECIO.Size = New System.Drawing.Size(289, 26)
         Me.TXTPRECIO.TabIndex = 7

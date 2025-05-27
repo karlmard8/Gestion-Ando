@@ -77,6 +77,7 @@
             comando.Parameters.Add("@CLICIUDAD", SqlDbType.VarChar, 80).Value = TXTCIUDAD.Text
             comando.Parameters.Add("@CLIESTADO", SqlDbType.VarChar, 30).Value = TXTESTADO.Text
             comando.Parameters.Add("@CLITELEFONO", SqlDbType.VarChar, 10).Value = TXTTELEFONO.Text
+            comando.Parameters.Add("@CLICORREO", SqlDbType.VarChar, 100).Value = TXTCORREO.Text
             comando.Parameters.Add("@CLICOMENTARIOS", SqlDbType.VarChar, 250).Value = TXTNOTAS.Text
             comando.Parameters.Add("@CLIHISTORIALCREDITICIO", SqlDbType.VarChar, 20).Value = TXTCREDITO.Text
             comando.Parameters.Add("@CLIRFC", SqlDbType.VarChar, 20).Value = TXTRFC.Text

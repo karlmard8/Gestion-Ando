@@ -55,8 +55,8 @@
     End Sub
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        ' Aplicar el filtro dinámico al BindingSource
-        Me.VISTACLIENTESPRINCIPALBindingSource1.Filter = CMBFILTRO.SelectedItem.ToString() & " LIKE '*" & TXTBUSCAR.Text & "*'"
+        Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''")
+        Me.VISTACLIENTESPRINCIPALBindingSource1.Filter = CMBFILTRO.SelectedItem.ToString() & " LIKE '*" & textoFiltrado & "*'"
     End Sub
 
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
@@ -67,14 +67,14 @@
             idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
             NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value
             Dim nombreCompleto As String = DATACLIENTES.CurrentRow.Cells("CLIENTES").Value.ToString().Trim()
-            Dim partes() As String = nombreCompleto.Split(" "c) ' 🔥 Dividir por espacios
+            Dim partes() As String = nombreCompleto.Split(" "c) 'Dividir por espacios
 
             ' Inicializar variables
             Dim nombre As String = ""
             Dim apellidoPaterno As String = ""
             Dim apellidoMaterno As String = ""
 
-            ' 🔥 Aplicar la lógica de separación según la cantidad de palabras
+            'Aplicar la lógica de separación según la cantidad de palabras
             Select Case partes.Length
                 Case 1 ' Solo un nombre
                     nombre = partes(0)
@@ -85,7 +85,7 @@
                     nombre = partes(0)
                     apellidoPaterno = partes(1)
                     apellidoMaterno = partes(2)
-                Case 5 ' 🔥 Cuando hay 5 palabras
+                Case 5 'Cuando hay 5 palabras
                     nombre = partes(0) & " " & partes(1) & " " & partes(2) ' Las primeras 3 son el nombre
                     apellidoPaterno = partes(3) ' La cuarta es el apellido paterno
                     apellidoMaterno = partes(4) ' La quinta es el apellido materno
@@ -106,6 +106,7 @@
             NUEVO.TXTCIUDAD.Text = DATACLIENTES.CurrentRow.Cells("CLICIUDAD").Value
             NUEVO.TXTESTADO.Text = DATACLIENTES.CurrentRow.Cells("CLIESTADO").Value
             NUEVO.TXTTELEFONO.Text = DATACLIENTES.CurrentRow.Cells("CLITELEFONO").Value
+            NUEVO.TXTCORREO.Text = DATACLIENTES.CurrentRow.Cells("CLICORREO").Value
             NUEVO.TXTNOTAS.Text = DATACLIENTES.CurrentRow.Cells("CLICOMENTARIOS").Value
             NUEVO.TXTCREDITO.Text = DATACLIENTES.CurrentRow.Cells("CLIHISTORIALCREDITICIO").Value
             NUEVO.TXTRFC.Text = DATACLIENTES.CurrentRow.Cells("CLIRFC").Value

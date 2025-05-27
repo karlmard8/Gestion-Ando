@@ -28,8 +28,9 @@ Partial Class FrmPrincipal
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteDeCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CotizacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
         Me.BTNDEUDORES = New System.Windows.Forms.Button()
@@ -47,7 +48,7 @@ Partial Class FrmPrincipal
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
         Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
+        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CotizacionesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -73,17 +74,23 @@ Partial Class FrmPrincipal
         Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(118, 34)
         Me.InventarioToolStripMenuItem.Text = "Inventario"
         '
-        'UsuariosToolStripMenuItem
-        '
-        Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(104, 34)
-        Me.UsuariosToolStripMenuItem.Text = "Usuarios"
-        '
         'CorteDeCajaToolStripMenuItem
         '
         Me.CorteDeCajaToolStripMenuItem.Name = "CorteDeCajaToolStripMenuItem"
         Me.CorteDeCajaToolStripMenuItem.Size = New System.Drawing.Size(177, 34)
         Me.CorteDeCajaToolStripMenuItem.Text = "Abrir/Cerrar caja"
+        '
+        'CotizacionesToolStripMenuItem
+        '
+        Me.CotizacionesToolStripMenuItem.Name = "CotizacionesToolStripMenuItem"
+        Me.CotizacionesToolStripMenuItem.Size = New System.Drawing.Size(142, 34)
+        Me.CotizacionesToolStripMenuItem.Text = "Cotizaciones"
+        '
+        'UsuariosToolStripMenuItem
+        '
+        Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(104, 34)
+        Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'CerrarSesiónToolStripMenuItem
         '
@@ -199,4 +206,5 @@ Partial Class FrmPrincipal
     Friend WithEvents LBLFECHA As Label
     Friend WithEvents BTNDEUDORES As Button
     Friend WithEvents CorteDeCajaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CotizacionesToolStripMenuItem As ToolStripMenuItem
 End Class

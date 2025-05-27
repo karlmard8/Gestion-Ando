@@ -23,14 +23,14 @@ Public Class FrmLogin
         USUARIO = My.Settings.UsuarioSQL
         CONTRASEÑA = My.Settings.ContraseñaSQL
 
-        ' 🔥 Aplicar configuraciones de diseño
+        'Aplicar configuraciones de diseño
         Me.BackColor = ColorFormulario
         EstiloBotones.CambiarColorBotones(Me)
 
-        ' 🔥 Llamar funciones adicionales
+        'Llamar funciones adicionales
         Call inicio()
 
-        ' 🔥 Manejar eventos para los `TextBox`
+        'Manejar eventos para los `TextBox`
         For Each ctrl As Control In Me.Controls
             If TypeOf ctrl Is TextBox Then
                 AddHandler ctrl.KeyDown, AddressOf TextBox_KeyDown

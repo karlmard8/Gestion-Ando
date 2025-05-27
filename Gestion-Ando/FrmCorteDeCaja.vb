@@ -129,7 +129,7 @@ Public Class FrmCorteDeCaja
             usuarioIDSeleccionado = Convert.ToInt32(CMBUSUARIO.SelectedValue)
             CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
 
-            ' 🔥 Consulta saldo inicial en la base de datos
+            'Consulta saldo inicial en la base de datos
             StrSql = "SALDOINICIALCAJA"
             comando = New SqlClient.SqlCommand(StrSql, Conexion)
             comando.CommandType = CommandType.StoredProcedure
@@ -139,10 +139,10 @@ Public Class FrmCorteDeCaja
             Dim saldoInicial As Decimal = 0
             If Conectar() = True Then
                 saldoInicial = If(IsDBNull(comando.Parameters("@SaldoInicial").Value), 0, Convert.ToDecimal(comando.Parameters("@SaldoInicial").Value))
-                LBLSALDOINICIAL.Text = saldoInicial.ToString("C2") ' 🔥 Formato moneda
+                LBLSALDOINICIAL.Text = saldoInicial.ToString("C2") 'Formato moneda
             End If
 
-            ' 🔥 Calcular ingresos y egresos desde `DATACORTECAJA`
+            'Calcular ingresos y egresos desde `DATACORTECAJA`
             Dim INGRESOS As Decimal = 0
             Dim EGRESOS As Decimal = 0
 
@@ -156,19 +156,19 @@ Public Class FrmCorteDeCaja
                         Dim total As Decimal = Convert.ToDecimal(row.Cells("Total").Value)
 
                         If total < 0 Then
-                            EGRESOS += Math.Abs(total) ' 🔥 Si es negativo, se suma a egresos
+                            EGRESOS += Math.Abs(total) 'Si es negativo, se suma a egresos
                         Else
-                            INGRESOS += total ' 🔥 Si es positivo, se suma a ingresos
+                            INGRESOS += total 'Si es positivo, se suma a ingresos
                         End If
                     End If
                 End If
             Next
 
-            ' 🔥 Asignar valores con formato correcto
+            'Asignar valores con formato correcto
             LBLINGRESOS.Text = INGRESOS.ToString("C2")
             LBLEGRESOS.Text = EGRESOS.ToString("C2")
 
-            ' 🔥 Calcular saldo final sin errores de conversión
+            'Calcular saldo final sin errores de conversión
             Dim saldoFinal As Decimal = saldoInicial + INGRESOS - EGRESOS
             LBLSALDOFINAL.Text = saldoFinal.ToString("C2")
         End If

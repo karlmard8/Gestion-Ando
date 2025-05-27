@@ -24,20 +24,6 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATACLIENTES = New System.Windows.Forms.DataGridView()
-        Me.CLIID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICODIGO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Clientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIDIRECCION = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIColonia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICP = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICiudad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLITelEfono = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIHISTORIALCREDITICIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIRFC = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIREGIMENFISCAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
@@ -54,6 +40,21 @@ Partial Class FrmClientes
         Me.VISTACLIENTESPRINCIPALTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
+        Me.CLIID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICODIGO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Clientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIDIRECCION = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIColonia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICiudad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIEstado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLITelEfono = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIHISTORIALCREDITICIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICORREO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIRFC = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIREGIMENFISCAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +74,7 @@ Partial Class FrmClientes
         Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.Clientes, Me.CLIDIRECCION, Me.CLIColonia, Me.CLICP, Me.CLICiudad, Me.CLIEstado, Me.CLITelEfono, Me.CLIHISTORIALCREDITICIO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLICOMENTARIOS})
+        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.Clientes, Me.CLIDIRECCION, Me.CLIColonia, Me.CLICP, Me.CLICiudad, Me.CLIEstado, Me.CLITelEfono, Me.CLIHISTORIALCREDITICIO, Me.CLICORREO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLICOMENTARIOS})
         Me.DATACLIENTES.DataSource = Me.VISTACLIENTESPRINCIPALBindingSource1
         Me.DATACLIENTES.GridColor = System.Drawing.SystemColors.Control
         Me.DATACLIENTES.Location = New System.Drawing.Point(12, 92)
@@ -85,128 +86,6 @@ Partial Class FrmClientes
         Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
         Me.DATACLIENTES.TabStop = False
-        '
-        'CLIID
-        '
-        Me.CLIID.DataPropertyName = "CLIID"
-        Me.CLIID.HeaderText = "CLIID"
-        Me.CLIID.Name = "CLIID"
-        Me.CLIID.ReadOnly = True
-        Me.CLIID.Visible = False
-        '
-        'CLICODIGO
-        '
-        Me.CLICODIGO.DataPropertyName = "CLICODIGO"
-        Me.CLICODIGO.HeaderText = "CLICODIGO"
-        Me.CLICODIGO.Name = "CLICODIGO"
-        Me.CLICODIGO.ReadOnly = True
-        Me.CLICODIGO.Visible = False
-        '
-        'Clientes
-        '
-        Me.Clientes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Clientes.DataPropertyName = "Cliente"
-        Me.Clientes.HeaderText = "Cliente"
-        Me.Clientes.Name = "Clientes"
-        Me.Clientes.ReadOnly = True
-        Me.Clientes.Width = 64
-        '
-        'CLIDIRECCION
-        '
-        Me.CLIDIRECCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CLIDIRECCION.DataPropertyName = "Calle y número"
-        Me.CLIDIRECCION.HeaderText = "Calle y número"
-        Me.CLIDIRECCION.Name = "CLIDIRECCION"
-        Me.CLIDIRECCION.ReadOnly = True
-        Me.CLIDIRECCION.Width = 160
-        '
-        'CLIColonia
-        '
-        Me.CLIColonia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CLIColonia.DataPropertyName = "Colonia"
-        Me.CLIColonia.HeaderText = "Colonia"
-        Me.CLIColonia.Name = "CLIColonia"
-        Me.CLIColonia.ReadOnly = True
-        '
-        'CLICP
-        '
-        Me.CLICP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.CLICP.DataPropertyName = "Código postal"
-        Me.CLICP.HeaderText = "Código postal"
-        Me.CLICP.Name = "CLICP"
-        Me.CLICP.ReadOnly = True
-        Me.CLICP.Width = 96
-        '
-        'CLICiudad
-        '
-        Me.CLICiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.CLICiudad.DataPropertyName = "Ciudad"
-        Me.CLICiudad.HeaderText = "Ciudad"
-        Me.CLICiudad.Name = "CLICiudad"
-        Me.CLICiudad.ReadOnly = True
-        Me.CLICiudad.Width = 65
-        '
-        'CLIEstado
-        '
-        Me.CLIEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.CLIEstado.DataPropertyName = "Estado"
-        Me.CLIEstado.HeaderText = "Estado"
-        Me.CLIEstado.Name = "CLIEstado"
-        Me.CLIEstado.ReadOnly = True
-        Me.CLIEstado.Width = 65
-        '
-        'CLITelEfono
-        '
-        Me.CLITelEfono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CLITelEfono.DataPropertyName = "Teléfono"
-        Me.CLITelEfono.HeaderText = "Teléfono"
-        Me.CLITelEfono.Name = "CLITelEfono"
-        Me.CLITelEfono.ReadOnly = True
-        Me.CLITelEfono.Width = 74
-        '
-        'CLIHISTORIALCREDITICIO
-        '
-        Me.CLIHISTORIALCREDITICIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "Crédito"
-        Me.CLIHISTORIALCREDITICIO.HeaderText = "Crédito"
-        Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
-        Me.CLIHISTORIALCREDITICIO.ReadOnly = True
-        Me.CLIHISTORIALCREDITICIO.Width = 65
-        '
-        'CLIRFC
-        '
-        Me.CLIRFC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CLIRFC.DataPropertyName = "RFC"
-        Me.CLIRFC.HeaderText = "RFC"
-        Me.CLIRFC.Name = "CLIRFC"
-        Me.CLIRFC.ReadOnly = True
-        Me.CLIRFC.Width = 53
-        '
-        'CLIREGIMENFISCAL
-        '
-        Me.CLIREGIMENFISCAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CLIREGIMENFISCAL.DataPropertyName = "Régimen fiscal"
-        Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
-        Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
-        Me.CLIREGIMENFISCAL.ReadOnly = True
-        Me.CLIREGIMENFISCAL.Width = 150
-        '
-        'CLICFDI
-        '
-        Me.CLICFDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.CLICFDI.DataPropertyName = "Uso de CFDI"
-        Me.CLICFDI.HeaderText = "Uso de CFDI"
-        Me.CLICFDI.Name = "CLICFDI"
-        Me.CLICFDI.ReadOnly = True
-        Me.CLICFDI.Width = 150
-        '
-        'CLICOMENTARIOS
-        '
-        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLICOMENTARIOS.DataPropertyName = "Notas"
-        Me.CLICOMENTARIOS.HeaderText = "Notas"
-        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
-        Me.CLICOMENTARIOS.ReadOnly = True
         '
         'VISTACLIENTESPRINCIPALBindingSource1
         '
@@ -334,6 +213,137 @@ Partial Class FrmClientes
         Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
         Me.CMBFILTRO.TabIndex = 15
         '
+        'CLIID
+        '
+        Me.CLIID.DataPropertyName = "CLIID"
+        Me.CLIID.HeaderText = "CLIID"
+        Me.CLIID.Name = "CLIID"
+        Me.CLIID.ReadOnly = True
+        Me.CLIID.Visible = False
+        '
+        'CLICODIGO
+        '
+        Me.CLICODIGO.DataPropertyName = "CLICODIGO"
+        Me.CLICODIGO.HeaderText = "CLICODIGO"
+        Me.CLICODIGO.Name = "CLICODIGO"
+        Me.CLICODIGO.ReadOnly = True
+        Me.CLICODIGO.Visible = False
+        '
+        'Clientes
+        '
+        Me.Clientes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Clientes.DataPropertyName = "Cliente"
+        Me.Clientes.HeaderText = "Cliente"
+        Me.Clientes.Name = "Clientes"
+        Me.Clientes.ReadOnly = True
+        Me.Clientes.Width = 64
+        '
+        'CLIDIRECCION
+        '
+        Me.CLIDIRECCION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CLIDIRECCION.DataPropertyName = "Calle y número"
+        Me.CLIDIRECCION.HeaderText = "Calle y número"
+        Me.CLIDIRECCION.Name = "CLIDIRECCION"
+        Me.CLIDIRECCION.ReadOnly = True
+        Me.CLIDIRECCION.Width = 160
+        '
+        'CLIColonia
+        '
+        Me.CLIColonia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CLIColonia.DataPropertyName = "Colonia"
+        Me.CLIColonia.HeaderText = "Colonia"
+        Me.CLIColonia.Name = "CLIColonia"
+        Me.CLIColonia.ReadOnly = True
+        '
+        'CLICP
+        '
+        Me.CLICP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.CLICP.DataPropertyName = "Código postal"
+        Me.CLICP.HeaderText = "Código postal"
+        Me.CLICP.Name = "CLICP"
+        Me.CLICP.ReadOnly = True
+        Me.CLICP.Width = 96
+        '
+        'CLICiudad
+        '
+        Me.CLICiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.CLICiudad.DataPropertyName = "Ciudad"
+        Me.CLICiudad.HeaderText = "Ciudad"
+        Me.CLICiudad.Name = "CLICiudad"
+        Me.CLICiudad.ReadOnly = True
+        Me.CLICiudad.Width = 65
+        '
+        'CLIEstado
+        '
+        Me.CLIEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.CLIEstado.DataPropertyName = "Estado"
+        Me.CLIEstado.HeaderText = "Estado"
+        Me.CLIEstado.Name = "CLIEstado"
+        Me.CLIEstado.ReadOnly = True
+        Me.CLIEstado.Width = 65
+        '
+        'CLITelEfono
+        '
+        Me.CLITelEfono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CLITelEfono.DataPropertyName = "Teléfono"
+        Me.CLITelEfono.HeaderText = "Teléfono"
+        Me.CLITelEfono.Name = "CLITelEfono"
+        Me.CLITelEfono.ReadOnly = True
+        Me.CLITelEfono.Width = 74
+        '
+        'CLIHISTORIALCREDITICIO
+        '
+        Me.CLIHISTORIALCREDITICIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CLIHISTORIALCREDITICIO.DataPropertyName = "Crédito"
+        Me.CLIHISTORIALCREDITICIO.HeaderText = "Crédito"
+        Me.CLIHISTORIALCREDITICIO.Name = "CLIHISTORIALCREDITICIO"
+        Me.CLIHISTORIALCREDITICIO.ReadOnly = True
+        Me.CLIHISTORIALCREDITICIO.Width = 65
+        '
+        'CLICORREO
+        '
+        Me.CLICORREO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.CLICORREO.DataPropertyName = "Correo"
+        Me.CLICORREO.HeaderText = "Correo"
+        Me.CLICORREO.Name = "CLICORREO"
+        Me.CLICORREO.ReadOnly = True
+        Me.CLICORREO.Width = 63
+        '
+        'CLIRFC
+        '
+        Me.CLIRFC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CLIRFC.DataPropertyName = "RFC"
+        Me.CLIRFC.HeaderText = "RFC"
+        Me.CLIRFC.Name = "CLIRFC"
+        Me.CLIRFC.ReadOnly = True
+        Me.CLIRFC.Width = 53
+        '
+        'CLIREGIMENFISCAL
+        '
+        Me.CLIREGIMENFISCAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CLIREGIMENFISCAL.DataPropertyName = "Régimen fiscal"
+        Me.CLIREGIMENFISCAL.HeaderText = "Régimen fiscal"
+        Me.CLIREGIMENFISCAL.Name = "CLIREGIMENFISCAL"
+        Me.CLIREGIMENFISCAL.ReadOnly = True
+        Me.CLIREGIMENFISCAL.Width = 150
+        '
+        'CLICFDI
+        '
+        Me.CLICFDI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CLICFDI.DataPropertyName = "Uso de CFDI"
+        Me.CLICFDI.HeaderText = "Uso de CFDI"
+        Me.CLICFDI.Name = "CLICFDI"
+        Me.CLICFDI.ReadOnly = True
+        Me.CLICFDI.Width = 150
+        '
+        'CLICOMENTARIOS
+        '
+        Me.CLICOMENTARIOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLICOMENTARIOS.DataPropertyName = "Notas"
+        Me.CLICOMENTARIOS.HeaderText = "Notas"
+        Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
+        Me.CLICOMENTARIOS.ReadOnly = True
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -390,6 +400,7 @@ Partial Class FrmClientes
     Friend WithEvents CLIEstado As DataGridViewTextBoxColumn
     Friend WithEvents CLITelEfono As DataGridViewTextBoxColumn
     Friend WithEvents CLIHISTORIALCREDITICIO As DataGridViewTextBoxColumn
+    Friend WithEvents CLICORREO As DataGridViewTextBoxColumn
     Friend WithEvents CLIRFC As DataGridViewTextBoxColumn
     Friend WithEvents CLIREGIMENFISCAL As DataGridViewTextBoxColumn
     Friend WithEvents CLICFDI As DataGridViewTextBoxColumn

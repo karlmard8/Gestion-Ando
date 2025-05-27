@@ -3133,6 +3133,8 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnCLICODIGO As Global.System.Data.DataColumn
         
+        Private columnCorreo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3281,6 +3283,14 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CorreoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCorreo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3317,9 +3327,9 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVISTACLIENTESPRINCIPALRow(ByVal Cliente As String, ByVal Calle_y_número As String, ByVal Colonia As String, ByVal Código_postal As String, ByVal Ciudad As String, ByVal Estado As String, ByVal Teléfono As String, ByVal Notas As String, ByVal Crédito As String, ByVal RFC As String, ByVal Régimen_fiscal As String, ByVal Uso_de_CFDI As String, ByVal CLICODIGO As String) As VISTACLIENTESPRINCIPALRow
+        Public Overloads Function AddVISTACLIENTESPRINCIPALRow(ByVal Cliente As String, ByVal Calle_y_número As String, ByVal Colonia As String, ByVal Código_postal As String, ByVal Ciudad As String, ByVal Estado As String, ByVal Teléfono As String, ByVal Notas As String, ByVal Crédito As String, ByVal RFC As String, ByVal Régimen_fiscal As String, ByVal Uso_de_CFDI As String, ByVal CLICODIGO As String, ByVal Correo As String) As VISTACLIENTESPRINCIPALRow
             Dim rowVISTACLIENTESPRINCIPALRow As VISTACLIENTESPRINCIPALRow = CType(Me.NewRow,VISTACLIENTESPRINCIPALRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, Calle_y_número, Colonia, Código_postal, Ciudad, Estado, Teléfono, Notas, Crédito, RFC, Régimen_fiscal, Uso_de_CFDI, CLICODIGO}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, Calle_y_número, Colonia, Código_postal, Ciudad, Estado, Teléfono, Notas, Crédito, RFC, Régimen_fiscal, Uso_de_CFDI, CLICODIGO, Correo}
             rowVISTACLIENTESPRINCIPALRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVISTACLIENTESPRINCIPALRow)
             Return rowVISTACLIENTESPRINCIPALRow
@@ -3362,6 +3372,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnRégimen_fiscal = MyBase.Columns("Régimen fiscal")
             Me.columnUso_de_CFDI = MyBase.Columns("Uso de CFDI")
             Me.columnCLICODIGO = MyBase.Columns("CLICODIGO")
+            Me.columnCorreo = MyBase.Columns("Correo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3395,6 +3406,8 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnUso_de_CFDI)
             Me.columnCLICODIGO = New Global.System.Data.DataColumn("CLICODIGO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLICODIGO)
+            Me.columnCorreo = New Global.System.Data.DataColumn("Correo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCorreo)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCLIID}, true))
             Me.columnCLIID.AutoIncrement = true
             Me.columnCLIID.AutoIncrementSeed = -1
@@ -3416,6 +3429,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnRégimen_fiscal.MaxLength = 100
             Me.columnUso_de_CFDI.MaxLength = 100
             Me.columnCLICODIGO.MaxLength = 10
+            Me.columnCorreo.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6176,6 +6190,21 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Correo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTACLIENTESPRINCIPAL.CorreoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Correo' de la tabla 'VISTACLIENTESPRINCIPAL' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTACLIENTESPRINCIPAL.CorreoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.ClienteColumn)
         End Function
@@ -6328,6 +6357,18 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetCLICODIGONull()
             Me(Me.tableVISTACLIENTESPRINCIPAL.CLICODIGOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCorreoNull() As Boolean
+            Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.CorreoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCorreoNull()
+            Me(Me.tableVISTACLIENTESPRINCIPAL.CorreoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9961,6 +10002,7 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Régimen fiscal", "Régimen fiscal")
             tableMapping.ColumnMappings.Add("Uso de CFDI", "Uso de CFDI")
             tableMapping.ColumnMappings.Add("CLICODIGO", "CLICODIGO")
+            tableMapping.ColumnMappings.Add("Correo", "Correo")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -9979,8 +10021,8 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT CLIID, Cliente, [Calle y número], Colonia, [Código postal], Ciudad, Estado"& _ 
-                ", Teléfono, Notas, Crédito, RFC, [Régimen fiscal], [Uso de CFDI], CLICODIGO FROM"& _ 
-                " VISTACLIENTESPRINCIPAL"
+                ", Teléfono, Notas, Crédito, RFC, [Régimen fiscal], [Uso de CFDI], CLICODIGO, Cor"& _ 
+                "reo FROM VISTACLIENTESPRINCIPAL"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

@@ -52,12 +52,14 @@ Public Class FrmUsuarios
 
     Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
         If tablaOriginal IsNot Nothing Then
-            If TXTBUSCAR.Text.Trim() = "" Then
+            Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''")
+
+            If textoFiltrado.Trim() = "" Then
                 ' Restaurar la tabla completa
                 DATAUSUARIOS.DataSource = tablaOriginal.Copy()
             Else
                 ' Filtrar solo si hay texto
-                Dim resultado = tablaOriginal.Select("USUNOMBRE LIKE '%" & TXTBUSCAR.Text & "%'")
+                Dim resultado = tablaOriginal.Select("USUNOMBRE LIKE '%" & textoFiltrado & "%'")
                 If resultado.Length > 0 Then
                     DATAUSUARIOS.DataSource = resultado.CopyToDataTable()
                 Else
@@ -65,7 +67,7 @@ Public Class FrmUsuarios
                 End If
             End If
 
-            ' 🔹 Restaurar ajustes visuales después de cambiar la fuente de datos
+            ' Restaurar ajustes visuales después de cambiar la fuente de datos
             AplicarFormatoDataGridView()
         End If
     End Sub

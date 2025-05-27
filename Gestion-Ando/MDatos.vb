@@ -10,9 +10,6 @@
     Public IDUSUARIOACTUAL As Integer
     Public FECHA
 
-    'VARIABLE PARA ESTABLECER PRODUCTO EN CLASE O PRODUCTO EN VENTA
-    Public TIPOPRODUCTO As String = "VENTA"
-
 
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
 
@@ -70,10 +67,10 @@
             For Each ctrl As Control In parentControl.Controls
                 If TypeOf ctrl Is Button Then
                     Dim btn As Button = CType(ctrl, Button)
-                    btn.BackColor = ColorBotones ' 🔥 Usa el color global definido
+                    btn.BackColor = ColorBotones 'Usa el color global definido
                     btn.ForeColor = Color.Black
                 End If
-                ' 🔥 Si el control es un contenedor (GroupBox, Panel, etc.), recorrer sus controles
+                'Si el control es un contenedor (GroupBox, Panel, etc.), recorrer sus controles
                 If ctrl.HasChildren Then
                     CambiarColorBotones(ctrl)
                 End If

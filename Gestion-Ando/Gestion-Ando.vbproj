@@ -321,6 +321,12 @@
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AuthFirebase.vb" />
+    <Compile Include="FrmCotizaciones.Designer.vb">
+      <DependentUpon>FrmCotizaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCotizaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RPTCORTECAJA.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -460,6 +466,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmCotizaciones.resx">
+      <DependentUpon>FrmCotizaciones.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RPTCORTECAJA.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RPTCORTECAJA.vb</LastGenOutput>

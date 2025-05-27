@@ -53,7 +53,10 @@ Public Class FrmPrincipal
     End Sub
 
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Timer1.Interval = 1000 ' 🔹 Cada segundo verifica la hora
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
+        Timer1.Interval = 1000
         Timer1.Start()
 
 
@@ -83,10 +86,24 @@ Public Class FrmPrincipal
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
                 TIPO = "Administrador"
-                Me.MenuOpciones.Items(3).Visible = True
+                Dim textoBuscado As String = "Usuarios" 'Cambia esto por el texto del menú que quieres modificar
+
+                For Each item As ToolStripMenuItem In MenuOpciones.Items
+                    If item.Text = textoBuscado Then
+                        item.Visible = True
+                        Exit For
+                    End If
+                Next
             Else
                 TIPO = "Operativo"
-                Me.MenuOpciones.Items(3).Visible = False
+                Dim textoBuscado As String = "Usuarios" 'Cambia esto por el texto del menú que quieres modificar
+
+                For Each item As ToolStripMenuItem In MenuOpciones.Items
+                    If item.Text = textoBuscado Then
+                        item.Visible = False
+                        Exit For
+                    End If
+                Next
             End If
         End If
         Dim renderer As New CustomMenuRenderer()
@@ -94,11 +111,6 @@ Public Class FrmPrincipal
         IDUSUARIOACTUAL = comando.Parameters("@RETORNO3").Value
         ' Asignar el renderizador personalizado al MenuStrip
         MenuOpciones.Renderer = renderer
-
-        If TIPOPRODUCTO = "CLASE" Then
-            BTNDEUDORES.Visible = False
-            MenuOpciones.Items(4).Visible = False
-        End If
 
     End Sub
 
@@ -128,7 +140,7 @@ Public Class FrmPrincipal
         FRMDEUDORES.ShowIcon = False
         FRMDEUDORES.ShowInTaskbar = False
 
-        ' 🔥 Capturar la tecla ESC para cerrar el formulario
+        'Capturar la tecla ESC para cerrar el formulario
         FRMDEUDORES.KeyPreview = True
         AddHandler FRMDEUDORES.KeyDown, Sub(sender, e)
                                             If e.KeyCode = Keys.Escape Then
@@ -200,18 +212,22 @@ Public Class FrmPrincipal
 
         ' 🔹 Agregar controles al formulario
 
-        Application.DoEvents() ' 🔥 Deja que la UI procese los cambios antes de continuar
-        TABLADEUDAS.Refresh() ' 🔥 Refresca el `DataGridView` para cargar las columnas correctamente
+        Application.DoEvents() 'Deja que la UI procese los cambios antes de continuar
+        TABLADEUDAS.Refresh() 'Refresca el `DataGridView` para cargar las columnas correctamente
 
         FRMDEUDORES.Controls.Add(TABLADEUDAS)
         FRMDEUDORES.ShowDialog()
     End Sub
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
         FrmInventario.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
         FrmCorteDeCaja.Close()
+        FrmCotizaciones.Close()
         Dim CLIENTES As New FrmClientes
         idbusqueda = 0
         FrmClientes.TBLCLIENTESTableAdapter.Connection = Conexion
@@ -225,27 +241,36 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmUsuarios.Close()
         FrmCorteDeCaja.Close()
+        FrmCotizaciones.Close()
         idbusqueda = 0
         FrmVentas.VISTAVENTASTableAdapter.Connection = Conexion
         FrmVentas.VISTAVENTASTableAdapter.Fill(FrmVentas.MuebleAlexDataSet.VISTAVENTAS)
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
-        FrmVentas.Show()
+
         FrmVentas.Location = New Point(380, 0)
         LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Ventas"
         LBLOPCIONES.Location = New Point(430, 38)
+        FrmVentas.Show()
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
         FrmClientes.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
         FrmCorteDeCaja.Close()
+        FrmCotizaciones.Close()
         Dim INVENTARIO As New FrmInventario
         idbusqueda = 0
         FrmInventario.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -259,10 +284,14 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
         FrmCorteDeCaja.Close()
+        FrmCotizaciones.Close()
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
         Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios WHERE USUEXISTE=1"
@@ -281,15 +310,49 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub CorteDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteDeCajaToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
         FrmUsuarios.Close()
+        FrmCotizaciones.Close()
 
         FrmCorteDeCaja.TopLevel = False
         PANELFRAMES.Controls.Add(FrmCorteDeCaja)
         FrmCorteDeCaja.Show()
         LBLOPCIONES.Visible = False
+    End Sub
+
+    Private Sub CotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CotizacionesToolStripMenuItem.Click
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
+        FrmClientes.Close()
+        FrmInventario.Close()
+        FrmVentas.Close()
+        FrmUsuarios.Close()
+        FrmCorteDeCaja.Close()
+
+
+        FrmCotizaciones.TopLevel = False
+        PANELFRAMES.Controls.Add(FrmCotizaciones)
+        FrmCotizaciones.Show()
+        LBLOPCIONES.Visible = True
+        LBLOPCIONES.Text = "Cotizaciones"
+        LBLOPCIONES.Location = New Point(30, 50)
+    End Sub
+
+    Private Sub MenuItem_Click(sender As Object, e As EventArgs)
+        Dim itemSeleccionado As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
+
+        'Si el botón presionado es "Opciones", oculta el botón específico
+        If itemSeleccionado.Text = "Cotizaciones" Then
+            BTNDEUDORES.Visible = False
+        Else
+            BTNDEUDORES.Visible = True
+        End If
     End Sub
 
     Private isLoggingOut As Boolean = False
@@ -325,4 +388,6 @@ Public Class FrmPrincipal
     Private Sub BTNDEUDORES_Click(sender As Object, e As EventArgs) Handles BTNDEUDORES.Click
         ALERTADEUDORES()
     End Sub
+
+
 End Class
