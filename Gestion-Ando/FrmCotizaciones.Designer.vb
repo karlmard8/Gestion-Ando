@@ -35,7 +35,7 @@ Partial Class FrmCotizaciones
         Me.BTNIMPRIMIR = New System.Windows.Forms.Button()
         Me.BTNENVIAR = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.LBLCOTID = New System.Windows.Forms.Label()
         Me.VISTACLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter()
         Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -189,15 +189,15 @@ Partial Class FrmCotizaciones
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "No. Cotización:"
         '
-        'Label7
+        'LBLCOTID
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(1718, 12)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(29, 27)
-        Me.Label7.TabIndex = 10
-        Me.Label7.Text = ". . ."
+        Me.LBLCOTID.AutoSize = True
+        Me.LBLCOTID.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLCOTID.Location = New System.Drawing.Point(1718, 12)
+        Me.LBLCOTID.Name = "LBLCOTID"
+        Me.LBLCOTID.Size = New System.Drawing.Size(29, 27)
+        Me.LBLCOTID.TabIndex = 10
+        Me.LBLCOTID.Text = ". . ."
         '
         'VISTACLIENTESTableAdapter
         '
@@ -385,7 +385,7 @@ Partial Class FrmCotizaciones
         Me.Controls.Add(Me.BTNSUM)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TXTCANTIDAD)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.LBLCOTID)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.BTNENVIAR)
         Me.Controls.Add(Me.BTNIMPRIMIR)
@@ -424,7 +424,7 @@ Partial Class FrmCotizaciones
     Friend WithEvents BTNIMPRIMIR As Button
     Friend WithEvents BTNENVIAR As Button
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents LBLCOTID As Label
     Friend WithEvents MuebleAlexDataSet As MuebleAlexDataSet
     Friend WithEvents VISTACLIENTESBindingSource As BindingSource
     Friend WithEvents VISTACLIENTESTableAdapter As MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter

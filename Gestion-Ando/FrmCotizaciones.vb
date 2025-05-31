@@ -1,4 +1,6 @@
-﻿Public Class FrmCotizaciones
+﻿Imports Microsoft.Extensions.Logging
+
+Public Class FrmCotizaciones
     Private Sub FrmCotizaciones_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet.VISTAPRODUCTOS' Puede moverla o quitarla según sea necesario.
         Me.VISTAPRODUCTOSTableAdapter.Connection = Conexion
@@ -18,6 +20,31 @@
 
         DATACOTIZACIONES.DefaultCellStyle.Font = New Font("Dubai", 12)
         DATACOTIZACIONES.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
+
+        ACTUALIZARCOITD()
+    End Sub
+
+    Public Sub ACTUALIZARCOITD()
+        StrSql = "SELECT (MAX(COTID) + 1) FROM TBLCOTIZACIONES;"
+        comando = New SqlClient.SqlCommand(StrSql, Conexion)
+        Try
+            If Conectar() = True Then
+                Conexion.Open() ' Abrir la conexión manualmente
+                Dim resultado As Object = comando.ExecuteScalar()
+                If resultado IsNot DBNull.Value AndAlso resultado IsNot Nothing Then
+                    COTID = Convert.ToInt64(resultado)
+                Else
+                    COTID = 1
+                End If
+                LBLCOTID.Text = COTID.ToString("D5")
+            End If
+        Catch ex As Exception
+            MsgBox("Error al obtener el ID de la cotización: " & ex.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
+        End Try
     End Sub
 
     Private Sub BTNSUM_Click(sender As Object, e As EventArgs) Handles BTNSUM.Click
@@ -53,6 +80,11 @@
     Private Sub BTNAGREGAR_Click(sender As Object, e As EventArgs) Handles BTNAGREGAR.Click
         If CMBPRODUCTO.SelectedIndex = -1 Then
             CMBPRODUCTO.Focus()
+            Return
+        End If
+
+        If TXTCANTIDAD.Text = 0 Then
+            TXTCANTIDAD.Focus()
             Return
         End If
 
@@ -134,6 +166,7 @@
         TXTCANTIDAD.Text = 0
         CMBPRODUCTO.SelectedIndex = -1
         CMBPRODUCTO.Focus()
+        LBLPRECIO.Text = ". . ."
     End Sub
 
     Private Sub ActualizarSumatorias()
@@ -301,4 +334,68 @@
             End Try
         End If
     End Sub
+
+    Dim COTID As Long
+    Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
+        Try
+            If CMBCLIENTE.SelectedIndex = -1 Then
+                MsgBox("Seleccione un cliente", MsgBoxStyle.Exclamation, "Advertencia")
+                CMBCLIENTE.Focus()
+                Return
+            End If
+
+            If DATACOTIZACIONES.RowCount = 0 Then
+                MsgBox("Debe agregar al menos un producto a la cotización", MsgBoxStyle.Exclamation, "Advertencia")
+                CMBPRODUCTO.Focus()
+                Return
+            End If
+
+            StrSql = "ALTACOTIZACION"
+            comando = New SqlClient.SqlCommand(StrSql, Conexion)
+            comando.CommandType = CommandType.StoredProcedure
+            comando.Parameters.AddWithValue("@CLIID", CMBCLIENTE.SelectedValue)
+            comando.Parameters.AddWithValue("@COTFECHA", DateTime.Now)
+            comando.Parameters.AddWithValue("@USUID", IDUSUARIOACTUAL)
+            comando.Parameters.AddWithValue("@COTDESCUENTO", LBLDESCUENTO.Text.Replace("$", "").Replace(",", ""))
+            comando.Parameters.AddWithValue("@COTSUBTOTAL", LBLSUBTOTAL.Text.Replace("$", "").Replace(",", ""))
+            comando.Parameters.AddWithValue("@COTTOTAL", LBLTOTAL.Text.Replace("$", "").Replace(",", ""))
+            comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
+
+            If Conectar() = True Then
+
+                COTID = comando.Parameters("@RETORNO").Value
+
+                For REC = 0 To Me.DATACOTIZACIONES.RowCount - 1
+                    StrSql = "ALTADETALLECOTIZACIONES"
+                    comando = New SqlClient.SqlCommand(StrSql, Conexion)
+                    comando.CommandType = CommandType.StoredProcedure
+                    comando.Parameters.AddWithValue("@COTID", COTID)
+                    comando.Parameters.Add("@PROID", SqlDbType.BigInt).Value = Me.DATACOTIZACIONES.Rows(REC).Cells("PROID").Value
+                    comando.Parameters.Add("@PROCANTIDAD", SqlDbType.Int).Value = Me.DATACOTIZACIONES.Rows(REC).Cells("CANTIDAD").Value
+                    comando.Parameters.Add("@PRODESCUENTO", SqlDbType.Money).Value = Me.DATACOTIZACIONES.Rows(REC).Cells("DESCUENTO").Value
+                    comando.Parameters.Add("@RETORNO", SqlDbType.Bit).Direction = ParameterDirection.Output
+                    Conectar()
+                Next
+                MsgBox("Cotización registrada exitosamente", MsgBoxStyle.Information, "Conformación")
+                LimpiarCampos()
+                ACTUALIZARCOITD()
+            End If
+        Catch
+            MsgBox("Error al registrar la cotización", MsgBoxStyle.Critical, "Error")
+        End Try
+
+    End Sub
+
+    Public Sub LimpiarCampos()
+        ' Limpiar los campos del formulario
+        CMBCLIENTE.SelectedIndex = -1
+        CMBPRODUCTO.SelectedIndex = -1
+        TXTCANTIDAD.Text = "0"
+        LBLPRECIO.Text = ". . ."
+        DATACOTIZACIONES.DataSource = Nothing
+        LBLSUBTOTAL.Text = "$0.00"
+        LBLDESCUENTO.Text = "$0.00"
+        LBLTOTAL.Text = "$0.00"
+    End Sub
+
 End Class
