@@ -8,32 +8,48 @@ Public Class FrmPrincipal
     Public Class CustomMenuRenderer
         Inherits ToolStripProfessionalRenderer
 
+        ' Color de fondo normal del menú
+        Private ReadOnly normalBackColor As Color = ColorMenuStrip
+        ' Color de fondo al pasar el cursor
+        Private ReadOnly hoverBackColor As Color = Color.White
+        ' Color del texto normal
+        Private ReadOnly normalTextColor As Color = Color.White
+        ' Color del texto al pasar el cursor
+        Private ReadOnly hoverTextColor As Color = Color.Black
+
         Protected Overrides Sub OnRenderMenuItemBackground(e As ToolStripItemRenderEventArgs)
             MyBase.OnRenderMenuItemBackground(e)
 
-            ' Dibujar manualmente el texto del elemento de menú
+            ' Determinar el color de fondo
+            Dim backColor As Color = If(e.Item.Selected, hoverBackColor, normalBackColor)
+
+            Using backBrush As New SolidBrush(backColor)
+                e.Graphics.FillRectangle(backBrush, e.Item.ContentRectangle)
+            End Using
+
+            ' Dibujar el texto con el color apropiado
             DrawMenuItemText(e)
         End Sub
 
         Protected Overrides Sub OnRenderItemText(e As ToolStripItemTextRenderEventArgs)
-            ' Evitar que el texto predeterminado se dibuje
+            ' No hacer nada aquí para evitar el renderizado automático del texto
         End Sub
 
         Private Sub DrawMenuItemText(e As ToolStripItemRenderEventArgs)
-            ' Definir el color del texto según si el ítem está seleccionado
-            Dim textColor As Color = If(e.Item.Selected, Color.Black, Color.White)
+            ' Seleccionar color del texto según si está seleccionado
+            Dim textColor As Color = If(e.Item.Selected, hoverTextColor, normalTextColor)
 
-            ' Crear un pincel para el texto
             Using textBrush As New SolidBrush(textColor)
-                ' Definir el rectángulo de dibujo
-                Dim textRect As Rectangle = New Rectangle(e.Item.ContentRectangle.X, e.Item.ContentRectangle.Y, e.Item.ContentRectangle.Width, e.Item.ContentRectangle.Height)
+                Dim textRect As Rectangle = e.Item.ContentRectangle
+                Dim sf As New StringFormat() With {
+                .Alignment = StringAlignment.Near,
+                .LineAlignment = StringAlignment.Center
+            }
 
-                ' Dibujar el texto del elemento de menú
-                e.Graphics.DrawString(e.Item.Text, e.Item.Font, textBrush, textRect, StringFormat.GenericDefault)
-            End Using ' Liberar automáticamente el recurso del pincel
+                e.Graphics.DrawString(e.Item.Text, e.Item.Font, textBrush, textRect, sf)
+            End Using
         End Sub
     End Class
-
 
     Private Const WM_NCLBUTTONDOWN As Integer = &HA1
     Private Const HTCAPTION As Integer = &H2
@@ -114,7 +130,6 @@ Public Class FrmPrincipal
 
     End Sub
 
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim horaActual As DateTime = DateTime.Now
         LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
@@ -123,7 +138,6 @@ Public Class FrmPrincipal
     Public Class FrmTiempo
         Public WithEvents Timer1 As New Timer()
     End Class
-
 
     Public Sub ALERTADEUDORES()
         Dim DEUDAS As New DataTable()
@@ -326,6 +340,12 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub CotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CotizacionesToolStripMenuItem.Click
+
+    End Sub
+
+
+    Private Sub NuevaCotizaciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevaCotizaciónToolStripMenuItem.Click
+        FrmCotizaciones.Close()
         For Each item As ToolStripMenuItem In MenuOpciones.Items
             AddHandler item.Click, AddressOf MenuItem_Click
         Next
@@ -334,13 +354,33 @@ Public Class FrmPrincipal
         FrmVentas.Close()
         FrmUsuarios.Close()
         FrmCorteDeCaja.Close()
-
+        HISTORIAL = False
 
         FrmCotizaciones.TopLevel = False
         PANELFRAMES.Controls.Add(FrmCotizaciones)
         FrmCotizaciones.Show()
         LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Cotizaciones"
+        LBLOPCIONES.Location = New Point(30, 50)
+    End Sub
+
+    Private Sub HistorialDeCotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistorialDeCotizacionesToolStripMenuItem.Click
+        FrmCotizaciones.Close
+        For Each item As ToolStripMenuItem In MenuOpciones.Items
+            AddHandler item.Click, AddressOf MenuItem_Click
+        Next
+        FrmClientes.Close()
+        FrmInventario.Close()
+        FrmVentas.Close()
+        FrmUsuarios.Close()
+        FrmCorteDeCaja.Close()
+        HISTORIAL = True
+
+        FrmCotizaciones.TopLevel = False
+        PANELFRAMES.Controls.Add(FrmCotizaciones)
+        FrmCotizaciones.Show()
+        LBLOPCIONES.Visible = True
+        LBLOPCIONES.Text = "Historial de cotizaciones"
         LBLOPCIONES.Location = New Point(30, 50)
     End Sub
 
@@ -371,8 +411,6 @@ Public Class FrmPrincipal
         Else
 
         End If
-
-
     End Sub
 
     Private Sub FrmPrincipal_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
@@ -388,6 +426,5 @@ Public Class FrmPrincipal
     Private Sub BTNDEUDORES_Click(sender As Object, e As EventArgs) Handles BTNDEUDORES.Click
         ALERTADEUDORES()
     End Sub
-
 
 End Class

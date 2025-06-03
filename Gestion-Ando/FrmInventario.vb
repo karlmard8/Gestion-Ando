@@ -210,9 +210,9 @@ Public Class FrmInventario
 
                                          ' Seleccionar el reporte correcto
                                          If INVENTARIOGEN.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTINVENTARIO.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTINVENTARIO.rpt")
                                          ElseIf INVENTARIOFILTRADO.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTINVENTARIOEXISTENTE.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTINVENTARIOEXISTENTE.rpt")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub

@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Text
+Imports CrystalDecisions.ReportAppServer
 
 
 Public Class FrmLogin
@@ -51,8 +52,8 @@ Public Class FrmLogin
             FrmAltaUsuarios.LBLUSUARIOS.Location = New Point(160, 10)
             FrmAltaUsuarios.ShowInTaskbar = True
             FrmAltaUsuarios.ShowDialog()
-            ElseIf Leer("TBLUSUARIOS") = True Then
-                BTNCREARUSUARIO.Visible = False
+        ElseIf Leer("TBLUSUARIOS") = True Then
+            BTNCREARUSUARIO.Visible = False
         End If
     End Sub
 
@@ -71,7 +72,6 @@ Public Class FrmLogin
 
     Public fechaVencimiento As DateTime
     Dim estado As String
-    Private Const NOMBRE_JSON_FIREBASE As String = "licenciasgestion-ando-firebase-adminsdk-fbsvc-7c108e7198.json"
     Private hashOriginalJson As String = ""
 
     'LICENCIA EN FIREBASE
@@ -112,7 +112,7 @@ Public Class FrmLogin
     End Sub
 
     Public Function ValidarJsonFirebase() As Boolean
-        Dim rutaJson As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, NOMBRE_JSON_FIREBASE)
+        Dim rutaJson As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "licenciasgestion-ando-firebase-adminsdk-fbsvc-7c108e7198.json")
 
         ' 1. Verificar si el archivo existe
         If Not File.Exists(rutaJson) Then
@@ -144,8 +144,8 @@ Public Class FrmLogin
     Public archivo As FileInfo
     Dim codigoUNICO As String
     Public Sub ValidarLicenciaLocal()
-        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
+        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
         archivo = New FileInfo(rutaArchivo)
 
         ' 🔒 Validaciones iniciales
@@ -282,8 +282,8 @@ Public Class FrmLogin
     End Sub
 
     Public Sub ModificarLicencia(fechaNueva As String)
-        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
+        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
 
         ' 🧼 QUITAR ATRIBUTOS DE PROTECCIÓN TEMPORALMENTE
         If File.Exists(rutaArchivo) Then
@@ -322,8 +322,8 @@ Public Class FrmLogin
     End Function
 
     Private Function VerificarIntegridadLicencia() As Boolean
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
-        Dim rutaLicencia As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
+        Dim rutaLicencia As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
 
         If Not File.Exists(rutaHash) Then
             ' Primera ejecución: se genera hash y se guarda

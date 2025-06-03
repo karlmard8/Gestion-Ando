@@ -9,7 +9,7 @@
     Public USUARIOACTUAL As String
     Public IDUSUARIOACTUAL As Integer
     Public FECHA
-
+    Public HISTORIAL As Boolean
 
     Public Property ColorBotones As Color = Color.FromArgb(213, 191, 168) 'Color para botones café
 

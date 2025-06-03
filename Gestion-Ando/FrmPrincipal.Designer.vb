@@ -30,6 +30,8 @@ Partial Class FrmPrincipal
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CorteDeCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CotizacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NuevaCotizaciónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HistorialDeCotizacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerrarSesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
@@ -82,9 +84,22 @@ Partial Class FrmPrincipal
         '
         'CotizacionesToolStripMenuItem
         '
+        Me.CotizacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevaCotizaciónToolStripMenuItem, Me.HistorialDeCotizacionesToolStripMenuItem})
         Me.CotizacionesToolStripMenuItem.Name = "CotizacionesToolStripMenuItem"
         Me.CotizacionesToolStripMenuItem.Size = New System.Drawing.Size(142, 34)
         Me.CotizacionesToolStripMenuItem.Text = "Cotizaciones"
+        '
+        'NuevaCotizaciónToolStripMenuItem
+        '
+        Me.NuevaCotizaciónToolStripMenuItem.Name = "NuevaCotizaciónToolStripMenuItem"
+        Me.NuevaCotizaciónToolStripMenuItem.Size = New System.Drawing.Size(311, 34)
+        Me.NuevaCotizaciónToolStripMenuItem.Text = "Nueva cotización"
+        '
+        'HistorialDeCotizacionesToolStripMenuItem
+        '
+        Me.HistorialDeCotizacionesToolStripMenuItem.Name = "HistorialDeCotizacionesToolStripMenuItem"
+        Me.HistorialDeCotizacionesToolStripMenuItem.Size = New System.Drawing.Size(311, 34)
+        Me.HistorialDeCotizacionesToolStripMenuItem.Text = "Historial de cotizaciones"
         '
         'UsuariosToolStripMenuItem
         '
@@ -207,4 +222,6 @@ Partial Class FrmPrincipal
     Friend WithEvents BTNDEUDORES As Button
     Friend WithEvents CorteDeCajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CotizacionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NuevaCotizaciónToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HistorialDeCotizacionesToolStripMenuItem As ToolStripMenuItem
 End Class

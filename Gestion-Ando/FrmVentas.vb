@@ -359,9 +359,9 @@ Public Class FrmVentas
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASGENERAL.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTVENTASGENERAL.rpt")
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASFILTRADAS.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTVENTASFILTRADAS.rpt")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub

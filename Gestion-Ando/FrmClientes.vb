@@ -63,64 +63,78 @@
         NUEVO.LBLCLIENTES.Text = "Editar registro de cliente"
         NUEVO.LBLCLIENTES.Location = New Point(155, 15)
 
-        If DATACLIENTES.RowCount > 0 Then
-            idbusqueda = DATACLIENTES.CurrentRow.Cells("CLIID").Value
-            NUEVO.TXTCODIGO.Text = DATACLIENTES.CurrentRow.Cells("CLICODIGO").Value
-            Dim nombreCompleto As String = DATACLIENTES.CurrentRow.Cells("CLIENTES").Value.ToString().Trim()
-            Dim partes() As String = nombreCompleto.Split(" "c) 'Dividir por espacios
+        If DATACLIENTES.RowCount = 0 OrElse DATACLIENTES.CurrentRow Is Nothing Then Return
 
-            ' Inicializar variables
-            Dim nombre As String = ""
-            Dim apellidoPaterno As String = ""
-            Dim apellidoMaterno As String = ""
+        Dim fila As DataGridViewRow = DATACLIENTES.CurrentRow
 
-            'Aplicar la lógica de separación según la cantidad de palabras
-            Select Case partes.Length
-                Case 1 ' Solo un nombre
-                    nombre = partes(0)
-                Case 2 ' Nombre y apellido paterno
-                    nombre = partes(0)
-                    apellidoPaterno = partes(1)
-                Case 3 ' Nombre, apellido paterno y apellido materno
-                    nombre = partes(0)
-                    apellidoPaterno = partes(1)
-                    apellidoMaterno = partes(2)
-                Case 5 'Cuando hay 5 palabras
-                    nombre = partes(0) & " " & partes(1) & " " & partes(2) ' Las primeras 3 son el nombre
-                    apellidoPaterno = partes(3) ' La cuarta es el apellido paterno
-                    apellidoMaterno = partes(4) ' La quinta es el apellido materno
-                Case Else ' Más de 3 palabras (ej. nombres compuestos)
-                    nombre = partes(0) & " " & partes(1) ' Se asume que el nombre es compuesto
+        ' Usar la función del módulo para obtener valores seguros
+        idbusqueda = ObtenerValorCelda(fila, "CLIID")
+        NUEVO.TXTCODIGO.Text = ObtenerValorCelda(fila, "CLICODIGO")
+
+        ' Separar nombre completo
+        Dim nombreCompleto As String = ObtenerValorCelda(fila, "CLIENTES")
+        Dim partes() As String = nombreCompleto.Split(" "c)
+
+        Dim nombre As String = ""
+        Dim apellidoPaterno As String = ""
+        Dim apellidoMaterno As String = ""
+
+        Select Case partes.Length
+            Case 1
+                nombre = partes(0)
+            Case 2
+                nombre = partes(0)
+                apellidoPaterno = partes(1)
+            Case 3
+                nombre = partes(0)
+                apellidoPaterno = partes(1)
+                apellidoMaterno = partes(2)
+            Case 5
+                nombre = partes(0) & " " & partes(1) & " " & partes(2)
+                apellidoPaterno = partes(3)
+                apellidoMaterno = partes(4)
+            Case Else
+                If partes.Length >= 3 Then
+                    nombre = partes(0) & " " & partes(1)
                     apellidoPaterno = partes(2)
-                    apellidoMaterno = String.Join(" ", partes, 3, partes.Length - 3) ' Lo que reste es el apellido materno
-            End Select
+                    apellidoMaterno = String.Join(" ", partes, 3, partes.Length - 3)
+                Else
+                    nombre = nombreCompleto ' fallback
+                End If
+        End Select
 
-            ' Asignar valores a las cajas de texto
-            NUEVO.TXTNOMBRE.Text = nombre
-            NUEVO.TXTAPEPATERNO.Text = apellidoPaterno
-            NUEVO.TXTAPEMATERNO.Text = apellidoMaterno
+        ' Asignar a cajas de texto
+        NUEVO.TXTNOMBRE.Text = nombre
+        NUEVO.TXTAPEPATERNO.Text = apellidoPaterno
+        NUEVO.TXTAPEMATERNO.Text = apellidoMaterno
+        NUEVO.TXTCALLE.Text = ObtenerValorCelda(fila, "CLIDIRECCION")
+        NUEVO.TXTCOLONIIA.Text = ObtenerValorCelda(fila, "CLICOLONIA")
+        NUEVO.TXTCP.Text = ObtenerValorCelda(fila, "CLICP")
+        NUEVO.TXTCIUDAD.Text = ObtenerValorCelda(fila, "CLICIUDAD")
+        NUEVO.TXTESTADO.Text = ObtenerValorCelda(fila, "CLIESTADO")
+        NUEVO.TXTTELEFONO.Text = ObtenerValorCelda(fila, "CLITELEFONO")
+        NUEVO.TXTCORREO.Text = ObtenerValorCelda(fila, "CLICORREO")
+        NUEVO.TXTNOTAS.Text = ObtenerValorCelda(fila, "CLICOMENTARIOS")
+        Dim credito As String = ObtenerValorCelda(fila, "CLIHISTORIALCREDITICIO")
+        If String.IsNullOrWhiteSpace(credito) Then
+            NUEVO.TXTCREDITO.SelectedIndex = -1
+        Else
+            NUEVO.TXTCREDITO.Text = credito
+        End If
 
-            NUEVO.TXTCALLE.Text = DATACLIENTES.CurrentRow.Cells("CLIDIRECCION").Value
-            NUEVO.TXTCOLONIIA.Text = DATACLIENTES.CurrentRow.Cells("CLICOLONIA").Value
-            NUEVO.TXTCP.Text = DATACLIENTES.CurrentRow.Cells("CLICP").Value
-            NUEVO.TXTCIUDAD.Text = DATACLIENTES.CurrentRow.Cells("CLICIUDAD").Value
-            NUEVO.TXTESTADO.Text = DATACLIENTES.CurrentRow.Cells("CLIESTADO").Value
-            NUEVO.TXTTELEFONO.Text = DATACLIENTES.CurrentRow.Cells("CLITELEFONO").Value
-            NUEVO.TXTCORREO.Text = DATACLIENTES.CurrentRow.Cells("CLICORREO").Value
-            NUEVO.TXTNOTAS.Text = DATACLIENTES.CurrentRow.Cells("CLICOMENTARIOS").Value
-            NUEVO.TXTCREDITO.Text = DATACLIENTES.CurrentRow.Cells("CLIHISTORIALCREDITICIO").Value
-            NUEVO.TXTRFC.Text = DATACLIENTES.CurrentRow.Cells("CLIRFC").Value
-            NUEVO.TXTREGIMEN.Text = DATACLIENTES.CurrentRow.Cells("CLIREGIMENFISCAL").Value
-            NUEVO.TXTCFDI.Text = DATACLIENTES.CurrentRow.Cells("CLICFDI").Value
+        NUEVO.TXTRFC.Text = ObtenerValorCelda(fila, "CLIRFC")
+        NUEVO.TXTREGIMEN.Text = ObtenerValorCelda(fila, "CLIREGIMENFISCAL")
+        NUEVO.TXTCFDI.Text = ObtenerValorCelda(fila, "CLICFDI")
 
-            If NUEVO.ShowDialog = DialogResult.OK Then
-                Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
-                Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
-            End If
+        ' Recargar datos si se guardó
+        If NUEVO.ShowDialog = DialogResult.OK Then
+            Me.VISTACLIENTESPRINCIPALTableAdapter.Connection = Conexion
+            Me.VISTACLIENTESPRINCIPALTableAdapter.Fill(Me.MuebleAlexDataSet.VISTACLIENTESPRINCIPAL)
         End If
 
         TXTBUSCAR.Focus()
     End Sub
+
 
     Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
         ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
