@@ -57,42 +57,6 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property SesionActiva() As String
-            Get
-                Return CType(Me("SesionActiva"),String)
-            End Get
-            Set
-                Me("SesionActiva") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property LicenciaGuardada() As String
-            Get
-                Return CType(Me("LicenciaGuardada"),String)
-            End Get
-            Set
-                Me("LicenciaGuardada") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property FirebaseTokenGuardado() As String
-            Get
-                Return CType(Me("FirebaseTokenGuardado"),String)
-            End Get
-            Set
-                Me("FirebaseTokenGuardado") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property ServidorSql() As String
             Get
                 Return CType(Me("ServidorSql"),String)
@@ -135,6 +99,18 @@ Namespace My
             End Get
             Set
                 Me("ContraseñaSQL") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property IdLicencia() As String
+            Get
+                Return CType(Me("IdLicencia"),String)
+            End Get
+            Set
+                Me("IdLicencia") = value
             End Set
         End Property
     End Class

@@ -7,9 +7,6 @@ Public Class FrmVentas
     Dim tablaOriginal As DataTable
     Private Sub FrmVentas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CMBFILTRO.SelectedIndex = 0
-        'TODO: esta línea de código carga datos en la tabla 'MuebleAlexDataSet1.VISTAVENTAS' Puede moverla o quitarla según sea necesario.
-        'Me.VISTAVENTASTableAdapter.Connection = Conexion
-        'Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet1.VISTAVENTAS)
         CargarDatos()
         Me.BackColor = ColorFormulario
         EstiloBotones.CambiarColorBotones(Me)
@@ -359,9 +356,9 @@ Public Class FrmVentas
                                          OPCIONESVENTAS.Close()
                                          ' Seleccionar el reporte correcto
                                          If VENTAGENERAL.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTVENTASGENERAL.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASGENERAL.rpt")
                                          ElseIf VENTAFILTRADO.Checked Then
-                                             rutaReporte = System.IO.Path.Combine(rutaBase, "Reportes\RPTVENTASFILTRADAS.rpt")
+                                             rutaReporte = System.IO.Path.Combine(rutaBase, "RPTVENTASFILTRADAS.rpt")
                                          Else
                                              MsgBox("Selecciona una opción.", MsgBoxStyle.Information, "Advertencia")
                                              Exit Sub

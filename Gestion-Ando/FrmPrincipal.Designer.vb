@@ -37,7 +37,6 @@ Partial Class FrmPrincipal
         Me.PANELFRAMES = New System.Windows.Forms.Panel()
         Me.BTNDEUDORES = New System.Windows.Forms.Button()
         Me.LBLOPCIONES = New System.Windows.Forms.Label()
-        Me.LBLLOGIN = New System.Windows.Forms.Label()
         Me.LBLHORA = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LBLFECHA = New System.Windows.Forms.Label()
@@ -79,8 +78,8 @@ Partial Class FrmPrincipal
         'CorteDeCajaToolStripMenuItem
         '
         Me.CorteDeCajaToolStripMenuItem.Name = "CorteDeCajaToolStripMenuItem"
-        Me.CorteDeCajaToolStripMenuItem.Size = New System.Drawing.Size(177, 34)
-        Me.CorteDeCajaToolStripMenuItem.Text = "Abrir/Cerrar caja"
+        Me.CorteDeCajaToolStripMenuItem.Size = New System.Drawing.Size(147, 34)
+        Me.CorteDeCajaToolStripMenuItem.Text = "Corte de caja"
         '
         'CotizacionesToolStripMenuItem
         '
@@ -142,17 +141,6 @@ Partial Class FrmPrincipal
         Me.LBLOPCIONES.Size = New System.Drawing.Size(0, 32)
         Me.LBLOPCIONES.TabIndex = 2
         '
-        'LBLLOGIN
-        '
-        Me.LBLLOGIN.AutoSize = True
-        Me.LBLLOGIN.BackColor = System.Drawing.Color.Transparent
-        Me.LBLLOGIN.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLLOGIN.Location = New System.Drawing.Point(895, 2)
-        Me.LBLLOGIN.Name = "LBLLOGIN"
-        Me.LBLLOGIN.Size = New System.Drawing.Size(37, 36)
-        Me.LBLLOGIN.TabIndex = 21
-        Me.LBLLOGIN.Text = ". . ."
-        '
         'LBLHORA
         '
         Me.LBLHORA.AutoSize = True
@@ -186,7 +174,6 @@ Partial Class FrmPrincipal
         Me.ClientSize = New System.Drawing.Size(1920, 997)
         Me.Controls.Add(Me.LBLFECHA)
         Me.Controls.Add(Me.LBLHORA)
-        Me.Controls.Add(Me.LBLLOGIN)
         Me.Controls.Add(Me.LBLOPCIONES)
         Me.Controls.Add(Me.PANELFRAMES)
         Me.Controls.Add(Me.MenuOpciones)
@@ -215,7 +202,6 @@ Partial Class FrmPrincipal
     Friend WithEvents PANELFRAMES As Panel
     Friend WithEvents CerrarSesiónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LBLOPCIONES As Label
-    Friend WithEvents LBLLOGIN As Label
     Friend WithEvents LBLHORA As Label
     Friend WithEvents Timer1 As Timer
     Friend WithEvents LBLFECHA As Label

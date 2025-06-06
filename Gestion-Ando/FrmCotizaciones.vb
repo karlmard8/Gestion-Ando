@@ -2,11 +2,14 @@
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports System.IO
+Imports iTextSharp.text.pdf.draw
 
 Public Class FrmCotizaciones
+
+    Public nombreVendedor As String
     Public Sub GenerarPDF()
         Try
-            ' 🔹 Cuadro de diálogo para que el usuario seleccione la ubicación del PDF
+            ' Cuadro de diálogo para que el usuario seleccione la ubicación del PDF
             Dim guardarDialogo As New SaveFileDialog()
             guardarDialogo.Filter = "Archivos PDF (*.pdf)|*.pdf"
             guardarDialogo.Title = "Guardar PDF"
@@ -15,16 +18,15 @@ Public Class FrmCotizaciones
             If guardarDialogo.ShowDialog() = DialogResult.OK Then
                 Dim rutaPDF As String = guardarDialogo.FileName
 
-                ' 🔹 Consulta SQL con COTID recién generado (sin incluir "Subtotal", "Descuento total" ni "Total" en la tabla)
-                StrSql = "SELECT TBLCOTIZACIONES.COTID AS 'No.Cotización',USUNOMBRE AS Vendedor, PRONOMBRE as Producto, 
-                         PROPRECIO as 'Precio individual', PROCANTIDAD as Cantidad, 
-                         PRODESCUENTO as Descuento, PROTOTAL AS 'Precio final' ,COTSUBTOTAL as SubTotal, 
-                         COTDESCUENTO as 'Descuento total', COTTOTAL as Total
+                ' Consultar la información de la cotización
+                StrSql = "SELECT TBLCOTIZACIONES.COTID AS 'No.Cotización',COTFECHA AS Fecha,USUNOMBRE AS Vendedor, PRONOMBRE as Producto, 
+                     PROPRECIO as 'Precio individual', PROCANTIDAD as Cantidad, 
+                     PRODESCUENTO as Descuento, PROTOTAL AS 'Precio final' ,COTSUBTOTAL as SubTotal, 
+                     COTDESCUENTO as 'Descuento total', COTTOTAL as Total
                   FROM TBLCOTIZACIONES 
                   INNER JOIN TBLDETALLECOTIZACIONES ON TBLCOTIZACIONES.COTID = TBLDETALLECOTIZACIONES.COTID
                   INNER JOIN TBLUSUARIOS ON TBLCOTIZACIONES.USUID = TBLUSUARIOS.USUID
                   INNER JOIN TBLPRODUCTOS ON TBLDETALLECOTIZACIONES.PROID = TBLPRODUCTOS.PROID
-
                   WHERE TBLCOTIZACIONES.COTID = @COTID"
 
                 Dim comando As New SqlCommand(StrSql, Conexion)
@@ -38,30 +40,31 @@ Public Class FrmCotizaciones
                 Dim tablaDatos As New DataTable()
                 adaptador.Fill(tablaDatos)
 
-                ' 🔹 Verificar si hay registros
+                ' Verificar si hay registros
                 If tablaDatos.Rows.Count = 0 Then
                     MessageBox.Show("No hay registros disponibles para esta cotización.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
 
-                ' 🔹 Extraer valores de "Subtotal", "Descuento total" y "Total" una sola vez
+                ' Extraer valores importantes
                 Dim subtotal As String = String.Format("{0:C}", Convert.ToDecimal(tablaDatos.Rows(0)("SubTotal")))
                 Dim descuentoTotal As String = String.Format("{0:C}", Convert.ToDecimal(tablaDatos.Rows(0)("Descuento total")))
                 Dim total As String = String.Format("{0:C}", Convert.ToDecimal(tablaDatos.Rows(0)("Total")))
+                nombreVendedor = tablaDatos.Rows(0)("Vendedor").ToString()
 
-                ' 🔹 Extraer el nombre del vendedor solo una vez
-                Dim nombreVendedor As String = tablaDatos.Rows(0)("Vendedor").ToString()
-                tablaDatos.Columns.Remove("Vendedor") ' Eliminar la columna antes de mostrar la tabla
-                tablaDatos.Columns.Remove("SubTotal") ' Eliminar la columna de la tabla
-                tablaDatos.Columns.Remove("Descuento total") ' Eliminar la columna de la tabla
-                tablaDatos.Columns.Remove("Total") ' Eliminar la columna de la tabla
-                tablaDatos.Columns.Remove("No.Cotización") ' Eliminar la columna de la tabla
+                ' Eliminar columnas antes de mostrar la tabla
+                tablaDatos.Columns.Remove("Vendedor")
+                tablaDatos.Columns.Remove("SubTotal")
+                tablaDatos.Columns.Remove("Descuento total")
+                tablaDatos.Columns.Remove("Total")
+                tablaDatos.Columns.Remove("No.Cotización")
+                tablaDatos.Columns.Remove("Fecha")
 
-                ' 🔹 Configurar documento PDF
-                Dim doc As New Document(PageSize.A4.Rotate(), 30, 30, 20, 20)
+                ' Configurar documento PDF con márgenes más amplios
+                Dim doc As New Document(PageSize.A4.Rotate(), 50, 50, 40, 40)
                 Dim writer As PdfWriter = PdfWriter.GetInstance(doc, New FileStream(rutaPDF, FileMode.Create))
 
-                ' 🔹 Asignar la clase del pie de página al documento
+                ' Mantener referencias a las clases de pie de página y encabezado
                 Dim eventoPie As New PiePaginaPDF()
                 writer.PageEvent = eventoPie
                 Dim eventoEncabezado As New EncabezadoPDF()
@@ -69,81 +72,89 @@ Public Class FrmCotizaciones
 
                 doc.Open()
 
-
-                ' 🔹 Definir fuentes personalizadas (sin negrita)
-                Dim fuenteTitulo As Font = FontFactory.GetFont("Arial", 25)
-                Dim fuenteSubtitulo As Font = FontFactory.GetFont("Arial", 15)
+                ' Definir fuentes mejoradas
+                Dim fuenteTitulo As Font = FontFactory.GetFont("Helvetica", 25)
                 Dim fuenteEncabezado As Font = FontFactory.GetFont("Dubai", 12)
-                Dim fuenteCuerpo As Font = FontFactory.GetFont("Dubai", 10)
+                Dim fuenteCuerpo As Font = FontFactory.GetFont("Times-Roman", 10)
                 Dim fuenteResumen As Font = FontFactory.GetFont("Dubai", 12)
 
-                ' 🔹 Agregar título con formato
+                ' Cargar el logo y definir su ubicación en la página
+                Dim ruta As String = Application.StartupPath & "\LogoGestion-Ando.png"
+                Dim imagen As Image = Image.GetInstance(ruta)
+                imagen.ScaleAbsolute(100, 100) ' Ajustar tamaño de la imagen
+                imagen.SetAbsolutePosition(50, doc.PageSize.Height - 100) ' Ubicación en la parte superior izquierda
+
+                doc.Add(imagen) ' Agregar la imagen al documento
+
+                ' Agregar título y espacio adicional para bajar el contenido
                 Dim titulo As New Paragraph("Cotización de productos", fuenteTitulo)
                 titulo.Alignment = Element.ALIGN_CENTER
-                titulo.SpacingAfter = 20
-
-                ' 🔹 Agregar subtítulo con el nombre del vendedor (solo una vez)
-                Dim subtitulo As New Paragraph("Vendedor: " & nombreVendedor, fuenteSubtitulo)
-                subtitulo.Alignment = Element.ALIGN_LEFT
-                subtitulo.SpacingAfter = 20
-
+                titulo.SpacingBefore = 60 ' Espacio antes del título
+                titulo.SpacingAfter = 25 ' Aumentar espacio para mover el contenido hacia abajo
 
                 doc.Add(titulo)
-                doc.Add(subtitulo)
-                doc.Add(New Paragraph(" ")) ' Espacio en blanco
 
-                ' 🔹 Crear tabla con todas las columnas
-                ' 🔹 Crear la tabla con todas las columnas
+                ' Línea separadora antes de la tabla (Ubicación de la tabla)
+                doc.Add(New Chunk(New LineSeparator()))
+
+                ' Crear tabla con todas las columnas
                 Dim tablaPDF As New PdfPTable(tablaDatos.Columns.Count)
                 tablaPDF.WidthPercentage = 100
 
-                ' 🔹 Definir los anchos de columna (1 para ajuste automático, 3 para "Producto" más amplio)
+                ' Ajustar ancho de columnas para que "Producto" sea más amplio
                 Dim anchos(tablaDatos.Columns.Count - 1) As Single
                 For i As Integer = 0 To tablaDatos.Columns.Count - 1
                     If tablaDatos.Columns(i).ColumnName = "Producto" Then
-                        anchos(i) = 3 ' Producto será más ancho
+                        anchos(i) = 3
                     Else
-                        anchos(i) = 1 ' Ajuste automático al contenido
+                        anchos(i) = 1
                     End If
                 Next
                 tablaPDF.SetWidths(anchos)
 
-                ' 🔹 Agregar encabezados con formato
+                ' Agregar encabezados con diseño mejorado
                 For Each columna As DataColumn In tablaDatos.Columns
                     Dim celdaEncabezado As New PdfPCell(New Phrase(columna.ColumnName, fuenteEncabezado))
-                    celdaEncabezado.BackgroundColor = New BaseColor(200, 200, 200)
+                    celdaEncabezado.BackgroundColor = New BaseColor(147, 116, 88)
                     celdaEncabezado.HorizontalAlignment = Element.ALIGN_CENTER
-                    celdaEncabezado.BorderWidth = 1
                     tablaPDF.AddCell(celdaEncabezado)
                 Next
 
-                ' 🔹 Agregar filas de datos con alineación específica
+                ' Agregar filas de datos con alineación correcta y formato de moneda
                 For Each fila As DataRow In tablaDatos.Rows
                     For Each columna As DataColumn In tablaDatos.Columns
                         Dim valor As Object = fila(columna.ColumnName)
+
+                        ' Restaurar formato de moneda para los valores monetarios
                         If columna.ColumnName = "Precio individual" OrElse columna.ColumnName = "Descuento" OrElse columna.ColumnName = "Precio final" Then
                             valor = String.Format("{0:C}", Convert.ToDecimal(valor))
                         End If
+
+                        ' Crear celda y establecer alineación correcta
                         Dim celda As New PdfPCell(New Phrase(valor.ToString(), fuenteCuerpo))
+
+                        ' Alinear al centro todo excepto "Producto"
                         If columna.ColumnName <> "Producto" Then
                             celda.HorizontalAlignment = Element.ALIGN_CENTER
                         End If
+
                         celda.VerticalAlignment = Element.ALIGN_MIDDLE
                         tablaPDF.AddCell(celda)
                     Next
                 Next
 
+                ' Agregar la tabla de productos al documento
                 doc.Add(tablaPDF)
 
-                ' 🔹 Mostrar "Subtotal", "Descuento total" y "Total" abajo a la derecha
-                Dim resumen As New Paragraph("Subtotal: " & subtotal & vbCrLf & "Descuento total: " & descuentoTotal & vbCrLf & "Total: " & total, fuenteResumen)
+                ' Mostrar "Subtotal", "Descuento total" y "Total" justo debajo de la tabla
+                Dim resumen As New Paragraph("Subtotal: " & subtotal & vbCrLf &
+                                         "Descuento total: " & descuentoTotal & vbCrLf &
+                                         "Total: " & total, fuenteResumen)
                 resumen.Alignment = Element.ALIGN_RIGHT
-                resumen.SpacingBefore = 20
+                resumen.SpacingBefore = 10
                 doc.Add(resumen)
 
                 doc.Close()
-
-                MessageBox.Show("PDF generado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception
@@ -157,12 +168,12 @@ Public Class FrmCotizaciones
             Return
         End If
         If CMBCLIENTE.SelectedValue IsNot Nothing AndAlso IsNumeric(CMBCLIENTE.SelectedValue) Then
-            StrSql = "SELECT TBLCOTIZACIONES.COTID as 'No.Cotización', USUNOMBRE AS Vendedor,CLINOMBRE +' '+ CLIAPEPATERNO+ ' '+CLIAPEMATERNO AS Cliente,
+            StrSql = "SELECT TBLCOTIZACIONES.COTID as 'No.Cotización',COTFECHA AS Fecha, USUNOMBRE AS Vendedor,CLINOMBRE +' '+ CLIAPEPATERNO+ ' '+CLIAPEMATERNO AS Cliente,
                              COTSUBTOTAL as SubTotal, COTDESCUENTO as 'Descuento total', COTTOTAL as Total
                   FROM TBLCOTIZACIONES 
                   INNER JOIN TBLUSUARIOS ON TBLCOTIZACIONES.USUID = TBLUSUARIOS.USUID
                   INNER JOIN TBLCLIENTES ON TBLCOTIZACIONES.CLIID=TBLCLIENTES.CLIID
-                  WHERE TBLCOTIZACIONES.CLIID = @CLIID AND COTEXISTE=1"
+                  WHERE TBLCOTIZACIONES.CLIID = @CLIID AND COTEXISTE=1 ORDER BY TBLCOTIZACIONES.COTID DESC"
 
 
             Dim comando As New SqlCommand(StrSql, Conexion)
@@ -208,6 +219,7 @@ Public Class FrmCotizaciones
 
         If HISTORIAL = False Then
             ACTUALIZARCOITD()
+            BTNENVIAR.Location = New Point(1706, 442)
             BTNELIMINAR.Visible = False
         End If
 
@@ -217,6 +229,9 @@ Public Class FrmCotizaciones
             CMBCLIENTE.Location = New Point(362, 137)
             DATACOTIZACIONES.Size = New Size(1200, 567)
             DATACOTIZACIONES.Location = New Point(250, 242)
+            BTNGUARDAR.Location = New Point(1600, 242)
+            BTNELIMINAR.Location = New Point(1600, 442)
+            BTNENVIAR.Location = New Point(1600, 642)
             BTNGUARDAR.Text = "Generar PDF"
         End If
     End Sub
@@ -500,7 +515,6 @@ Public Class FrmCotizaciones
             ActualizarSumatorias() 'Actualizar etiquetas después del cambio
         End If
 
-
     End Sub
 
     Private Sub TXTCANTIDAD_KeyDown(sender As Object, e As KeyEventArgs) Handles TXTCANTIDAD.KeyDown
@@ -511,6 +525,11 @@ Public Class FrmCotizaciones
             If TXTCANTIDAD.Text >= 1 Then
                 TXTCANTIDAD.Text = Val(TXTCANTIDAD.Text) - 1
             End If
+        End If
+
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            BTNAGREGAR.PerformClick()
         End If
     End Sub
 
@@ -594,7 +613,7 @@ Public Class FrmCotizaciones
 
             comando.ExecuteNonQuery()
 
-            ' ✅ Si no hubo excepción, asumimos éxito
+            'Si no hubo excepción, asumimos éxito
             MsgBox("Cotización eliminada exitosamente", MsgBoxStyle.Information, "Confirmación")
             CMBCLIENTE_SelectedIndexChanged(Nothing, Nothing) ' Actualizar la lista de cotizaciones
 
@@ -609,9 +628,12 @@ Public Class FrmCotizaciones
     End Sub
 
 
-    Dim COTID As Long
+    Public COTID As Long
+    Dim LIMPIAR As Boolean
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
-
+        If HISTORIAL = True Then
+            LIMPIAR = True
+        End If
         Try
 
             If HISTORIAL = True Then
@@ -661,6 +683,7 @@ Public Class FrmCotizaciones
 
                 MsgBox("Cotización registrada exitosamente", MsgBoxStyle.Information, "Confirmación")
                 LimpiarCampos()
+
                 ACTUALIZARCOITD()
 
                 ' 🔥 Llamar al método GenerarPDF() después de guardar la cotización
@@ -673,7 +696,6 @@ Public Class FrmCotizaciones
 
     Public Sub LimpiarCampos()
         ' Limpiar los campos del formulario
-        CMBCLIENTE.SelectedIndex = -1
         CMBPRODUCTO.SelectedIndex = -1
         TXTCANTIDAD.Text = "0"
         LBLPRECIO.Text = ". . ."
@@ -694,6 +716,11 @@ Public Class FrmCotizaciones
     End Sub
 
     Private Sub BTNENVIAR_Click(sender As Object, e As EventArgs) Handles BTNENVIAR.Click
+        If HISTORIAL = True AndAlso DATACOTIZACIONES.RowCount = 0 Then
+
+            Return
+        End If
+        BTNGUARDAR_Click(sender, e) ' Llamar al método de guardar para generar el PDF
         Try
             ' 🔹 Validar si se ha seleccionado un cliente
             If CMBCLIENTE.SelectedIndex < 0 Then
@@ -720,7 +747,13 @@ Public Class FrmCotizaciones
             Dim destinatario As String = tablaDatos.Rows(0)("CLICORREO").ToString().Trim()
 
             ' 🔹 Definir el asunto y cuerpo del mensaje
-            Dim asunto As String = "Cotización de productos"
+            Dim asunto As String
+            If HISTORIAL = True Then
+                asunto = "Cotización de productos. No." + DATACOTIZACIONES.CurrentRow.Cells("No.Cotización").Value.ToString()
+            Else
+                asunto = "Cotización de productos. No. " + (COTID - 1).ToString()
+            End If
+
             Dim mensaje As String = "Le envío la cotización de los productos solicitados. Buen día"
             Dim cuerpo As String = mensaje.Replace(" ", "%20")
 
@@ -729,6 +762,9 @@ Public Class FrmCotizaciones
 
             ' 🔹 Abrir Gmail solo si hay un destinatario válido
             Process.Start(New ProcessStartInfo(gmailURL) With {.UseShellExecute = True})
+            If LIMPIAR = False Then
+                CMBCLIENTE.SelectedIndex = -1
+            End If
 
         Catch ex As Exception
             MessageBox.Show("Error al abrir Gmail: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -744,7 +780,13 @@ Public Class PiePaginaPDF
 
     Public Overrides Sub OnEndPage(writer As PdfWriter, document As Document)
         Dim cb As PdfContentByte = writer.DirectContent
-        Dim fechaTexto As String = "Generado el: " & DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")
+        Dim fechaTexto As String
+
+        If HISTORIAL = True Then
+            fechaTexto = "Generado el: " + FrmCotizaciones.DATACOTIZACIONES.CurrentRow.Cells("Fecha").Value.ToString() + " por " + FrmCotizaciones.DATACOTIZACIONES.CurrentRow.Cells("Vendedor").Value.ToString()
+        Else
+            fechaTexto = "Generado el: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " por " + FrmCotizaciones.nombreVendedor
+        End If
 
         ' Definir la posición en la que se imprimirá el pie de página
         Dim piePagina As New Paragraph(fechaTexto, _fuentePie)
@@ -764,6 +806,12 @@ Public Class EncabezadoPDF
     Public Overrides Sub OnEndPage(writer As PdfWriter, document As Document)
         Dim cb As PdfContentByte = writer.DirectContent
         Dim textoEncabezado As String = "Powered by Gestion-Ando"
+        If HISTORIAL = True Then
+            textoEncabezado += ". Cotización No. " + FrmCotizaciones.DATACOTIZACIONES.CurrentRow.Cells("No.Cotización").Value.ToString()
+        Else
+            textoEncabezado += ". Cotización No. " + (FrmCotizaciones.COTID - 1).ToString
+        End If
+
 
         ' 🔹 Definir la posición en la parte superior derecha
         Dim x As Single = document.Right

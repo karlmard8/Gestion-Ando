@@ -37,7 +37,7 @@ Partial Class FrmLogin
         'TXTLOGIN
         '
         Me.TXTLOGIN.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTLOGIN.Location = New System.Drawing.Point(146, 191)
+        Me.TXTLOGIN.Location = New System.Drawing.Point(146, 211)
         Me.TXTLOGIN.MaxLength = 10
         Me.TXTLOGIN.Name = "TXTLOGIN"
         Me.TXTLOGIN.Size = New System.Drawing.Size(242, 29)
@@ -47,7 +47,7 @@ Partial Class FrmLogin
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(52, 189)
+        Me.Label1.Location = New System.Drawing.Point(52, 209)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 36)
         Me.Label1.TabIndex = 1
@@ -57,7 +57,7 @@ Partial Class FrmLogin
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Dubai", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(20, 239)
+        Me.Label2.Location = New System.Drawing.Point(20, 259)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(115, 36)
         Me.Label2.TabIndex = 3
@@ -66,7 +66,7 @@ Partial Class FrmLogin
         'TXTCONTRASEÑA
         '
         Me.TXTCONTRASEÑA.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(146, 241)
+        Me.TXTCONTRASEÑA.Location = New System.Drawing.Point(146, 261)
         Me.TXTCONTRASEÑA.MaxLength = 10
         Me.TXTCONTRASEÑA.Name = "TXTCONTRASEÑA"
         Me.TXTCONTRASEÑA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -79,7 +79,7 @@ Partial Class FrmLogin
         Me.BTNENTRAR.BackColor = System.Drawing.Color.Snow
         Me.BTNENTRAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNENTRAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNENTRAR.Location = New System.Drawing.Point(155, 302)
+        Me.BTNENTRAR.Location = New System.Drawing.Point(155, 322)
         Me.BTNENTRAR.Name = "BTNENTRAR"
         Me.BTNENTRAR.Size = New System.Drawing.Size(160, 47)
         Me.BTNENTRAR.TabIndex = 4
@@ -89,10 +89,10 @@ Partial Class FrmLogin
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(38, 12)
+        Me.PictureBox1.Location = New System.Drawing.Point(40, -30)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(366, 136)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.Size = New System.Drawing.Size(376, 284)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
         '
@@ -127,15 +127,15 @@ Partial Class FrmLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(444, 361)
+        Me.ClientSize = New System.Drawing.Size(444, 380)
         Me.Controls.Add(Me.BTNCREARUSUARIO)
         Me.Controls.Add(Me.btnlogin)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BTNENTRAR)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TXTCONTRASEÑA)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TXTLOGIN)
+        Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

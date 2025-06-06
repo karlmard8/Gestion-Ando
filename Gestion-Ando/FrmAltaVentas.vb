@@ -291,7 +291,7 @@ Public Class FrmAltaVentas
         End If
 
         ' 🔹 Definir la ruta del reporte
-        Dim RUTAREPORTE As String = System.IO.Path.Combine(Application.StartupPath, "Reportes\RPTTICKETVENTA.rpt")
+        Dim RUTAREPORTE As String = System.IO.Path.Combine(Application.StartupPath, "RPTTICKETVENTA.rpt")
         If Not System.IO.File.Exists(RUTAREPORTE) Then
             MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub

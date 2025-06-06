@@ -2,15 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="SesionActiva" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="LicenciaGuardada" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="FirebaseTokenGuardado" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="ServidorSql" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -21,6 +12,9 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="ContraseñaSQL" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IdLicencia" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

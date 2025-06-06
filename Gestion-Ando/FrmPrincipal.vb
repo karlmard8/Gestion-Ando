@@ -84,12 +84,9 @@ Public Class FrmPrincipal
         LBLFECHA.ForeColor = Color.White
         LBLHORA.BackColor = ColorMenuStrip
         LBLHORA.ForeColor = Color.White
-        LBLLOGIN.BackColor = ColorMenuStrip
-        LBLLOGIN.ForeColor = Color.White
         FECHA = Today.Date.ToString("dd/MM/yyyy")
         LBLFECHA.Text = FECHA
 
-        LBLLOGIN.Text = "Bienvenido " + FrmLogin.TXTLOGIN.Text.ToUpper()
         StrSql = "INICIARSESION"
         comando = New SqlClient.SqlCommand(StrSql, Conexion)
         comando.CommandType = CommandType.StoredProcedure

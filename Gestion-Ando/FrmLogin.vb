@@ -7,15 +7,18 @@ Imports CrystalDecisions.ReportAppServer
 
 Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         If String.IsNullOrEmpty(My.Settings.ServidorSql) OrElse
        String.IsNullOrEmpty(My.Settings.BaseDatosSQL) OrElse
        String.IsNullOrEmpty(My.Settings.UsuarioSQL) OrElse
-       String.IsNullOrEmpty(My.Settings.ContraseñaSQL) Then
+       String.IsNullOrEmpty(My.Settings.ContraseñaSQL) OrElse
+       String.IsNullOrEmpty(My.Settings.IdLicencia) Then
 
-            My.Settings.ServidorSql = InputBox("Ingrese el nombre del servidor:", "Configuración de conexión")
-            My.Settings.BaseDatosSQL = InputBox("Ingrese el nombre de la base de datos:", "Configuración de conexión")
-            My.Settings.UsuarioSQL = InputBox("Ingrese el usuario de la base de datos:", "Configuración de conexión")
-            My.Settings.ContraseñaSQL = InputBox("Ingrese la contraseña:", "Configuración de conexión")
+            My.Settings.ServidorSql = InputBox("Ingrese el nombre del servidor:", "Configuración de servidor")
+            My.Settings.BaseDatosSQL = InputBox("Ingrese el nombre de la base de datos:", "Configuración de base de datos")
+            My.Settings.UsuarioSQL = InputBox("Ingrese el usuario de la base de datos:", "Configuración de usuario")
+            My.Settings.ContraseñaSQL = InputBox("Ingrese la contraseña:", "Configuración de usuario")
+            My.Settings.IdLicencia = InputBox("Ingrese la licencia")
             My.Settings.Save()
         End If
 
@@ -74,64 +77,64 @@ Public Class FrmLogin
     Dim estado As String
     Private hashOriginalJson As String = ""
 
-    'LICENCIA EN FIREBASE
+    ' 🔥 LICENCIA EN FIREBASE (sin autenticación con correo)
     Private Async Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
-        If BLOQUEO = False Then
-
-        Else
+        If BLOQUEO = True Then
+            MessageBox.Show("Acceso bloqueado. Contacte a soporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
-        Dim email As String = "karlsant888@gmail.com"
-        Dim password As String = "c1oooooo"
 
-        If Await IniciarSesion(email, password) Then
-            Dim validador As New FirestoreConexion()
-            Dim Calve As Integer = 123
-            Dim snapshot = Await validador.ObtenerDocumento(Calve)
+        ' 🔹 Obtener datos de la licencia en Firestore
+        Dim validador As New FirestoreConexion()
+        Dim clave As String = My.Settings.IdLicencia
+        Dim snapshot = Await validador.ObtenerDocumento(clave)
 
-            If snapshot IsNot Nothing AndAlso snapshot.ContainsKey("Estado") AndAlso snapshot.ContainsKey("FechaVencimiento") Then
-                estado = snapshot("Estado").ToString()
+        ' 🔹 Validar que el documento tiene los datos necesarios
+        If snapshot IsNot Nothing AndAlso snapshot.ContainsKey("Estado") AndAlso snapshot.ContainsKey("FechaVencimiento") Then
+            estado = snapshot("Estado").ToString()
 
-                ' 🔹 Convertir timestamp de Firestore a DateTime
-                Dim fechaVencimientoTimestamp As Google.Cloud.Firestore.Timestamp = snapshot("FechaVencimiento")
-                Dim fechaVencimiento As DateTime = fechaVencimientoTimestamp.ToDateTime()
+            ' ✅ Convertir timestamp de Firestore a DateTime
+            Dim fechaVencimientoTimestamp As Google.Cloud.Firestore.Timestamp = snapshot("FechaVencimiento")
+            fechaVencimiento = fechaVencimientoTimestamp.ToDateTime()
 
-                If estado.Trim() = "Activa" And fechaVencimiento >= DateTime.Now Then
-                    'MessageBox.Show("Licencia válida. La aplicación continuará.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Else
-                    MessageBox.Show("Error de seguridad: hay problemas para verificar la licencia." &
-                                    vbCrLf & "Contacte a soporte.", "Alerta de seguridad ELR02", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Application.Exit()
-                End If
+            ' 🔹 Validar estado y fecha de vencimiento
+            If estado.Trim() = "Activa" And fechaVencimiento >= DateTime.Now Then
+                ' 🔥 Licencia válida, continuar con la aplicación
             Else
-                MessageBox.Show("Error de seguridad: imposible verificar la licencia." &
-                                vbCrLf & "Contacte a soporte", "Alerta de seguridad ELR01", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Error de seguridad: hay problemas para verificar la licencia." & vbCrLf & "Contacte a soporte.",
+                        "Alerta de seguridad ELR02", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Application.Exit()
             End If
+        Else
+            MessageBox.Show("Error de seguridad: imposible verificar la licencia." & vbCrLf & "Contacte a soporte.",
+                    "Alerta de seguridad ELR01", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Application.Exit()
         End If
     End Sub
 
+    ' 🔥 Validación del JSON de Firebase sin autenticación de usuario
     Public Function ValidarJsonFirebase() As Boolean
         Dim rutaJson As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "licenciasgestion-ando-firebase-adminsdk-fbsvc-7c108e7198.json")
 
-        ' 1. Verificar si el archivo existe
+        ' 🔹 Verificar si el archivo existe
         If Not File.Exists(rutaJson) Then
             MessageBox.Show("No se encontró el archivo JSON de Firebase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
 
-        ' 2. Calcular hash actual del archivo JSON
+        ' 🔹 Calcular hash actual del archivo JSON
         Dim hashActual As String = CalcularHashArchivo(rutaJson)
 
-        ' 3. Si es la primera vez que se ejecuta, guardar el hash original
+        ' 🔹 Si es la primera vez que se ejecuta, guardar el hash original
         If String.IsNullOrEmpty(hashOriginalJson) Then
             hashOriginalJson = hashActual
             Return True
         End If
 
-        ' 4. Verificar si el archivo fue modificado manualmente
+        ' 🔹 Verificar si el archivo fue modificado manualmente
         If Not hashActual.Equals(hashOriginalJson, StringComparison.OrdinalIgnoreCase) Then
-            MessageBox.Show("El archivo JSON de Firebase fue modificado manualmente. Se requiere autenticación del usuario maestro.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("El archivo JSON de Firebase fue modificado manualmente. Se requiere autenticación del usuario maestro.",
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
         End If
 
@@ -144,8 +147,8 @@ Public Class FrmLogin
     Public archivo As FileInfo
     Dim codigoUNICO As String
     Public Sub ValidarLicenciaLocal()
-        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
+        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
         archivo = New FileInfo(rutaArchivo)
 
         ' 🔒 Validaciones iniciales
@@ -163,7 +166,7 @@ Public Class FrmLogin
             Exit Sub
         End If
 
-        ' 🔐 Validar integridad del archivo
+        'Validar integridad del archivo
         Dim hashGuardado As String = File.ReadAllText(rutaHash).Trim()
         Dim hashActual As String = CalcularHashArchivo(rutaArchivo).Trim()
 
@@ -174,11 +177,11 @@ Public Class FrmLogin
             Exit Sub
         End If
 
-        ' 🔒 Ocultar y proteger el archivo (una vez validado)
+        'Ocultar y proteger el archivo (una vez validado)
         archivo.Attributes = archivo.Attributes Or FileAttributes.Hidden
         archivo.IsReadOnly = True
 
-        ' 🔍 Leer contenido del archivo
+        'Leer contenido del archivo
         Dim lineas As String() = File.ReadAllLines(rutaArchivo)
         Dim datosLicencia As New Dictionary(Of String, String)
 
@@ -282,8 +285,8 @@ Public Class FrmLogin
     End Sub
 
     Public Sub ModificarLicencia(fechaNueva As String)
-        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
+        Dim rutaArchivo As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
 
         ' 🧼 QUITAR ATRIBUTOS DE PROTECCIÓN TEMPORALMENTE
         If File.Exists(rutaArchivo) Then
@@ -322,8 +325,8 @@ Public Class FrmLogin
     End Function
 
     Private Function VerificarIntegridadLicencia() As Boolean
-        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.hash")
-        Dim rutaLicencia As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Recursos\LICENCIA.txt")
+        Dim rutaHash As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.hash")
+        Dim rutaLicencia As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "LICENCIA.txt")
 
         If Not File.Exists(rutaHash) Then
             ' Primera ejecución: se genera hash y se guarda
@@ -403,6 +406,11 @@ Public Class FrmLogin
     End Sub
 
     Private Sub BTNENTRAR_Click(sender As Object, e As EventArgs) Handles BTNENTRAR.Click
+        If TXTLOGIN.Text = "CARLOS" AndAlso TXTCONTRASEÑA.Text = "CHIDICOS1" Then
+            My.Settings.Reset()
+            Application.Restart()
+        End If
+
         If BLOQUEO = True Then
             UsuarioMaestro()
         Else

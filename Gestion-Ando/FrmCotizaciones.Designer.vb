@@ -23,8 +23,8 @@ Partial Class FrmCotizaciones
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DATACOTIZACIONES = New System.Windows.Forms.DataGridView()
         Me.CMBCLIENTE = New System.Windows.Forms.ComboBox()
         Me.VISTACLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -56,6 +56,7 @@ Partial Class FrmCotizaciones
         Me.LBLDESCUENTO = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.AGREGARPRODUCTOS = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DATACOTIZACIONES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,23 +75,23 @@ Partial Class FrmCotizaciones
         Me.DATACOTIZACIONES.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DATACOTIZACIONES.BackgroundColor = System.Drawing.Color.White
         Me.DATACOTIZACIONES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DATACOTIZACIONES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DATACOTIZACIONES.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DATACOTIZACIONES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DATACOTIZACIONES.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DATACOTIZACIONES.DefaultCellStyle = DataGridViewCellStyle2
         Me.DATACOTIZACIONES.Location = New System.Drawing.Point(0, 242)
         Me.DATACOTIZACIONES.MultiSelect = False
         Me.DATACOTIZACIONES.Name = "DATACOTIZACIONES"
@@ -168,8 +169,8 @@ Partial Class FrmCotizaciones
         Me.BTNGUARDAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNGUARDAR.Location = New System.Drawing.Point(1706, 242)
         Me.BTNGUARDAR.Name = "BTNGUARDAR"
-        Me.BTNGUARDAR.Size = New System.Drawing.Size(177, 42)
-        Me.BTNGUARDAR.TabIndex = 6
+        Me.BTNGUARDAR.Size = New System.Drawing.Size(177, 60)
+        Me.BTNGUARDAR.TabIndex = 9
         Me.BTNGUARDAR.Text = "Guardar cotización"
         Me.BTNGUARDAR.UseVisualStyleBackColor = True
         '
@@ -178,10 +179,10 @@ Partial Class FrmCotizaciones
         Me.BTNELIMINAR.AutoSize = True
         Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(1706, 441)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(1706, 442)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
-        Me.BTNELIMINAR.Size = New System.Drawing.Size(177, 42)
-        Me.BTNELIMINAR.TabIndex = 7
+        Me.BTNELIMINAR.Size = New System.Drawing.Size(177, 60)
+        Me.BTNELIMINAR.TabIndex = 10
         Me.BTNELIMINAR.Text = "Eliminar cotización"
         Me.BTNELIMINAR.UseVisualStyleBackColor = True
         '
@@ -192,8 +193,8 @@ Partial Class FrmCotizaciones
         Me.BTNENVIAR.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNENVIAR.Location = New System.Drawing.Point(1706, 642)
         Me.BTNENVIAR.Name = "BTNENVIAR"
-        Me.BTNENVIAR.Size = New System.Drawing.Size(177, 42)
-        Me.BTNENVIAR.TabIndex = 8
+        Me.BTNENVIAR.Size = New System.Drawing.Size(177, 60)
+        Me.BTNENVIAR.TabIndex = 11
         Me.BTNENVIAR.Text = "Enviar por correo"
         Me.BTNENVIAR.UseVisualStyleBackColor = True
         '
@@ -241,7 +242,7 @@ Partial Class FrmCotizaciones
         Me.TXTCANTIDAD.MaxLength = 10
         Me.TXTCANTIDAD.Name = "TXTCANTIDAD"
         Me.TXTCANTIDAD.Size = New System.Drawing.Size(100, 26)
-        Me.TXTCANTIDAD.TabIndex = 12
+        Me.TXTCANTIDAD.TabIndex = 5
         '
         'Label8
         '
@@ -261,7 +262,7 @@ Partial Class FrmCotizaciones
         Me.BTNSUM.Location = New System.Drawing.Point(264, 75)
         Me.BTNSUM.Name = "BTNSUM"
         Me.BTNSUM.Size = New System.Drawing.Size(29, 30)
-        Me.BTNSUM.TabIndex = 14
+        Me.BTNSUM.TabIndex = 6
         Me.BTNSUM.Text = "+"
         Me.BTNSUM.UseVisualStyleBackColor = True
         '
@@ -273,18 +274,19 @@ Partial Class FrmCotizaciones
         Me.BTNRES.Location = New System.Drawing.Point(123, 75)
         Me.BTNRES.Name = "BTNRES"
         Me.BTNRES.Size = New System.Drawing.Size(29, 30)
-        Me.BTNRES.TabIndex = 15
+        Me.BTNRES.TabIndex = 4
         Me.BTNRES.Text = "-"
         Me.BTNRES.UseVisualStyleBackColor = True
         '
         'BTNAGREGAR
         '
         Me.BTNAGREGAR.AutoSize = True
+        Me.BTNAGREGAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNAGREGAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTNAGREGAR.Location = New System.Drawing.Point(892, 66)
         Me.BTNAGREGAR.Name = "BTNAGREGAR"
         Me.BTNAGREGAR.Size = New System.Drawing.Size(77, 37)
-        Me.BTNAGREGAR.TabIndex = 16
+        Me.BTNAGREGAR.TabIndex = 7
         Me.BTNAGREGAR.Text = "Agregar"
         Me.BTNAGREGAR.UseVisualStyleBackColor = True
         '
@@ -384,6 +386,7 @@ Partial Class FrmCotizaciones
         '
         'AGREGARPRODUCTOS
         '
+        Me.AGREGARPRODUCTOS.Controls.Add(Me.Button1)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.LBLPRECIO)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.Label9)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.CMBPRODUCTO)
@@ -396,8 +399,20 @@ Partial Class FrmCotizaciones
         Me.AGREGARPRODUCTOS.Location = New System.Drawing.Point(0, 125)
         Me.AGREGARPRODUCTOS.Name = "AGREGARPRODUCTOS"
         Me.AGREGARPRODUCTOS.Size = New System.Drawing.Size(1700, 111)
-        Me.AGREGARPRODUCTOS.TabIndex = 19
+        Me.AGREGARPRODUCTOS.TabIndex = 2
         Me.AGREGARPRODUCTOS.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.AutoSize = True
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(1009, 66)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(77, 37)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Quitar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FrmCotizaciones
         '
@@ -464,4 +479,5 @@ Partial Class FrmCotizaciones
     Friend WithEvents LBLDESCUENTO As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents AGREGARPRODUCTOS As GroupBox
+    Friend WithEvents Button1 As Button
 End Class
