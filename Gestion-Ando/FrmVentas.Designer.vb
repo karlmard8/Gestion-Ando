@@ -23,19 +23,11 @@ Partial Class FrmVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
-        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PAGOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.VENEXISTEDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet1 = New Gestion_Ando.MuebleAlexDataSet()
         Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
@@ -49,6 +41,16 @@ Partial Class FrmVentas
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.VENID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENFECHA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUNOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENFORMA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VENTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ganancia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAGOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIEXISTE = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VENEXISTEDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DATAVENTAS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTAVENTASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,7 +81,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.BackgroundColor = System.Drawing.Color.White
         Me.DATAVENTAS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATAVENTAS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENID, Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.PAGOS, Me.CLIEXISTE, Me.VENEXISTEDataGridViewCheckBoxColumn})
+        Me.DATAVENTAS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VENID, Me.VENFECHA, Me.CLIENTE, Me.USUNOMBRE, Me.VENFORMA, Me.VENTOTAL, Me.Ganancia, Me.PAGOS, Me.CLIEXISTE, Me.VENEXISTEDataGridViewCheckBoxColumn})
         Me.DATAVENTAS.DataSource = Me.VISTAVENTASBindingSource
         Me.DATAVENTAS.GridColor = System.Drawing.SystemColors.Control
         Me.DATAVENTAS.Location = New System.Drawing.Point(12, 120)
@@ -88,92 +90,9 @@ Partial Class FrmVentas
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(1076, 707)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(1126, 707)
         Me.DATAVENTAS.TabIndex = 4
         Me.DATAVENTAS.TabStop = False
-        '
-        'VENID
-        '
-        Me.VENID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.VENID.DataPropertyName = "VENID"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.VENID.DefaultCellStyle = DataGridViewCellStyle3
-        Me.VENID.HeaderText = "No.Venta"
-        Me.VENID.Name = "VENID"
-        Me.VENID.ReadOnly = True
-        Me.VENID.Width = 77
-        '
-        'VENFECHA
-        '
-        Me.VENFECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.VENFECHA.DataPropertyName = "VENFECHA"
-        Me.VENFECHA.HeaderText = "Fecha"
-        Me.VENFECHA.Name = "VENFECHA"
-        Me.VENFECHA.ReadOnly = True
-        Me.VENFECHA.Width = 62
-        '
-        'CLIENTE
-        '
-        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.CLIENTE.DataPropertyName = "CLIENTE"
-        Me.CLIENTE.HeaderText = "Cliente"
-        Me.CLIENTE.Name = "CLIENTE"
-        Me.CLIENTE.ReadOnly = True
-        Me.CLIENTE.Width = 64
-        '
-        'USUNOMBRE
-        '
-        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
-        Me.USUNOMBRE.HeaderText = "Vendedor"
-        Me.USUNOMBRE.Name = "USUNOMBRE"
-        Me.USUNOMBRE.ReadOnly = True
-        '
-        'VENFORMA
-        '
-        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.VENFORMA.DataPropertyName = "VENFORMA"
-        Me.VENFORMA.HeaderText = "Venta"
-        Me.VENFORMA.Name = "VENFORMA"
-        Me.VENFORMA.ReadOnly = True
-        Me.VENFORMA.Width = 60
-        '
-        'VENTOTAL
-        '
-        Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.VENTOTAL.DataPropertyName = "VENTOTAL"
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle4
-        Me.VENTOTAL.HeaderText = "Total"
-        Me.VENTOTAL.Name = "VENTOTAL"
-        Me.VENTOTAL.ReadOnly = True
-        Me.VENTOTAL.Width = 56
-        '
-        'PAGOS
-        '
-        Me.PAGOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.PAGOS.DataPropertyName = "PAGOS"
-        Me.PAGOS.HeaderText = "Pagos"
-        Me.PAGOS.Name = "PAGOS"
-        Me.PAGOS.ReadOnly = True
-        Me.PAGOS.Width = 62
-        '
-        'CLIEXISTE
-        '
-        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
-        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
-        Me.CLIEXISTE.Name = "CLIEXISTE"
-        Me.CLIEXISTE.ReadOnly = True
-        Me.CLIEXISTE.Visible = False
-        '
-        'VENEXISTEDataGridViewCheckBoxColumn
-        '
-        Me.VENEXISTEDataGridViewCheckBoxColumn.DataPropertyName = "VENEXISTE"
-        Me.VENEXISTEDataGridViewCheckBoxColumn.HeaderText = "VENEXISTE"
-        Me.VENEXISTEDataGridViewCheckBoxColumn.Name = "VENEXISTEDataGridViewCheckBoxColumn"
-        Me.VENEXISTEDataGridViewCheckBoxColumn.ReadOnly = True
-        Me.VENEXISTEDataGridViewCheckBoxColumn.Visible = False
         '
         'VISTAVENTASBindingSource
         '
@@ -291,11 +210,106 @@ Partial Class FrmVentas
         Me.Label3.TabIndex = 22
         Me.Label3.Text = "Filtrar por"
         '
+        'VENID
+        '
+        Me.VENID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.VENID.DataPropertyName = "VENID"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.VENID.DefaultCellStyle = DataGridViewCellStyle1
+        Me.VENID.HeaderText = "No.Venta"
+        Me.VENID.Name = "VENID"
+        Me.VENID.ReadOnly = True
+        Me.VENID.Width = 77
+        '
+        'VENFECHA
+        '
+        Me.VENFECHA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.VENFECHA.DataPropertyName = "VENFECHA"
+        Me.VENFECHA.HeaderText = "Fecha"
+        Me.VENFECHA.Name = "VENFECHA"
+        Me.VENFECHA.ReadOnly = True
+        Me.VENFECHA.Width = 62
+        '
+        'CLIENTE
+        '
+        Me.CLIENTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.CLIENTE.DataPropertyName = "CLIENTE"
+        Me.CLIENTE.HeaderText = "Cliente"
+        Me.CLIENTE.Name = "CLIENTE"
+        Me.CLIENTE.ReadOnly = True
+        Me.CLIENTE.Width = 64
+        '
+        'USUNOMBRE
+        '
+        Me.USUNOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.USUNOMBRE.DataPropertyName = "USUNOMBRE"
+        Me.USUNOMBRE.HeaderText = "Vendedor"
+        Me.USUNOMBRE.Name = "USUNOMBRE"
+        Me.USUNOMBRE.ReadOnly = True
+        '
+        'VENFORMA
+        '
+        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.VENFORMA.DataPropertyName = "VENFORMA"
+        Me.VENFORMA.HeaderText = "Venta"
+        Me.VENFORMA.Name = "VENFORMA"
+        Me.VENFORMA.ReadOnly = True
+        Me.VENFORMA.Width = 60
+        '
+        'VENTOTAL
+        '
+        Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.VENTOTAL.DataPropertyName = "VENTOTAL"
+        DataGridViewCellStyle2.Format = "C2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
+        Me.VENTOTAL.HeaderText = "Total"
+        Me.VENTOTAL.Name = "VENTOTAL"
+        Me.VENTOTAL.ReadOnly = True
+        Me.VENTOTAL.Width = 56
+        '
+        'Ganancia
+        '
+        Me.Ganancia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Ganancia.DataPropertyName = "Ganancia"
+        DataGridViewCellStyle3.Format = "C2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Ganancia.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Ganancia.HeaderText = "Ganancia"
+        Me.Ganancia.Name = "Ganancia"
+        Me.Ganancia.ReadOnly = True
+        Me.Ganancia.Width = 78
+        '
+        'PAGOS
+        '
+        Me.PAGOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.PAGOS.DataPropertyName = "PAGOS"
+        Me.PAGOS.HeaderText = "Pagos"
+        Me.PAGOS.Name = "PAGOS"
+        Me.PAGOS.ReadOnly = True
+        Me.PAGOS.Width = 62
+        '
+        'CLIEXISTE
+        '
+        Me.CLIEXISTE.DataPropertyName = "CLIEXISTE"
+        Me.CLIEXISTE.HeaderText = "CLIEXISTE"
+        Me.CLIEXISTE.Name = "CLIEXISTE"
+        Me.CLIEXISTE.ReadOnly = True
+        Me.CLIEXISTE.Visible = False
+        '
+        'VENEXISTEDataGridViewCheckBoxColumn
+        '
+        Me.VENEXISTEDataGridViewCheckBoxColumn.DataPropertyName = "VENEXISTE"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.HeaderText = "VENEXISTE"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.Name = "VENEXISTEDataGridViewCheckBoxColumn"
+        Me.VENEXISTEDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.VENEXISTEDataGridViewCheckBoxColumn.Visible = False
+        '
         'FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1100, 930)
+        Me.ClientSize = New System.Drawing.Size(1150, 930)
         Me.Controls.Add(Me.CMBFILTRO)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -340,6 +354,7 @@ Partial Class FrmVentas
     Friend WithEvents USUNOMBRE As DataGridViewTextBoxColumn
     Friend WithEvents VENFORMA As DataGridViewTextBoxColumn
     Friend WithEvents VENTOTAL As DataGridViewTextBoxColumn
+    Friend WithEvents Ganancia As DataGridViewTextBoxColumn
     Friend WithEvents PAGOS As DataGridViewTextBoxColumn
     Friend WithEvents CLIEXISTE As DataGridViewCheckBoxColumn
     Friend WithEvents VENEXISTEDataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn

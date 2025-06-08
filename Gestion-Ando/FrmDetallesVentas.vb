@@ -14,10 +14,10 @@ Public Class FrmDetallesVentas
         EstiloBotones.CambiarColorBotones(Me)
         If FrmVentas.contado = "True" Then
             BTNABONO.Visible = False
-            Me.Size = New Size(816, 280)
+            Me.Size = New Size(920, 336)
         Else
             BTNABONO.Visible = True
-            Me.Size = New Size(816, 633)
+            Me.Size = New Size(920, 710)
         End If
     End Sub
     Public Sub FrmDetallesVentas_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown

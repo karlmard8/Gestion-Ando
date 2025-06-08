@@ -74,15 +74,15 @@ Public Class FrmCotizaciones
 
                 ' Definir fuentes mejoradas
                 Dim fuenteTitulo As Font = FontFactory.GetFont("Helvetica", 25)
-                Dim fuenteEncabezado As Font = FontFactory.GetFont("Dubai", 12)
-                Dim fuenteCuerpo As Font = FontFactory.GetFont("Times-Roman", 10)
+                Dim fuenteEncabezado As Font = FontFactory.GetFont("Dubai", 15)
+                Dim fuenteCuerpo As Font = FontFactory.GetFont("Times-Roman", 12)
                 Dim fuenteResumen As Font = FontFactory.GetFont("Dubai", 12)
 
                 ' Cargar el logo y definir su ubicación en la página
                 Dim ruta As String = Application.StartupPath & "\LogoGestion-Ando.png"
                 Dim imagen As Image = Image.GetInstance(ruta)
-                imagen.ScaleAbsolute(100, 100) ' Ajustar tamaño de la imagen
-                imagen.SetAbsolutePosition(50, doc.PageSize.Height - 100) ' Ubicación en la parte superior izquierda
+                imagen.ScaleAbsolute(150, 150) ' Ajustar tamaño de la imagen
+                imagen.SetAbsolutePosition(50, doc.PageSize.Height - 150) ' Ubicación en la parte superior izquierda
 
                 doc.Add(imagen) ' Agregar la imagen al documento
 
@@ -90,7 +90,7 @@ Public Class FrmCotizaciones
                 Dim titulo As New Paragraph("Cotización de productos", fuenteTitulo)
                 titulo.Alignment = Element.ALIGN_CENTER
                 titulo.SpacingBefore = 60 ' Espacio antes del título
-                titulo.SpacingAfter = 25 ' Aumentar espacio para mover el contenido hacia abajo
+                titulo.SpacingAfter = 0 ' Aumentar espacio para mover el contenido hacia abajo
 
                 doc.Add(titulo)
 
@@ -115,7 +115,7 @@ Public Class FrmCotizaciones
                 ' Agregar encabezados con diseño mejorado
                 For Each columna As DataColumn In tablaDatos.Columns
                     Dim celdaEncabezado As New PdfPCell(New Phrase(columna.ColumnName, fuenteEncabezado))
-                    celdaEncabezado.BackgroundColor = New BaseColor(147, 116, 88)
+                    celdaEncabezado.BackgroundColor = New BaseColor(213, 191, 168)
                     celdaEncabezado.HorizontalAlignment = Element.ALIGN_CENTER
                     tablaPDF.AddCell(celdaEncabezado)
                 Next
@@ -192,9 +192,11 @@ Public Class FrmCotizaciones
             DATACOTIZACIONES.Columns("SubTotal").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             DATACOTIZACIONES.Columns("Descuento total").DefaultCellStyle.Format = "C2"
             DATACOTIZACIONES.Columns("Descuento total").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+            DATACOTIZACIONES.Columns("Descuento total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             DATACOTIZACIONES.Columns("Total").DefaultCellStyle.Format = "C2"
             DATACOTIZACIONES.Columns("Total").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
             DATACOTIZACIONES.Columns("Cliente").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            DATACOTIZACIONES.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
         End If
 
@@ -227,8 +229,8 @@ Public Class FrmCotizaciones
             Me.AGREGARPRODUCTOS.Visible = False
             LBLCLIENTE.Location = New Point(279, 140)
             CMBCLIENTE.Location = New Point(362, 137)
-            DATACOTIZACIONES.Size = New Size(1200, 567)
-            DATACOTIZACIONES.Location = New Point(250, 242)
+            DATACOTIZACIONES.Size = New Size(1300, 567)
+            DATACOTIZACIONES.Location = New Point(200, 242)
             BTNGUARDAR.Location = New Point(1600, 242)
             BTNELIMINAR.Location = New Point(1600, 442)
             BTNENVIAR.Location = New Point(1600, 642)
@@ -428,22 +430,29 @@ Public Class FrmCotizaciones
         If HISTORIAL = True Then
             Return
         End If
+
         If DATACOTIZACIONES.SelectedRows.Count > 0 Then
             Dim filaSeleccionada As DataGridViewRow = DATACOTIZACIONES.SelectedRows(0)
 
-            'Verificar si la fila contiene la columna "Cantidad"
+            ' Verificar si la fila contiene la columna "Cantidad"
             If filaSeleccionada.Cells("Cantidad").Value IsNot Nothing Then
                 Dim cantidadActual As Integer = Convert.ToInt32(filaSeleccionada.Cells("Cantidad").Value)
 
-                'Modificar cantidad según la tecla presionada
+                ' Modificar cantidad según la tecla presionada
                 If e.KeyCode = Keys.Add OrElse e.KeyCode = Keys.Oemplus Then ' Tecla "+"
                     cantidadActual += 1
+                    filaSeleccionada.Cells("Cantidad").Value = cantidadActual
+                    
                 ElseIf e.KeyCode = Keys.Subtract OrElse e.KeyCode = Keys.OemMinus Then ' Tecla "-"
-                    cantidadActual = Math.Max(1, cantidadActual - 1) 'Evitar valores negativos o cero
+                    If cantidadActual > 1 Then
+                        cantidadActual -= 1
+                        filaSeleccionada.Cells("Cantidad").Value = cantidadActual
+                    Else
+                        ' Si la cantidad es 1 y se presiona "-", eliminar la fila
+                        DATACOTIZACIONES.Rows.Remove(filaSeleccionada)
+                        ActualizarSumatorias()
+                    End If
                 End If
-
-                'Actualizar la celda de cantidad en la fila seleccionada
-                filaSeleccionada.Cells("Cantidad").Value = cantidadActual
             End If
         End If
     End Sub
@@ -634,6 +643,9 @@ Public Class FrmCotizaciones
         If HISTORIAL = True Then
             LIMPIAR = True
         End If
+        If HISTORIAL = True AndAlso DATACOTIZACIONES.RowCount = 0 Then
+            Return
+        End If
         Try
 
             If HISTORIAL = True Then
@@ -717,7 +729,6 @@ Public Class FrmCotizaciones
 
     Private Sub BTNENVIAR_Click(sender As Object, e As EventArgs) Handles BTNENVIAR.Click
         If HISTORIAL = True AndAlso DATACOTIZACIONES.RowCount = 0 Then
-
             Return
         End If
         BTNGUARDAR_Click(sender, e) ' Llamar al método de guardar para generar el PDF
@@ -771,6 +782,35 @@ Public Class FrmCotizaciones
         End Try
     End Sub
 
+    Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BTNQUITAR.Click
+        ' Verificar que haya una fila seleccionada
+        If DATACOTIZACIONES.CurrentRow IsNot Nothing Then
+            ' Obtener la cantidad del producto seleccionado en DataCotizaciones
+            Dim cantidadProducto As Integer = Convert.ToInt32(DATACOTIZACIONES.CurrentRow.Cells("Cantidad").Value)
+
+            ' Verificar si la cantidad es mayor que 1
+            If cantidadProducto > 1 Then
+                ' Restar 1 a la cantidad
+                cantidadProducto -= 1
+
+                ' Actualizar la cantidad en la fila
+                DATACOTIZACIONES.CurrentRow.Cells("Cantidad").Value = cantidadProducto
+
+                ' Actualizar el subtotal en la fila
+                Dim precio As Double = Convert.ToDouble(DATACOTIZACIONES.CurrentRow.Cells("PROPRECIO").Value)
+                DATACOTIZACIONES.CurrentRow.Cells("PROSUBTOTAL").Value = cantidadProducto * precio
+            Else
+                ' Si la cantidad es 1 o menor, eliminar la fila
+                DATACOTIZACIONES.Rows.Remove(DATACOTIZACIONES.CurrentRow)
+            End If
+
+            ' Recalcular el subtotal acumulado después de quitar el producto
+            ActualizarSumatorias()
+
+        Else
+            MsgBox("Selecciona un producto para quitar", MsgBoxStyle.Exclamation, "Aviso")
+        End If
+    End Sub
 End Class
 
 Public Class PiePaginaPDF

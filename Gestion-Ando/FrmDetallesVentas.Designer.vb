@@ -108,7 +108,7 @@ Partial Class FrmDetallesVentas
         Me.DATADETALLEVENTA.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         Me.DATADETALLEVENTA.RowHeadersVisible = False
         Me.DATADETALLEVENTA.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATADETALLEVENTA.Size = New System.Drawing.Size(799, 198)
+        Me.DATADETALLEVENTA.Size = New System.Drawing.Size(904, 250)
         Me.DATADETALLEVENTA.TabIndex = 0
         Me.DATADETALLEVENTA.TabStop = False
         '
@@ -207,7 +207,7 @@ Partial Class FrmDetallesVentas
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(799, 44)
+        Me.Panel1.Size = New System.Drawing.Size(904, 44)
         Me.Panel1.TabIndex = 2
         '
         'Label2
@@ -225,9 +225,9 @@ Partial Class FrmDetallesVentas
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(0, 246)
+        Me.Panel2.Location = New System.Drawing.Point(0, 296)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(799, 44)
+        Me.Panel2.Size = New System.Drawing.Size(904, 44)
         Me.Panel2.TabIndex = 4
         '
         'DATAPAGOS
@@ -257,7 +257,7 @@ Partial Class FrmDetallesVentas
         DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DATAPAGOS.DefaultCellStyle = DataGridViewCellStyle11
-        Me.DATAPAGOS.Location = New System.Drawing.Point(0, 292)
+        Me.DATAPAGOS.Location = New System.Drawing.Point(0, 342)
         Me.DATAPAGOS.MultiSelect = False
         Me.DATAPAGOS.Name = "DATAPAGOS"
         Me.DATAPAGOS.ReadOnly = True
@@ -271,7 +271,7 @@ Partial Class FrmDetallesVentas
         Me.DATAPAGOS.RowHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.DATAPAGOS.RowHeadersVisible = False
         Me.DATAPAGOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAPAGOS.Size = New System.Drawing.Size(799, 198)
+        Me.DATAPAGOS.Size = New System.Drawing.Size(904, 250)
         Me.DATAPAGOS.TabIndex = 5
         Me.DATAPAGOS.TabStop = False
         '
@@ -339,7 +339,7 @@ Partial Class FrmDetallesVentas
         Me.BTNABONO.AutoSize = True
         Me.BTNABONO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNABONO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNABONO.Location = New System.Drawing.Point(667, 528)
+        Me.BTNABONO.Location = New System.Drawing.Point(760, 605)
         Me.BTNABONO.Name = "BTNABONO"
         Me.BTNABONO.Size = New System.Drawing.Size(132, 54)
         Me.BTNABONO.TabIndex = 6
@@ -354,7 +354,7 @@ Partial Class FrmDetallesVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 594)
+        Me.ClientSize = New System.Drawing.Size(904, 671)
         Me.Controls.Add(Me.BTNABONO)
         Me.Controls.Add(Me.DATAPAGOS)
         Me.Controls.Add(Me.Panel2)

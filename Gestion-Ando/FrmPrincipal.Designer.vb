@@ -40,6 +40,7 @@ Partial Class FrmPrincipal
         Me.LBLHORA = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LBLFECHA = New System.Windows.Forms.Label()
+        Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuOpciones.SuspendLayout()
         Me.PANELFRAMES.SuspendLayout()
         Me.SuspendLayout()
@@ -49,7 +50,7 @@ Partial Class FrmPrincipal
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
         Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CotizacionesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
+        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CotizacionesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -125,7 +126,7 @@ Partial Class FrmPrincipal
         Me.BTNDEUDORES.AutoSize = True
         Me.BTNDEUDORES.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNDEUDORES.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNDEUDORES.Location = New System.Drawing.Point(1757, 0)
+        Me.BTNDEUDORES.Location = New System.Drawing.Point(1754, 4)
         Me.BTNDEUDORES.Name = "BTNDEUDORES"
         Me.BTNDEUDORES.Size = New System.Drawing.Size(139, 42)
         Me.BTNDEUDORES.TabIndex = 0
@@ -165,6 +166,12 @@ Partial Class FrmPrincipal
         Me.LBLFECHA.Size = New System.Drawing.Size(37, 36)
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
+        '
+        'InicioToolStripMenuItem
+        '
+        Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(75, 34)
+        Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'FrmPrincipal
         '
@@ -210,4 +217,5 @@ Partial Class FrmPrincipal
     Friend WithEvents CotizacionesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NuevaCotizaciónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistorialDeCotizacionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InicioToolStripMenuItem As ToolStripMenuItem
 End Class

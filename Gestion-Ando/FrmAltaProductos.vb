@@ -105,7 +105,7 @@
                 comando.Parameters.Add("PROID", SqlDbType.BigInt).Value = idbusqueda
                 comando.Parameters.Add("@PROPRECIO", SqlDbType.Money).Value = TXTPRECIO.Text
             End If
-
+            comando.Parameters.Add("@PROCOSTO", SqlDbType.Money).Value = TXTCOSTO.Text
             comando.Parameters.Add("@PROCLAVE", SqlDbType.VarChar, 10).Value = TXTCLAVE.Text
             comando.Parameters.Add("@PRONOMBRE", SqlDbType.VarChar, 255).Value = TXTNOMBRE.Text
             comando.Parameters.Add("@PROEXISTENCIAS", SqlDbType.Int).Value = Integer.Parse(SPINNER.Text)

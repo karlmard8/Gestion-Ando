@@ -40,6 +40,8 @@ Partial Class FrmCorteDeCaja
         Me.VISTAUSUARIOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAUSUARIOSTableAdapter()
         Me.VISTACORTECAJATableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACORTECAJATableAdapter()
         Me.ETIQUETAS = New System.Windows.Forms.GroupBox()
+        Me.LBLGANANCIAS = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.BTNHISTORIALCAJA = New System.Windows.Forms.Button()
         Me.BTNREPORTECAJA = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -206,6 +208,8 @@ Partial Class FrmCorteDeCaja
         '
         'ETIQUETAS
         '
+        Me.ETIQUETAS.Controls.Add(Me.LBLGANANCIAS)
+        Me.ETIQUETAS.Controls.Add(Me.Label8)
         Me.ETIQUETAS.Controls.Add(Me.Label4)
         Me.ETIQUETAS.Controls.Add(Me.Label2)
         Me.ETIQUETAS.Controls.Add(Me.Label3)
@@ -216,9 +220,29 @@ Partial Class FrmCorteDeCaja
         Me.ETIQUETAS.Controls.Add(Me.LBLINGRESOS)
         Me.ETIQUETAS.Location = New System.Drawing.Point(921, 464)
         Me.ETIQUETAS.Name = "ETIQUETAS"
-        Me.ETIQUETAS.Size = New System.Drawing.Size(849, 131)
+        Me.ETIQUETAS.Size = New System.Drawing.Size(849, 321)
         Me.ETIQUETAS.TabIndex = 16
         Me.ETIQUETAS.TabStop = False
+        '
+        'LBLGANANCIAS
+        '
+        Me.LBLGANANCIAS.AutoSize = True
+        Me.LBLGANANCIAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBLGANANCIAS.Location = New System.Drawing.Point(372, 225)
+        Me.LBLGANANCIAS.Name = "LBLGANANCIAS"
+        Me.LBLGANANCIAS.Size = New System.Drawing.Size(34, 32)
+        Me.LBLGANANCIAS.TabIndex = 14
+        Me.LBLGANANCIAS.Text = ". . ."
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(344, 186)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(150, 32)
+        Me.Label8.TabIndex = 13
+        Me.Label8.Text = "Ganancias del día"
         '
         'BTNHISTORIALCAJA
         '
@@ -248,7 +272,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(511, 203)
+        Me.Label6.Location = New System.Drawing.Point(511, 279)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(57, 18)
         Me.Label6.TabIndex = 15
@@ -258,7 +282,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.LBLNOTAS.AutoSize = True
         Me.LBLNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLNOTAS.Location = New System.Drawing.Point(565, 203)
+        Me.LBLNOTAS.Location = New System.Drawing.Point(565, 279)
         Me.LBLNOTAS.Name = "LBLNOTAS"
         Me.LBLNOTAS.Size = New System.Drawing.Size(120, 32)
         Me.LBLNOTAS.TabIndex = 14
@@ -267,7 +291,7 @@ Partial Class FrmCorteDeCaja
         'TXTSALDOREAL
         '
         Me.TXTSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTSALDOREAL.Location = New System.Drawing.Point(136, 195)
+        Me.TXTSALDOREAL.Location = New System.Drawing.Point(691, 171)
         Me.TXTSALDOREAL.MaxLength = 10
         Me.TXTSALDOREAL.Name = "TXTSALDOREAL"
         Me.TXTSALDOREAL.Size = New System.Drawing.Size(265, 40)
@@ -276,7 +300,7 @@ Partial Class FrmCorteDeCaja
         'TXTNOTAS
         '
         Me.TXTNOTAS.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTNOTAS.Location = New System.Drawing.Point(691, 195)
+        Me.TXTNOTAS.Location = New System.Drawing.Point(691, 271)
         Me.TXTNOTAS.MaxLength = 255
         Me.TXTNOTAS.Name = "TXTNOTAS"
         Me.TXTNOTAS.Size = New System.Drawing.Size(265, 40)
@@ -286,7 +310,7 @@ Partial Class FrmCorteDeCaja
         '
         Me.LBLSALDOREAL.AutoSize = True
         Me.LBLSALDOREAL.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLSALDOREAL.Location = New System.Drawing.Point(3, 203)
+        Me.LBLSALDOREAL.Location = New System.Drawing.Point(558, 179)
         Me.LBLSALDOREAL.Name = "LBLSALDOREAL"
         Me.LBLSALDOREAL.Size = New System.Drawing.Size(126, 32)
         Me.LBLSALDOREAL.TabIndex = 18
@@ -327,7 +351,7 @@ Partial Class FrmCorteDeCaja
         Me.CAJABOTONES.Controls.Add(Me.LBLSALDOREAL)
         Me.CAJABOTONES.Location = New System.Drawing.Point(873, 85)
         Me.CAJABOTONES.Name = "CAJABOTONES"
-        Me.CAJABOTONES.Size = New System.Drawing.Size(967, 276)
+        Me.CAJABOTONES.Size = New System.Drawing.Size(967, 358)
         Me.CAJABOTONES.TabIndex = 21
         Me.CAJABOTONES.TabStop = False
         '
@@ -392,4 +416,6 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents BTNABRIRCAJA As Button
     Friend WithEvents BTNCERRARCAJA As Button
     Friend WithEvents CAJABOTONES As GroupBox
+    Friend WithEvents LBLGANANCIAS As Label
+    Friend WithEvents Label8 As Label
 End Class

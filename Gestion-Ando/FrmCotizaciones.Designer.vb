@@ -56,7 +56,7 @@ Partial Class FrmCotizaciones
         Me.LBLDESCUENTO = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.AGREGARPRODUCTOS = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BTNQUITAR = New System.Windows.Forms.Button()
         CType(Me.DATACOTIZACIONES, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -202,7 +202,7 @@ Partial Class FrmCotizaciones
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(1579, 9)
+        Me.Label3.Location = New System.Drawing.Point(1530, 9)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(133, 32)
         Me.Label3.TabIndex = 9
@@ -212,7 +212,7 @@ Partial Class FrmCotizaciones
         '
         Me.LBLCOTID.AutoSize = True
         Me.LBLCOTID.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBLCOTID.Location = New System.Drawing.Point(1718, 12)
+        Me.LBLCOTID.Location = New System.Drawing.Point(1669, 12)
         Me.LBLCOTID.Name = "LBLCOTID"
         Me.LBLCOTID.Size = New System.Drawing.Size(29, 27)
         Me.LBLCOTID.TabIndex = 10
@@ -386,7 +386,7 @@ Partial Class FrmCotizaciones
         '
         'AGREGARPRODUCTOS
         '
-        Me.AGREGARPRODUCTOS.Controls.Add(Me.Button1)
+        Me.AGREGARPRODUCTOS.Controls.Add(Me.BTNQUITAR)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.LBLPRECIO)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.Label9)
         Me.AGREGARPRODUCTOS.Controls.Add(Me.CMBPRODUCTO)
@@ -402,17 +402,17 @@ Partial Class FrmCotizaciones
         Me.AGREGARPRODUCTOS.TabIndex = 2
         Me.AGREGARPRODUCTOS.TabStop = False
         '
-        'Button1
+        'BTNQUITAR
         '
-        Me.Button1.AutoSize = True
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1009, 66)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(77, 37)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Quitar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTNQUITAR.AutoSize = True
+        Me.BTNQUITAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNQUITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNQUITAR.Location = New System.Drawing.Point(1009, 66)
+        Me.BTNQUITAR.Name = "BTNQUITAR"
+        Me.BTNQUITAR.Size = New System.Drawing.Size(77, 37)
+        Me.BTNQUITAR.TabIndex = 8
+        Me.BTNQUITAR.Text = "Quitar"
+        Me.BTNQUITAR.UseVisualStyleBackColor = True
         '
         'FrmCotizaciones
         '
@@ -479,5 +479,5 @@ Partial Class FrmCotizaciones
     Friend WithEvents LBLDESCUENTO As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents AGREGARPRODUCTOS As GroupBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BTNQUITAR As Button
 End Class

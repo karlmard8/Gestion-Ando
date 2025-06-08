@@ -28,6 +28,8 @@ Public Class FrmCorteDeCaja
             CMBUSUARIO.Text = USUARIOACTUAL
             CMBUSUARIO.Enabled = False
             ETIQUETAS.Visible = False
+            BTNREPORTECAJA.Visible = False
+            BTNHISTORIALCAJA.Visible = False
         Else
             CMBUSUARIO.SelectedIndex = -1
         End If
@@ -71,7 +73,7 @@ Public Class FrmCorteDeCaja
                                         V.VENFORMA AS Venta,
                                         CASE WHEN V.VENFORMA = 'CONTADO' THEN 'N/A' ELSE CAST(V.VENMESES AS VARCHAR) END AS Pagos,  
                                         CASE WHEN V.VENFORMA = 'CONTADO' THEN 'N/A' ELSE CAST(VENENGANCHE AS VARCHAR) END AS Enganche,  
-                                        V.VENTOTAL AS Total,
+                                        V.VENTOTAL AS Total,V.VENGANANCIA AS Ganancia,
                                         (SELECT TOP 1 CORTEID FROM TBLCORTECAJA WHERE CAJAABIERTA = 1 AND USUID = @USUID ORDER BY FECHAINICIALCORTE DESC) AS CorteID  
                                     FROM TBLVENTAS AS V
                                     WHERE V.VENFECHA BETWEEN  
@@ -108,6 +110,7 @@ Public Class FrmCorteDeCaja
             DATACORTECAJA.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
             DATACORTECAJA.Columns("Enganche").DefaultCellStyle.Format = "C2"
             DATACORTECAJA.Columns("CorteID").Visible = False
+            DATACORTECAJA.Columns("Ganancia").DefaultCellStyle.Format = "C2"
 
             If DATACORTECAJA.Rows.Count <= 0 Then
                 DATACORTECAJA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
@@ -146,23 +149,36 @@ Public Class FrmCorteDeCaja
             Dim INGRESOS As Decimal = 0
             Dim EGRESOS As Decimal = 0
 
+            Dim totalGanancias As Decimal = 0 ' Variable para acumular la suma de la columna "Ganancia"
+
             For Each row As DataGridViewRow In Me.DATACORTECAJA.Rows
                 If Not row.IsNewRow AndAlso Not IsDBNull(row.Cells("Venta").Value) Then
                     Dim tipoVenta As String = row.Cells("Venta").Value.ToString()
 
-                    If tipoVenta = "Crédito" AndAlso Not IsDBNull(row.Cells("Enganche").Value) Then
-                        INGRESOS += Convert.ToDecimal(row.Cells("Enganche").Value)
-                    ElseIf Not IsDBNull(row.Cells("Total").Value) Then
-                        Dim total As Decimal = Convert.ToDecimal(row.Cells("Total").Value)
+                    Dim enganche As Decimal
+                    Dim total As Decimal
+                    Dim ganancia As Decimal
 
+                    ' Intentar obtener valores de las celdas con seguridad
+                    If Decimal.TryParse(row.Cells("Enganche").Value.ToString(), enganche) AndAlso tipoVenta = "Crédito" Then
+                        INGRESOS += enganche
+                    ElseIf Decimal.TryParse(row.Cells("Total").Value.ToString(), total) Then
                         If total < 0 Then
-                            EGRESOS += Math.Abs(total) 'Si es negativo, se suma a egresos
+                            EGRESOS += Math.Abs(total) ' Si es negativo, se suma a egresos
                         Else
-                            INGRESOS += total 'Si es positivo, se suma a ingresos
+                            INGRESOS += total ' Si es positivo, se suma a ingresos
                         End If
+                    End If
+
+                    ' Sumar la columna "Ganancia" si tiene un valor válido
+                    If Decimal.TryParse(row.Cells("Ganancia").Value.ToString(), ganancia) Then
+                        totalGanancias += ganancia
                     End If
                 End If
             Next
+
+            ' Asignar el total de ganancias al campo TXTGANANCIAS
+            LBLGANANCIAS.Text = totalGanancias.ToString("C")
 
             'Asignar valores con formato correcto
             LBLINGRESOS.Text = INGRESOS.ToString("C2")
@@ -206,14 +222,14 @@ Public Class FrmCorteDeCaja
                                       End Sub
 
         Dim Etiqueta As New Label()
-        Etiqueta.Text = "Dinero en caja"
-        Etiqueta.Location = New Point(20, 20)
+        Etiqueta.Text = "Monto de caja inicial"
+        Etiqueta.Location = New Point(105, 20)
         Etiqueta.AutoSize = True
         Etiqueta.Font = New Font("Dubai", 14, FontStyle.Bold)
         Etiqueta.BackColor = ColorFormulario
 
         Dim TXTDINERO As New TextBox()
-        TXTDINERO.Location = New Point(180, 20)
+        TXTDINERO.Location = New Point(115, 60)
         TXTDINERO.Size = New Size(150, 50)
         TXTDINERO.Font = New Font("Dubai", 12)
         TXTDINERO.MaxLength = 10
@@ -227,7 +243,7 @@ Public Class FrmCorteDeCaja
         Dim BTNGUARDAR As New Button()
         BTNGUARDAR.Cursor = Cursors.Hand
         BTNGUARDAR.Text = "Abrir caja"
-        BTNGUARDAR.Location = New Point(140, 120)
+        BTNGUARDAR.Location = New Point(140, 125)
         BTNGUARDAR.Size = New Size(100, 40)
         BTNGUARDAR.Font = New Font("Dubai", 14, FontStyle.Bold)
         BTNGUARDAR.BackColor = ColorBotones
@@ -324,6 +340,8 @@ Public Class FrmCorteDeCaja
                 comando.Parameters.Add("@NOTAS", SqlDbType.NVarChar).Value = TXTNOTAS.Text
             End If
             comando.Parameters.Add("@FECHAFINALCORTE", SqlDbType.DateTime).Value = fechaParametro
+            comando.Parameters.Add("@CORTEGANANCIA", SqlDbType.Money).Value = LBLGANANCIAS.Text.Replace("$", "").Replace(",", "")
+
             comando.Parameters.Add("@RETORNO", SqlDbType.Bit).Direction = ParameterDirection.Output
             If Conectar() = True Then
                 If comando.Parameters("@RETORNO").Value = "TRUE" Then
@@ -371,6 +389,7 @@ Public Class FrmCorteDeCaja
         DATACORTECAJA.Columns("DINERO REPORTADO").DefaultCellStyle.Format = "C2"
         DATACORTECAJA.Columns("NOTAS").AutoSizeMode = DataGridViewAutoSizeColumnsMode.Fill
         DATACORTECAJA.Columns("NOTAS").DefaultCellStyle.WrapMode = DataGridViewTriState.True
+        DATACORTECAJA.Columns("Ganancias del día").DefaultCellStyle.Format = "C2"
     End Sub
 
     Private Sub BTNREPORTECAJA_Click(sender As Object, e As EventArgs) Handles BTNREPORTECAJA.Click

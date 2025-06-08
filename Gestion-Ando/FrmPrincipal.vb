@@ -69,9 +69,6 @@ Public Class FrmPrincipal
     End Sub
 
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         Timer1.Interval = 1000
         Timer1.Start()
 
@@ -231,9 +228,6 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmInventario.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
@@ -252,9 +246,6 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmUsuarios.Close()
@@ -274,9 +265,6 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmClientes.Close()
         FrmUsuarios.Close()
         FrmVentas.Close()
@@ -295,9 +283,6 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
@@ -321,9 +306,6 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub CorteDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteDeCajaToolStripMenuItem.Click
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
@@ -343,9 +325,6 @@ Public Class FrmPrincipal
 
     Private Sub NuevaCotizaciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevaCotizaciónToolStripMenuItem.Click
         FrmCotizaciones.Close()
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
@@ -363,9 +342,7 @@ Public Class FrmPrincipal
 
     Private Sub HistorialDeCotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistorialDeCotizacionesToolStripMenuItem.Click
         FrmCotizaciones.Close
-        For Each item As ToolStripMenuItem In MenuOpciones.Items
-            AddHandler item.Click, AddressOf MenuItem_Click
-        Next
+
         FrmClientes.Close()
         FrmInventario.Close()
         FrmVentas.Close()
@@ -379,17 +356,6 @@ Public Class FrmPrincipal
         LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Historial de cotizaciones"
         LBLOPCIONES.Location = New Point(30, 50)
-    End Sub
-
-    Private Sub MenuItem_Click(sender As Object, e As EventArgs)
-        Dim itemSeleccionado As ToolStripMenuItem = CType(sender, ToolStripMenuItem)
-
-        'Si el botón presionado es "Opciones", oculta el botón específico
-        If itemSeleccionado.Text = "Cotizaciones" Then
-            BTNDEUDORES.Visible = False
-        Else
-            BTNDEUDORES.Visible = True
-        End If
     End Sub
 
     Private isLoggingOut As Boolean = False

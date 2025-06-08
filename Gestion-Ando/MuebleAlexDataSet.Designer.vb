@@ -1151,6 +1151,10 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnPROIMAGEN As Global.System.Data.DataColumn
         
+        Private columnPROCOSTO As Global.System.Data.DataColumn
+        
+        Private columnPROGANANCIA As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1243,6 +1247,22 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PROCOSTOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPROCOSTO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PROGANANCIAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPROGANANCIA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1279,9 +1299,9 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddTBLPRODUCTOSRow(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Decimal, ByVal PROEXISTENCIAS As Integer, ByVal PROEXISTE As Boolean, ByVal PROIMAGEN As String) As TBLPRODUCTOSRow
+        Public Overloads Function AddTBLPRODUCTOSRow(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Decimal, ByVal PROEXISTENCIAS As Integer, ByVal PROEXISTE As Boolean, ByVal PROIMAGEN As String, ByVal PROCOSTO As Decimal, ByVal PROGANANCIA As Decimal) As TBLPRODUCTOSRow
             Dim rowTBLPRODUCTOSRow As TBLPRODUCTOSRow = CType(Me.NewRow,TBLPRODUCTOSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAGEN}
+            Dim columnValuesArray() As Object = New Object() {Nothing, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAGEN, PROCOSTO, PROGANANCIA}
             rowTBLPRODUCTOSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTBLPRODUCTOSRow)
             Return rowTBLPRODUCTOSRow
@@ -1317,6 +1337,8 @@ Partial Public Class MuebleAlexDataSet
             Me.columnPROEXISTENCIAS = MyBase.Columns("PROEXISTENCIAS")
             Me.columnPROEXISTE = MyBase.Columns("PROEXISTE")
             Me.columnPROIMAGEN = MyBase.Columns("PROIMAGEN")
+            Me.columnPROCOSTO = MyBase.Columns("PROCOSTO")
+            Me.columnPROGANANCIA = MyBase.Columns("PROGANANCIA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1336,6 +1358,10 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnPROEXISTE)
             Me.columnPROIMAGEN = New Global.System.Data.DataColumn("PROIMAGEN", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPROIMAGEN)
+            Me.columnPROCOSTO = New Global.System.Data.DataColumn("PROCOSTO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPROCOSTO)
+            Me.columnPROGANANCIA = New Global.System.Data.DataColumn("PROGANANCIA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPROGANANCIA)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnPROID}, true))
             Me.columnPROID.AutoIncrement = true
             Me.columnPROID.AutoIncrementSeed = -1
@@ -1835,6 +1861,8 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnPAGOS As Global.System.Data.DataColumn
         
+        Private columnGanancia As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -1943,6 +1971,14 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property GananciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGanancia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1979,9 +2015,9 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVISTAVENTASRow(ByVal VENTOTAL As Decimal, ByVal VENFECHA As Date, ByVal VENID As Long, ByVal VENFORMA As String, ByVal CLIENTE As String, ByVal CLIEXISTE As Boolean, ByVal VENEXISTE As Boolean, ByVal USUNOMBRE As String, ByVal PAGOS As String) As VISTAVENTASRow
+        Public Overloads Function AddVISTAVENTASRow(ByVal VENTOTAL As Decimal, ByVal VENFECHA As Date, ByVal VENID As Long, ByVal VENFORMA As String, ByVal CLIENTE As String, ByVal CLIEXISTE As Boolean, ByVal VENEXISTE As Boolean, ByVal USUNOMBRE As String, ByVal PAGOS As String, ByVal Ganancia As Decimal) As VISTAVENTASRow
             Dim rowVISTAVENTASRow As VISTAVENTASRow = CType(Me.NewRow,VISTAVENTASRow)
-            Dim columnValuesArray() As Object = New Object() {VENTOTAL, VENFECHA, VENID, VENFORMA, CLIENTE, CLIEXISTE, VENEXISTE, USUNOMBRE, PAGOS}
+            Dim columnValuesArray() As Object = New Object() {VENTOTAL, VENFECHA, VENID, VENFORMA, CLIENTE, CLIEXISTE, VENEXISTE, USUNOMBRE, PAGOS, Ganancia}
             rowVISTAVENTASRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVISTAVENTASRow)
             Return rowVISTAVENTASRow
@@ -2019,6 +2055,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnVENEXISTE = MyBase.Columns("VENEXISTE")
             Me.columnUSUNOMBRE = MyBase.Columns("USUNOMBRE")
             Me.columnPAGOS = MyBase.Columns("PAGOS")
+            Me.columnGanancia = MyBase.Columns("Ganancia")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2042,6 +2079,8 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnUSUNOMBRE)
             Me.columnPAGOS = New Global.System.Data.DataColumn("PAGOS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPAGOS)
+            Me.columnGanancia = New Global.System.Data.DataColumn("Ganancia", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGanancia)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnVENID}, true))
             Me.columnVENID.AllowDBNull = false
             Me.columnVENID.Unique = true
@@ -5117,6 +5156,36 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property PROCOSTO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableTBLPRODUCTOS.PROCOSTOColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PROCOSTO' de la tabla 'TBLPRODUCTOS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTBLPRODUCTOS.PROCOSTOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property PROGANANCIA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableTBLPRODUCTOS.PROGANANCIAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PROGANANCIA' de la tabla 'TBLPRODUCTOS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTBLPRODUCTOS.PROGANANCIAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsPROCLAVENull() As Boolean
             Return Me.IsNull(Me.tableTBLPRODUCTOS.PROCLAVEColumn)
         End Function
@@ -5185,6 +5254,30 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetPROIMAGENNull()
             Me(Me.tableTBLPRODUCTOS.PROIMAGENColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsPROCOSTONull() As Boolean
+            Return Me.IsNull(Me.tableTBLPRODUCTOS.PROCOSTOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetPROCOSTONull()
+            Me(Me.tableTBLPRODUCTOS.PROCOSTOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsPROGANANCIANull() As Boolean
+            Return Me.IsNull(Me.tableTBLPRODUCTOS.PROGANANCIAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetPROGANANCIANull()
+            Me(Me.tableTBLPRODUCTOS.PROGANANCIAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5498,6 +5591,21 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property Ganancia() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTAVENTAS.GananciaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Ganancia' de la tabla 'VISTAVENTAS' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTAVENTAS.GananciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsVENTOTALNull() As Boolean
             Return Me.IsNull(Me.tableVISTAVENTAS.VENTOTALColumn)
         End Function
@@ -5590,6 +5698,18 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetPAGOSNull()
             Me(Me.tableVISTAVENTAS.PAGOSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsGananciaNull() As Boolean
+            Return Me.IsNull(Me.tableVISTAVENTAS.GananciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetGananciaNull()
+            Me(Me.tableVISTAVENTAS.GananciaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8308,6 +8428,8 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("PROEXISTENCIAS", "PROEXISTENCIAS")
             tableMapping.ColumnMappings.Add("PROEXISTE", "PROEXISTE")
             tableMapping.ColumnMappings.Add("PROIMAGEN", "PROIMAGEN")
+            tableMapping.ColumnMappings.Add("PROCOSTO", "PROCOSTO")
+            tableMapping.ColumnMappings.Add("PROGANANCIA", "PROGANANCIA")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -8318,7 +8440,10 @@ Namespace MuebleAlexDataSetTableAdapters
                 "nal_PROPRECIO)) AND ((@IsNull_PROEXISTENCIAS = 1 AND [PROEXISTENCIAS] IS NULL) O"& _ 
                 "R ([PROEXISTENCIAS] = @Original_PROEXISTENCIAS)) AND ((@IsNull_PROEXISTE = 1 AND"& _ 
                 " [PROEXISTE] IS NULL) OR ([PROEXISTE] = @Original_PROEXISTE)) AND ((@IsNull_PROI"& _ 
-                "MAGEN = 1 AND [PROIMAGEN] IS NULL) OR ([PROIMAGEN] = @Original_PROIMAGEN)))"
+                "MAGEN = 1 AND [PROIMAGEN] IS NULL) OR ([PROIMAGEN] = @Original_PROIMAGEN)) AND ("& _ 
+                "(@IsNull_PROCOSTO = 1 AND [PROCOSTO] IS NULL) OR ([PROCOSTO] = @Original_PROCOST"& _ 
+                "O)) AND ((@IsNull_PROGANANCIA = 1 AND [PROGANANCIA] IS NULL) OR ([PROGANANCIA] ="& _ 
+                " @Original_PROGANANCIA)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROID", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROCLAVE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCLAVE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -8333,13 +8458,18 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROEXISTE", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROIMAGEN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROIMAGEN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROCOSTO", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROCOSTO", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROGANANCIA", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROGANANCIA", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [TBLPRODUCTOS] ([PROCLAVE], [PRONOMBRE], [PROPRECIO], [PROEXISTENCIAS"& _ 
-                "], [PROEXISTE], [PROIMAGEN]) VALUES (@PROCLAVE, @PRONOMBRE, @PROPRECIO, @PROEXIS"& _ 
-                "TENCIAS, @PROEXISTE, @PROIMAGEN);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PROID, PROCLAVE, PRONOMBRE, PROPRECIO,"& _ 
-                " PROEXISTENCIAS, PROEXISTE, PROIMAGEN FROM TBLPRODUCTOS WHERE (PROID = SCOPE_IDE"& _ 
-                "NTITY())"
+                "], [PROEXISTE], [PROIMAGEN], [PROCOSTO], [PROGANANCIA]) VALUES (@PROCLAVE, @PRON"& _ 
+                "OMBRE, @PROPRECIO, @PROEXISTENCIAS, @PROEXISTE, @PROIMAGEN, @PROCOSTO, @PROGANAN"& _ 
+                "CIA);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PROID, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, "& _ 
+                "PROIMAGEN, PROCOSTO, PROGANANCIA FROM TBLPRODUCTOS WHERE (PROID = SCOPE_IDENTITY"& _ 
+                "())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROCLAVE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCLAVE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PRONOMBRE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRONOMBRE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8347,20 +8477,25 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROEXISTENCIAS", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTENCIAS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROEXISTE", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROIMAGEN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROCOSTO", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROGANANCIA", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [TBLPRODUCTOS] SET [PROCLAVE] = @PROCLAVE, [PRONOMBRE] = @PRONOMBRE, [PROP"& _ 
                 "RECIO] = @PROPRECIO, [PROEXISTENCIAS] = @PROEXISTENCIAS, [PROEXISTE] = @PROEXIST"& _ 
-                "E, [PROIMAGEN] = @PROIMAGEN WHERE (([PROID] = @Original_PROID) AND ((@IsNull_PRO"& _ 
-                "CLAVE = 1 AND [PROCLAVE] IS NULL) OR ([PROCLAVE] = @Original_PROCLAVE)) AND ((@I"& _ 
-                "sNull_PRONOMBRE = 1 AND [PRONOMBRE] IS NULL) OR ([PRONOMBRE] = @Original_PRONOMB"& _ 
-                "RE)) AND ((@IsNull_PROPRECIO = 1 AND [PROPRECIO] IS NULL) OR ([PROPRECIO] = @Ori"& _ 
-                "ginal_PROPRECIO)) AND ((@IsNull_PROEXISTENCIAS = 1 AND [PROEXISTENCIAS] IS NULL)"& _ 
-                " OR ([PROEXISTENCIAS] = @Original_PROEXISTENCIAS)) AND ((@IsNull_PROEXISTE = 1 A"& _ 
-                "ND [PROEXISTE] IS NULL) OR ([PROEXISTE] = @Original_PROEXISTE)) AND ((@IsNull_PR"& _ 
-                "OIMAGEN = 1 AND [PROIMAGEN] IS NULL) OR ([PROIMAGEN] = @Original_PROIMAGEN)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "SELECT PROID, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAG"& _ 
-                "EN FROM TBLPRODUCTOS WHERE (PROID = @PROID)"
+                "E, [PROIMAGEN] = @PROIMAGEN, [PROCOSTO] = @PROCOSTO, [PROGANANCIA] = @PROGANANCI"& _ 
+                "A WHERE (([PROID] = @Original_PROID) AND ((@IsNull_PROCLAVE = 1 AND [PROCLAVE] I"& _ 
+                "S NULL) OR ([PROCLAVE] = @Original_PROCLAVE)) AND ((@IsNull_PRONOMBRE = 1 AND [P"& _ 
+                "RONOMBRE] IS NULL) OR ([PRONOMBRE] = @Original_PRONOMBRE)) AND ((@IsNull_PROPREC"& _ 
+                "IO = 1 AND [PROPRECIO] IS NULL) OR ([PROPRECIO] = @Original_PROPRECIO)) AND ((@I"& _ 
+                "sNull_PROEXISTENCIAS = 1 AND [PROEXISTENCIAS] IS NULL) OR ([PROEXISTENCIAS] = @O"& _ 
+                "riginal_PROEXISTENCIAS)) AND ((@IsNull_PROEXISTE = 1 AND [PROEXISTE] IS NULL) OR"& _ 
+                " ([PROEXISTE] = @Original_PROEXISTE)) AND ((@IsNull_PROIMAGEN = 1 AND [PROIMAGEN"& _ 
+                "] IS NULL) OR ([PROIMAGEN] = @Original_PROIMAGEN)) AND ((@IsNull_PROCOSTO = 1 AN"& _ 
+                "D [PROCOSTO] IS NULL) OR ([PROCOSTO] = @Original_PROCOSTO)) AND ((@IsNull_PROGAN"& _ 
+                "ANCIA = 1 AND [PROGANANCIA] IS NULL) OR ([PROGANANCIA] = @Original_PROGANANCIA))"& _ 
+                ");"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PROID, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PRO"& _ 
+                "IMAGEN, PROCOSTO, PROGANANCIA FROM TBLPRODUCTOS WHERE (PROID = @PROID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROCLAVE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCLAVE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PRONOMBRE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PRONOMBRE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8368,6 +8503,8 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROEXISTENCIAS", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTENCIAS", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROEXISTE", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROIMAGEN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROCOSTO", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROGANANCIA", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROID", Global.System.Data.SqlDbType.BigInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROCLAVE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCLAVE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROCLAVE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCLAVE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -8381,6 +8518,10 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROEXISTE", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROEXISTE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROIMAGEN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROIMAGEN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROIMAGEN", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROCOSTO", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROCOSTO", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROCOSTO", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PROGANANCIA", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PROGANANCIA", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PROGANANCIA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PROID", Global.System.Data.SqlDbType.BigInt, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PROID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -8399,7 +8540,7 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT PROID, PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAGE"& _ 
-                "N FROM TBLPRODUCTOS"
+                "N, PROCOSTO, PROGANANCIA FROM TBLPRODUCTOS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -8459,7 +8600,7 @@ Namespace MuebleAlexDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_PROID As Long, ByVal Original_PROCLAVE As String, ByVal Original_PRONOMBRE As String, ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal), ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean), ByVal Original_PROIMAGEN As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_PROID As Long, ByVal Original_PROCLAVE As String, ByVal Original_PRONOMBRE As String, ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal), ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean), ByVal Original_PROIMAGEN As String, ByVal Original_PROCOSTO As Global.System.Nullable(Of Decimal), ByVal Original_PROGANANCIA As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_PROID,Long)
             If (Original_PROCLAVE Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -8503,6 +8644,20 @@ Namespace MuebleAlexDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_PROIMAGEN,String)
             End If
+            If (Original_PROCOSTO.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_PROCOSTO.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PROGANANCIA.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_PROGANANCIA.Value,Decimal)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8522,7 +8677,7 @@ Namespace MuebleAlexDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Global.System.Nullable(Of Decimal), ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal PROEXISTE As Global.System.Nullable(Of Boolean), ByVal PROIMAGEN As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Global.System.Nullable(Of Decimal), ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal PROEXISTE As Global.System.Nullable(Of Boolean), ByVal PROIMAGEN As String, ByVal PROCOSTO As Global.System.Nullable(Of Decimal), ByVal PROGANANCIA As Global.System.Nullable(Of Decimal)) As Integer
             If (PROCLAVE Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -8553,6 +8708,16 @@ Namespace MuebleAlexDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = CType(PROIMAGEN,String)
             End If
+            If (PROCOSTO.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PROCOSTO.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (PROGANANCIA.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(PROGANANCIA.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8572,7 +8737,25 @@ Namespace MuebleAlexDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Global.System.Nullable(Of Decimal), ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal PROEXISTE As Global.System.Nullable(Of Boolean), ByVal PROIMAGEN As String, ByVal Original_PROID As Long, ByVal Original_PROCLAVE As String, ByVal Original_PRONOMBRE As String, ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal), ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean), ByVal Original_PROIMAGEN As String, ByVal PROID As Long) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal PROCLAVE As String,  _
+                    ByVal PRONOMBRE As String,  _
+                    ByVal PROPRECIO As Global.System.Nullable(Of Decimal),  _
+                    ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer),  _
+                    ByVal PROEXISTE As Global.System.Nullable(Of Boolean),  _
+                    ByVal PROIMAGEN As String,  _
+                    ByVal PROCOSTO As Global.System.Nullable(Of Decimal),  _
+                    ByVal PROGANANCIA As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROID As Long,  _
+                    ByVal Original_PROCLAVE As String,  _
+                    ByVal Original_PRONOMBRE As String,  _
+                    ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PROIMAGEN As String,  _
+                    ByVal Original_PROCOSTO As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROGANANCIA As Global.System.Nullable(Of Decimal),  _
+                    ByVal PROID As Long) As Integer
             If (PROCLAVE Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -8603,50 +8786,74 @@ Namespace MuebleAlexDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = CType(PROIMAGEN,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_PROID,Long)
-            If (Original_PROCLAVE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            If (PROCOSTO.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PROCOSTO.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_PROCLAVE,String)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (Original_PRONOMBRE Is Nothing) Then
+            If (PROGANANCIA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(PROGANANCIA.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_PROID,Long)
+            If (Original_PROCLAVE Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_PRONOMBRE,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_PROCLAVE,String)
             End If
-            If (Original_PROPRECIO.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_PROPRECIO.Value,Decimal)
-            Else
+            If (Original_PRONOMBRE Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_PRONOMBRE,String)
             End If
-            If (Original_PROEXISTENCIAS.HasValue = true) Then
+            If (Original_PROPRECIO.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_PROEXISTENCIAS.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_PROPRECIO.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (Original_PROEXISTE.HasValue = true) Then
+            If (Original_PROEXISTENCIAS.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_PROEXISTE.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_PROEXISTENCIAS.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (Original_PROIMAGEN Is Nothing) Then
+            If (Original_PROEXISTE.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_PROEXISTE.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_PROIMAGEN,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(PROID,Long)
+            If (Original_PROIMAGEN Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_PROIMAGEN,String)
+            End If
+            If (Original_PROCOSTO.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_PROCOSTO.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PROGANANCIA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_PROGANANCIA.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(PROID,Long)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8666,8 +8873,25 @@ Namespace MuebleAlexDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal PROCLAVE As String, ByVal PRONOMBRE As String, ByVal PROPRECIO As Global.System.Nullable(Of Decimal), ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal PROEXISTE As Global.System.Nullable(Of Boolean), ByVal PROIMAGEN As String, ByVal Original_PROID As Long, ByVal Original_PROCLAVE As String, ByVal Original_PRONOMBRE As String, ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal), ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer), ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean), ByVal Original_PROIMAGEN As String) As Integer
-            Return Me.Update(PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAGEN, Original_PROID, Original_PROCLAVE, Original_PRONOMBRE, Original_PROPRECIO, Original_PROEXISTENCIAS, Original_PROEXISTE, Original_PROIMAGEN, Original_PROID)
+        Public Overloads Overridable Function Update( _
+                    ByVal PROCLAVE As String,  _
+                    ByVal PRONOMBRE As String,  _
+                    ByVal PROPRECIO As Global.System.Nullable(Of Decimal),  _
+                    ByVal PROEXISTENCIAS As Global.System.Nullable(Of Integer),  _
+                    ByVal PROEXISTE As Global.System.Nullable(Of Boolean),  _
+                    ByVal PROIMAGEN As String,  _
+                    ByVal PROCOSTO As Global.System.Nullable(Of Decimal),  _
+                    ByVal PROGANANCIA As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROID As Long,  _
+                    ByVal Original_PROCLAVE As String,  _
+                    ByVal Original_PRONOMBRE As String,  _
+                    ByVal Original_PROPRECIO As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROEXISTENCIAS As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_PROEXISTE As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_PROIMAGEN As String,  _
+                    ByVal Original_PROCOSTO As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_PROGANANCIA As Global.System.Nullable(Of Decimal)) As Integer
+            Return Me.Update(PROCLAVE, PRONOMBRE, PROPRECIO, PROEXISTENCIAS, PROEXISTE, PROIMAGEN, PROCOSTO, PROGANANCIA, Original_PROID, Original_PROCLAVE, Original_PRONOMBRE, Original_PROPRECIO, Original_PROEXISTENCIAS, Original_PROEXISTE, Original_PROIMAGEN, Original_PROCOSTO, Original_PROGANANCIA, Original_PROID)
         End Function
     End Class
     
@@ -9269,6 +9493,7 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("VENEXISTE", "VENEXISTE")
             tableMapping.ColumnMappings.Add("USUNOMBRE", "USUNOMBRE")
             tableMapping.ColumnMappings.Add("PAGOS", "PAGOS")
+            tableMapping.ColumnMappings.Add("Ganancia", "Ganancia")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -9287,7 +9512,7 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT VENTOTAL, VENFECHA, VENID, VENFORMA, Cliente, CLIEXISTE, VENEXISTE, USUNOM"& _ 
-                "BRE, PAGOS FROM VISTAVENTAS"
+                "BRE, PAGOS, Ganancia FROM VISTAVENTAS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

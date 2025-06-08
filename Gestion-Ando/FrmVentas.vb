@@ -176,23 +176,27 @@ Public Class FrmVentas
 
                     .Columns.Add("Producto", "Producto")
                     .Columns("Producto").DataPropertyName = "Producto"
-                    .Columns("Producto").Width = 546
                     .Columns("Producto").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
                     .Columns.Add("Unidades", "Unidades")
                     .Columns("Unidades").DataPropertyName = "Unidades"
                     .Columns("Unidades").DefaultCellStyle.Format = "N0"
-                    .Columns("Unidades").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                    .Columns("Unidades").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
-                    .Columns.Add("PrecioUnitario", "Precio unitario")
-                    .Columns("PrecioUnitario").DataPropertyName = "Precio unitario"
-                    .Columns("PrecioUnitario").DefaultCellStyle.Format = "C2"
-                    .Columns("PrecioUnitario").AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
+                    .Columns.Add("Precio Unitario", "Precio unitario")
+                    .Columns("Precio Unitario").DataPropertyName = "Precio unitario"
+                    .Columns("Precio Unitario").DefaultCellStyle.Format = "C2"
+                    .Columns("Precio Unitario").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
                     .Columns.Add("Total", "Total")
                     .Columns("Total").DataPropertyName = "Total"
                     .Columns("Total").DefaultCellStyle.Format = "C2"
                     .Columns("Total").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+
+                    .Columns.Add("Ganancia", "Ganancia")
+                    .Columns("Ganancia").DataPropertyName = "Ganancia"
+                    .Columns("Ganancia").DefaultCellStyle.Format = "C2"
+                    .Columns("Ganancia").AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
 
                 End With
 
@@ -246,8 +250,6 @@ Public Class FrmVentas
                         .Columns("VENID").DataPropertyName = "VENID"
                         .Columns("VENID").Width = 546
                         .Columns("VENID").Visible = False
-
-
 
                     End With
                 End If
@@ -441,4 +443,5 @@ Public Class FrmVentas
     Private Sub CMBFILTRO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBFILTRO.SelectedIndexChanged
         TXTBUSCAR_TextChanged(sender, e)
     End Sub
+
 End Class

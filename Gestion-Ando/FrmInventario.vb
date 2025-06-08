@@ -72,6 +72,7 @@ Public Class FrmInventario
             ALTAINVENTARIO.TXTCLAVE.Text = DATAINVENTARIO.CurrentRow.Cells("PROCLAVE").Value
             ALTAINVENTARIO.TXTNOMBRE.Text = DATAINVENTARIO.CurrentRow.Cells("PRONOMBRE").Value
             ALTAINVENTARIO.SPINNER.Value = DATAINVENTARIO.CurrentRow.Cells("PROEXISTENCIAS").Value
+            ALTAINVENTARIO.TXTCOSTO.Text = Convert.ToInt64(DATAINVENTARIO.CurrentRow.Cells("PROCOSTO").Value).ToString()
             ALTAINVENTARIO.TXTPRECIO.Text = Convert.ToInt64(DATAINVENTARIO.CurrentRow.Cells("PROPRECIO").Value).ToString()
             ALTAINVENTARIO.imagenRuta = DATAINVENTARIO.CurrentRow.Cells("PROIMAGEN").Value
 
@@ -144,8 +145,9 @@ Public Class FrmInventario
                     VISTAPRODUCTO.Image = imagen
                 Else
                     ' Manejar el caso donde la ruta de la imagen es inválida
-                    VISTAPRODUCTO.Image = Nothing
-                    MsgBox("Error al cargar la imágen o imágen inexistente", MsgBoxStyle.Critical, "Error")
+                    rutaImagen = Application.StartupPath & "\PRODUCTODEFECTO.png"
+                    Dim imagen As Image = Image.FromFile(rutaImagen)
+                    VISTAPRODUCTO.Image = imagen
                 End If
             End If
         Catch ex As Exception
