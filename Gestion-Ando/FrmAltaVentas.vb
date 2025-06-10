@@ -346,7 +346,7 @@ Public Class FrmAltaVentas
         Else
             ' Obtener valores actuales
             Dim cantidad As Integer = Val(Me.TxtCantidad.Text)
-            Dim precio As Double = Val(Me.CMBPRECIO.Text)
+            Dim precio As Double = (Me.CMBPRECIO.Text).ToString
             Dim subtotal As Double = cantidad * precio  ' Calcular el subtotal del producto
             Dim productoId As Long = Me.CmbClave.SelectedValue
 
@@ -392,6 +392,21 @@ Public Class FrmAltaVentas
             LblSubTotal.Text = "Procesando..."
             CMBPRECIO.FormatString = "C2"
             CMBPRECIO.Text = String.Empty
+        End If
+    End Sub
+
+    Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        If e.KeyChar = Chr(13) Then ' Simular que el lector envía ENTER después del código
+            ' Ajustar temporalmente el producto en CMBPRODUCTO
+            CmbClave.SelectedValue = 12
+            CMBPRODUCTO.SelectedValue = 12
+            CMBPRECIO.SelectedValue = 12
+
+            ' Asignar una cantidad fija de 1
+            TxtCantidad.Text = "1"
+
+            ' Ejecutar BtnAgregar_Click para completar el proceso
+            BtnAgregar.PerformClick()
         End If
     End Sub
 

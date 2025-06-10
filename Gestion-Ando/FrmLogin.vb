@@ -78,7 +78,7 @@ Public Class FrmLogin
     Private hashOriginalJson As String = ""
 
     ' 🔥 LICENCIA EN FIREBASE (sin autenticación con correo)
-    Private Async Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+    Public Async Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
         If BLOQUEO = True Then
             MessageBox.Show("Acceso bloqueado. Contacte a soporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub

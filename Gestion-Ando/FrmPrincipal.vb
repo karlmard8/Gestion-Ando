@@ -84,6 +84,8 @@ Public Class FrmPrincipal
         FECHA = Today.Date.ToString("dd/MM/yyyy")
         LBLFECHA.Text = FECHA
 
+        InicioToolStripMenuItem_Click(Nothing, Nothing)
+
         StrSql = "INICIARSESION"
         comando = New SqlClient.SqlCommand(StrSql, Conexion)
         comando.CommandType = CommandType.StoredProcedure
@@ -96,7 +98,7 @@ Public Class FrmPrincipal
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
                 TIPO = "Administrador"
-                Dim textoBuscado As String = "Usuarios" 'Cambia esto por el texto del menú que quieres modificar
+                Dim textoBuscado As String = "Usuarios"
 
                 For Each item As ToolStripMenuItem In MenuOpciones.Items
                     If item.Text = textoBuscado Then
@@ -106,7 +108,7 @@ Public Class FrmPrincipal
                 Next
             Else
                 TIPO = "Operativo"
-                Dim textoBuscado As String = "Usuarios" 'Cambia esto por el texto del menú que quieres modificar
+                Dim textoBuscado As String = "Usuarios"
 
                 For Each item As ToolStripMenuItem In MenuOpciones.Items
                     If item.Text = textoBuscado Then
@@ -127,6 +129,7 @@ Public Class FrmPrincipal
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim horaActual As DateTime = DateTime.Now
         LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
+        'FrmLogin.btnLogin_Click(sender, e)
     End Sub
 
     Public Class FrmTiempo
@@ -227,13 +230,21 @@ Public Class FrmPrincipal
         FRMDEUDORES.ShowDialog()
     End Sub
 
+    Private Sub InicioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InicioToolStripMenuItem.Click
+        PANELFRAMES.Controls.Clear()
+
+        FRMINICIO.TopLevel = False
+        PANELFRAMES.Controls.Add(FRMINICIO)
+        FRMINICIO.Location = New Point(300, 50)
+        FRMINICIO.Show()
+        LBLOPCIONES.Visible = False
+
+    End Sub
+
     Private Sub ClientesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesToolStripMenuItem.Click
-        FrmInventario.Close()
-        FrmUsuarios.Close()
-        FrmVentas.Close()
-        FrmCorteDeCaja.Close()
-        FrmCotizaciones.Close()
-        Dim CLIENTES As New FrmClientes
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         idbusqueda = 0
         FrmClientes.TBLCLIENTESTableAdapter.Connection = Conexion
         FrmClientes.TBLCLIENTESTableAdapter.Fill(FrmClientes.MuebleAlexDataSet.TBLCLIENTES)
@@ -246,11 +257,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub VentasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VentasToolStripMenuItem.Click
-        FrmClientes.Close()
-        FrmInventario.Close()
-        FrmUsuarios.Close()
-        FrmCorteDeCaja.Close()
-        FrmCotizaciones.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         idbusqueda = 0
         FrmVentas.VISTAVENTASTableAdapter.Connection = Conexion
         FrmVentas.VISTAVENTASTableAdapter.Fill(FrmVentas.MuebleAlexDataSet.VISTAVENTAS)
@@ -265,11 +274,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub InventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InventarioToolStripMenuItem.Click
-        FrmClientes.Close()
-        FrmUsuarios.Close()
-        FrmVentas.Close()
-        FrmCorteDeCaja.Close()
-        FrmCotizaciones.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         Dim INVENTARIO As New FrmInventario
         idbusqueda = 0
         FrmInventario.TBLPRODUCTOSTableAdapter.Connection = Conexion
@@ -283,11 +290,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub UsuariosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuariosToolStripMenuItem.Click
-        FrmClientes.Close()
-        FrmInventario.Close()
-        FrmVentas.Close()
-        FrmCorteDeCaja.Close()
-        FrmCotizaciones.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         idbusqueda = 0
         FrmUsuarios.TBLUSUARIOSTableAdapter.Connection = Conexion
         Dim sql As String = "SELECT USUID, USUNOMBRE, USULOGIN, USUTIPO FROM TblUsuarios WHERE USUEXISTE=1"
@@ -306,11 +311,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub CorteDeCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CorteDeCajaToolStripMenuItem.Click
-        FrmClientes.Close()
-        FrmInventario.Close()
-        FrmVentas.Close()
-        FrmUsuarios.Close()
-        FrmCotizaciones.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
 
         FrmCorteDeCaja.TopLevel = False
         PANELFRAMES.Controls.Add(FrmCorteDeCaja)
@@ -324,12 +327,9 @@ Public Class FrmPrincipal
 
 
     Private Sub NuevaCotizaciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevaCotizaciónToolStripMenuItem.Click
-        FrmCotizaciones.Close()
-        FrmClientes.Close()
-        FrmInventario.Close()
-        FrmVentas.Close()
-        FrmUsuarios.Close()
-        FrmCorteDeCaja.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         HISTORIAL = False
 
         FrmCotizaciones.TopLevel = False
@@ -341,13 +341,9 @@ Public Class FrmPrincipal
     End Sub
 
     Private Sub HistorialDeCotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HistorialDeCotizacionesToolStripMenuItem.Click
-        FrmCotizaciones.Close
-
-        FrmClientes.Close()
-        FrmInventario.Close()
-        FrmVentas.Close()
-        FrmUsuarios.Close()
-        FrmCorteDeCaja.Close()
+        PANELFRAMES.Controls.Clear()
+        PANELFRAMES.Controls.Add(BTNDEUDORES)
+        BTNDEUDORES.BringToFront()
         HISTORIAL = True
 
         FrmCotizaciones.TopLevel = False
