@@ -28,7 +28,7 @@ Public Class FrmVentas
     Public Sub CargarDatos()
         Dim cadenaConexion As String = "server=" & SERVIDOR & "; database=" & BASEDATOS & "; uid=" & USUARIO & "; pwd=" & CONTRASEÑA & ";"
         Dim conexion As New SqlConnection(cadenaConexion)
-        Dim sql As String = "SELECT * FROM VISTAVENTAS WHERE VENFECHA BETWEEN DATEADD(MONTH, -2, GETDATE()) AND GETDATE() ORDER BY VENID DESC"
+        Dim sql As String = "SELECT * FROM VISTAVENTAS WHERE VENEXISTE=1 AND VENFECHA BETWEEN DATEADD(MONTH, -2, GETDATE()) AND GETDATE() ORDER BY VENID DESC"
         Dim adapter As New SqlDataAdapter(sql, conexion)
         Dim dt As New DataTable()
 
@@ -100,6 +100,7 @@ Public Class FrmVentas
                     Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
                     Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
                     MsgBox("Venta eliminada", MsgBoxStyle.Information, "Confirmación")
+                    CargarDatos()
                 End If
             End If
         End If

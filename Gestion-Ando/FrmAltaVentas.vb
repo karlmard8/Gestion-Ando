@@ -25,7 +25,7 @@ Public Class FrmAltaVentas
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
         CmbClave.SelectedValue = -1
-        CmbClave.Visible = False
+        'CmbClave.Visible = False
         CMBEXISTENCIAS.BackColor = Color.White
         LBLCLAVE.Visible = False
         TXTMESES.Enabled = False
@@ -88,9 +88,11 @@ Public Class FrmAltaVentas
             RBCREDITO.Enabled = True
         End If
 
-        AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha 'Vincular evento Tick
-        FrmPrincipal.Timer1.Interval = 1000 'Cada segundo
+        AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha
+        FrmPrincipal.Timer1.Interval = 1000
         FrmPrincipal.Timer1.Start()
+        TXTCODIGOBARRAS.Focus()
+        TXTCODIGOBARRAS.Clear()
     End Sub
 
 
@@ -108,7 +110,6 @@ Public Class FrmAltaVentas
         TXTENGANCHE.Text = String.Empty
         TXTMESES.Text = String.Empty
         DtgProductos.Rows.Clear()
-
     End Sub
 
     Private Sub CMBPRECIO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBPRECIO.SelectedIndexChanged
@@ -275,10 +276,10 @@ Public Class FrmAltaVentas
 
         'Detectar desde qué formulario se ejecuta
         If TypeOf formularioOrigen Is FrmAltaVentas Then
-            ' 🔹 Obtener VENID desde la variable declarada en FrmAltaVentas
+            'Obtener VENID desde la variable declarada en FrmAltaVentas
             VENID = CType(formularioOrigen, FrmAltaVentas).VENID
         ElseIf TypeOf formularioOrigen Is FrmVentas Then
-            ' 🔹 Obtener VENID desde un DataGridView en otro formulario
+            'Obtener VENID desde un DataGridView en otro formulario
             If CType(formularioOrigen, FrmVentas).DATAVENTAS.SelectedRows.Count > 0 Then
                 VENID = CType(formularioOrigen, FrmVentas).DATAVENTAS.SelectedRows(0).Cells("VENID").Value
             Else
@@ -290,14 +291,14 @@ Public Class FrmAltaVentas
             Exit Sub
         End If
 
-        ' 🔹 Definir la ruta del reporte
+        'Definir la ruta del reporte
         Dim RUTAREPORTE As String = System.IO.Path.Combine(Application.StartupPath, "RPTTICKETVENTA.rpt")
         If Not System.IO.File.Exists(RUTAREPORTE) Then
             MessageBox.Show("No se encontró el archivo de reporte en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End If
 
-        ' 🔹 Crear conexión a SQL Server
+        'Crear conexión a SQL Server
         Dim conexion As New SqlConnection("Server=" & SERVIDOR & ";Database=" & BASEDATOS & ";User Id=" & USUARIO & ";Password=" & CONTRASEÑA)
         Dim comando As New SqlCommand("EXEC IMPRIMIRTICKET @VENID", conexion)
         comando.Parameters.AddWithValue("@VENID", VENID)
@@ -313,12 +314,12 @@ Public Class FrmAltaVentas
             Exit Sub
         End Try
 
-        ' 🔹 Cargar el reporte y asignar el DataSet
+        'Cargar el reporte y asignar el DataSet
         Dim MANIFIESTO As New ReportDocument()
         MANIFIESTO.Load(RUTAREPORTE)
         MANIFIESTO.SetDataSource(ds.Tables("IMPRIMIRTICKET"))
 
-        ' 🔹 Mostrar el reporte
+        'Mostrar el reporte
         Dim MUESTRA As New FrmReportes()
         MUESTRA.Reportes.ReportSource = MANIFIESTO
         MUESTRA.Reportes.Refresh()
@@ -392,21 +393,6 @@ Public Class FrmAltaVentas
             LblSubTotal.Text = "Procesando..."
             CMBPRECIO.FormatString = "C2"
             CMBPRECIO.Text = String.Empty
-        End If
-    End Sub
-
-    Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        If e.KeyChar = Chr(13) Then ' Simular que el lector envía ENTER después del código
-            ' Ajustar temporalmente el producto en CMBPRODUCTO
-            CmbClave.SelectedValue = 12
-            CMBPRODUCTO.SelectedValue = 12
-            CMBPRECIO.SelectedValue = 12
-
-            ' Asignar una cantidad fija de 1
-            TxtCantidad.Text = "1"
-
-            ' Ejecutar BtnAgregar_Click para completar el proceso
-            BtnAgregar.PerformClick()
         End If
     End Sub
 
@@ -529,4 +515,44 @@ Public Class FrmAltaVentas
         End If
     End Sub
 
+    Private lecturaActual As String = ""
+    Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
+        ' Detectar ENTER para finalizar el código escaneado
+        If keyData = Keys.Enter Then
+            If lecturaActual.Length > 0 Then
+                ' Filtrar caracteres no alfanuméricos antes de procesar el código
+                Dim codigoLeido As String = System.Text.RegularExpressions.Regex.Replace(lecturaActual, "[^a-zA-Z0-9]", "").Trim()
+
+                TXTCODIGOBARRAS.Text = codigoLeido
+
+                ' Obtener la fuente del ComboBox y buscar el PROID según PROCLAVE
+                Dim tablaProductos As DataTable = CType(CType(CMBPRODUCTO.DataSource, BindingSource).DataSource, DataTable)
+                Dim resultado() As DataRow = tablaProductos.Select("PROCLAVE = '" & codigoLeido & "'")
+
+                If resultado.Length > 0 Then
+                    ' Extraer PROID y asignarlo al ComboBox
+                    Dim proId As Integer = Convert.ToInt32(resultado(0)("PROID"))
+                    CmbClave.SelectedValue = proId
+                    CMBPRODUCTO.SelectedValue = proId
+                    CMBPRECIO.SelectedValue = proId
+
+                    ' Asignar cantidad fija de 1 y ejecutar la lógica de venta
+                    TxtCantidad.Text = "1"
+                    BtnAgregar.PerformClick()
+                Else
+                    MessageBox.Show("Producto no encontrado en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+
+                ' Limpiar la lectura acumulada
+                lecturaActual = ""
+                Return True ' Suprime el ENTER en la interfaz
+            End If
+        Else
+            ' Acumular cualquier carácter sin restricciones
+            lecturaActual &= ChrW(msg.WParam.ToInt32())
+            Return True ' Evita que la tecla llegue a otro control
+        End If
+
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 End Class

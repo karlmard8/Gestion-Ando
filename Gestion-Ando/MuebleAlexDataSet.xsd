@@ -645,7 +645,7 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
               <xs:element name="PROCLAVE" msprop:Generator_ColumnPropNameInTable="PROCLAVEColumn" msprop:Generator_ColumnPropNameInRow="PROCLAVE" msprop:Generator_UserColumnName="PROCLAVE" msprop:Generator_ColumnVarNameInTable="columnPROCLAVE" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="24" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -666,8 +666,8 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PROCOSTO" msprop:Generator_UserColumnName="PROCOSTO" msprop:Generator_ColumnPropNameInTable="PROCOSTOColumn" msprop:Generator_ColumnPropNameInRow="PROCOSTO" msprop:Generator_ColumnVarNameInTable="columnPROCOSTO" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PROGANANCIA" msprop:Generator_UserColumnName="PROGANANCIA" msprop:Generator_ColumnPropNameInTable="PROGANANCIAColumn" msprop:Generator_ColumnPropNameInRow="PROGANANCIA" msprop:Generator_ColumnVarNameInTable="columnPROGANANCIA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PROCOSTO" msprop:Generator_ColumnPropNameInTable="PROCOSTOColumn" msprop:Generator_ColumnPropNameInRow="PROCOSTO" msprop:Generator_UserColumnName="PROCOSTO" msprop:Generator_ColumnVarNameInTable="columnPROCOSTO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PROGANANCIA" msprop:Generator_ColumnPropNameInTable="PROGANANCIAColumn" msprop:Generator_ColumnPropNameInRow="PROGANANCIA" msprop:Generator_UserColumnName="PROGANANCIA" msprop:Generator_ColumnVarNameInTable="columnPROGANANCIA" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -743,7 +743,7 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Ganancia" msprop:Generator_ColumnPropNameInRow="Ganancia" msprop:Generator_ColumnPropNameInTable="GananciaColumn" msprop:Generator_ColumnVarNameInTable="columnGanancia" msprop:Generator_UserColumnName="Ganancia" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Ganancia" msprop:Generator_ColumnPropNameInTable="GananciaColumn" msprop:Generator_ColumnPropNameInRow="Ganancia" msprop:Generator_UserColumnName="Ganancia" msprop:Generator_ColumnVarNameInTable="columnGanancia" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -768,7 +768,7 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
               <xs:element name="PROCLAVE" msprop:Generator_ColumnPropNameInTable="PROCLAVEColumn" msprop:Generator_ColumnPropNameInRow="PROCLAVE" msprop:Generator_UserColumnName="PROCLAVE" msprop:Generator_ColumnVarNameInTable="columnPROCLAVE" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
+                    <xs:maxLength value="24" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

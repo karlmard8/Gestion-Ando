@@ -25,6 +25,7 @@ Partial Class FrmPrincipal
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrincipal))
         Me.MenuOpciones = New System.Windows.Forms.MenuStrip()
+        Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,7 +41,7 @@ Partial Class FrmPrincipal
         Me.LBLHORA = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.LBLFECHA = New System.Windows.Forms.Label()
-        Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TimerLicencia = New System.Windows.Forms.Timer(Me.components)
         Me.MenuOpciones.SuspendLayout()
         Me.PANELFRAMES.SuspendLayout()
         Me.SuspendLayout()
@@ -57,6 +58,12 @@ Partial Class FrmPrincipal
         Me.MenuOpciones.Size = New System.Drawing.Size(1920, 38)
         Me.MenuOpciones.TabIndex = 0
         Me.MenuOpciones.Text = "MenuStrip1"
+        '
+        'InicioToolStripMenuItem
+        '
+        Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(75, 34)
+        Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'ClientesToolStripMenuItem
         '
@@ -167,11 +174,8 @@ Partial Class FrmPrincipal
         Me.LBLFECHA.TabIndex = 23
         Me.LBLFECHA.Text = ". . ."
         '
-        'InicioToolStripMenuItem
+        'TimerLicencia
         '
-        Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(75, 34)
-        Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'FrmPrincipal
         '
@@ -218,4 +222,5 @@ Partial Class FrmPrincipal
     Friend WithEvents NuevaCotizaciónToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HistorialDeCotizacionesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InicioToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TimerLicencia As Timer
 End Class

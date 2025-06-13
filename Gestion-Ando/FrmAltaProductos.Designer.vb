@@ -57,7 +57,7 @@ Partial Class FrmAltaProductos
         '
         Me.TXTCLAVE.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXTCLAVE.Location = New System.Drawing.Point(156, 68)
-        Me.TXTCLAVE.MaxLength = 10
+        Me.TXTCLAVE.MaxLength = 24
         Me.TXTCLAVE.Name = "TXTCLAVE"
         Me.TXTCLAVE.Size = New System.Drawing.Size(289, 26)
         Me.TXTCLAVE.TabIndex = 1

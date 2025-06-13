@@ -71,7 +71,8 @@ Public Class FrmPrincipal
     Public Sub FrmPrincipal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Interval = 1000
         Timer1.Start()
-
+        TimerLicencia.Interval = 1000 * 60 * 60 * 1
+        TimerLicencia.Start()
 
         Me.BackColor = ColorFormulario
         Me.MenuOpciones.BackColor = ColorMenuStrip
@@ -83,8 +84,6 @@ Public Class FrmPrincipal
         LBLHORA.ForeColor = Color.White
         FECHA = Today.Date.ToString("dd/MM/yyyy")
         LBLFECHA.Text = FECHA
-
-        InicioToolStripMenuItem_Click(Nothing, Nothing)
 
         StrSql = "INICIARSESION"
         comando = New SqlClient.SqlCommand(StrSql, Conexion)
@@ -98,6 +97,7 @@ Public Class FrmPrincipal
         If Conectar() = True Then
             If comando.Parameters("@RETORNO").Value = "Administrador" Then
                 TIPO = "Administrador"
+                InicioToolStripMenuItem_Click(Nothing, Nothing)
                 Dim textoBuscado As String = "Usuarios"
 
                 For Each item As ToolStripMenuItem In MenuOpciones.Items
@@ -108,6 +108,7 @@ Public Class FrmPrincipal
                 Next
             Else
                 TIPO = "Operativo"
+                VentasToolStripMenuItem_Click(Nothing, Nothing)
                 Dim textoBuscado As String = "Usuarios"
 
                 For Each item As ToolStripMenuItem In MenuOpciones.Items
@@ -129,7 +130,6 @@ Public Class FrmPrincipal
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Dim horaActual As DateTime = DateTime.Now
         LBLHORA.Text = horaActual.ToString("hh:mm:ss tt")
-        'FrmLogin.btnLogin_Click(sender, e)
     End Sub
 
     Public Class FrmTiempo
@@ -221,7 +221,7 @@ Public Class FrmPrincipal
                                                         End If
                                                     End Sub
 
-        ' 🔹 Agregar controles al formulario
+        'Agregar controles al formulario
 
         Application.DoEvents() 'Deja que la UI procese los cambios antes de continuar
         TABLADEUDAS.Refresh() 'Refresca el `DataGridView` para cargar las columnas correctamente
@@ -325,7 +325,6 @@ Public Class FrmPrincipal
 
     End Sub
 
-
     Private Sub NuevaCotizaciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuevaCotizaciónToolStripMenuItem.Click
         PANELFRAMES.Controls.Clear()
         PANELFRAMES.Controls.Add(BTNDEUDORES)
@@ -386,4 +385,7 @@ Public Class FrmPrincipal
         ALERTADEUDORES()
     End Sub
 
+    Private Sub TimerLicencia_Tick(sender As Object, e As EventArgs) Handles TimerLicencia.Tick
+        FrmLogin.btnLogin_Click(sender, e)
+    End Sub
 End Class

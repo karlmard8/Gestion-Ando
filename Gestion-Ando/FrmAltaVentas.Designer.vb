@@ -23,11 +23,11 @@ Partial Class FrmAltaVentas
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXTENGANCHE = New System.Windows.Forms.TextBox()
@@ -48,7 +48,14 @@ Partial Class FrmAltaVentas
         Me.LBLSUB = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.DtgProductos = New System.Windows.Forms.DataGridView()
+        Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PRONOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROCANTIDAD = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROSUBTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GRUPO2 = New System.Windows.Forms.Panel()
+        Me.TXTCODIGOBARRAS = New System.Windows.Forms.TextBox()
         Me.CMBEXISTENCIAS = New System.Windows.Forms.ComboBox()
         Me.VISTAPRODUCTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
@@ -78,12 +85,6 @@ Partial Class FrmAltaVentas
         Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
         Me.VISTACLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESTableAdapter()
         Me.VISTAPRODUCTOSTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTAPRODUCTOSTableAdapter()
-        Me.PROID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROCLAVE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRONOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROCANTIDAD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROPRECIO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROSUBTOTAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DtgProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GRUPO2.SuspendLayout()
@@ -341,24 +342,24 @@ Partial Class FrmAltaVentas
         Me.DtgProductos.AllowUserToDeleteRows = False
         Me.DtgProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DtgProductos.BackgroundColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DtgProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DtgProductos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DtgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DtgProductos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PROID, Me.PROCLAVE, Me.PRONOMBRE, Me.PROCANTIDAD, Me.PROPRECIO, Me.PROSUBTOTAL})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DtgProductos.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DtgProductos.DefaultCellStyle = DataGridViewCellStyle10
         Me.DtgProductos.Location = New System.Drawing.Point(0, 335)
         Me.DtgProductos.Margin = New System.Windows.Forms.Padding(2)
         Me.DtgProductos.MultiSelect = False
@@ -372,9 +373,72 @@ Partial Class FrmAltaVentas
         Me.DtgProductos.TabIndex = 26
         Me.DtgProductos.TabStop = False
         '
+        'PROID
+        '
+        Me.PROID.HeaderText = "PROID"
+        Me.PROID.MinimumWidth = 6
+        Me.PROID.Name = "PROID"
+        Me.PROID.ReadOnly = True
+        Me.PROID.Visible = False
+        Me.PROID.Width = 125
+        '
+        'PROCLAVE
+        '
+        Me.PROCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.PROCLAVE.HeaderText = "CLAVE"
+        Me.PROCLAVE.MinimumWidth = 6
+        Me.PROCLAVE.Name = "PROCLAVE"
+        Me.PROCLAVE.ReadOnly = True
+        Me.PROCLAVE.Width = 83
+        '
+        'PRONOMBRE
+        '
+        Me.PRONOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PRONOMBRE.HeaderText = "PRODUCTO"
+        Me.PRONOMBRE.MinimumWidth = 6
+        Me.PRONOMBRE.Name = "PRONOMBRE"
+        Me.PRONOMBRE.ReadOnly = True
+        '
+        'PROCANTIDAD
+        '
+        Me.PROCANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle7.Format = "N0"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle7
+        Me.PROCANTIDAD.HeaderText = "CANTIDAD"
+        Me.PROCANTIDAD.MinimumWidth = 6
+        Me.PROCANTIDAD.Name = "PROCANTIDAD"
+        Me.PROCANTIDAD.ReadOnly = True
+        Me.PROCANTIDAD.Width = 112
+        '
+        'PROPRECIO
+        '
+        Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle8.Format = "C2"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle8
+        Me.PROPRECIO.HeaderText = "PRECIO"
+        Me.PROPRECIO.MinimumWidth = 6
+        Me.PROPRECIO.Name = "PROPRECIO"
+        Me.PROPRECIO.ReadOnly = True
+        Me.PROPRECIO.Width = 88
+        '
+        'PROSUBTOTAL
+        '
+        Me.PROSUBTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle9.Format = "C2"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle9
+        Me.PROSUBTOTAL.HeaderText = "TOTAL"
+        Me.PROSUBTOTAL.MinimumWidth = 6
+        Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
+        Me.PROSUBTOTAL.ReadOnly = True
+        Me.PROSUBTOTAL.Width = 84
+        '
         'GRUPO2
         '
         Me.GRUPO2.BackColor = System.Drawing.SystemColors.Control
+        Me.GRUPO2.Controls.Add(Me.TXTCODIGOBARRAS)
         Me.GRUPO2.Controls.Add(Me.CMBEXISTENCIAS)
         Me.GRUPO2.Controls.Add(Me.Label2)
         Me.GRUPO2.Controls.Add(Me.CMBPRECIO)
@@ -395,6 +459,13 @@ Partial Class FrmAltaVentas
         Me.GRUPO2.Name = "GRUPO2"
         Me.GRUPO2.Size = New System.Drawing.Size(1184, 173)
         Me.GRUPO2.TabIndex = 25
+        '
+        'TXTCODIGOBARRAS
+        '
+        Me.TXTCODIGOBARRAS.Location = New System.Drawing.Point(875, 83)
+        Me.TXTCODIGOBARRAS.Name = "TXTCODIGOBARRAS"
+        Me.TXTCODIGOBARRAS.Size = New System.Drawing.Size(100, 20)
+        Me.TXTCODIGOBARRAS.TabIndex = 22
         '
         'CMBEXISTENCIAS
         '
@@ -532,13 +603,12 @@ Partial Class FrmAltaVentas
         Me.CMBPRODUCTO.BackColor = System.Drawing.SystemColors.Window
         Me.CMBPRODUCTO.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CMBPRODUCTO.DisplayMember = "PRONOMBRE"
-        Me.CMBPRODUCTO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CMBPRODUCTO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CMBPRODUCTO.FormattingEnabled = True
-        Me.CMBPRODUCTO.Location = New System.Drawing.Point(96, 13)
+        Me.CMBPRODUCTO.Location = New System.Drawing.Point(100, 13)
         Me.CMBPRODUCTO.Margin = New System.Windows.Forms.Padding(2)
         Me.CMBPRODUCTO.Name = "CMBPRODUCTO"
-        Me.CMBPRODUCTO.Size = New System.Drawing.Size(1088, 28)
+        Me.CMBPRODUCTO.Size = New System.Drawing.Size(1084, 28)
         Me.CMBPRODUCTO.TabIndex = 9
         Me.CMBPRODUCTO.ValueMember = "PROID"
         '
@@ -573,9 +643,8 @@ Partial Class FrmAltaVentas
         Me.CmbClave.BackColor = System.Drawing.SystemColors.Window
         Me.CmbClave.DataSource = Me.VISTAPRODUCTOSBindingSource
         Me.CmbClave.DisplayMember = "PROCLAVE"
-        Me.CmbClave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbClave.FormattingEnabled = True
-        Me.CmbClave.Location = New System.Drawing.Point(98, 14)
+        Me.CmbClave.Location = New System.Drawing.Point(654, 82)
         Me.CmbClave.Margin = New System.Windows.Forms.Padding(2)
         Me.CmbClave.Name = "CmbClave"
         Me.CmbClave.Size = New System.Drawing.Size(87, 21)
@@ -711,68 +780,6 @@ Partial Class FrmAltaVentas
         '
         Me.VISTAPRODUCTOSTableAdapter.ClearBeforeFill = True
         '
-        'PROID
-        '
-        Me.PROID.HeaderText = "PROID"
-        Me.PROID.MinimumWidth = 6
-        Me.PROID.Name = "PROID"
-        Me.PROID.ReadOnly = True
-        Me.PROID.Visible = False
-        Me.PROID.Width = 125
-        '
-        'PROCLAVE
-        '
-        Me.PROCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.PROCLAVE.HeaderText = "CLAVE"
-        Me.PROCLAVE.MinimumWidth = 6
-        Me.PROCLAVE.Name = "PROCLAVE"
-        Me.PROCLAVE.ReadOnly = True
-        Me.PROCLAVE.Width = 83
-        '
-        'PRONOMBRE
-        '
-        Me.PRONOMBRE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PRONOMBRE.HeaderText = "PRODUCTO"
-        Me.PRONOMBRE.MinimumWidth = 6
-        Me.PRONOMBRE.Name = "PRONOMBRE"
-        Me.PRONOMBRE.ReadOnly = True
-        '
-        'PROCANTIDAD
-        '
-        Me.PROCANTIDAD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Format = "N0"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.PROCANTIDAD.DefaultCellStyle = DataGridViewCellStyle2
-        Me.PROCANTIDAD.HeaderText = "CANTIDAD"
-        Me.PROCANTIDAD.MinimumWidth = 6
-        Me.PROCANTIDAD.Name = "PROCANTIDAD"
-        Me.PROCANTIDAD.ReadOnly = True
-        Me.PROCANTIDAD.Width = 112
-        '
-        'PROPRECIO
-        '
-        Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle3.Format = "C2"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle3
-        Me.PROPRECIO.HeaderText = "PRECIO"
-        Me.PROPRECIO.MinimumWidth = 6
-        Me.PROPRECIO.Name = "PROPRECIO"
-        Me.PROPRECIO.ReadOnly = True
-        Me.PROPRECIO.Width = 88
-        '
-        'PROSUBTOTAL
-        '
-        Me.PROSUBTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle4.Format = "C2"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.PROSUBTOTAL.DefaultCellStyle = DataGridViewCellStyle4
-        Me.PROSUBTOTAL.HeaderText = "TOTAL"
-        Me.PROSUBTOTAL.MinimumWidth = 6
-        Me.PROSUBTOTAL.Name = "PROSUBTOTAL"
-        Me.PROSUBTOTAL.ReadOnly = True
-        Me.PROSUBTOTAL.Width = 84
-        '
         'FrmAltaVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -871,4 +878,5 @@ Partial Class FrmAltaVentas
     Friend WithEvents PROCANTIDAD As DataGridViewTextBoxColumn
     Friend WithEvents PROPRECIO As DataGridViewTextBoxColumn
     Friend WithEvents PROSUBTOTAL As DataGridViewTextBoxColumn
+    Friend WithEvents TXTCODIGOBARRAS As TextBox
 End Class

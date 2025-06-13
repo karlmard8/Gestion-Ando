@@ -1369,7 +1369,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnPROID.AllowDBNull = false
             Me.columnPROID.ReadOnly = true
             Me.columnPROID.Unique = true
-            Me.columnPROCLAVE.MaxLength = 10
+            Me.columnPROCLAVE.MaxLength = 24
             Me.columnPRONOMBRE.MaxLength = 255
             Me.columnPROIMAGEN.MaxLength = 100
         End Sub
@@ -2687,7 +2687,7 @@ Partial Public Class MuebleAlexDataSet
             Me.columnPROID.AllowDBNull = false
             Me.columnPROID.ReadOnly = true
             Me.columnPROID.Unique = true
-            Me.columnPROCLAVE.MaxLength = 10
+            Me.columnPROCLAVE.MaxLength = 24
             Me.columnPRONOMBRE.MaxLength = 255
         End Sub
         

@@ -10,11 +10,6 @@ Module AuthFirebase
         Private conexionInicializada As Boolean = False
 
         Public Sub New()
-            If BLOQUEO = False Then
-                ' Continuar si la licencia es remota
-            Else
-                Exit Sub
-            End If
 
             ' Obtener ruta al archivo JSON en la carpeta del .exe
             Dim rutaJson As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "licenciasgestion-ando-firebase-adminsdk-fbsvc-7c108e7198.json")

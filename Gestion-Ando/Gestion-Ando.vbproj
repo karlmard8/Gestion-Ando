@@ -340,6 +340,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MetodoDatagridview.vb" />
+    <Compile Include="MuebleAlexDataSet.vb">
+      <DependentUpon>MuebleAlexDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RPTCORTECAJA.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
