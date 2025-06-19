@@ -113,6 +113,7 @@ Public Class FrmVentas
             Me.VISTAVENTASTableAdapter.Fill(Me.MuebleAlexDataSet.VISTAVENTAS)
             Me.VISTAVENTASBindingSource.DataSource = Me.MuebleAlexDataSet.VISTAVENTAS
         End If
+
     End Sub
 
     Public contado As Boolean

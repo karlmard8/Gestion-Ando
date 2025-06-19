@@ -27,6 +27,8 @@ Partial Class FRMINICIO
         Me.BTNWHATSAPP = New System.Windows.Forms.PictureBox()
         Me.BTNGMAIL = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.BTNWHATSAPP, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BTNGMAIL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,7 +48,7 @@ Partial Class FRMINICIO
         Me.BTNWHATSAPP.BackgroundImage = CType(resources.GetObject("BTNWHATSAPP.BackgroundImage"), System.Drawing.Image)
         Me.BTNWHATSAPP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.BTNWHATSAPP.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNWHATSAPP.Location = New System.Drawing.Point(228, 412)
+        Me.BTNWHATSAPP.Location = New System.Drawing.Point(228, 392)
         Me.BTNWHATSAPP.Name = "BTNWHATSAPP"
         Me.BTNWHATSAPP.Size = New System.Drawing.Size(248, 172)
         Me.BTNWHATSAPP.TabIndex = 1
@@ -57,7 +59,7 @@ Partial Class FRMINICIO
         Me.BTNGMAIL.BackgroundImage = CType(resources.GetObject("BTNGMAIL.BackgroundImage"), System.Drawing.Image)
         Me.BTNGMAIL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.BTNGMAIL.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNGMAIL.Location = New System.Drawing.Point(864, 412)
+        Me.BTNGMAIL.Location = New System.Drawing.Point(864, 392)
         Me.BTNGMAIL.Name = "BTNGMAIL"
         Me.BTNGMAIL.Size = New System.Drawing.Size(248, 172)
         Me.BTNGMAIL.TabIndex = 2
@@ -67,11 +69,31 @@ Partial Class FRMINICIO
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Dubai", 24.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(521, 351)
+        Me.Label2.Location = New System.Drawing.Point(521, 331)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(298, 55)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Medios de contacto"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Dubai", 24.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(269, 567)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(167, 55)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Whatsapp"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Dubai", 24.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(937, 567)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(103, 55)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "Gmail"
         '
         'FRMINICIO
         '
@@ -79,6 +101,8 @@ Partial Class FRMINICIO
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1325, 692)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.BTNGMAIL)
         Me.Controls.Add(Me.BTNWHATSAPP)
@@ -99,4 +123,6 @@ Partial Class FRMINICIO
     Friend WithEvents BTNWHATSAPP As PictureBox
     Friend WithEvents BTNGMAIL As PictureBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
 End Class

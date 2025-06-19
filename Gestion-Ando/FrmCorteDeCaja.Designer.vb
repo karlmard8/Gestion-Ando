@@ -52,6 +52,7 @@ Partial Class FrmCorteDeCaja
         Me.BTNABRIRCAJA = New System.Windows.Forms.Button()
         Me.BTNCERRARCAJA = New System.Windows.Forms.Button()
         Me.CAJABOTONES = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.DATACORTECAJA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACORTECAJABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -342,6 +343,7 @@ Partial Class FrmCorteDeCaja
         '
         'CAJABOTONES
         '
+        Me.CAJABOTONES.Controls.Add(Me.Label7)
         Me.CAJABOTONES.Controls.Add(Me.BTNCERRARCAJA)
         Me.CAJABOTONES.Controls.Add(Me.Label6)
         Me.CAJABOTONES.Controls.Add(Me.BTNABRIRCAJA)
@@ -354,6 +356,16 @@ Partial Class FrmCorteDeCaja
         Me.CAJABOTONES.Size = New System.Drawing.Size(967, 358)
         Me.CAJABOTONES.TabIndex = 21
         Me.CAJABOTONES.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Dubai", 8.249999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(620, 136)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(212, 18)
+        Me.Label7.TabIndex = 19
+        Me.Label7.Text = "*Completa los campos antes de cerrar la caja"
         '
         'FrmCorteDeCaja
         '
@@ -418,4 +430,5 @@ Partial Class FrmCorteDeCaja
     Friend WithEvents CAJABOTONES As GroupBox
     Friend WithEvents LBLGANANCIAS As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
 End Class

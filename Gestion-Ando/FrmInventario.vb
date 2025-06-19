@@ -54,9 +54,20 @@ Public Class FrmInventario
         TXTBUSCAR.Focus()
     End Sub
 
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
-        Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''")
-        Me.TBLPRODUCTOSBindingSource.Filter = "PRONOMBRE LIKE '*" & textoFiltrado & "*'"
+    Private Sub TXTBUSCAR_TextChanged(sender As Object, e As EventArgs) Handles TXTBUSCAR.TextChanged
+        Dim texto As String = TXTBUSCAR.Text.Replace("'", "''") ' Evita errores por comillas
+        Dim filtro As String = ""
+
+        If texto <> "" Then
+            filtro = "PROCLAVE LIKE '*" & texto & "*' OR " &
+                 "PRONOMBRE LIKE '*" & texto & "*' OR " &
+                 "CONVERT(PROEXISTENCIAS, 'System.String') LIKE '*" & texto & "*' OR " &
+                 "CONVERT(PROCOSTO, 'System.String') LIKE '*" & texto & "*' OR " &
+                 "CONVERT(PROPRECIO, 'System.String') LIKE '*" & texto & "*' OR " &
+                 "CONVERT(PROGANANCIA, 'System.String') LIKE '*" & texto & "*'"
+        End If
+
+        TBLPRODUCTOSBindingSource.Filter = filtro
     End Sub
 
     Public Property rutaImagen As String
@@ -267,5 +278,11 @@ Public Class FrmInventario
 
         ' Mostrar el formulario emergente
         OPCIONESVENTAS.ShowDialog()
+    End Sub
+
+    Private Sub TXTBUSCAR_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTBUSCAR.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            e.Handled = True
+        End If
     End Sub
 End Class

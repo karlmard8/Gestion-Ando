@@ -25,7 +25,7 @@ Public Class FrmAltaVentas
         LBLUSUARIOACTUAL.Text = USUARIOACTUAL
         CmbClientes.SelectedValue = 0
         CmbClave.SelectedValue = -1
-        'CmbClave.Visible = False
+        CmbClave.Visible = False
         CMBEXISTENCIAS.BackColor = Color.White
         LBLCLAVE.Visible = False
         TXTMESES.Enabled = False
@@ -53,7 +53,7 @@ Public Class FrmAltaVentas
 
         ' Configuración de ComboBox de productos
         CmbClave.DataSource = bsProductos
-        CmbClave.DisplayMember = "PROCLABE"
+        CmbClave.DisplayMember = "PROCLAVE"
         CmbClave.ValueMember = "PROID"
         CmbClave.SelectedIndex = -1
 
@@ -91,10 +91,12 @@ Public Class FrmAltaVentas
         AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha
         FrmPrincipal.Timer1.Interval = 1000
         FrmPrincipal.Timer1.Start()
+    End Sub
+
+    Private Sub FrmAltaVentas_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         TXTCODIGOBARRAS.Focus()
         TXTCODIGOBARRAS.Clear()
     End Sub
-
 
     Private Sub FrmAltaVentas_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         For Each control As Control In Me.Controls
@@ -105,7 +107,7 @@ Public Class FrmAltaVentas
         LBLSUB.Text = "Procesando..."
         LBLIVA.Text = "Procesando..."
         LBLTOTAL.Text = "Procesando..."
-        CmbClientes.Focus()
+        TXTCODIGOBARRAS.Focus()
         TXTPAGO.Text = String.Empty
         TXTENGANCHE.Text = String.Empty
         TXTMESES.Text = String.Empty
@@ -165,14 +167,20 @@ Public Class FrmAltaVentas
     Private Sub BTNPAGAR_Click(sender As Object, e As EventArgs) Handles BTNPAGAR.Click
         If Me.CmbClientes.SelectedValue > 0 Then
             If (Me.DtgProductos.RowCount > 0) Then
-                If RBCONTADO.Checked = True Then
+                If RBCONTADO.Checked = True Or RBTDEBITO.Checked = True Or RBTCREDITO.Checked = True Then
                     If Val(Me.TXTPAGO.Text) >= (Me.LBLTOTAL.Text).ToString Then
                         StrSql = "ALTAVENTA"
                         comando = New SqlClient.SqlCommand(StrSql, Conexion)
                         comando.CommandType = CommandType.StoredProcedure
                         comando.Parameters.Add("@VENFECHA", SqlDbType.DateTime).Value = fechaParametro.ToString("yyyy-MM-dd HH:mm:ss")
                         comando.Parameters.Add("@VENTOTAL", SqlDbType.Money).Value = Me.LBLTOTAL.Text
-                        comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Contado"
+                        If RBTDEBITO.Checked Then
+                            comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "T. Débito"
+                        ElseIf RBTCREDITO.Checked Then
+                            comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "T. Crédito"
+                        ElseIf RBCONTADO.Checked Then
+                            comando.Parameters.Add("@VENFORMA", SqlDbType.VarChar, 10).Value = "Contado"
+                        End If
                         comando.Parameters.Add("@VENMESES", SqlDbType.Int).Value = 0
                         If TXTENGANCHE.Text = String.Empty Then
                             comando.Parameters.Add("@VENENGANCHE", SqlDbType.Money).Value = 0
@@ -332,7 +340,13 @@ Public Class FrmAltaVentas
         If TXTPAGO.Text < LBLTOTAL.Text Then
             TXTCAMBIO.Text = 0.ToString("C2")
         Else
-            Me.TXTCAMBIO.Text = (Val(TXTPAGO.Text) - LBLTOTAL.Text).ToString("C2")
+            Dim cambio As Decimal = (Val(TXTPAGO.Text) - LBLTOTAL.Text).ToString("C2")
+            If cambio > 0 Then
+                Me.TXTCAMBIO.Text = cambio.ToString("C2")
+            Else
+                Me.TXTCAMBIO.Text = 0.ToString("C2")
+            End If
+
         End If
     End Sub
 
@@ -374,7 +388,7 @@ Public Class FrmAltaVentas
                 ActualizarTotales()
             Else
                 ' Si el producto no existe, agregarlo como una nueva fila
-                Me.DtgProductos.Rows.Add(productoId, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, cantidad, Me.CMBPRECIO.Text, subtotal)
+                Me.DtgProductos.Rows.Add(productoId, Me.CmbClave.Text, Me.CMBPRODUCTO.Text, cantidad, precio.ToString("c2"), subtotal)
 
                 ' Actualizar el total acumulado
                 ActualizarTotales()
@@ -433,7 +447,8 @@ Public Class FrmAltaVentas
                 DtgProductos.CurrentRow.Cells("PROCANTIDAD").Value = cantidadProducto
 
                 ' Actualizar el subtotal en la fila
-                Dim precio As Double = Convert.ToDouble(DtgProductos.CurrentRow.Cells("PROPRECIO").Value)
+                Dim precioTexto As String = DtgProductos.CurrentRow.Cells("PROPRECIO").Value.ToString().Replace("$", "").Trim()
+                Dim precio As Double = Double.Parse(precioTexto, Globalization.NumberStyles.Currency, Globalization.CultureInfo.CurrentCulture)
                 DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value = cantidadProducto * precio
             Else
                 ' Si la cantidad es 1 o menor, eliminar la fila
@@ -515,44 +530,69 @@ Public Class FrmAltaVentas
         End If
     End Sub
 
+    Private ultimaTeclaPresionada As DateTime
+    Private lecturaCodigoBarras As Boolean = False
     Private lecturaActual As String = ""
+
     Protected Overrides Function ProcessCmdKey(ByRef msg As Message, keyData As Keys) As Boolean
-        ' Detectar ENTER para finalizar el código escaneado
-        If keyData = Keys.Enter Then
-            If lecturaActual.Length > 0 Then
-                ' Filtrar caracteres no alfanuméricos antes de procesar el código
-                Dim codigoLeido As String = System.Text.RegularExpressions.Regex.Replace(lecturaActual, "[^a-zA-Z0-9]", "").Trim()
+        Dim tiempoEntreTeclas As TimeSpan = DateTime.Now - ultimaTeclaPresionada
+        ultimaTeclaPresionada = DateTime.Now
 
-                TXTCODIGOBARRAS.Text = codigoLeido
+        ' Detectar si el usuario está escribiendo manualmente (intervalo mayor a 200ms)
+        If tiempoEntreTeclas.TotalMilliseconds > 200 Then
+            lecturaCodigoBarras = False
+        Else
+            lecturaCodigoBarras = True
+        End If
 
-                ' Obtener la fuente del ComboBox y buscar el PROID según PROCLAVE
+        ' Acumular solo si no estamos leyendo desde el TextBox (aunque ya no se usará)
+        If lecturaCodigoBarras Then
+            lecturaActual &= ChrW(msg.WParam.ToInt32())
+        End If
+
+        ' Procesar al presionar Enter
+        If keyData = Keys.Enter AndAlso lecturaCodigoBarras Then
+            ' Leer directamente el texto completo del textbox
+            Dim codigoLeido As String = TXTCODIGOBARRAS.Text.Trim()
+
+            ' Filtrar caracteres no alfanuméricos
+            codigoLeido = System.Text.RegularExpressions.Regex.Replace(codigoLeido, "[^a-zA-Z0-9]", "")
+
+            If codigoLeido.Length > 0 Then
+                ' Buscar en la tabla
                 Dim tablaProductos As DataTable = CType(CType(CMBPRODUCTO.DataSource, BindingSource).DataSource, DataTable)
-                Dim resultado() As DataRow = tablaProductos.Select("PROCLAVE = '" & codigoLeido & "'")
+                Dim filtro As String = $"PROCLAVE = '{codigoLeido.Replace("'", "''")}'"
+                Dim resultado() As DataRow = tablaProductos.Select(filtro)
 
                 If resultado.Length > 0 Then
-                    ' Extraer PROID y asignarlo al ComboBox
                     Dim proId As Integer = Convert.ToInt32(resultado(0)("PROID"))
                     CmbClave.SelectedValue = proId
                     CMBPRODUCTO.SelectedValue = proId
                     CMBPRECIO.SelectedValue = proId
 
-                    ' Asignar cantidad fija de 1 y ejecutar la lógica de venta
                     TxtCantidad.Text = "1"
                     BtnAgregar.PerformClick()
                 Else
-                    MessageBox.Show("Producto no encontrado en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show("Producto no encontrado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
 
-                ' Limpiar la lectura acumulada
+                ' Limpiar
+                TXTCODIGOBARRAS.Clear()
+                TXTCODIGOBARRAS.Focus()
                 lecturaActual = ""
-                Return True ' Suprime el ENTER en la interfaz
+                lecturaCodigoBarras = False
+                Return True
             End If
-        Else
-            ' Acumular cualquier carácter sin restricciones
-            lecturaActual &= ChrW(msg.WParam.ToInt32())
-            Return True ' Evita que la tecla llegue a otro control
         End If
 
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
+
+    Private Sub RBTDEBITO_CheckedChanged(sender As Object, e As EventArgs) Handles RBTDEBITO.CheckedChanged
+        RBCONTADO_CheckedChanged(sender, e)
+    End Sub
+    Private Sub RBTCREDITO_CheckedChanged(sender As Object, e As EventArgs) Handles RBTCREDITO.CheckedChanged
+        RBCONTADO_CheckedChanged(sender, e)
+    End Sub
+
 End Class

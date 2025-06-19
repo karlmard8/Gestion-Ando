@@ -63,7 +63,7 @@ Partial Class FrmVentas
         Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(956, 855)
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(1112, 855)
         Me.BTNELIMINAR.Name = "BTNELIMINAR"
         Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
         Me.BTNELIMINAR.TabIndex = 20
@@ -90,7 +90,7 @@ Partial Class FrmVentas
         Me.DATAVENTAS.ReadOnly = True
         Me.DATAVENTAS.RowHeadersVisible = False
         Me.DATAVENTAS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DATAVENTAS.Size = New System.Drawing.Size(1126, 707)
+        Me.DATAVENTAS.Size = New System.Drawing.Size(1232, 707)
         Me.DATAVENTAS.TabIndex = 4
         Me.DATAVENTAS.TabStop = False
         '
@@ -149,7 +149,7 @@ Partial Class FrmVentas
         Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
         Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
         Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(756, 855)
+        Me.BTNNUEVO.Location = New System.Drawing.Point(913, 855)
         Me.BTNNUEVO.Name = "BTNNUEVO"
         Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
         Me.BTNNUEVO.TabIndex = 19
@@ -249,7 +249,7 @@ Partial Class FrmVentas
         '
         'VENFORMA
         '
-        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.VENFORMA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.VENFORMA.DataPropertyName = "VENFORMA"
         Me.VENFORMA.HeaderText = "Venta"
         Me.VENFORMA.Name = "VENFORMA"
@@ -309,7 +309,7 @@ Partial Class FrmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1150, 930)
+        Me.ClientSize = New System.Drawing.Size(1256, 930)
         Me.Controls.Add(Me.CMBFILTRO)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)

@@ -124,7 +124,9 @@ Public Class FrmCorteDeCaja
     End Sub
 
     Private Sub CMBUSUARIO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBUSUARIO.SelectedIndexChanged
-        ETIQUETAS.Show()
+        If TIPO = "Administrador" Then
+            ETIQUETAS.Show()
+        End If
         CAJABOTONES.Show()
         DATACORTECAJA.Size = New Size(811, 800)
 

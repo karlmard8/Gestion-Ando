@@ -266,7 +266,7 @@ Public Class FrmPrincipal
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
 
-        FrmVentas.Location = New Point(380, 0)
+        FrmVentas.Location = New Point(350, 0)
         LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Ventas"
         LBLOPCIONES.Location = New Point(430, 38)

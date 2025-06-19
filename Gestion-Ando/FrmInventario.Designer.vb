@@ -198,10 +198,10 @@ Partial Class FrmInventario
         '
         Me.PROCLAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.PROCLAVE.DataPropertyName = "PROCLAVE"
-        Me.PROCLAVE.HeaderText = "Clave"
+        Me.PROCLAVE.HeaderText = "Código"
         Me.PROCLAVE.Name = "PROCLAVE"
         Me.PROCLAVE.ReadOnly = True
-        Me.PROCLAVE.Width = 59
+        Me.PROCLAVE.Width = 65
         '
         'PRONOMBRE
         '
