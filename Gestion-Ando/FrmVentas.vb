@@ -47,12 +47,10 @@ Public Class FrmVentas
         End Try
     End Sub
     Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
-        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
         BTNELIMINAR.BackColor = Color.Red
     End Sub
 
     Private Sub BTNELIMINAR_MouseLeave(sender As Object, e As EventArgs)
-        ' Restaurar el color original del botón cuando el cursor sale del botón
         BTNELIMINAR.BackColor = ColorBotones
     End Sub
 
@@ -65,7 +63,7 @@ Public Class FrmVentas
         End If
 
         If tablaOriginal IsNot Nothing Then
-            Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''") ' Escapar apóstrofes
+            Dim textoFiltrado As String = TXTBUSCAR.Text.Replace("'", "''")
 
             If textoFiltrado.Trim() = "" Then
                 ' Restaurar la tabla completa
@@ -85,7 +83,7 @@ Public Class FrmVentas
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
 
         If DATAVENTAS.RowCount <= 0 Then
-            MsgBox("No hay productos para eliminar", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("No hay productos para eliminar", MsgBoxStyle.Exclamation, "Advertencia")
 
         Else
             Dim CONFIRMACION = MsgBox("¿Eliminar venta?", MsgBoxStyle.YesNo, "Confirmación")
@@ -135,7 +133,7 @@ Public Class FrmVentas
             Try
                 ' Verificar que haya una fila seleccionada
                 If DATAVENTAS.CurrentRow Is Nothing Then
-                    MessageBox.Show("No hay una fila seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("No hay una fila seleccionada.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Exit Sub
                 End If
 
@@ -434,7 +432,6 @@ Public Class FrmVentas
     End Sub
 
     Private Sub BTNREPORTE_Click(sender As Object, e As EventArgs) Handles BTNREPORTE.Click
-        'DateTimePicker1.Format = DateTimePickerFormat.Short ' Muestra la fecha en formato corto (dd/MM/yyyy)
         MostrarFormularioEmergente()
     End Sub
 

@@ -65,10 +65,10 @@ Public Class FrmAltaUsuarios
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
         If TXTCONFIRMAR.Text <> TXTCLAVE.Text Then
-            MsgBox("Las contraseñas no coinciden", MsgBoxStyle.Critical, "Error")
+            MsgBox("Las contraseñas no coinciden", MsgBoxStyle.Exclamation, "Advertencia")
         Else
             If String.IsNullOrWhiteSpace(TXTLOGIN.Text) Then
-                MsgBox("Login faltante", MsgBoxStyle.Information)
+                MsgBox("Login faltante", MsgBoxStyle.Information, "Advertencia")
                 TXTLOGIN.Focus()
             Else
                 If idbusqueda = 0 Then
@@ -98,7 +98,7 @@ Public Class FrmAltaUsuarios
                             DialogResult = DialogResult.OK
                             Me.Close()
                         Else
-                            MsgBox("Usuario existente", MsgBoxStyle.Critical, "Advertencia")
+                            MsgBox("Usuario existente", MsgBoxStyle.Exclamation, "Advertencia")
                             TXTNOMBRE.Focus()
                         End If
                     End If

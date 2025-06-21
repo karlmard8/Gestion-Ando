@@ -25,12 +25,10 @@ Public Class FrmInventario
     End Sub
 
     Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
-        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
         BTNELIMINAR.BackColor = Color.Red
     End Sub
 
     Private Sub Button1_MouseLeave(sender As Object, e As EventArgs)
-        ' Restaurar el color original del botón cuando el cursor sale del botón
         BTNELIMINAR.BackColor = ColorBotones
     End Sub
     Private Sub BTNNUEVO_Click(sender As Object, e As EventArgs) Handles BTNNUEVO.Click
@@ -116,7 +114,7 @@ Public Class FrmInventario
 
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
         If DATAINVENTARIO.RowCount <= 0 Then
-            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Exclamation, "Advertencia")
 
         Else
             Dim CONFIRMAR = MsgBox("¿Eliminar producto?", MsgBoxStyle.YesNo, "Confirmación")

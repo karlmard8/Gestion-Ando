@@ -222,9 +222,8 @@ Public Class FrmPrincipal
                                                     End Sub
 
         'Agregar controles al formulario
-
-        Application.DoEvents() 'Deja que la UI procese los cambios antes de continuar
-        TABLADEUDAS.Refresh() 'Refresca el `DataGridView` para cargar las columnas correctamente
+        Application.DoEvents()
+        TABLADEUDAS.Refresh()
 
         FRMDEUDORES.Controls.Add(TABLADEUDAS)
         FRMDEUDORES.ShowDialog()
@@ -266,7 +265,7 @@ Public Class FrmPrincipal
         FrmVentas.TopLevel = False
         PANELFRAMES.Controls.Add(FrmVentas)
 
-        FrmVentas.Location = New Point(350, 0)
+        FrmVentas.Location = New Point(300, 0)
         LBLOPCIONES.Visible = True
         LBLOPCIONES.Text = "Ventas"
         LBLOPCIONES.Location = New Point(430, 38)
@@ -329,6 +328,7 @@ Public Class FrmPrincipal
         PANELFRAMES.Controls.Clear()
         PANELFRAMES.Controls.Add(BTNDEUDORES)
         BTNDEUDORES.BringToFront()
+        FrmCotizaciones.Close()
         HISTORIAL = False
 
         FrmCotizaciones.TopLevel = False
@@ -343,6 +343,7 @@ Public Class FrmPrincipal
         PANELFRAMES.Controls.Clear()
         PANELFRAMES.Controls.Add(BTNDEUDORES)
         BTNDEUDORES.BringToFront()
+        FrmCotizaciones.Close()
         HISTORIAL = True
 
         FrmCotizaciones.TopLevel = False

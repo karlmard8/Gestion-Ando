@@ -113,11 +113,11 @@ Public Class FrmUsuarios
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
 
         If DATAUSUARIOS.RowCount <= 0 Then
-            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Exclamation, "Advertencia")
 
         Else
             If DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value = USUARIOACTUAL Then
-                MsgBox("No puedes eliminar el usuario actual", MsgBoxStyle.Critical, "Advertencia")
+                MsgBox("No puedes eliminar el usuario actual", MsgBoxStyle.Exclamation, "Advertencia")
             Else
                 Dim ELIMINAR = MsgBox("¿Eliminar usuario?", MsgBoxStyle.YesNo, "Confirmación")
                 If ELIMINAR = DialogResult.Yes Then
@@ -144,7 +144,7 @@ Public Class FrmUsuarios
     Private Sub BTNEDITAR_Click(sender As Object, e As EventArgs) Handles BTNEDITAR.Click
         MENSAJE = True
         If DATAUSUARIOS.CurrentRow.Cells("USUNOMBRE").Value <> USUARIOACTUAL Then
-            MsgBox("No puedes modificar este perfil de usuario", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("No puedes modificar este perfil de usuario", MsgBoxStyle.Exclamation, "Advertencia")
         Else
             ALTAUSUARIO.LBLUSUARIOS.Text = "Editar perfil de usuario"
 

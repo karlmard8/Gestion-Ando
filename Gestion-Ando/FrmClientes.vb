@@ -26,12 +26,10 @@
     End Sub
 
     Private Sub Button1_MouseEnter(sender As Object, e As EventArgs)
-        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
         BTNELIMINAR.BackColor = Color.Red
     End Sub
 
     Private Sub Button1_MouseLeave(sender As Object, e As EventArgs)
-        ' Restaurar el color original del botón cuando el cursor sale del botón
         BTNELIMINAR.BackColor = ColorBotones
     End Sub
 
@@ -99,7 +97,7 @@
                     apellidoPaterno = partes(2)
                     apellidoMaterno = String.Join(" ", partes, 3, partes.Length - 3)
                 Else
-                    nombre = nombreCompleto ' fallback
+                    nombre = nombreCompleto
                 End If
         End Select
 
@@ -137,17 +135,15 @@
 
 
     Private Sub BTNELIMINAR_MouseEnter(sender As Object, e As EventArgs)
-        ' Cambiar el color del botón a rojo cuando el cursor pasa por encima
         BTNELIMINAR.BackColor = Color.Red
     End Sub
 
     Private Sub BTNELIMINAR_MouseLeave(sender As Object, e As EventArgs)
-        ' Restaurar el color original del botón cuando el cursor sale del botón
         BTNELIMINAR.BackColor = ColorBotones
     End Sub
     Private Sub BTNELIMINAR_Click(sender As Object, e As EventArgs) Handles BTNELIMINAR.Click
         If DATACLIENTES.RowCount <= 0 Then
-            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("No hay clientes para eliminar", MsgBoxStyle.Exclamation, "Advertencia")
 
         Else
             Dim CONFIRMAR = MsgBox("¿Eliminar cliente?", MsgBoxStyle.YesNo, "Confirmación")

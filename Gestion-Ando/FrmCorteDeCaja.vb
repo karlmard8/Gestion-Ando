@@ -40,33 +40,26 @@ Public Class FrmCorteDeCaja
     Public Sub CargarCorteCaja(ByVal DATACORTECAJA As DataGridView, ByVal usuarioID As Integer)
         Try
             If usuarioID = 0 Then Exit Sub 'Si el usuario no es válido, salir
-
-            'Consulta SQL para extraer el CorteID
             Dim query As String = "SELECT TOP 1 CORTEID FROM TBLCORTECAJA WHERE CAJAABIERTA = 1 AND USUID = @USUID ORDER BY FECHAINICIALCORTE DESC"
 
-            ' Crear el comando SQL
             Dim comando As New SqlClient.SqlCommand(query, Conexion)
             comando.Parameters.AddWithValue("@USUID", usuarioID)
 
-            'Abre la conexión si está cerrada
             If Conexion.State = ConnectionState.Closed Then
                 Conexion.Open()
             End If
 
-            'Extraer el CorteID
             Dim resultadoCorteID As Object = comando.ExecuteScalar()
 
-            'Cierra la conexión después de usarla
             Conexion.Close()
 
             If resultadoCorteID IsNot DBNull.Value Then
                 corteIDVariable = Convert.ToInt32(resultadoCorteID)
             Else
-                corteIDVariable = -1 'Si no hay caja abierta, asignar un valor por defecto
+                corteIDVariable = -1 
                 MsgBox("No hay corte de caja abierto para este usuario.", MsgBoxStyle.Exclamation, "Advertencia")
             End If
 
-            ' Adaptador de datos y tabla para el DataGridView
             Dim queryVentas As String = "SELECT  
                                         V.VENID AS 'No.Venta',
                                         V.VENFECHA AS Fecha,
@@ -134,7 +127,6 @@ Public Class FrmCorteDeCaja
             usuarioIDSeleccionado = Convert.ToInt32(CMBUSUARIO.SelectedValue)
             CargarCorteCaja(DATACORTECAJA, usuarioIDSeleccionado)
 
-            'Consulta saldo inicial en la base de datos
             StrSql = "SALDOINICIALCAJA"
             comando = New SqlClient.SqlCommand(StrSql, Conexion)
             comando.CommandType = CommandType.StoredProcedure
@@ -166,27 +158,23 @@ Public Class FrmCorteDeCaja
                         INGRESOS += enganche
                     ElseIf Decimal.TryParse(row.Cells("Total").Value.ToString(), total) Then
                         If total < 0 Then
-                            EGRESOS += Math.Abs(total) ' Si es negativo, se suma a egresos
+                            EGRESOS += Math.Abs(total)
                         Else
-                            INGRESOS += total ' Si es positivo, se suma a ingresos
+                            INGRESOS += total
                         End If
                     End If
 
-                    ' Sumar la columna "Ganancia" si tiene un valor válido
                     If Decimal.TryParse(row.Cells("Ganancia").Value.ToString(), ganancia) Then
                         totalGanancias += ganancia
                     End If
                 End If
             Next
 
-            ' Asignar el total de ganancias al campo TXTGANANCIAS
             LBLGANANCIAS.Text = totalGanancias.ToString("C")
 
-            'Asignar valores con formato correcto
             LBLINGRESOS.Text = INGRESOS.ToString("C2")
             LBLEGRESOS.Text = EGRESOS.ToString("C2")
 
-            'Calcular saldo final sin errores de conversión
             Dim saldoFinal As Decimal = saldoInicial + INGRESOS - EGRESOS
             LBLSALDOFINAL.Text = saldoFinal.ToString("C2")
         End If
@@ -198,13 +186,13 @@ Public Class FrmCorteDeCaja
 
     Private Sub BTNABRIRCAJA_Click(sender As Object, e As EventArgs) Handles BTNABRIRCAJA.Click
         If CMBUSUARIO.SelectedIndex < 0 Then
-            MsgBox("Selecciona un usuario para abrir caja", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Selecciona un usuario para abrir caja", MsgBoxStyle.Exclamation, "Advertencia")
             CMBUSUARIO.Focus()
             Return
         End If
 
         If corteIDVariable > 0 Then
-            MsgBox("Ya hay una caja abierta para este usuario", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Ya hay una caja abierta para este usuario", MsgBoxStyle.Exclamation, "Advertencia")
             Return
         End If
 
@@ -251,12 +239,12 @@ Public Class FrmCorteDeCaja
         BTNGUARDAR.BackColor = ColorBotones
         AddHandler BTNGUARDAR.Click, Sub(s, ea)
                                          If CMBUSUARIO.SelectedIndex <= -1 Then
-                                             MsgBox("Seleccione un usuario para abrir caja", MsgBoxStyle.Critical, "Error")
+                                             MsgBox("Seleccione un usuario para abrir caja", MsgBoxStyle.Exclamation, "Advertencia")
                                              Return
 
                                          Else
                                              If String.IsNullOrWhiteSpace(TXTDINERO.Text) Then
-                                                 MsgBox("Ingrese el dinero en caja", MsgBoxStyle.Critical, "Error")
+                                                 MsgBox("Ingrese el dinero en caja", MsgBoxStyle.Exclamation, "Advertencia")
                                                  TXTDINERO.Focus()
                                                  Return
 
@@ -277,7 +265,7 @@ Public Class FrmCorteDeCaja
                                                              CMBUSUARIO.Focus()
                                                              CMBUSUARIO_SelectedIndexChanged(s, ea)
                                                          Else
-                                                             MsgBox("Error al abrir la caja", MsgBoxStyle.Critical, "Error")
+                                                             MsgBox("Error de conexión", MsgBoxStyle.Critical, "Error")
                                                          End If
                                                      End If
 
@@ -291,8 +279,8 @@ Public Class FrmCorteDeCaja
 
         AddHandler TXTDINERO.KeyDown, Sub(s, e2)
                                           If e2.KeyCode = Keys.Enter Then
-                                              e2.SuppressKeyPress = True 'Evita el sonido de "ding"
-                                              BTNGUARDAR.Focus() 'Mueve el foco al botón
+                                              e2.SuppressKeyPress = True
+                                              BTNGUARDAR.Focus()
                                           End If
                                       End Sub
 
@@ -306,14 +294,14 @@ Public Class FrmCorteDeCaja
     Private Sub BTNCERRARCAJA_Click(sender As Object, e As EventArgs) Handles BTNCERRARCAJA.Click
         Try
             If CMBUSUARIO.SelectedIndex <= -1 Then
-                MsgBox("Seleccione un usuario para cerrar caja", MsgBoxStyle.Critical, "Error")
+                MsgBox("Seleccione un usuario para cerrar caja", MsgBoxStyle.Exclamation, "Advertencia")
                 CMBUSUARIO.Focus()
                 Return
             End If
 
             Dim SALDOINICIAL As Decimal = Convert.ToDecimal(LBLSALDOINICIAL.Text.Replace("$", "").Replace(",", ""))
             If SALDOINICIAL = 0 Then
-                MsgBox("No hay caja abierta para este usuario", MsgBoxStyle.Critical, "Error")
+                MsgBox("No hay caja abierta para este usuario", MsgBoxStyle.Exclamation, "Advertencia")
                 BTNABRIRCAJA.Focus()
                 Return
             End If
@@ -347,14 +335,14 @@ Public Class FrmCorteDeCaja
             comando.Parameters.Add("@RETORNO", SqlDbType.Bit).Direction = ParameterDirection.Output
             If Conectar() = True Then
                 If comando.Parameters("@RETORNO").Value = "TRUE" Then
-                    MsgBox("Caja cerrada correctamente", MsgBoxStyle.Information, "Éxito")
+                    MsgBox("Caja cerrada correctamente", MsgBoxStyle.Information, "Confirmación")
                     CMBUSUARIO_SelectedIndexChanged(sender, e)
                 Else
-                    MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "ErrorC1")
+                    MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "Error C1")
                 End If
             End If
         Catch
-            MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "ErrorC2")
+            MsgBox("Error al cerrar la caja", MsgBoxStyle.Critical, "Error C2")
         End Try
     End Sub
 

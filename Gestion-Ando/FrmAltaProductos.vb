@@ -70,7 +70,7 @@
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
         If imagenRuta.Length = Nothing Then
-            Dim respuesta = MsgBox("¿Guardar producto sin imagen?", MsgBoxStyle.YesNo, "Advertencia")
+            Dim respuesta = MsgBox("¿Guardar producto sin imagen?", MsgBoxStyle.YesNo, "Confirmación")
             If respuesta = MsgBoxResult.Yes Then
                 REGISTRARPRODUCTO()
             End If
@@ -81,15 +81,15 @@
 
     Public Sub REGISTRARPRODUCTO()
         If String.IsNullOrWhiteSpace(TXTCLAVE.Text) Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Información faltante", MsgBoxStyle.Exclamation, "Advertencia")
             TXTCLAVE.Focus()
 
         ElseIf TXTNOMBRE.Text = String.Empty Or TXTPRECIO.Text = String.Empty Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Información faltante", MsgBoxStyle.Exclamation, "Advertencia")
             TXTCLAVE.Focus()
 
         ElseIf String.IsNullOrWhiteSpace(SPINNER.Text) Then
-            MsgBox("Información faltante", MsgBoxStyle.Critical, "Advertencia")
+            MsgBox("Información faltante", MsgBoxStyle.Exclamation, "Advertencia")
             TXTCLAVE.Focus()
 
         Else
@@ -120,7 +120,7 @@
                     Me.Close()
 
                 Else
-                    MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Critical, "Advertencia")
+                    MsgBox("Producto ya existente, verfique la clave", MsgBoxStyle.Exclamation, "Advertencia")
                     TXTCLAVE.Focus()
                 End If
 

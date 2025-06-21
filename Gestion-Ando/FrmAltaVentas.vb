@@ -91,6 +91,8 @@ Public Class FrmAltaVentas
         AddHandler FrmPrincipal.Timer1.Tick, AddressOf ActualizarFecha
         FrmPrincipal.Timer1.Interval = 1000
         FrmPrincipal.Timer1.Start()
+        DtgProductos.DefaultCellStyle.Font = New Font("Dubai", 12)
+        DtgProductos.ColumnHeadersDefaultCellStyle.Font = New Font("Dubai", 12)
     End Sub
 
     Private Sub FrmAltaVentas_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -211,11 +213,11 @@ Public Class FrmAltaVentas
                                 ImprimirTicket(Me)
                             End If
                             DialogResult = DialogResult.OK
+                            ReiniciarFormulario()
                             FrmVentas.CargarDatos()
-                            Me.Close()
                         End If
                     Else
-                        MsgBox("Dinero faltante", MsgBoxStyle.Critical, "error")
+                        MsgBox("Dinero faltante", MsgBoxStyle.Exclamation, "Advertencia")
                     End If
                 Else
                     If Val(Me.TXTMESES.Text) > 0 Then
@@ -259,25 +261,30 @@ Public Class FrmAltaVentas
                                 ' Llamar al método de impresión
                                 ImprimirTicket(Me)
                             End If
-
-                            Me.Close()
+                            ReiniciarFormulario()
                         End If
                     Else
-                        MsgBox("Ingresa las semanas de crédito", MsgBoxStyle.Critical, "error")
+                        MsgBox("Ingresa el lapso de crédito", MsgBoxStyle.Exclamation, "Advertencia")
 
                         TXTMESES.Focus()
                     End If
                 End If
             Else
-                MsgBox("Ingresa un producto", MsgBoxStyle.Critical, "error")
+                MsgBox("Ingresa un producto", MsgBoxStyle.Exclamation, "Advertencia")
                 Me.CMBPRODUCTO.Focus()
             End If
         Else
-            MsgBox("Ingresa un cliente", MsgBoxStyle.Critical, "error")
+            MsgBox("Ingresa un cliente", MsgBoxStyle.Exclamation, "Advertencia")
             Me.CmbClientes.Focus()
         End If
 
 
+    End Sub
+
+    Private Sub ReiniciarFormulario()
+        Dim nuevoForm As New FrmAltaVentas()
+        nuevoForm.Show()
+        Me.Close()
     End Sub
 
     Public Sub ImprimirTicket(Optional ByVal formularioOrigen As Form = Nothing)
@@ -356,7 +363,7 @@ Public Class FrmAltaVentas
         ElseIf TxtCantidad.Text = String.Empty Then
             TxtCantidad.Focus()
         ElseIf TxtCantidad.Text < 1 Then
-            MsgBox("Agrega al menos un producto", MsgBoxStyle.Critical, "Error")
+            MsgBox("Agrega al menos un producto", MsgBoxStyle.Exclamation, "Advertencia")
             TxtCantidad.Focus()
         Else
             ' Obtener valores actuales
@@ -433,31 +440,19 @@ Public Class FrmAltaVentas
 
 
     Private Sub BtnQuitar_Click(sender As Object, e As EventArgs) Handles BtnQuitar.Click
-        ' Verificar que haya una fila seleccionada
         If DtgProductos.CurrentRow IsNot Nothing Then
-            ' Obtener la cantidad del producto seleccionado
             Dim cantidadProducto As Integer = Convert.ToInt32(DtgProductos.CurrentRow.Cells("PROCANTIDAD").Value)
-
-            ' Verificar si la cantidad es mayor que 1
             If cantidadProducto > 1 Then
-                ' Restar 1 a la cantidad
                 cantidadProducto -= 1
-
-                ' Actualizar la cantidad en la fila
                 DtgProductos.CurrentRow.Cells("PROCANTIDAD").Value = cantidadProducto
 
-                ' Actualizar el subtotal en la fila
                 Dim precioTexto As String = DtgProductos.CurrentRow.Cells("PROPRECIO").Value.ToString().Replace("$", "").Trim()
                 Dim precio As Double = Double.Parse(precioTexto, Globalization.NumberStyles.Currency, Globalization.CultureInfo.CurrentCulture)
                 DtgProductos.CurrentRow.Cells("PROSUBTOTAL").Value = cantidadProducto * precio
             Else
-                ' Si la cantidad es 1 o menor, eliminar la fila
                 DtgProductos.Rows.Remove(DtgProductos.CurrentRow)
             End If
-
-            ' Recalcular el subtotal acumulado después de quitar el producto
             ActualizarTotales()
-
         Else
             MsgBox("Selecciona un producto para quitar", MsgBoxStyle.Exclamation, "Aviso")
         End If
@@ -472,28 +467,24 @@ Public Class FrmAltaVentas
 
     Private Sub TXTENGANCHE_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTENGANCHE.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
     End Sub
 
     Private Sub TxtCantidad_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtCantidad.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
     End Sub
 
     Private Sub TXTPAGO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTPAGO.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
     End Sub
 
     Private Sub TXTMESES_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTMESES.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            ' Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
     End Sub
@@ -510,22 +501,18 @@ Public Class FrmAltaVentas
         LBLTOTAL.Text = (LBLSUB.Text).ToString
         Dim enganche As Double
         If Double.TryParse(TXTENGANCHE.Text, enganche) Then
-            ' Store the previous total before modification
             If previousTotal = 0 Then
                 previousTotal = Val(LBLTOTAL.Text.Replace("$", "").Replace(",", ""))
             End If
 
-            ' Calculate the new total
             Dim newTotal As Double = previousTotal - enganche
 
-            ' Ensure the total does not go negative
             If newTotal < 0 Then
                 LBLTOTAL.Text = "$0.00"
             Else
                 LBLTOTAL.Text = newTotal.ToString("C2")
             End If
         Else
-            ' If the textbox is empty, revert to the previous total
             LBLTOTAL.Text = previousTotal.ToString("C2")
         End If
     End Sub
@@ -573,7 +560,7 @@ Public Class FrmAltaVentas
                     TxtCantidad.Text = "1"
                     BtnAgregar.PerformClick()
                 Else
-                    MessageBox.Show("Producto no encontrado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show("Producto no encontrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 End If
 
                 ' Limpiar

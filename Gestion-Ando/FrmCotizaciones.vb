@@ -42,7 +42,7 @@ Public Class FrmCotizaciones
 
                 ' Verificar si hay registros
                 If tablaDatos.Rows.Count = 0 Then
-                    MessageBox.Show("No hay registros disponibles para esta cotización.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    MessageBox.Show("No hay registros disponibles para esta cotización.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     Return
                 End If
 
@@ -279,7 +279,6 @@ Public Class FrmCotizaciones
 
     Private Sub TXTCANTIDAD_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXTCANTIDAD.KeyPress
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            'Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
 
@@ -287,7 +286,6 @@ Public Class FrmCotizaciones
 
     Private Sub TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
-            'Si no es un número ni una tecla de control, cancela el evento KeyPress
             e.Handled = True
         End If
     End Sub
@@ -307,7 +305,6 @@ Public Class FrmCotizaciones
         Dim cantidad As Integer = Val(Me.TXTCANTIDAD.Text)
         Dim descuento As Double = 0
 
-        'Consultar datos desde la vista en la base de datos
         Dim query As String = "SELECT * FROM VISTAPRODUCTOS WHERE PROID = @PROID"
         Dim comando As New SqlClient.SqlCommand(query, Conexion)
         comando.Parameters.AddWithValue("@PROID", PROID)
@@ -316,16 +313,14 @@ Public Class FrmCotizaciones
         Dim tablaNueva As New DataTable()
         adaptador.Fill(tablaNueva)
 
-        'Verificar si el DataGridView ya tiene datos
         Dim tablaExistente As DataTable
 
         If DATACOTIZACIONES.DataSource IsNot Nothing Then
             tablaExistente = CType(DATACOTIZACIONES.DataSource, DataTable)
         Else
-            tablaExistente = tablaNueva.Clone() 'Copiar estructura de la tabla
+            tablaExistente = tablaNueva.Clone()
         End If
 
-        'Agregar columnas si no existen en `tablaExistente`
         If Not tablaExistente.Columns.Contains("Cantidad") Then
             tablaExistente.Columns.Add("Cantidad", GetType(Integer))
         End If
@@ -336,7 +331,7 @@ Public Class FrmCotizaciones
             tablaExistente.Columns.Add("PROSUBTOTAL", GetType(Double))
         End If
 
-        'Verificar si el producto ya existe en el `DataGridView`
+
         Dim productoExistente As DataRow = tablaExistente.Select("PROID = " & PROID).FirstOrDefault()
 
         If productoExistente IsNot Nothing Then
@@ -363,7 +358,7 @@ Public Class FrmCotizaciones
 
         'Actualizar el `DataGridView` sin sobrescribir registros anteriores
         DATACOTIZACIONES.DataSource = tablaExistente
-        ConfigurarEdicionDataGridView() 'Llamada al método para bloquear columnas
+        ConfigurarEdicionDataGridView()
         ActualizarSumatorias()
         DATACOTIZACIONES.Columns("PROPRECIO").DefaultCellStyle.Format = "C2"
         DATACOTIZACIONES.Columns("PROSUBTOTAL").DefaultCellStyle.Format = "C2"
@@ -677,7 +672,7 @@ Public Class FrmCotizaciones
             comando.Parameters.Add("@RETORNO", SqlDbType.BigInt).Direction = ParameterDirection.Output
 
             If Conectar() = True Then
-                COTID = comando.Parameters("@RETORNO").Value ' Obtener el ID generado
+                COTID = comando.Parameters("@RETORNO").Value
 
                 ' Registrar los productos en detalle de cotización
                 For REC = 0 To Me.DATACOTIZACIONES.RowCount - 1
@@ -695,10 +690,7 @@ Public Class FrmCotizaciones
 
                 MsgBox("Cotización registrada exitosamente", MsgBoxStyle.Information, "Confirmación")
                 LimpiarCampos()
-
                 ACTUALIZARCOITD()
-
-                ' 🔥 Llamar al método GenerarPDF() después de guardar la cotización
                 GenerarPDF()
             End If
         Catch
@@ -733,14 +725,14 @@ Public Class FrmCotizaciones
         End If
         BTNGUARDAR_Click(sender, e) ' Llamar al método de guardar para generar el PDF
         Try
-            ' 🔹 Validar si se ha seleccionado un cliente
+            'Validar si se ha seleccionado un cliente
             If CMBCLIENTE.SelectedIndex < 0 Then
                 MessageBox.Show("Antes selecciona un cliente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 CMBCLIENTE.Focus()
                 Return
             End If
 
-            ' 🔹 Consultar el correo del cliente en la base de datos
+            'Consultar el correo del cliente en la base de datos
             StrSql = "SELECT CLICORREO FROM TBLCLIENTES WHERE CLIID = @CLIID"
             Dim comando As New SqlCommand(StrSql, Conexion)
             comando.Parameters.AddWithValue("@CLIID", CMBCLIENTE.SelectedValue)
@@ -748,16 +740,15 @@ Public Class FrmCotizaciones
             Dim tablaDatos As New DataTable()
             adaptador.Fill(tablaDatos)
 
-            ' 🔹 Validar si el cliente tiene correo registrado
+            'Validar si el cliente tiene correo registrado
             If tablaDatos.Rows.Count = 0 OrElse String.IsNullOrEmpty(tablaDatos.Rows(0)("CLICORREO").ToString().Trim()) Then
                 MessageBox.Show("El cliente no tiene un correo electrónico registrado.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
             End If
 
-            ' 🔹 Obtener el correo del cliente
+            'Obtener el correo del cliente
             Dim destinatario As String = tablaDatos.Rows(0)("CLICORREO").ToString().Trim()
 
-            ' 🔹 Definir el asunto y cuerpo del mensaje
+            'Definir el asunto y cuerpo del mensaje
             Dim asunto As String
             If HISTORIAL = True Then
                 asunto = "Cotización de productos. No." + DATACOTIZACIONES.CurrentRow.Cells("No.Cotización").Value.ToString()
@@ -768,10 +759,10 @@ Public Class FrmCotizaciones
             Dim mensaje As String = "Le envío la cotización de los productos solicitados. Buen día"
             Dim cuerpo As String = mensaje.Replace(" ", "%20")
 
-            ' 🔹 Construir la URL personalizada
+            'Construir la URL personalizada
             Dim gmailURL As String = $"https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to={destinatario}&su={asunto}&body={cuerpo}"
 
-            ' 🔹 Abrir Gmail solo si hay un destinatario válido
+            'Abrir Gmail solo si hay un destinatario válido
             Process.Start(New ProcessStartInfo(gmailURL) With {.UseShellExecute = True})
             If LIMPIAR = False Then
                 CMBCLIENTE.SelectedIndex = -1
@@ -851,13 +842,11 @@ Public Class EncabezadoPDF
         Else
             textoEncabezado += ". Cotización No. " + (FrmCotizaciones.COTID - 1).ToString
         End If
-
-
-        ' 🔹 Definir la posición en la parte superior derecha
+        'Definir la posición en la parte superior derecha
         Dim x As Single = document.Right
         Dim y As Single = document.Top ' Ajuste para colocarlo justo arriba
 
-        ' 🔹 Agregar el texto al documento
+        'Agregar el texto al documento
         ColumnText.ShowTextAligned(cb, Element.ALIGN_RIGHT, New Phrase(textoEncabezado, _fuenteEncabezado), x, y, 0)
     End Sub
 End Class

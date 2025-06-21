@@ -52,7 +52,7 @@
 
     Private Sub BTNGUARDAR_Click(sender As Object, e As EventArgs) Handles BTNGUARDAR.Click
         If String.IsNullOrEmpty(TXTCODIGO.Text) Then
-            MsgBox("Código faltante", MsgBoxStyle.Critical, "Advertencia")
+            MessageBox.Show("Código faltante", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             TXTCODIGO.Focus()
 
         Else
@@ -87,12 +87,12 @@
 
             If Conectar() = True Then
                 If comando.Parameters("@RETORNO").Value = "GUARDADO" Then
-                    MsgBox("Cliente registrado", MsgBoxStyle.Information, "Conformación")
+                    MsgBox("Cliente registrado", MsgBoxStyle.Information, "Confirmación")
                     DialogResult = DialogResult.OK
                     Me.Close()
 
                 Else
-                    MsgBox("Cliente existente", MsgBoxStyle.Critical, "Advertencia")
+                    MsgBox("Código existente", MsgBoxStyle.Exclamation, "Advertencia")
                     TXTCODIGO.Focus()
 
                 End If
