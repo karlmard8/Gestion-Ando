@@ -155,8 +155,8 @@ Public Class FrmAltaVentas
         TXTMESES.Text = String.Empty
         TXTENGANCHE.Enabled = False
         TXTENGANCHE.Text = String.Empty
+        TxtPago_TextChanged(sender, e)
     End Sub
-
 
     Public fechaParametro As DateTime
 
@@ -343,7 +343,6 @@ Public Class FrmAltaVentas
 
 
     Private Sub TxtPago_TextChanged(sender As Object, e As EventArgs) Handles TXTPAGO.TextChanged
-
         If TXTPAGO.Text < LBLTOTAL.Text Then
             TXTCAMBIO.Text = 0.ToString("C2")
         Else
@@ -354,6 +353,9 @@ Public Class FrmAltaVentas
                 Me.TXTCAMBIO.Text = 0.ToString("C2")
             End If
 
+            If RBTCREDITO.Checked Or RBTDEBITO.Checked Then
+                TXTCAMBIO.Text = "$0.00"
+            End If
         End If
     End Sub
 

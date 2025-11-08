@@ -225,7 +225,7 @@ Partial Class FrmInventario
         '
         Me.PROCOSTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.PROCOSTO.DataPropertyName = "PROCOSTO"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "C2"
         DataGridViewCellStyle2.NullValue = Nothing
         Me.PROCOSTO.DefaultCellStyle = DataGridViewCellStyle2
@@ -238,7 +238,7 @@ Partial Class FrmInventario
         '
         Me.PROPRECIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.PROPRECIO.DataPropertyName = "PROPRECIO"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle3.Format = "C2"
         DataGridViewCellStyle3.NullValue = Nothing
         Me.PROPRECIO.DefaultCellStyle = DataGridViewCellStyle3
@@ -251,7 +251,7 @@ Partial Class FrmInventario
         '
         Me.PROGANANCIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.PROGANANCIA.DataPropertyName = "PROGANANCIA"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle4.Format = "C2"
         DataGridViewCellStyle4.NullValue = Nothing
         Me.PROGANANCIA.DefaultCellStyle = DataGridViewCellStyle4

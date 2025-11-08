@@ -26,6 +26,7 @@ Partial Class FrmVentas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.DATAVENTAS = New System.Windows.Forms.DataGridView()
         Me.VISTAVENTASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -260,6 +261,7 @@ Partial Class FrmVentas
         '
         Me.VENTOTAL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.VENTOTAL.DataPropertyName = "VENTOTAL"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle2.Format = "C2"
         DataGridViewCellStyle2.NullValue = Nothing
         Me.VENTOTAL.DefaultCellStyle = DataGridViewCellStyle2
@@ -272,6 +274,7 @@ Partial Class FrmVentas
         '
         Me.Ganancia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.Ganancia.DataPropertyName = "Ganancia"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
         DataGridViewCellStyle3.Format = "C2"
         DataGridViewCellStyle3.NullValue = Nothing
         Me.Ganancia.DefaultCellStyle = DataGridViewCellStyle3
@@ -284,6 +287,8 @@ Partial Class FrmVentas
         '
         Me.PAGOS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.PAGOS.DataPropertyName = "PAGOS"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PAGOS.DefaultCellStyle = DataGridViewCellStyle4
         Me.PAGOS.HeaderText = "Pagos"
         Me.PAGOS.Name = "PAGOS"
         Me.PAGOS.ReadOnly = True

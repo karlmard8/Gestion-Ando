@@ -24,8 +24,6 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATACLIENTES = New System.Windows.Forms.DataGridView()
-        Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.BTNELIMINAR = New System.Windows.Forms.Button()
         Me.BTNNUEVO = New System.Windows.Forms.Button()
         Me.BTNEDITAR = New System.Windows.Forms.Button()
@@ -34,12 +32,17 @@ Partial Class FrmClientes
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.CLIIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
+        Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
         Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
         Me.VISTACLIENTESPRINCIPALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VISTACLIENTESPRINCIPALTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
+        Me.CLINOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIAPEPATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIAPEMATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICODIGO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Clientes = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,9 +59,9 @@ Partial Class FrmClientes
         Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -74,7 +77,7 @@ Partial Class FrmClientes
         Me.DATACLIENTES.BackgroundColor = System.Drawing.Color.White
         Me.DATACLIENTES.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
         Me.DATACLIENTES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLIID, Me.CLICODIGO, Me.Clientes, Me.CLIDIRECCION, Me.CLIColonia, Me.CLICP, Me.CLICiudad, Me.CLIEstado, Me.CLITelEfono, Me.CLIHISTORIALCREDITICIO, Me.CLICORREO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLICOMENTARIOS})
+        Me.DATACLIENTES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CLINOMBRE, Me.CLIAPEPATERNO, Me.CLIAPEMATERNO, Me.CLIID, Me.CLICODIGO, Me.Clientes, Me.CLIDIRECCION, Me.CLIColonia, Me.CLICP, Me.CLICiudad, Me.CLIEstado, Me.CLITelEfono, Me.CLIHISTORIALCREDITICIO, Me.CLICORREO, Me.CLIRFC, Me.CLIREGIMENFISCAL, Me.CLICFDI, Me.CLICOMENTARIOS})
         Me.DATACLIENTES.DataSource = Me.VISTACLIENTESPRINCIPALBindingSource1
         Me.DATACLIENTES.GridColor = System.Drawing.SystemColors.Control
         Me.DATACLIENTES.Location = New System.Drawing.Point(12, 92)
@@ -86,16 +89,6 @@ Partial Class FrmClientes
         Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
         Me.DATACLIENTES.TabStop = False
-        '
-        'VISTACLIENTESPRINCIPALBindingSource1
-        '
-        Me.VISTACLIENTESPRINCIPALBindingSource1.DataMember = "VISTACLIENTESPRINCIPAL"
-        Me.VISTACLIENTESPRINCIPALBindingSource1.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BTNELIMINAR
         '
@@ -174,24 +167,6 @@ Partial Class FrmClientes
         Me.Cliente.HeaderText = "Cliente"
         Me.Cliente.Name = "Cliente"
         '
-        'TBLCLIENTESBindingSource
-        '
-        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
-        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'TBLCLIENTESTableAdapter
-        '
-        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
-        '
-        'VISTACLIENTESPRINCIPALBindingSource
-        '
-        Me.VISTACLIENTESPRINCIPALBindingSource.DataMember = "VISTACLIENTESPRINCIPAL"
-        Me.VISTACLIENTESPRINCIPALBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'VISTACLIENTESPRINCIPALTableAdapter
-        '
-        Me.VISTACLIENTESPRINCIPALTableAdapter.ClearBeforeFill = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -212,6 +187,58 @@ Partial Class FrmClientes
         Me.CMBFILTRO.Name = "CMBFILTRO"
         Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
         Me.CMBFILTRO.TabIndex = 15
+        '
+        'VISTACLIENTESPRINCIPALBindingSource1
+        '
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TBLCLIENTESBindingSource
+        '
+        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
+        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'TBLCLIENTESTableAdapter
+        '
+        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTACLIENTESPRINCIPALBindingSource
+        '
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'VISTACLIENTESPRINCIPALTableAdapter
+        '
+        Me.VISTACLIENTESPRINCIPALTableAdapter.ClearBeforeFill = True
+        '
+        'CLINOMBRE
+        '
+        Me.CLINOMBRE.DataPropertyName = "CLINOMBRE"
+        Me.CLINOMBRE.HeaderText = "CLINOMBRE"
+        Me.CLINOMBRE.Name = "CLINOMBRE"
+        Me.CLINOMBRE.ReadOnly = True
+        Me.CLINOMBRE.Visible = False
+        '
+        'CLIAPEPATERNO
+        '
+        Me.CLIAPEPATERNO.DataPropertyName = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.HeaderText = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.Name = "CLIAPEPATERNO"
+        Me.CLIAPEPATERNO.ReadOnly = True
+        Me.CLIAPEPATERNO.Visible = False
+        '
+        'CLIAPEMATERNO
+        '
+        Me.CLIAPEMATERNO.DataPropertyName = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.HeaderText = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.Name = "CLIAPEMATERNO"
+        Me.CLIAPEMATERNO.ReadOnly = True
+        Me.CLIAPEMATERNO.Visible = False
         '
         'CLIID
         '
@@ -363,9 +390,9 @@ Partial Class FrmClientes
         Me.Name = "FrmClientes"
         Me.Text = "FrmClientes"
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -390,6 +417,9 @@ Partial Class FrmClientes
     Friend WithEvents Cliente As DataGridViewTextBoxColumn
     Friend WithEvents Label2 As Label
     Friend WithEvents CMBFILTRO As ComboBox
+    Friend WithEvents CLINOMBRE As DataGridViewTextBoxColumn
+    Friend WithEvents CLIAPEPATERNO As DataGridViewTextBoxColumn
+    Friend WithEvents CLIAPEMATERNO As DataGridViewTextBoxColumn
     Friend WithEvents CLIID As DataGridViewTextBoxColumn
     Friend WithEvents CLICODIGO As DataGridViewTextBoxColumn
     Friend WithEvents Clientes As DataGridViewTextBoxColumn

@@ -318,6 +318,7 @@ Public Class FrmPrincipal
         PANELFRAMES.Controls.Add(FrmCorteDeCaja)
         FrmCorteDeCaja.Show()
         LBLOPCIONES.Visible = False
+        FrmCorteDeCaja.CMBUSUARIO_SelectedIndexChanged(sender, e)
     End Sub
 
     Private Sub CotizacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CotizacionesToolStripMenuItem.Click
@@ -382,6 +383,7 @@ Public Class FrmPrincipal
             End If
         End If
     End Sub
+
     Private Sub BTNDEUDORES_Click(sender As Object, e As EventArgs) Handles BTNDEUDORES.Click
         ALERTADEUDORES()
     End Sub

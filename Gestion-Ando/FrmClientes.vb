@@ -69,42 +69,10 @@
         idbusqueda = ObtenerValorCelda(fila, "CLIID")
         NUEVO.TXTCODIGO.Text = ObtenerValorCelda(fila, "CLICODIGO")
 
-        ' Separar nombre completo
-        Dim nombreCompleto As String = ObtenerValorCelda(fila, "CLIENTES")
-        Dim partes() As String = nombreCompleto.Split(" "c)
-
-        Dim nombre As String = ""
-        Dim apellidoPaterno As String = ""
-        Dim apellidoMaterno As String = ""
-
-        Select Case partes.Length
-            Case 1
-                nombre = partes(0)
-            Case 2
-                nombre = partes(0)
-                apellidoPaterno = partes(1)
-            Case 3
-                nombre = partes(0)
-                apellidoPaterno = partes(1)
-                apellidoMaterno = partes(2)
-            Case 5
-                nombre = partes(0) & " " & partes(1) & " " & partes(2)
-                apellidoPaterno = partes(3)
-                apellidoMaterno = partes(4)
-            Case Else
-                If partes.Length >= 3 Then
-                    nombre = partes(0) & " " & partes(1)
-                    apellidoPaterno = partes(2)
-                    apellidoMaterno = String.Join(" ", partes, 3, partes.Length - 3)
-                Else
-                    nombre = nombreCompleto
-                End If
-        End Select
-
         ' Asignar a cajas de texto
-        NUEVO.TXTNOMBRE.Text = nombre
-        NUEVO.TXTAPEPATERNO.Text = apellidoPaterno
-        NUEVO.TXTAPEMATERNO.Text = apellidoMaterno
+        NUEVO.TXTNOMBRE.Text = ObtenerValorCelda(fila, "CLINOMBRE")
+        NUEVO.TXTAPEPATERNO.Text = ObtenerValorCelda(fila, "CLIAPEPATERNO")
+        NUEVO.TXTAPEMATERNO.Text = ObtenerValorCelda(fila, "CLIAPEMATERNO")
         NUEVO.TXTCALLE.Text = ObtenerValorCelda(fila, "CLIDIRECCION")
         NUEVO.TXTCOLONIIA.Text = ObtenerValorCelda(fila, "CLICOLONIA")
         NUEVO.TXTCP.Text = ObtenerValorCelda(fila, "CLICP")

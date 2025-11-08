@@ -33,7 +33,6 @@ Public Class FrmCorteDeCaja
         Else
             CMBUSUARIO.SelectedIndex = -1
         End If
-
     End Sub
 
     Dim corteIDVariable As Integer
@@ -64,8 +63,8 @@ Public Class FrmCorteDeCaja
                                         V.VENID AS 'No.Venta',
                                         V.VENFECHA AS Fecha,
                                         V.VENFORMA AS Venta,
-                                        CASE WHEN V.VENFORMA = 'CONTADO' THEN 'N/A' ELSE CAST(V.VENMESES AS VARCHAR) END AS Pagos,  
-                                        CASE WHEN V.VENFORMA = 'CONTADO' THEN 'N/A' ELSE CAST(VENENGANCHE AS VARCHAR) END AS Enganche,  
+                                        CASE WHEN V.VENFORMA IN ('CONTADO', 'T. Crédito','T. Débito')  THEN 'N/A' ELSE CAST(V.VENMESES AS VARCHAR) END AS Pagos,
+                                        CASE WHEN V.VENFORMA IN ('CONTADO', 'T. Crédito','T. Débito') THEN 'N/A' ELSE CAST(VENENGANCHE AS VARCHAR) END AS Enganche,  
                                         V.VENTOTAL AS Total,V.VENGANANCIA AS Ganancia,
                                         (SELECT TOP 1 CORTEID FROM TBLCORTECAJA WHERE CAJAABIERTA = 1 AND USUID = @USUID ORDER BY FECHAINICIALCORTE DESC) AS CorteID  
                                     FROM TBLVENTAS AS V
@@ -97,13 +96,16 @@ Public Class FrmCorteDeCaja
             DATACORTECAJA.Columns("No.Venta").AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
             DATACORTECAJA.Columns("Venta").AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
             DATACORTECAJA.Columns("Pagos").AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
+            DATACORTECAJA.Columns("Pagos").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             DATACORTECAJA.Columns("Enganche").AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
             DATACORTECAJA.Columns("Fecha").AutoSizeMode = DataGridViewAutoSizeColumnsMode.AllCells
             DATACORTECAJA.Columns("Total").DefaultCellStyle.Format = "C2"
-            DATACORTECAJA.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            DATACORTECAJA.Columns("Total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             DATACORTECAJA.Columns("Enganche").DefaultCellStyle.Format = "C2"
+            DATACORTECAJA.Columns("Enganche").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
             DATACORTECAJA.Columns("CorteID").Visible = False
             DATACORTECAJA.Columns("Ganancia").DefaultCellStyle.Format = "C2"
+            DATACORTECAJA.Columns("Ganancia").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
 
             If DATACORTECAJA.Rows.Count <= 0 Then
                 DATACORTECAJA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
@@ -116,7 +118,7 @@ Public Class FrmCorteDeCaja
         End Try
     End Sub
 
-    Private Sub CMBUSUARIO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBUSUARIO.SelectedIndexChanged
+    Public Sub CMBUSUARIO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBUSUARIO.SelectedIndexChanged
         If TIPO = "Administrador" Then
             ETIQUETAS.Show()
         End If

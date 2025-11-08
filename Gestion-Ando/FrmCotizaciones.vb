@@ -82,7 +82,7 @@ Public Class FrmCotizaciones
                 Dim ruta As String = Application.StartupPath & "\LogoGestion-Ando.png"
                 Dim imagen As Image = Image.GetInstance(ruta)
                 imagen.ScaleAbsolute(150, 150) ' Ajustar tamaño de la imagen
-                imagen.SetAbsolutePosition(50, doc.PageSize.Height - 150) ' Ubicación en la parte superior izquierda
+                imagen.SetAbsolutePosition(20, doc.PageSize.Height - 140) ' Ubicación en la parte superior izquierda
 
                 doc.Add(imagen) ' Agregar la imagen al documento
 
@@ -802,6 +802,7 @@ Public Class FrmCotizaciones
             MsgBox("Selecciona un producto para quitar", MsgBoxStyle.Exclamation, "Aviso")
         End If
     End Sub
+
 End Class
 
 Public Class PiePaginaPDF

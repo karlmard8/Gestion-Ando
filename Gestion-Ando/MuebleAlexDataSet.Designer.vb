@@ -3174,6 +3174,12 @@ Partial Public Class MuebleAlexDataSet
         
         Private columnCorreo As Global.System.Data.DataColumn
         
+        Private columnCLINOMBRE As Global.System.Data.DataColumn
+        
+        Private columnCLIAPEPATERNO As Global.System.Data.DataColumn
+        
+        Private columnCLIAPEMATERNO As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -3330,6 +3336,30 @@ Partial Public Class MuebleAlexDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CLINOMBREColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCLINOMBRE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CLIAPEPATERNOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCLIAPEPATERNO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CLIAPEMATERNOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCLIAPEMATERNO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3366,9 +3396,26 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddVISTACLIENTESPRINCIPALRow(ByVal Cliente As String, ByVal Calle_y_número As String, ByVal Colonia As String, ByVal Código_postal As String, ByVal Ciudad As String, ByVal Estado As String, ByVal Teléfono As String, ByVal Notas As String, ByVal Crédito As String, ByVal RFC As String, ByVal Régimen_fiscal As String, ByVal Uso_de_CFDI As String, ByVal CLICODIGO As String, ByVal Correo As String) As VISTACLIENTESPRINCIPALRow
+        Public Overloads Function AddVISTACLIENTESPRINCIPALRow( _
+                    ByVal Cliente As String,  _
+                    ByVal Calle_y_número As String,  _
+                    ByVal Colonia As String,  _
+                    ByVal Código_postal As String,  _
+                    ByVal Ciudad As String,  _
+                    ByVal Estado As String,  _
+                    ByVal Teléfono As String,  _
+                    ByVal Notas As String,  _
+                    ByVal Crédito As String,  _
+                    ByVal RFC As String,  _
+                    ByVal Régimen_fiscal As String,  _
+                    ByVal Uso_de_CFDI As String,  _
+                    ByVal CLICODIGO As String,  _
+                    ByVal Correo As String,  _
+                    ByVal CLINOMBRE As String,  _
+                    ByVal CLIAPEPATERNO As String,  _
+                    ByVal CLIAPEMATERNO As String) As VISTACLIENTESPRINCIPALRow
             Dim rowVISTACLIENTESPRINCIPALRow As VISTACLIENTESPRINCIPALRow = CType(Me.NewRow,VISTACLIENTESPRINCIPALRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, Calle_y_número, Colonia, Código_postal, Ciudad, Estado, Teléfono, Notas, Crédito, RFC, Régimen_fiscal, Uso_de_CFDI, CLICODIGO, Correo}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Cliente, Calle_y_número, Colonia, Código_postal, Ciudad, Estado, Teléfono, Notas, Crédito, RFC, Régimen_fiscal, Uso_de_CFDI, CLICODIGO, Correo, CLINOMBRE, CLIAPEPATERNO, CLIAPEMATERNO}
             rowVISTACLIENTESPRINCIPALRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowVISTACLIENTESPRINCIPALRow)
             Return rowVISTACLIENTESPRINCIPALRow
@@ -3412,6 +3459,9 @@ Partial Public Class MuebleAlexDataSet
             Me.columnUso_de_CFDI = MyBase.Columns("Uso de CFDI")
             Me.columnCLICODIGO = MyBase.Columns("CLICODIGO")
             Me.columnCorreo = MyBase.Columns("Correo")
+            Me.columnCLINOMBRE = MyBase.Columns("CLINOMBRE")
+            Me.columnCLIAPEPATERNO = MyBase.Columns("CLIAPEPATERNO")
+            Me.columnCLIAPEMATERNO = MyBase.Columns("CLIAPEMATERNO")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3447,6 +3497,12 @@ Partial Public Class MuebleAlexDataSet
             MyBase.Columns.Add(Me.columnCLICODIGO)
             Me.columnCorreo = New Global.System.Data.DataColumn("Correo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCorreo)
+            Me.columnCLINOMBRE = New Global.System.Data.DataColumn("CLINOMBRE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCLINOMBRE)
+            Me.columnCLIAPEPATERNO = New Global.System.Data.DataColumn("CLIAPEPATERNO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCLIAPEPATERNO)
+            Me.columnCLIAPEMATERNO = New Global.System.Data.DataColumn("CLIAPEMATERNO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCLIAPEMATERNO)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCLIID}, true))
             Me.columnCLIID.AutoIncrement = true
             Me.columnCLIID.AutoIncrementSeed = -1
@@ -3469,6 +3525,9 @@ Partial Public Class MuebleAlexDataSet
             Me.columnUso_de_CFDI.MaxLength = 100
             Me.columnCLICODIGO.MaxLength = 10
             Me.columnCorreo.MaxLength = 100
+            Me.columnCLINOMBRE.MaxLength = 100
+            Me.columnCLIAPEPATERNO.MaxLength = 50
+            Me.columnCLIAPEMATERNO.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6325,6 +6384,54 @@ Partial Public Class MuebleAlexDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CLINOMBRE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTACLIENTESPRINCIPAL.CLINOMBREColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CLINOMBRE' de la tabla 'VISTACLIENTESPRINCIPAL' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTACLIENTESPRINCIPAL.CLINOMBREColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CLIAPEPATERNO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEPATERNOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CLIAPEPATERNO' de la tabla 'VISTACLIENTESPRINCIPAL' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEPATERNOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CLIAPEMATERNO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEMATERNOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CLIAPEMATERNO' de la tabla 'VISTACLIENTESPRINCIPAL' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEMATERNOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsClienteNull() As Boolean
             Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.ClienteColumn)
         End Function
@@ -6489,6 +6596,42 @@ Partial Public Class MuebleAlexDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetCorreoNull()
             Me(Me.tableVISTACLIENTESPRINCIPAL.CorreoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCLINOMBRENull() As Boolean
+            Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.CLINOMBREColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCLINOMBRENull()
+            Me(Me.tableVISTACLIENTESPRINCIPAL.CLINOMBREColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCLIAPEPATERNONull() As Boolean
+            Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEPATERNOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCLIAPEPATERNONull()
+            Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEPATERNOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCLIAPEMATERNONull() As Boolean
+            Return Me.IsNull(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEMATERNOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCLIAPEMATERNONull()
+            Me(Me.tableVISTACLIENTESPRINCIPAL.CLIAPEMATERNOColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -10228,6 +10371,9 @@ Namespace MuebleAlexDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Uso de CFDI", "Uso de CFDI")
             tableMapping.ColumnMappings.Add("CLICODIGO", "CLICODIGO")
             tableMapping.ColumnMappings.Add("Correo", "Correo")
+            tableMapping.ColumnMappings.Add("CLINOMBRE", "CLINOMBRE")
+            tableMapping.ColumnMappings.Add("CLIAPEPATERNO", "CLIAPEPATERNO")
+            tableMapping.ColumnMappings.Add("CLIAPEMATERNO", "CLIAPEMATERNO")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -10247,7 +10393,7 @@ Namespace MuebleAlexDataSetTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT CLIID, Cliente, [Calle y número], Colonia, [Código postal], Ciudad, Estado"& _ 
                 ", Teléfono, Notas, Crédito, RFC, [Régimen fiscal], [Uso de CFDI], CLICODIGO, Cor"& _ 
-                "reo FROM VISTACLIENTESPRINCIPAL"
+                "reo, CLIAPEMATERNO, CLIAPEPATERNO, CLINOMBRE FROM VISTACLIENTESPRINCIPAL"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

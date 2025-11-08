@@ -132,10 +132,10 @@ Partial Class FrmPrincipal
         '
         Me.BTNDEUDORES.AutoSize = True
         Me.BTNDEUDORES.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNDEUDORES.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNDEUDORES.Location = New System.Drawing.Point(1754, 4)
+        Me.BTNDEUDORES.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNDEUDORES.Location = New System.Drawing.Point(1750, 4)
         Me.BTNDEUDORES.Name = "BTNDEUDORES"
-        Me.BTNDEUDORES.Size = New System.Drawing.Size(139, 42)
+        Me.BTNDEUDORES.Size = New System.Drawing.Size(143, 44)
         Me.BTNDEUDORES.TabIndex = 0
         Me.BTNDEUDORES.Text = "Deudas del día"
         Me.BTNDEUDORES.UseVisualStyleBackColor = True

@@ -427,7 +427,7 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
               <DbSource ConnectionRef="desktop-8q10a8h\sqlexpress.MuebleAlex.dbo" DbObjectName="MuebleAlex.dbo.VISTACLIENTESPRINCIPAL" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT CLIID, Cliente, [Calle y número], Colonia, [Código postal], Ciudad, Estado, Teléfono, Notas, Crédito, RFC, [Régimen fiscal], [Uso de CFDI], CLICODIGO, Correo FROM VISTACLIENTESPRINCIPAL</CommandText>
+                    <CommandText>SELECT CLIID, Cliente, [Calle y número], Colonia, [Código postal], Ciudad, Estado, Teléfono, Notas, Crédito, RFC, [Régimen fiscal], [Uso de CFDI], CLICODIGO, Correo, CLIAPEMATERNO, CLIAPEPATERNO, CLINOMBRE FROM VISTACLIENTESPRINCIPAL</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -449,6 +449,9 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
               <Mapping SourceColumn="Uso de CFDI" DataSetColumn="Uso de CFDI" />
               <Mapping SourceColumn="CLICODIGO" DataSetColumn="CLICODIGO" />
               <Mapping SourceColumn="Correo" DataSetColumn="Correo" />
+              <Mapping SourceColumn="CLINOMBRE" DataSetColumn="CLINOMBRE" />
+              <Mapping SourceColumn="CLIAPEPATERNO" DataSetColumn="CLIAPEPATERNO" />
+              <Mapping SourceColumn="CLIAPEMATERNO" DataSetColumn="CLIAPEMATERNO" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -901,6 +904,27 @@ SELECT USUID, USUNOMBRE, USULOGIN, USUCLAVE, USUTIPO, USUEXISTE FROM TBLUSUARIOS
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLINOMBRE" msprop:Generator_ColumnPropNameInRow="CLINOMBRE" msprop:Generator_ColumnPropNameInTable="CLINOMBREColumn" msprop:Generator_ColumnVarNameInTable="columnCLINOMBRE" msprop:Generator_UserColumnName="CLINOMBRE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLIAPEPATERNO" msprop:Generator_ColumnPropNameInRow="CLIAPEPATERNO" msprop:Generator_ColumnPropNameInTable="CLIAPEPATERNOColumn" msprop:Generator_ColumnVarNameInTable="columnCLIAPEPATERNO" msprop:Generator_UserColumnName="CLIAPEPATERNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLIAPEMATERNO" msprop:Generator_ColumnPropNameInRow="CLIAPEMATERNO" msprop:Generator_ColumnPropNameInTable="CLIAPEMATERNOColumn" msprop:Generator_ColumnVarNameInTable="columnCLIAPEMATERNO" msprop:Generator_UserColumnName="CLIAPEMATERNO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
