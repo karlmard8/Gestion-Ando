@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmClientes
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,26 +20,10 @@ Partial Class FrmClientes
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.DATACLIENTES = New System.Windows.Forms.DataGridView()
-        Me.BTNELIMINAR = New System.Windows.Forms.Button()
-        Me.BTNNUEVO = New System.Windows.Forms.Button()
-        Me.BTNEDITAR = New System.Windows.Forms.Button()
-        Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CLIIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
-        Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
-        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
-        Me.VISTACLIENTESPRINCIPALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.VISTACLIENTESPRINCIPALTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter()
         Me.CLINOMBRE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIAPEPATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIAPEMATERNO = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,10 +42,26 @@ Partial Class FrmClientes
         Me.CLIREGIMENFISCAL = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICFDI = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLICOMENTARIOS = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VISTACLIENTESPRINCIPALBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MuebleAlexDataSet = New Gestion_Ando.MuebleAlexDataSet()
+        Me.BTNELIMINAR = New System.Windows.Forms.Button()
+        Me.BTNNUEVO = New System.Windows.Forms.Button()
+        Me.BTNEDITAR = New System.Windows.Forms.Button()
+        Me.TXTBUSCAR = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.CLIIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.CMBFILTRO = New System.Windows.Forms.ComboBox()
+        Me.TBLCLIENTESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TBLCLIENTESTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.TBLCLIENTESTableAdapter()
+        Me.VISTACLIENTESPRINCIPALBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.VISTACLIENTESPRINCIPALTableAdapter = New Gestion_Ando.MuebleAlexDataSetTableAdapters.VISTACLIENTESPRINCIPALTableAdapter()
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -89,132 +89,6 @@ Partial Class FrmClientes
         Me.DATACLIENTES.Size = New System.Drawing.Size(1862, 720)
         Me.DATACLIENTES.TabIndex = 0
         Me.DATACLIENTES.TabStop = False
-        '
-        'BTNELIMINAR
-        '
-        Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNELIMINAR.Location = New System.Drawing.Point(1741, 852)
-        Me.BTNELIMINAR.Name = "BTNELIMINAR"
-        Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNELIMINAR.TabIndex = 3
-        Me.BTNELIMINAR.Text = "Eliminar"
-        Me.BTNELIMINAR.UseVisualStyleBackColor = False
-        '
-        'BTNNUEVO
-        '
-        Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNNUEVO.Location = New System.Drawing.Point(1341, 852)
-        Me.BTNNUEVO.Name = "BTNNUEVO"
-        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
-        Me.BTNNUEVO.TabIndex = 1
-        Me.BTNNUEVO.Text = "Nuevo"
-        Me.BTNNUEVO.UseVisualStyleBackColor = False
-        '
-        'BTNEDITAR
-        '
-        Me.BTNEDITAR.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTNEDITAR.Location = New System.Drawing.Point(1540, 852)
-        Me.BTNEDITAR.Name = "BTNEDITAR"
-        Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
-        Me.BTNEDITAR.TabIndex = 2
-        Me.BTNEDITAR.Text = "Editar"
-        Me.BTNEDITAR.UseVisualStyleBackColor = False
-        '
-        'TXTBUSCAR
-        '
-        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TXTBUSCAR.Location = New System.Drawing.Point(111, 30)
-        Me.TXTBUSCAR.Name = "TXTBUSCAR"
-        Me.TXTBUSCAR.Size = New System.Drawing.Size(651, 29)
-        Me.TXTBUSCAR.TabIndex = 11
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(27, 30)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(68, 32)
-        Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Buscar"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1052, 62)
-        Me.PictureBox1.TabIndex = 12
-        Me.PictureBox1.TabStop = False
-        '
-        'CLIIDDataGridViewTextBoxColumn
-        '
-        Me.CLIIDDataGridViewTextBoxColumn.DataPropertyName = "CLIID"
-        Me.CLIIDDataGridViewTextBoxColumn.HeaderText = "CLIID"
-        Me.CLIIDDataGridViewTextBoxColumn.Name = "CLIIDDataGridViewTextBoxColumn"
-        Me.CLIIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIIDDataGridViewTextBoxColumn.Visible = False
-        '
-        'Cliente
-        '
-        Me.Cliente.DataPropertyName = "Cliente"
-        Me.Cliente.HeaderText = "Cliente"
-        Me.Cliente.Name = "Cliente"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(795, 30)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(95, 32)
-        Me.Label2.TabIndex = 14
-        Me.Label2.Text = "Filtrar por"
-        '
-        'CMBFILTRO
-        '
-        Me.CMBFILTRO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CMBFILTRO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CMBFILTRO.FormattingEnabled = True
-        Me.CMBFILTRO.Items.AddRange(New Object() {"Cliente", "Colonia", "Ciudad"})
-        Me.CMBFILTRO.Location = New System.Drawing.Point(896, 30)
-        Me.CMBFILTRO.Name = "CMBFILTRO"
-        Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
-        Me.CMBFILTRO.TabIndex = 15
-        '
-        'VISTACLIENTESPRINCIPALBindingSource1
-        '
-        Me.VISTACLIENTESPRINCIPALBindingSource1.DataMember = "VISTACLIENTESPRINCIPAL"
-        Me.VISTACLIENTESPRINCIPALBindingSource1.DataSource = Me.MuebleAlexDataSet
-        '
-        'MuebleAlexDataSet
-        '
-        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
-        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TBLCLIENTESBindingSource
-        '
-        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
-        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'TBLCLIENTESTableAdapter
-        '
-        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
-        '
-        'VISTACLIENTESPRINCIPALBindingSource
-        '
-        Me.VISTACLIENTESPRINCIPALBindingSource.DataMember = "VISTACLIENTESPRINCIPAL"
-        Me.VISTACLIENTESPRINCIPALBindingSource.DataSource = Me.MuebleAlexDataSet
-        '
-        'VISTACLIENTESPRINCIPALTableAdapter
-        '
-        Me.VISTACLIENTESPRINCIPALTableAdapter.ClearBeforeFill = True
         '
         'CLINOMBRE
         '
@@ -371,6 +245,132 @@ Partial Class FrmClientes
         Me.CLICOMENTARIOS.Name = "CLICOMENTARIOS"
         Me.CLICOMENTARIOS.ReadOnly = True
         '
+        'VISTACLIENTESPRINCIPALBindingSource1
+        '
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource1.DataSource = Me.MuebleAlexDataSet
+        '
+        'MuebleAlexDataSet
+        '
+        Me.MuebleAlexDataSet.DataSetName = "MuebleAlexDataSet"
+        Me.MuebleAlexDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'BTNELIMINAR
+        '
+        Me.BTNELIMINAR.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.BTNELIMINAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNELIMINAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNELIMINAR.Location = New System.Drawing.Point(1741, 852)
+        Me.BTNELIMINAR.Name = "BTNELIMINAR"
+        Me.BTNELIMINAR.Size = New System.Drawing.Size(132, 54)
+        Me.BTNELIMINAR.TabIndex = 3
+        Me.BTNELIMINAR.Text = "Eliminar"
+        Me.BTNELIMINAR.UseVisualStyleBackColor = False
+        '
+        'BTNNUEVO
+        '
+        Me.BTNNUEVO.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.BTNNUEVO.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNNUEVO.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNNUEVO.Location = New System.Drawing.Point(1341, 852)
+        Me.BTNNUEVO.Name = "BTNNUEVO"
+        Me.BTNNUEVO.Size = New System.Drawing.Size(132, 54)
+        Me.BTNNUEVO.TabIndex = 1
+        Me.BTNNUEVO.Text = "Nuevo"
+        Me.BTNNUEVO.UseVisualStyleBackColor = False
+        '
+        'BTNEDITAR
+        '
+        Me.BTNEDITAR.BackColor = System.Drawing.SystemColors.HighlightText
+        Me.BTNEDITAR.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BTNEDITAR.Font = New System.Drawing.Font("Dubai", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTNEDITAR.Location = New System.Drawing.Point(1540, 852)
+        Me.BTNEDITAR.Name = "BTNEDITAR"
+        Me.BTNEDITAR.Size = New System.Drawing.Size(132, 54)
+        Me.BTNEDITAR.TabIndex = 2
+        Me.BTNEDITAR.Text = "Editar"
+        Me.BTNEDITAR.UseVisualStyleBackColor = False
+        '
+        'TXTBUSCAR
+        '
+        Me.TXTBUSCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TXTBUSCAR.Location = New System.Drawing.Point(111, 30)
+        Me.TXTBUSCAR.Name = "TXTBUSCAR"
+        Me.TXTBUSCAR.Size = New System.Drawing.Size(651, 29)
+        Me.TXTBUSCAR.TabIndex = 11
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(27, 30)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(68, 32)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Buscar"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(1052, 62)
+        Me.PictureBox1.TabIndex = 12
+        Me.PictureBox1.TabStop = False
+        '
+        'CLIIDDataGridViewTextBoxColumn
+        '
+        Me.CLIIDDataGridViewTextBoxColumn.DataPropertyName = "CLIID"
+        Me.CLIIDDataGridViewTextBoxColumn.HeaderText = "CLIID"
+        Me.CLIIDDataGridViewTextBoxColumn.Name = "CLIIDDataGridViewTextBoxColumn"
+        Me.CLIIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIIDDataGridViewTextBoxColumn.Visible = False
+        '
+        'Cliente
+        '
+        Me.Cliente.DataPropertyName = "Cliente"
+        Me.Cliente.HeaderText = "Cliente"
+        Me.Cliente.Name = "Cliente"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Dubai", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(795, 30)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(95, 32)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "Filtrar por"
+        '
+        'CMBFILTRO
+        '
+        Me.CMBFILTRO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CMBFILTRO.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CMBFILTRO.FormattingEnabled = True
+        Me.CMBFILTRO.Items.AddRange(New Object() {"Cliente", "Colonia", "Ciudad"})
+        Me.CMBFILTRO.Location = New System.Drawing.Point(896, 30)
+        Me.CMBFILTRO.Name = "CMBFILTRO"
+        Me.CMBFILTRO.Size = New System.Drawing.Size(121, 28)
+        Me.CMBFILTRO.TabIndex = 15
+        '
+        'TBLCLIENTESBindingSource
+        '
+        Me.TBLCLIENTESBindingSource.DataMember = "TBLCLIENTES"
+        Me.TBLCLIENTESBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'TBLCLIENTESTableAdapter
+        '
+        Me.TBLCLIENTESTableAdapter.ClearBeforeFill = True
+        '
+        'VISTACLIENTESPRINCIPALBindingSource
+        '
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataMember = "VISTACLIENTESPRINCIPAL"
+        Me.VISTACLIENTESPRINCIPALBindingSource.DataSource = Me.MuebleAlexDataSet
+        '
+        'VISTACLIENTESPRINCIPALTableAdapter
+        '
+        Me.VISTACLIENTESPRINCIPALTableAdapter.ClearBeforeFill = True
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -390,9 +390,9 @@ Partial Class FrmClientes
         Me.Name = "FrmClientes"
         Me.Text = "FrmClientes"
         CType(Me.DATACLIENTES, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MuebleAlexDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TBLCLIENTESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VISTACLIENTESPRINCIPALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

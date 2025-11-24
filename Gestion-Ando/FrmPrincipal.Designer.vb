@@ -51,7 +51,7 @@ Partial Class FrmPrincipal
         Me.MenuOpciones.BackColor = System.Drawing.Color.White
         Me.MenuOpciones.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuOpciones.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CotizacionesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
+        Me.MenuOpciones.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClientesToolStripMenuItem, Me.VentasToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.CorteDeCajaToolStripMenuItem, Me.CotizacionesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.InicioToolStripMenuItem, Me.CerrarSesiónToolStripMenuItem})
         Me.MenuOpciones.Location = New System.Drawing.Point(0, 0)
         Me.MenuOpciones.Name = "MenuOpciones"
         Me.MenuOpciones.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -62,8 +62,8 @@ Partial Class FrmPrincipal
         'InicioToolStripMenuItem
         '
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(75, 34)
-        Me.InicioToolStripMenuItem.Text = "Inicio"
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(97, 34)
+        Me.InicioToolStripMenuItem.Text = "Soporte"
         '
         'ClientesToolStripMenuItem
         '

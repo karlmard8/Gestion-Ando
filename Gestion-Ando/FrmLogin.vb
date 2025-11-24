@@ -7,25 +7,16 @@ Imports CrystalDecisions.ReportAppServer
 
 Public Class FrmLogin
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        If String.IsNullOrEmpty(My.Settings.ServidorSql) OrElse
-       String.IsNullOrEmpty(My.Settings.BaseDatosSQL) OrElse
-       String.IsNullOrEmpty(My.Settings.UsuarioSQL) OrElse
-       String.IsNullOrEmpty(My.Settings.ContraseñaSQL) OrElse
-       String.IsNullOrEmpty(My.Settings.IdLicencia) Then
-
+        If String.IsNullOrEmpty(My.Settings.ServidorSql) OrElse String.IsNullOrEmpty(My.Settings.IdLicencia) Then
             My.Settings.ServidorSql = InputBox("Ingrese el nombre del servidor:", "Configuración de servidor")
-            My.Settings.BaseDatosSQL = InputBox("Ingrese el nombre de la base de datos:", "Configuración de base de datos")
-            My.Settings.UsuarioSQL = InputBox("Ingrese el usuario de la base de datos:", "Configuración de usuario")
-            My.Settings.ContraseñaSQL = InputBox("Ingrese la contraseña:", "Configuración de usuario")
-            My.Settings.IdLicencia = InputBox("Ingrese el ID de la licencia")
+            My.Settings.IdLicencia = InputBox("Ingrese el ID de la licencia:", "Configuración de licencia")
             My.Settings.Save()
         End If
 
         SERVIDOR = My.Settings.ServidorSql
-        BASEDATOS = My.Settings.BaseDatosSQL
-        USUARIO = My.Settings.UsuarioSQL
-        CONTRASEÑA = My.Settings.ContraseñaSQL
+        BASEDATOS = "MuebleAlex"
+        USUARIO = "sa"
+        CONTRASEÑA = "c1oooooo"
 
         'Aplicar configuraciones de diseño
         Me.BackColor = ColorFormulario
@@ -86,15 +77,8 @@ Public Class FrmLogin
         Dim snapshot = Await validador.ObtenerDocumento(clave)
 
         'Validar que el documento tiene los datos necesarios
-        If snapshot IsNot Nothing AndAlso snapshot.ContainsKey("Estado") AndAlso snapshot.ContainsKey("FechaVencimiento") AndAlso snapshot.ContainsKey("BLOQUEODEFINITIVO") Then
+        If snapshot IsNot Nothing AndAlso snapshot.ContainsKey("Estado") AndAlso snapshot.ContainsKey("FechaVencimiento") Then
             estado = snapshot("Estado").ToString()
-
-            'Establecer si la aplicación se bloqueará y eliminará la base de datos
-            BLOQUEODEFINITIVO = snapshot("BLOQUEODEFINITIVO").ToString
-            If BLOQUEODEFINITIVO = True Then
-                'Pendiente establecer el drop de la base de datos
-                Return
-            End If
 
             'Convertir timestamp de Firestore a DateTime
             Dim fechaVencimientoTimestamp As Google.Cloud.Firestore.Timestamp = snapshot("FechaVencimiento")

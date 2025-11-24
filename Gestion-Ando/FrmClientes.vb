@@ -142,4 +142,5 @@
     Private Sub CMBFILTRO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CMBFILTRO.SelectedIndexChanged
         TXTBUSCAR_TextChanged(sender, e)
     End Sub
+
 End Class
